@@ -1,66 +1,109 @@
-import Image from "next/image";
 import styles from "./page.module.css";
+import Navbar from "./components/Navbar/Navbar";
+import Button from "./components/ui/Button/Button";
+import Avatar from "./components/ui/Avatar/Avatar";
+import Footer from "./components/Footer/Footer";
+import HeroText from "./HeroText/HeroText";
+import ProgettiGrid from "./ProgettiGrid/ProgettiGrid";
+import { faq, faqSchema, progetti, servizi } from "./data.js";
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.js file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main>
+      <Navbar />
+      <header className={styles.header}>
+        <div className={styles.contenuto}>
+          <HeroText />
+          <p className={styles.sottotitolo}>
+            I build Next.js interfaces with one goal: turning your visitors into
+            customers.
           </p>
+          <Button variant="ghost" size="lg" href="/projects">
+            View my work
+          </Button>
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </header>
+
+      <section className="section section--alt">
+        <div className="container">
+          <div className={styles.chiSonoInner}>
+            <Avatar src="/foto.jpg" alt="Crescenzo Sorrentino" size={280} />
+            <div className={styles.chiSonoTesto}>
+              <h2>I build the frontend your product deserves</h2>
+              <p>
+                I&apos;m a frontend developer specializing in Next.js.
+                I work with startups and professionals who know that a great
+                interface isn&apos;t a nice-to-have. It&apos;s what drives
+                growth.
+              </p>
+              <p>
+                I care about every visual detail and performance metric, because
+                I know that user experience is what decides whether a customer
+                stays or leaves.
+              </p>
+              <Button variant="primary" size="md" href="/contact">
+                Let&apos;s talk about your project
+              </Button>
+            </div>
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <div className={styles.progettiHead}>
+            <h2>Selected Work</h2>
+            <p>A few projects that show what I can do for your business.</p>
+          </div>
+          <ProgettiGrid progetti={progetti} />
+          <div className={styles.progettiCta}>
+            <Button variant="secondary" size="md" href="/projects">
+              View all projects
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      <section className="section section--alt">
+        <div className="container">
+          <div className={styles.serviziHead}>
+            <h2>What I can do for you</h2>
+            <p>From concept to deployment: I cover the full frontend stack.</p>
+          </div>
+          <div className={styles.serviziGrid}>
+            {servizi.map((servizio) => (
+              <div key={servizio.title} className={styles.servizioCard}>
+                <div className={styles.servizioIcona}>{servizio.icon}</div>
+                <h3>{servizio.title}</h3>
+                <p>{servizio.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container container--narrow">
+          <div className={styles.faqHead}>
+            <h2>Frequently Asked Questions</h2>
+            <p>Everything you need to know before we start working together.</p>
+          </div>
+          <dl className={styles.faqList}>
+            {faq.map(({ q, a }) => (
+              <details key={q} className={styles.faqItem}>
+                <summary className={styles.faqQuestion}>{q}</summary>
+                <dd className={styles.faqAnswer}>{a}</dd>
+              </details>
+            ))}
+          </dl>
+        </div>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      </section>
+
+      <Footer />
+    </main>
   );
 }

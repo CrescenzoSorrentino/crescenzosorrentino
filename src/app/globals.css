@@ -1,49 +1,310 @@
+/* ============================================================
+   GLOBALS.CSS
+   Questo file viene caricato UNA VOLTA in layout.js e vale
+   per tutta l'applicazione. Contiene solo le fondamenta:
+   variabili, reset minimo, tipografia e griglia della pagina.
+   Tutto il resto (stile dei componenti) va nei .module.css.
+   ============================================================ */
+
+
+/* ----------------------------------------------------------
+   1. VARIABILI CSS  (Custom Properties)
+
+   :root rappresenta l'elemento <html> — dichiarare le
+   variabili qui le rende disponibili in ogni file CSS
+   del progetto, compresi i .module.css dei componenti.
+
+   La sintassi è sempre:
+     --nome-variabile: valore;
+   Per usarla:
+     color: var(--nome-variabile);
+   ---------------------------------------------------------- */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+
+  /* FOOTER */
+  --footer-bg: #0A2342;
+
+  /* COLORI BRAND
+     Il colore primario identifica il sito — usato per titoli e header.
+     L'accent è il colore "caldo" — usato per link, bottoni, CTA. */
+  --color-primary:       #0A2342; /* blu petrolio                         */
+  --color-primary-hover: #1a3a6e; /* blu più chiaro — hover su primary    */
+  --color-accent:        #E8622A; /* arancio bruciato                     */
+
+  /* COLORI NEUTRI
+     Mai bianco puro (#fff) o nero puro (#000) — troppo aggressivi.
+     Usiamo bianchi caldi e neri morbidi per un look più sofisticato. */
+  --bg-page:        #FAF9F7; /* bianco caldo — sfondo principale   */
+  --bg-section-alt: #F2F0EC; /* leggermente più scuro — sezioni alt*/
+  --text-primary:   #2E2A27; /* quasi nero — testi corpo           */
+  --text-secondary: #8C8478; /* grigio caldo — caption, note       */
+  --border:         #E5E1DA; /* linee divisorie                    */
+
+  /* FONT
+     Questi nomi devono essere IDENTICI al parametro "variable"
+     in layout.js. È Next.js che crea fisicamente queste variabili
+     e le rende disponibili tramite le classi sull'elemento <html>.
+     Se i nomi non coincidono il browser usa il fallback (Arial...) */
+  --font-headings: 'Cormorant Garamond', Georgia, serif;
+  --font-body:  'DM Sans', Arial, sans-serif;
+  --font-code: 'JetBrains Mono', monospace;
+
+  /* SCALA TIPOGRAFICA
+     Invece di scrivere font-size: 39px a caso nei componenti,
+     usiamo questi "gradini" con nomi che descrivono l'uso.
+     Ogni gradino è circa 1.25x il precedente — crea armonia visiva. */
+  --text-xs:   0.75rem;  /* 12px — label, copyright                  */
+  --text-sm:   0.875rem; /* 14px — caption, testo secondario         */
+  --text-base: 1rem;     /* 16px — corpo testo, punto di partenza    */
+  --text-md:   1.125rem; /* 18px — corpo ampio, paragrafo intro      */
+  --text-lg:   1.25rem;  /* 20px — h4, sottotitoli                   */
+  --text-xl:   1.5rem;   /* 24px — h3                                */
+  --text-2xl:  2rem;     /* 32px — h2 su mobile                      */
+  --text-3xl:  2.5rem;   /* 40px — h1 su mobile                      */
+  --text-4xl:  3.5rem;   /* 56px — h1 su desktop                     */
+  --text-hero: 5rem;     /* 80px — titolo hero grande                */
+
+  /* SPAZIATURA
+     Tutti i margini e padding del sito vengono da qui.
+     Base 4px: ogni gradino è un multiplo di 4.
+     Perché 4? Crea allineamenti perfetti con qualsiasi griglia. */
+  --space-1:  0.25rem; /*  4px */
+  --space-2:  0.5rem;  /*  8px */
+  --space-3:  0.75rem; /* 12px */
+  --space-4:  1rem;    /* 16px */
+  --space-6:  1.5rem;  /* 24px */
+  --space-8:  2rem;    /* 32px */
+  --space-12: 3rem;    /* 48px */
+  --space-16: 4rem;    /* 64px */
+  --space-24: 6rem;    /* 96px */
+
+  /* LAYOUT */
+  --max-width: 1280px; /* il contenuto non supera mai questa larghezza */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+
+/* ----------------------------------------------------------
+   2. DARK MODE
+
+   Quando lo script in layout.js imposta data-theme="dark"
+   sull'elemento <html>, queste variabili sovrascrivono
+   quelle di :root. I componenti non cambiano nulla —
+   cambiano solo i valori delle variabili qui sopra.
+   ---------------------------------------------------------- */
+
+[data-theme="dark"] {
+  --footer-bg:           #080E1C;
+  --bg-page:             #0E1117;
+  --bg-section-alt:      #161B27;
+  --text-primary:        #E8EAF0;
+  --text-secondary:      #8892A4;
+  --border:              #2A3347;
+  --color-primary:       #7aaee8;
+  --color-primary-hover: #5a90d4;
+  --color-accent:        #F07A4A;
+}
+
+
+/* ----------------------------------------------------------
+   3. RESET MINIMO
+
+   Elimina le differenze di stile tra browser diversi.
+   Non azzera tutto — solo ciò che causa problemi reali.
+   ---------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  /* border-box = padding e bordo sono INCLUSI nella larghezza.
+     Senza questa regola aggiungere padding allarga l'elemento —
+     causa mille bug di layout, specialmente con le griglie. */
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
-  height: 100%;
+  scroll-behavior: smooth; /* scorrimento fluido per i link interni  */
+  overflow-x: hidden;      /* nessun scroll orizzontale accidentale  */
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
+
+/* ----------------------------------------------------------
+   4. BODY — tipografia base + griglia della pagina
+
+   Il body fa due cose insieme:
+   A) imposta il font e i colori di base per tutto il sito
+   B) crea la griglia a tre righe: navbar | contenuto | footer
+   ---------------------------------------------------------- */
 
 body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
+  /* A) TIPOGRAFIA E COLORI BASE */
+  font-family:             var(--font-body);
+  font-size:               var(--text-base);
+  line-height:             1.6;
+  color:                   var(--text-primary);
+  background-color:        var(--bg-page);
+  -webkit-font-smoothing:  antialiased; /* testo più nitido su Mac/iOS */
   -moz-osx-font-smoothing: grayscale;
+
+  /* B) GRIGLIA DELLA PAGINA
+     Tre righe verticali: navbar, contenuto principale, footer.
+
+     auto → la riga è alta quanto il suo contenuto (navbar, footer)
+     1fr  → la riga prende tutto lo spazio rimanente (main)
+
+     Questo risolve il problema classico del "footer che sale"
+     quando il contenuto è poco: il main si allunga sempre
+     fino a spingere il footer in fondo alla pagina.          */
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  /*                   ↑    ↑   ↑
+                    navbar  |  footer
+                           main                               */
+  min-height: 100dvh; /* la pagina occupa sempre tutta l'altezza dello schermo
+                         dvh = dynamic viewport height, corretto su mobile  */
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+
+/* ----------------------------------------------------------
+   5. ELEMENTI BASE
+
+   Reset di elementi specifici che i browser stilano
+   in modo diverso o inaspettato.
+   ---------------------------------------------------------- */
+
+/* Le immagini non escono mai dal loro contenitore */
+img, video, svg {
+  display: block;
+  max-width: 100%;
 }
 
+/* I form ereditano il font del body — di default non lo fanno */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* I link: colore e stile li definisce ogni componente nel suo .module.css */
 a {
   color: inherit;
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+/* I bottoni: rimuove lo stile nativo del browser */
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+
+/* ----------------------------------------------------------
+   6. TIPOGRAFIA
+
+   Gerarchia visiva dei titoli.
+   h1, h2 → font serif elegante (Cormorant Garamond)
+   h3-h6  → font sans-serif (DM Sans), più funzionale
+   ---------------------------------------------------------- */
+
+h1, h2 {
+  font-family: var(--font-headings);
+  font-weight: 300;    /* leggero — Cormorant è già elegante così */
+  line-height: 1.15;   /* interlinea stretta per titoli grandi    */
+  color:       var(--color-primary);
+}
+
+h3, h4, h5, h6 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  line-height: 1.3;
+  color:       var(--text-primary);
+}
+
+/* Mobile first: dimensioni piccole come punto di partenza */
+h1 { font-size: var(--text-3xl);  } /* 40px su mobile */
+h2 { font-size: var(--text-2xl);  } /* 32px su mobile */
+h3 { font-size: var(--text-xl);   } /* 24px           */
+h4 { font-size: var(--text-lg);   } /* 20px           */
+h5 { font-size: var(--text-base); } /* 16px           */
+
+/* Da 768px in su i titoli crescono */
+@media (min-width: 768px) {
+  h1 { font-size: var(--text-4xl); } /* 56px su desktop */
+  h2 { font-size: var(--text-3xl); } /* 40px su desktop */
+}
+
+p {
+  /* 65 caratteri per riga = leggibilità ottimale.
+     Usiamo "ch" (larghezza del carattere "0") invece di px
+     perché si adatta automaticamente al font e alla dimensione. */
+  max-width:   65ch;
+  line-height: 1.7;
+}
+
+/* Testo selezionato con il mouse: usa i colori del brand */
+::selection {
+  background-color: var(--color-accent);
+  color: #ffffff;
+}
+
+
+/* ----------------------------------------------------------
+   7. CONTAINER
+
+   Il "binario" dentro cui scorre tutto il contenuto.
+   Centra il contenuto e lo limita a --max-width.
+
+   La sezione può avere un colore di sfondo bordo-a-bordo.
+   Il .container al suo interno limita e centra i contenuti.
+
+   Esempio JS:
+   <section className="section section--alt">
+     <div className="container">
+       <h2>Titolo</h2>
+     </div>
+   </section>
+   ---------------------------------------------------------- */
+
+.container {
+  width:          100%;
+  max-width:      var(--max-width); /* 1280px — non si allarga oltre */
+  margin-inline:  auto;                 /* centra il blocco              */
+  padding-inline: var(--space-4);      /* 16px — respiro laterale       */
+}
+
+@media (min-width: 640px) {
+  .container { padding-inline: var(--space-6);  } /* 24px */
+}
+
+@media (min-width: 1024px) {
+  .container { padding-inline: var(--space-12); } /* 48px */
+}
+
+/* Variante stretta: per pagine blog e testi lunghi */
+.container--narrow {
+  max-width: 720px;
+}
+
+
+/* ----------------------------------------------------------
+   8. SEZIONI
+
+   Padding verticale coerente per tutte le sezioni.
+   Garantisce un ritmo verticale uniforme in tutta la pagina.
+   ---------------------------------------------------------- */
+
+.section {
+  padding-block: var(--space-16); /* 64px sopra e sotto su mobile */
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-block: var(--space-24); /* 96px su tablet e desktop */
   }
+}
+
+/* Sfondo alternato — distingue le sezioni senza bordi o ombre */
+.section--alt {
+  background-color: var(--bg-section-alt);
 }

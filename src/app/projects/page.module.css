@@ -1,0 +1,95 @@
+.sectionTop {
+  padding-top: var(--space-24);
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-16);
+}
+
+.intro p {
+  font-size: var(--text-md);
+  color: var(--text-secondary);
+}
+
+/* ============================================================
+   LISTA PROGETTI
+   ============================================================ */
+
+.gruppo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-bottom: var(--space-24);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.categoriaLabel {
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.list {
+  list-style: none;
+  border-top: 1px solid var(--border);
+}
+
+.item {
+  border-bottom: 1px solid var(--border);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  padding-block: var(--space-6);
+  color: var(--text-primary);
+  transition: color 200ms ease;
+
+  &:hover {
+    color: var(--color-accent);
+  }
+}
+
+.titolo {
+  font-family: var(--font-headings);
+  font-size: var(--text-xl);
+  font-weight: 300;
+  flex-shrink: 0;
+}
+
+.tags {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  flex: 1;
+}
+
+.freccia {
+  flex-shrink: 0;
+  color: var(--color-accent);
+  transition: transform 200ms ease;
+}
+
+@media (max-width: 639px) {
+  .row {
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .tags {
+    flex-basis: 100%;
+    order: 3;
+  }
+
+  .freccia {
+    margin-left: auto;
+  }
+}

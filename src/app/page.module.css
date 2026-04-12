@@ -1,142 +1,246 @@
-.page {
-  --background: #fafafa;
-  --foreground: #fff;
+.header {
+  height: 80vh;
+  min-height: 500px;
 
-  --text-primary: #000;
-  --text-secondary: #666;
-
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-  --button-secondary-border: #ebebeb;
+  position: relative;
+  overflow: hidden; /* il ::after non esce dai bordi */
 
   display: flex;
-  flex: 1;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-geist-sans);
-  background-color: var(--background);
+  gap: var(--space-6);
+  padding: var(--space-8);
+
+  background: linear-gradient(135deg, var(--color-primary) 0%, #1a3a6e 100%);
 }
 
-.main {
+/* Il trucco per animare i gradienti:
+   creiamo un secondo gradiente sopra il primo tramite ::after,
+   e animiamo solo la sua opacity da 0 a 1 e viceversa.
+   I browser sanno animare l'opacity perfettamente — non i gradienti. */
+.header::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #1a3a6e 0%, var(--color-accent) 100%);
+
+  /* Inizia invisibile */
+  opacity: 0;
+
+  /* Transizione fluida sull'opacity */
+  animation: sfumatura 6s ease-in-out infinite alternate;
+  /* "alternate" fa sì che vada avanti e indietro automaticamente —
+     non serve il keyframe al 100% uguale allo 0% */
+}
+
+@keyframes sfumatura {
+  0% {
+    opacity: 0;
+  } /* mostra il gradiente base del .hero    */
+  100% {
+    opacity: 1;
+  } /* mostra il gradiente dell'::after      */
+}
+
+/* Il contenuto deve stare SOPRA il ::after animato.
+   Senza z-index il testo finirebbe sotto il layer colorato. */
+.contenuto {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  text-wrap: balance;
+
   display: flex;
-  flex: 1;
-  width: 100%;
-  max-width: 800px;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.sottotitolo {
+  font-size: var(--text-md);
+  color: rgba(255, 255, 255, 0.75); /* bianco con trasparenza */
+  max-width: 50ch;
+  line-height: 1.6;
+}
+
+/* ============================================================
+   SEZIONE CHI SONO
+   ============================================================ */
+
+.chiSonoInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+@media (min-width: 768px) {
+  .chiSonoInner {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-16);
+  }
+}
+
+.chiSonoTesto {
+  display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: space-between;
-  background-color: var(--foreground);
-  padding: 120px 60px;
+  text-wrap: pretty;
+  gap: var(--space-6);
 }
 
-.intro {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  gap: 24px;
-}
+/* ============================================================
+   SEZIONE PROGETTI
+   ============================================================ */
 
-.intro h1 {
-  max-width: 320px;
-  font-size: 40px;
-  font-weight: 600;
-  line-height: 48px;
-  letter-spacing: -2.4px;
+/* Intestazione centrata: titolo + sottotitolo */
+.progettiHead {
+  text-align: center;
   text-wrap: balance;
-  color: var(--text-primary);
+  margin-bottom: var(--space-12);
 }
 
-.intro p {
-  max-width: 440px;
-  font-size: 18px;
-  line-height: 32px;
-  text-wrap: balance;
+.progettiHead p {
+  margin-inline: auto;
   color: var(--text-secondary);
+  font-size: var(--text-md);
 }
 
-.intro a {
-  font-weight: 500;
-  color: var(--text-primary);
+
+/* ============================================================
+   SEZIONE SERVIZI
+   ============================================================ */
+
+.serviziHead {
+  text-align: center;
+  text-wrap: balance;
+  margin-bottom: var(--space-12);
 }
 
-.ctas {
+.serviziHead p {
+  margin-inline: auto;
+  color: var(--text-secondary);
+  font-size: var(--text-md);
+}
+
+.serviziGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+@media (min-width: 640px) {
+  .serviziGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.servizioCard {
+  background: var(--bg-page);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: var(--space-8);
   display: flex;
-  flex-direction: row;
-  width: 100%;
-  max-width: 440px;
-  gap: 16px;
-  font-size: 14px;
+  flex-direction: column;
+  gap: var(--space-4);
 }
 
-.ctas a {
+.servizioCard h3 {
+  font-size: var(--text-lg);
+}
+
+.servizioCard p {
+  color: var(--text-secondary);
+  font-size: var(--text-base);
+}
+
+.servizioIcona {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  background: var(--bg-section-alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent);
+}
+
+/* ============================================================
+   SEZIONE FAQ
+   ============================================================ */
+
+.faqHead {
+  text-align: center;
+  text-wrap: balance;
+  margin-bottom: var(--space-12);
+}
+
+.faqHead p {
+  margin-inline: auto;
+  color: var(--text-secondary);
+  font-size: var(--text-md);
+}
+
+.faqList {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--border);
+}
+
+.faqItem {
+  border-bottom: 1px solid var(--border);
+  padding-block: var(--space-6);
+}
+
+.faqItem[open] .faqQuestion::after {
+  transform: rotate(45deg);
+}
+
+.faqQuestion {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--text-primary);
+  user-select: none;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+
+  &:hover {
+    color: var(--color-accent);
+  }
+
+  &::after {
+    content: "+";
+    flex-shrink: 0;
+    font-size: var(--text-xl);
+    font-weight: 300;
+    color: var(--color-accent);
+    transition: transform 250ms ease;
+    line-height: 1;
+  }
+}
+
+.faqAnswer {
+  margin: 0;
+  padding-top: var(--space-4);
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 65ch;
+}
+
+/* CTA centrata sotto la griglia */
+.progettiCta {
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 40px;
-  padding: 0 16px;
-  border-radius: 128px;
-  border: 1px solid transparent;
-  transition: 0.2s;
-  cursor: pointer;
-  width: fit-content;
-  font-weight: 500;
-}
-
-a.primary {
-  background: var(--text-primary);
-  color: var(--background);
-  gap: 8px;
-}
-
-a.secondary {
-  border-color: var(--button-secondary-border);
-}
-
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
-  }
-
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
-  }
-}
-
-@media (max-width: 600px) {
-  .main {
-    padding: 48px 24px;
-  }
-
-  .intro {
-    gap: 16px;
-  }
-
-  .intro h1 {
-    font-size: 32px;
-    line-height: 40px;
-    letter-spacing: -1.92px;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
-  }
-
-  .page {
-    --background: #000;
-    --foreground: #000;
-
-    --text-primary: #ededed;
-    --text-secondary: #999;
-
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-    --button-secondary-border: #1a1a1a;
-  }
+  margin-top: var(--space-12);
 }
