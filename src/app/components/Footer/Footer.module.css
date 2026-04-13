@@ -44,7 +44,7 @@
 
 .ctaText {
   font-size: var(--text-md);
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255, 0.80);
   max-width: 50ch;
   line-height: 1.6;
 }
@@ -107,7 +107,7 @@
 
 .description {
   font-size: var(--text-sm);
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.75);
   line-height: 1.6;
   max-width: 30ch;
 }
@@ -124,7 +124,7 @@
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.70);
 }
 
 .col nav {
@@ -154,7 +154,7 @@
 .bottom {
   padding-block: var(--space-6);
   font-size: var(--text-sm);
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.70);
 }
 
 .bottom span {

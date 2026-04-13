@@ -2,9 +2,9 @@ import styles from "./page.module.css";
 import Navbar from "./components/Navbar/Navbar";
 import Button from "./components/ui/Button/Button";
 import Avatar from "./components/ui/Avatar/Avatar";
+import Card from "./components/ui/Card/Card";
 import Footer from "./components/Footer/Footer";
 import HeroText from "./HeroText/HeroText";
-import ProgettiGrid from "./ProgettiGrid/ProgettiGrid";
 import { faq, faqSchema, progetti, servizi } from "./data.js";
 
 export default function Home() {
@@ -55,7 +55,13 @@ export default function Home() {
             <h2>Selected Work</h2>
             <p>A few projects that show what I can do for your business.</p>
           </div>
-          <ProgettiGrid progetti={progetti} />
+          <div className={styles.progettiGrid}>
+            {progetti.map((progetto) => (
+              <div key={progetto.href}>
+                <Card {...progetto} />
+              </div>
+            ))}
+          </div>
           <div className={styles.progettiCta}>
             <Button variant="secondary" size="md" href="/projects">
               View all projects
@@ -88,14 +94,14 @@ export default function Home() {
             <h2>Frequently Asked Questions</h2>
             <p>Everything you need to know before we start working together.</p>
           </div>
-          <dl className={styles.faqList}>
+          <div className={styles.faqList}>
             {faq.map(({ q, a }) => (
               <details key={q} className={styles.faqItem}>
                 <summary className={styles.faqQuestion}>{q}</summary>
-                <dd className={styles.faqAnswer}>{a}</dd>
+                <p className={styles.faqAnswer}>{a}</p>
               </details>
             ))}
-          </dl>
+          </div>
         </div>
         <script
           type="application/ld+json"
