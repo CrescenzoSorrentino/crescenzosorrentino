@@ -18,13 +18,17 @@ export default function ProjectsPage() {
     <main>
       <Navbar />
 
-      <section className={`section section--alt ${styles.sectionTop}`}>
+      <section className={`section section--alt section--pb-sm ${styles.sectionTop}`}>
         <div className="container container--narrow">
           <div className={styles.intro}>
             <h1>Projects</h1>
             <p>A selection of work I&apos;ve built for clients and personal projects.</p>
           </div>
+        </div>
+      </section>
 
+      <section className="section section--pt-sm">
+        <div className="container container--narrow">
           {categorie.map((categoria) => {
             const filtrati = progetti.filter((p) => p.category === categoria);
             if (filtrati.length === 0) return null;
@@ -51,6 +55,7 @@ export default function ProjectsPage() {
       </section>
 
       <Footer />
+
     </main>
   );
 }

@@ -14,13 +14,17 @@ export default function ContactPage() {
     <main>
       <Navbar />
 
-      <section className={`section section--alt ${styles.sectionTop}`}>
+      <section className={`section section--alt section--pb-sm ${styles.sectionTop}`}>
         <div className="container container--narrow">
           <div className={styles.intro}>
             <h1>Get in touch</h1>
             <p>Fill in the form or reach me directly. I reply within 24 hours.</p>
           </div>
+        </div>
+      </section>
 
+      <section className="section section--pt-sm">
+        <div className="container container--narrow">
           <div className={styles.infoStrip}>
             <div className={styles.infoItem}>
               <span className={styles.infoLabel}>Email</span>
@@ -58,6 +62,7 @@ export default function ContactPage() {
           <ContactForm />
         </div>
       </section>
+
 
       <Footer />
     </main>

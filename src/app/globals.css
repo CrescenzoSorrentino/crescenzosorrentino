@@ -30,7 +30,8 @@
      L'accent è il colore "caldo" — usato per link, bottoni, CTA. */
   --color-primary:       #0A2342; /* blu petrolio                         */
   --color-primary-hover: #1a3a6e; /* blu più chiaro — hover su primary    */
-  --color-accent:        #E8622A; /* arancio bruciato                     */
+  --color-accent:        #E8622A; /* arancio bruciato — decorativo         */
+  --color-accent-text:   #B8421A; /* arancio scuro — testo su sfondo chiaro, WCAG AA */
 
   /* COLORI NEUTRI
      Mai bianco puro (#fff) o nero puro (#000) — troppo aggressivi.
@@ -307,4 +308,14 @@ p {
 /* Sfondo alternato — distingue le sezioni senza bordi o ombre */
 .section--alt {
   background-color: var(--bg-section-alt);
+}
+
+/* Riduce il padding inferiore — usato quando la sezione è seguita da un'altra */
+.section--pb-sm {
+  padding-bottom: var(--space-8);
+}
+
+/* Riduce il padding superiore — usato quando la sezione segue un'altra */
+.section--pt-sm {
+  padding-top: var(--space-8);
 }

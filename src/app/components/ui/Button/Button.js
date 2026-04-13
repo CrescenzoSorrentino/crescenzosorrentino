@@ -9,6 +9,8 @@ export default function Button({
   type = 'button',
   disabled = false,
   href,
+  target,
+  rel,
 }) {
   const classeVariant =
     variant === 'primary'   ? styles.primary   :
@@ -24,6 +26,13 @@ export default function Button({
   const classe = `${styles.button} ${classeVariant} ${classeSize}`;
 
   if (href) {
+    if (target === '_blank') {
+      return (
+        <a href={href} className={classe} target="_blank" rel={rel ?? 'noopener noreferrer'}>
+          {children}
+        </a>
+      );
+    }
     return (
       <Link href={href} className={classe}>
         {children}

@@ -37,28 +37,26 @@ export const faqSchema = {
 
 export const progetti = [
   {
-    title: "Retrogol.it",
+    title: "crescenzosorrentino.com",
+    slug: "crescenzosorrentino",
     description:
-      "A modern editorial platform dedicated to football history, featuring a responsive design and fluid user experience optimized for sports content.",
-    tags: ["Next.js", "Tailwind"],
-    href: "/projects/Blog",
+      "Personal portfolio and blog built from scratch. Focused on performance, accessibility, and clean design — achieving top Lighthouse scores across all metrics.",
+    longDescription:
+      "Built from scratch with Next.js App Router and CSS Modules. Every decision — from typography to component structure — was made with performance and accessibility as primary constraints. No UI libraries, no unnecessary dependencies: just clean, handwritten code optimized for the web.",
+    image: "/projects/crescenzosorrentino.png",
+    tags: ["Next.js", "CSS Modules"],
+    href: "/projects/crescenzosorrentino",
     category: "Websites",
-  },
-  {
-    title: "Agency Landing Page",
-    description:
-      "A high-converting landing page for a creative agency. Smooth animations and a strong visual identity.",
-    tags: ["Next.js", "Framer Motion", "CSS Modules"],
-    href: "/projects/agency-landing",
-    category: "Websites",
-  },
-  {
-    title: "SaaS Dashboard",
-    description:
-      "A data-rich dashboard for a B2B SaaS product. Complex state management with a clean, intuitive UI.",
-    tags: ["Next.js", "Chart.js", "REST API"],
-    href: "/projects/saas-dashboard",
-    category: "Web Apps",
+    year: "2026",
+    liveUrl: "https://crescenzosorrentino.com",
+    githubUrl: "https://github.com/CrescenzoSorrentino/crescenzosorrentino",
+    highlights: [
+      "Lighthouse 100/100 on Accessibility, Best Practices, and SEO — 99 Performance on desktop, 95 on mobile",
+      "Fully static — all pages prerendered at build time with zero runtime data fetching",
+      "Dark mode with no-flash script — theme applied before React hydrates, no visible flicker",
+      "Auto-generated sitemap and structured data (Person, WebSite, FAQPage schemas)",
+      "No UI libraries — every component handwritten with CSS Modules",
+    ],
   },
 ];
 
