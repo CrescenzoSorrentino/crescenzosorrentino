@@ -6,6 +6,8 @@ const staticRoutes = [
   { url: "/", priority: 1, changeFrequency: "monthly" },
   { url: "/projects", priority: 0.8, changeFrequency: "monthly" },
   { url: "/contact", priority: 0.8, changeFrequency: "monthly" },
+  { url: "/privacy-policy", priority: 0.3, changeFrequency: "yearly" },
+  { url: "/cookie-policy", priority: 0.3, changeFrequency: "yearly" },
 ];
 
 export default function sitemap() {

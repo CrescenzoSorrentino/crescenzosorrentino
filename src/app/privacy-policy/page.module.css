@@ -1,0 +1,45 @@
+.content :global(.privacy-policy-h1) {
+  font-family: var(--font-headings);
+  font-size: var(--text-3xl);
+  font-weight: 300;
+  color: var(--color-heading);
+  margin-bottom: var(--space-8);
+  line-height: 1.3;
+}
+
+.content :global(.privacy-policy-h1 span) {
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--color-muted);
+}
+
+.content :global(.privacy-policy-h2) {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-heading);
+  margin-block: var(--space-6) var(--space-3);
+}
+
+.content :global(.privacy-policy-p) {
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  line-height: 1.7;
+  margin-bottom: var(--space-4);
+}
+
+.content :global(.privacy-policy-ol) {
+  padding-left: var(--space-6);
+  margin-bottom: var(--space-4);
+}
+
+.content :global(.privacy-policy-ol li) {
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  line-height: 1.7;
+  margin-bottom: var(--space-2);
+}
+
+.content :global(a) {
+  color: var(--color-accent);
+  text-decoration: underline;
+}

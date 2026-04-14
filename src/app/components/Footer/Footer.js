@@ -1,10 +1,9 @@
 import Link from "next/link";
-import { FolderOpen, BookOpen, Mail, Shield, Cookie } from "lucide-react";
+import { FolderOpen, Mail, Shield, Cookie } from "lucide-react";
 import styles from "./Footer.module.css";
 
 const NAV_LINKS = [
   { href: "/projects", label: "Projects", icon: FolderOpen },
-  { href: "/blog", label: "Blog", icon: BookOpen },
   { href: "/contact", label: "Contact", icon: Mail },
 ];
 

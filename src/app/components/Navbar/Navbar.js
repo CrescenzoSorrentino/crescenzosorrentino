@@ -7,14 +7,12 @@ import {
   Menu,
   X,
   FolderOpen,
-  BookOpen,
   Mail,
 } from "lucide-react";
 import styles from "./Navbar.module.css";
 
 const NAV_LINKS = [
   { href: "/projects", label: "Projects", icon: FolderOpen },
-  { href: "/blog", label: "Blog", icon: BookOpen },
   { href: "/contact", label: "Contact", icon: Mail },
 ];
 
