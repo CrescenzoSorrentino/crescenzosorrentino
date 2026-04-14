@@ -99,18 +99,18 @@
 
 
 /* --------------------------------------------------------
-   VARIANTE GHOST
-   Bordo + testo bianchi su sfondo trasparente.
-   Usalo su sfondi scuri (es. hero con gradiente scuro).
+   VARIANTE LIGHT
+   Sfondo bianco su sfondo scuro (hero, footer).
+   Massimo contrasto, azione principale su dark background.
    -------------------------------------------------------- */
 
-.ghost {
-  background-color: transparent;
-  color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.7);
+.light {
+  background-color: #ffffff;
+  color: var(--color-primary);
+  border-color: #ffffff;
 
   &:hover {
-    background-color: rgba(255, 255, 255, 0.12);
-    border-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.88);
+    border-color: rgba(255, 255, 255, 0.88);
   }
 }

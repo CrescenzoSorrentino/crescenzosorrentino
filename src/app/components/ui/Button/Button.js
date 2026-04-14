@@ -15,7 +15,7 @@ export default function Button({
   const classeVariant =
     variant === 'primary'   ? styles.primary   :
     variant === 'secondary' ? styles.secondary :
-    variant === 'ghost'     ? styles.ghost     :
+    variant === 'light'     ? styles.light     :
     styles.primary;
 
   const classeSize =

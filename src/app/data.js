@@ -40,9 +40,9 @@ export const progetti = [
     title: "crescenzosorrentino.com",
     slug: "crescenzosorrentino",
     description:
-      "Personal portfolio and blog built from scratch. Focused on performance, accessibility, and clean design — achieving top Lighthouse scores across all metrics.",
+      "Personal portfolio and blog built from scratch. Focused on performance, accessibility, and clean design, achieving top Lighthouse scores across all metrics.",
     longDescription:
-      "Built from scratch with Next.js App Router and CSS Modules. Every decision — from typography to component structure — was made with performance and accessibility as primary constraints. No UI libraries, no unnecessary dependencies: just clean, handwritten code optimized for the web.",
+      "Built from scratch with Next.js App Router and CSS Modules. Every decision, from typography to component structure, was made with performance and accessibility as primary constraints. No UI libraries, no unnecessary dependencies: just clean, handwritten code optimized for the web.",
     image: "/projects/crescenzosorrentino.png",
     tags: ["Next.js", "CSS Modules"],
     href: "/projects/crescenzosorrentino",
@@ -51,11 +51,11 @@ export const progetti = [
     liveUrl: "https://crescenzosorrentino.com",
     githubUrl: "https://github.com/CrescenzoSorrentino/crescenzosorrentino",
     highlights: [
-      "Lighthouse 100/100 on Accessibility, Best Practices, and SEO — 99 Performance on desktop, 95 on mobile",
-      "Fully static — all pages prerendered at build time with zero runtime data fetching",
-      "Dark mode with no-flash script — theme applied before React hydrates, no visible flicker",
-      "Auto-generated sitemap and structured data (Person, WebSite, FAQPage schemas)",
-      "No UI libraries — every component handwritten with CSS Modules",
+      "Lighthouse 100/100 on Accessibility, Best Practices, and SEO: 99 Performance on desktop, 95 on mobile.",
+      "Fully static: all pages prerendered at build time with zero runtime data fetching.",
+      "Dark mode with no-flash script: theme applied before React hydrates, no visible flicker.",
+      "Auto-generated sitemap and structured data (Person, WebSite, FAQPage schemas).",
+      "No UI libraries: every component handwritten with CSS Modules.",
     ],
   },
 ];

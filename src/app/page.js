@@ -18,7 +18,7 @@ export default function Home() {
             I build Next.js interfaces with one goal: turning your visitors into
             customers.
           </p>
-          <Button variant="ghost" size="lg" href="/projects">
+          <Button variant="light" size="lg" href="/projects">
             View my work
           </Button>
         </div>

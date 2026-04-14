@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { FolderOpen, Mail, Shield, Cookie } from "lucide-react";
+import Button from "../ui/Button/Button";
 import styles from "./Footer.module.css";
 
 const NAV_LINKS = [
@@ -38,9 +39,9 @@ export default function Footer() {
             Have a project in mind? I&apos;m available for freelance work and
             open to new opportunities.
           </p>
-          <Link href="/contact" className={styles.ctaButton}>
+          <Button variant="light" href="/contact">
             Get in touch
-          </Link>
+          </Button>
         </div>
 
         <div className={styles.top}>
@@ -82,7 +83,7 @@ export default function Footer() {
         <div className={styles.bottom}>
           <p>© 2026 Crescenzo Sorrentino</p>
           <p>
-            Designed & Developed by{" "}
+            Built by{" "}
             <Link href="https://linkedin.com/in/crescenzo-sorrentino" target="_blank" rel="noopener noreferrer">
               <span>Crescenzo Sorrentino</span>
             </Link>
