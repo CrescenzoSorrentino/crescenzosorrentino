@@ -4,17 +4,17 @@ import Button from "./components/ui/Button/Button";
 import Avatar from "./components/ui/Avatar/Avatar";
 import Card from "./components/ui/Card/Card";
 import Footer from "./components/Footer/Footer";
-import HeroText from "./HeroText/HeroText";
-import { faq, faqSchema, progetti, servizi } from "./data.js";
+import HeroText from "./components/HeroText/HeroText";
+import { faq, faqSchema, projects, services } from "./data.js";
 
 export default function Home() {
   return (
     <main>
       <Navbar />
       <header className={styles.header}>
-        <div className={styles.contenuto}>
+        <div className={styles.content}>
           <HeroText />
-          <p className={styles.sottotitolo}>
+          <p className={styles.subtitle}>
             I build Next.js interfaces with one goal: turning your visitors into
             customers.
           </p>
@@ -26,9 +26,9 @@ export default function Home() {
 
       <section className="section section--alt">
         <div className="container">
-          <div className={styles.chiSonoInner}>
+          <div className={styles.aboutInner}>
             <Avatar src="/foto.jpg" alt="Crescenzo Sorrentino" size={280} />
-            <div className={styles.chiSonoTesto}>
+            <div className={styles.aboutText}>
               <h2>I build the frontend your product deserves</h2>
               <p>
                 I&apos;m a frontend developer specializing in Next.js.
@@ -51,18 +51,18 @@ export default function Home() {
 
       <section className="section">
         <div className="container">
-          <div className={styles.progettiHead}>
+          <div className={styles.projectsHead}>
             <h2>Selected Work</h2>
             <p>A few projects that show what I can do for your business.</p>
           </div>
-          <div className={styles.progettiGrid}>
-            {progetti.map((progetto) => (
-              <div key={progetto.href}>
-                <Card {...progetto} />
+          <div className={styles.projectsGrid}>
+            {projects.map((project) => (
+              <div key={project.href}>
+                <Card {...project} />
               </div>
             ))}
           </div>
-          <div className={styles.progettiCta}>
+          <div className={styles.projectsCta}>
             <Button variant="secondary" size="md" href="/projects">
               View all projects
             </Button>
@@ -72,16 +72,16 @@ export default function Home() {
 
       <section className="section section--alt">
         <div className="container">
-          <div className={styles.serviziHead}>
+          <div className={styles.servicesHead}>
             <h2>What I can do for you</h2>
             <p>From concept to deployment: I cover the full frontend stack.</p>
           </div>
-          <div className={styles.serviziGrid}>
-            {servizi.map((servizio) => (
-              <div key={servizio.title} className={styles.servizioCard}>
-                <div className={styles.servizioIcona}>{servizio.icon}</div>
-                <h3>{servizio.title}</h3>
-                <p>{servizio.description}</p>
+          <div className={styles.servicesGrid}>
+            {services.map((service) => (
+              <div key={service.title} className={styles.serviceCard}>
+                <div className={styles.serviceIcon}>{service.icon}</div>
+                <h3>{service.title}</h3>
+                <p>{service.description}</p>
               </div>
             ))}
           </div>

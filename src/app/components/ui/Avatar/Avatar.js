@@ -15,7 +15,7 @@ export default function Avatar({ src, alt, size = 200 }) {
         alt={alt}
         width={size}
         height={size}
-        className={styles.immagine}
+        className={styles.image}
       />
     </div>
   );

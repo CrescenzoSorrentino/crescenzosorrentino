@@ -18,16 +18,16 @@ const NAV_LINKS = [
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [tema, setTema] = useState(() => {
+  const [theme, setTheme] = useState(() => {
     if (typeof window === "undefined") return "light";
     return document.documentElement.getAttribute("data-theme") || "light";
   });
 
-  function toggleTema() {
-    const nuovo = tema === "light" ? "dark" : "light";
-    document.documentElement.setAttribute("data-theme", nuovo);
-    localStorage.setItem("theme", nuovo);
-    setTema(nuovo);
+  function toggleTheme() {
+    const newTheme = theme === "light" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", newTheme);
+    localStorage.setItem("theme", newTheme);
+    setTheme(newTheme);
   }
 
   return (
@@ -59,8 +59,8 @@ export default function Navbar() {
           </svg>
         </Link>
 
-        <div className={styles.destra}>
-          <div className={`${styles.links} ${isOpen ? styles.aperto : ""}`}>
+        <div className={styles.right}>
+          <div className={`${styles.links} ${isOpen ? styles.open : ""}`}>
             {NAV_LINKS.map(({ href, label, icon: Icon }) => (
               <Link
                 key={href}
@@ -74,16 +74,16 @@ export default function Navbar() {
             ))}
           </div>
 
-          <span className={styles.divisore} aria-hidden="true" />
+          <span className={styles.divider} aria-hidden="true" />
 
           <button
-            className={`${styles.iconButton} ${styles.toggleTema}`}
-            onClick={toggleTema}
+            className={`${styles.iconButton} ${styles.toggleTheme}`}
+            onClick={toggleTheme}
             aria-label={
-              tema === "light" ? "Enable dark mode" : "Enable light mode"
+              theme === "light" ? "Enable dark mode" : "Enable light mode"
             }
           >
-            {tema === "light" ? <Moon size={18} /> : <Sun size={18} />}
+            {theme === "light" ? <Moon size={18} /> : <Sun size={18} />}
           </button>
 
           <button

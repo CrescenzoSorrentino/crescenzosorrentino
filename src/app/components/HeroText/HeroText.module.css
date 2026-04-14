@@ -1,4 +1,4 @@
-.titolo {
+.title {
   display: flex;
   flex-wrap: wrap;
   gap: 0.25em;
@@ -9,11 +9,11 @@
 }
 
 @media (min-width: 768px) {
-  .titolo {
+  .title {
     font-size: var(--text-hero);
   }
 }
 
-.parola {
+.word {
   display: inline-block;
 }

@@ -53,7 +53,7 @@
 }
 
 /* L'immagine è più alta del cerchio per far sbucarethe head */
-.immagine {
+.image {
   width:      100% !important;
   height:     var(--height-with-noggin) !important;
   object-fit: cover;

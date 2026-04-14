@@ -2,7 +2,7 @@ import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { progetti } from "../data.js";
+import { projects } from "../data.js";
 import styles from "./page.module.css";
 
 export const metadata = {
@@ -14,7 +14,7 @@ export const metadata = {
   },
 };
 
-const categorie = ["Websites", "Web Apps"];
+const categories = ["Websites", "Web Apps"];
 
 export default function ProjectsPage() {
   return (
@@ -32,21 +32,21 @@ export default function ProjectsPage() {
 
       <section className="section section--pt-sm">
         <div className="container container--narrow">
-          {categorie.map((categoria) => {
-            const filtrati = progetti.filter((p) => p.category === categoria);
-            if (filtrati.length === 0) return null;
+          {categories.map((category) => {
+            const filtered = projects.filter((p) => p.category === category);
+            if (filtered.length === 0) return null;
             return (
-              <div key={categoria} className={styles.gruppo}>
-                <span className={styles.categoriaLabel}>{categoria}</span>
+              <div key={category} className={styles.group}>
+                <span className={styles.categoryLabel}>{category}</span>
                 <ul className={styles.list}>
-                  {filtrati.map((progetto) => (
-                    <li key={progetto.href} className={styles.item}>
-                      <Link href={progetto.href} className={styles.row}>
-                        <span className={styles.titolo}>{progetto.title}</span>
+                  {filtered.map((project) => (
+                    <li key={project.href} className={styles.item}>
+                      <Link href={project.href} className={styles.row}>
+                        <span className={styles.title}>{project.title}</span>
                         <span className={styles.tags}>
-                          {progetto.tags.join(" · ")}
+                          {project.tags.join(" · ")}
                         </span>
-                        <ArrowRight className={styles.freccia} size={20} aria-hidden="true" />
+                        <ArrowRight className={styles.arrow} size={20} aria-hidden="true" />
                       </Link>
                     </li>
                   ))}

@@ -1,6 +1,7 @@
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
 import styles from "./page.module.css";
+import { EMAIL } from "../data.js";
 
 export const metadata = {
   title: "Privacy Policy",
@@ -15,7 +16,7 @@ const content = `<h1 class="privacy-policy-h1">Privacy Policy
 </h1>
 
 <p class="privacy-policy-p">
-    This Privacy Policy describes the policies of Crescenzo Sorrentino, Via Antonio Luise, 35, Napoli 80059, Italy, email: crescenzo.sorrentino@icloud.com, phone: +393241301276 on the collection, use and disclosure of your information that we collect when you use our website ( https://crescenzosorrentino.com ). (the "Service"). By accessing or using the Service, you are consenting to the collection, use and disclosure of your information in accordance with this Privacy Policy. If you do not consent to the same, please do not access or use the Service.
+    This Privacy Policy describes the policies of Crescenzo Sorrentino, Via Antonio Luise, 35, Napoli 80059, Italy, email: ${EMAIL}, phone: +393241301276 on the collection, use and disclosure of your information that we collect when you use our website ( https://crescenzosorrentino.com ). (the "Service"). By accessing or using the Service, you are consenting to the collection, use and disclosure of your information in accordance with this Privacy Policy. If you do not consent to the same, please do not access or use the Service.
 </p>
 
 <p class="privacy-policy-p">
@@ -61,7 +62,7 @@ const content = `<h1 class="privacy-policy-h1">Privacy Policy
 
     <li>
         <h2 class="privacy-policy-h2">Your Rights:</h2>
-        <p class="privacy-policy-p">Depending on the law that applies, you may have a right to access and rectify or erase your personal data or receive a copy of your personal data, restrict or object to the active processing of your data, ask us to share (port) your personal information to another entity, withdraw any consent you provided to us to process your data, a right to lodge a complaint with a statutory authority and such other rights as may be relevant under applicable laws. To exercise these rights, you can write to us at crescenzo.sorrentino@icloud.com. We will respond to your request in accordance with applicable law.</p>
+        <p class="privacy-policy-p">Depending on the law that applies, you may have a right to access and rectify or erase your personal data or receive a copy of your personal data, restrict or object to the active processing of your data, ask us to share (port) your personal information to another entity, withdraw any consent you provided to us to process your data, a right to lodge a complaint with a statutory authority and such other rights as may be relevant under applicable laws. To exercise these rights, you can write to us at ${EMAIL}. We will respond to your request in accordance with applicable law.</p>
         <p class="privacy-policy-p">Do note that if you do not allow us to collect or process the required personal information or withdraw the consent to process the same for the required purposes, you may not be able to access or use the services for which your information was sought.</p>
     </li>
 
@@ -82,7 +83,7 @@ const content = `<h1 class="privacy-policy-h1">Privacy Policy
 
     <li>
         <h2 class="privacy-policy-h2">Grievance / Data Protection Officer:</h2>
-        <p class="privacy-policy-p">If you have any queries or concerns about the processing of your information that is available with us, you may email our Grievance Officer at Crescenzo Sorrentino, Via Antonio Luise, 35, email: crescenzo.sorrentino@icloud.com. We will address your concerns in accordance with applicable law.</p>
+        <p class="privacy-policy-p">If you have any queries or concerns about the processing of your information that is available with us, you may email our Grievance Officer at Crescenzo Sorrentino, Via Antonio Luise, 35, email: ${EMAIL}. We will address your concerns in accordance with applicable law.</p>
     </li>
 </ol>
 

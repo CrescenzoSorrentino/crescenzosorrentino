@@ -1,0 +1,39 @@
+/* ============================================================
+   NOT FOUND — pagina 404
+   Centrata verticalmente nel main, che occupa tutto lo spazio
+   rimasto tra navbar e footer grazie al grid del body (1fr).
+   ============================================================ */
+
+.section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding-block: var(--space-24);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-6);
+  max-width: 480px;
+}
+
+/* Il numero 404 — grande, leggero, usa il serif per coerenza con gli h1 */
+.code {
+  font-family: var(--font-headings);
+  font-size: 8rem;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--color-primary);
+  opacity: 0.15;
+
+  /* Sovrapposto visivamente al titolo h1 tramite margine negativo */
+  margin-bottom: calc(var(--space-6) * -1);
+}
+
+@media (min-width: 768px) {
+  .code {
+    font-size: 12rem;
+  }
+}

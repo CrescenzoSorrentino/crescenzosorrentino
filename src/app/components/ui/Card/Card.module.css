@@ -31,7 +31,7 @@
    position: relative è obbligatorio per next/image con fill.
    -------------------------------------------------------- */
 
-.anteprima {
+.preview {
   position:     relative;
   aspect-ratio: 16 / 9;
   overflow:     hidden;
@@ -53,7 +53,7 @@
    CORPO — area testuale sotto l'immagine
    -------------------------------------------------------- */
 
-.corpo {
+.body {
   padding: var(--space-6);
 
   display:        flex;
@@ -91,14 +91,14 @@
    TESTO
    -------------------------------------------------------- */
 
-.titolo {
+.title {
   font-size:   var(--text-lg);
   font-weight: 600;
   color:       var(--text-primary);
   line-height: 1.3;
 }
 
-.descrizione {
+.description {
   font-size:  var(--text-base);
   color:      var(--text-secondary);
   line-height: 1.6;

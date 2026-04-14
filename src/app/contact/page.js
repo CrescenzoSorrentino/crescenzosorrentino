@@ -2,6 +2,15 @@ import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
 import ContactForm from "./ContactForm";
 import styles from "./page.module.css";
+import { EMAIL } from "../data.js";
+
+const CONTACT_INFO = [
+  { label: "Email",         value: EMAIL, href: `mailto:${EMAIL}` },
+  { label: "Phone",         value: "+39 324 130 1276",                href: "tel:+393241301276" },
+  { label: "Location",      value: "Naples, Italy · Remote worldwide" },
+  { label: "Working hours", value: "Mon–Fri, 9:00–18:00 CET" },
+  { label: "LinkedIn",      value: "crescenzo-sorrentino",            href: "https://linkedin.com/in/crescenzo-sorrentino", external: true },
+];
 
 export const metadata = {
   title: "Contact",
@@ -29,37 +38,22 @@ export default function ContactPage() {
       <section className="section section--pt-sm">
         <div className="container container--narrow">
           <div className={styles.infoStrip}>
-            <div className={styles.infoItem}>
-              <span className={styles.infoLabel}>Email</span>
-              <a href="mailto:crescenzo.sorrentino@icloud.com" className={styles.infoValue}>
-                crescenzo.sorrentino@icloud.com
-              </a>
-            </div>
-            <div className={styles.infoItem}>
-              <span className={styles.infoLabel}>Phone</span>
-              <a href="tel:+393241301276" className={styles.infoValue}>
-                +39 324 130 1276
-              </a>
-            </div>
-            <div className={styles.infoItem}>
-              <span className={styles.infoLabel}>Location</span>
-              <span className={styles.infoValue}>Naples, Italy · Remote worldwide</span>
-            </div>
-            <div className={styles.infoItem}>
-              <span className={styles.infoLabel}>Working hours</span>
-              <span className={styles.infoValue}>Mon–Fri, 9:00–18:00 CET</span>
-            </div>
-            <div className={styles.infoItem}>
-              <span className={styles.infoLabel}>LinkedIn</span>
-              <a
-                href="https://linkedin.com/in/crescenzo-sorrentino"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.infoValue}
-              >
-                crescenzo-sorrentino
-              </a>
-            </div>
+            {CONTACT_INFO.map(({ label, value, href, external }) => (
+              <div key={label} className={styles.infoItem}>
+                <span className={styles.infoLabel}>{label}</span>
+                {href ? (
+                  <a
+                    href={href}
+                    className={styles.infoValue}
+                    {...(external && { target: "_blank", rel: "noopener noreferrer" })}
+                  >
+                    {value}
+                  </a>
+                ) : (
+                  <span className={styles.infoValue}>{value}</span>
+                )}
+              </div>
+            ))}
           </div>
 
           <ContactForm />

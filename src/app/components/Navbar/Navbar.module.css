@@ -30,7 +30,7 @@
 }
 
 /* Raggruppa tutto il lato destro: links + toggle + hamburger */
-.destra {
+.right {
   display: flex;
   align-items: center;
   gap: var(--space-2);
@@ -55,10 +55,10 @@
   }
 }
 
-.toggleTema { font-size: var(--text-lg); }
+.toggleTheme { font-size: var(--text-lg); }
 
 @media (min-width: 1366px) {
-  .divisore {
+  .divider {
     width: 1px;
     height: 20px;
     background-color: var(--border);
@@ -81,7 +81,7 @@
   display: none;
 }
 
-.links.aperto {
+.links.open {
   display: flex;
   flex-direction: column;
   position: absolute;

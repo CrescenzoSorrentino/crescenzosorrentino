@@ -2,15 +2,15 @@
 import { motion } from "framer-motion";
 import styles from "./HeroText.module.css";
 
-const parole = "Crescenzo Sorrentino".split(" ");
+const words = "Crescenzo Sorrentino".split(" ");
 
 export default function HeroText() {
   return (
-    <h1 className={styles.titolo} aria-label="Crescenzo Sorrentino">
-      {parole.map((parola, i) => (
+    <h1 className={styles.title} aria-label="Crescenzo Sorrentino">
+      {words.map((word, i) => (
         <motion.span
-          key={parola}
-          className={styles.parola}
+          key={word}
+          className={styles.word}
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
@@ -20,7 +20,7 @@ export default function HeroText() {
           }}
           aria-hidden="true"
         >
-          {parola}
+          {word}
         </motion.span>
       ))}
     </h1>

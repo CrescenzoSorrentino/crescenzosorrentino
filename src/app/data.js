@@ -1,3 +1,13 @@
+// Unica fonte di verità per l'indirizzo email — usato in ContactForm e nella pagina contatti.
+export const EMAIL = "crescenzo.sorrentino@icloud.com";
+
+// ============================================================
+// FAQ
+// faq: dati grezzi usati nel componente <details> della home.
+// faqSchema: lo stesso contenuto formattato come Schema.org FAQPage,
+//            iniettato come JSON-LD per il rich snippet di Google.
+// ============================================================
+
 export const faq = [
   {
     q: "How much does it cost to build a website in Next.js?",
@@ -35,7 +45,14 @@ export const faqSchema = {
   })),
 };
 
-export const progetti = [
+// ============================================================
+// PROGETTI
+// Ogni oggetto alimenta sia la lista in /projects che la pagina
+// di dettaglio /projects/[slug]. I campi liveUrl e githubUrl
+// sono opzionali — se assenti, il bottone corrispondente non viene mostrato.
+// ============================================================
+
+export const projects = [
   {
     title: "crescenzosorrentino.com",
     slug: "crescenzosorrentino",
@@ -60,7 +77,13 @@ export const progetti = [
   },
 ];
 
-export const servizi = [
+// ============================================================
+// SERVIZI
+// Mostrati nella sezione "What I can do for you" della home.
+// L'icona è un SVG inline — nessuna dipendenza esterna.
+// ============================================================
+
+export const services = [
   {
     title: "Next.js Development",
     description:

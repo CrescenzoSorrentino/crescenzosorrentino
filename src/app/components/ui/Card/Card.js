@@ -12,7 +12,7 @@ import styles from "./Card.module.css";
 export default function Card({ title, description, tags = [], href, image }) {
   return (
     <article className={styles.card}>
-      <div className={styles.anteprima}>
+      <div className={styles.preview}>
         {image ? (
           <Image
             src={image}
@@ -26,7 +26,7 @@ export default function Card({ title, description, tags = [], href, image }) {
         )}
       </div>
 
-      <div className={styles.corpo}>
+      <div className={styles.body}>
         {tags.length > 0 && (
           <ul className={styles.tags} aria-label="Technologies">
             {tags.map((tag) => (
@@ -34,8 +34,8 @@ export default function Card({ title, description, tags = [], href, image }) {
             ))}
           </ul>
         )}
-        <h3 className={styles.titolo}>{title}</h3>
-        <p className={styles.descrizione}>{description}</p>
+        <h3 className={styles.title}>{title}</h3>
+        <p className={styles.description}>{description}</p>
         <Link href={href} className={styles.link}>
           View project
         </Link>

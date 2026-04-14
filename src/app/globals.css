@@ -49,7 +49,6 @@
      Se i nomi non coincidono il browser usa il fallback (Arial...) */
   --font-headings: 'Cormorant Garamond', Georgia, serif;
   --font-body:  'DM Sans', Arial, sans-serif;
-  --font-code: 'JetBrains Mono', monospace;
 
   /* SCALA TIPOGRAFICA
      Invece di scrivere font-size: 39px a caso nei componenti,

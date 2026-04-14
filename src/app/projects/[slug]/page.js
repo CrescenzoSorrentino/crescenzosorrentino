@@ -4,30 +4,35 @@ import { ArrowLeft, ExternalLink, GitBranch } from "lucide-react";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import Button from "../../components/ui/Button/Button";
-import { progetti } from "../../data.js";
+import { projects } from "../../data.js";
 import styles from "./page.module.css";
 
+// Dice a Next.js quali slug prerenderare a build time.
+// Senza questa funzione il sito sarebbe completamente statico e le pagine
+// di dettaglio non esisterebbero — ogni slug verrebbe trattato come 404.
 export async function generateStaticParams() {
-  return progetti.map((p) => ({ slug: p.slug }));
+  return projects.map((p) => ({ slug: p.slug }));
 }
 
+// Genera i metadati (title, description, canonical) per ogni pagina di dettaglio.
+// Viene chiamata da Next.js prima del render — l'output finisce nel <head>.
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const progetto = progetti.find((p) => p.slug === slug);
-  if (!progetto) return {};
+  const project = projects.find((p) => p.slug === slug);
+  if (!project) return {};
   return {
-    title: progetto.title,
-    description: progetto.description,
+    title: project.title,
+    description: project.description,
     alternates: {
-      canonical: `https://crescenzosorrentino.com/projects/${progetto.slug}`,
+      canonical: `https://crescenzosorrentino.com/projects/${project.slug}`,
     },
   };
 }
 
 export default async function ProjectPage({ params }) {
   const { slug } = await params;
-  const progetto = progetti.find((p) => p.slug === slug);
-  if (!progetto) notFound();
+  const project = projects.find((p) => p.slug === slug);
+  if (!project) notFound();
 
   return (
     <main>
@@ -43,24 +48,24 @@ export default async function ProjectPage({ params }) {
 
           <header className={styles.header}>
             <div className={styles.meta}>
-              <span className={styles.year}>{progetto.year}</span>
-              <span className={styles.category}>{progetto.category}</span>
+              <span>{project.year}</span>
+              <span>{project.category}</span>
             </div>
-            <h1 className={styles.titolo}>{progetto.title}</h1>
+            <h1 className={styles.title}>{project.title}</h1>
             <ul className={styles.tags} aria-label="Technologies">
-              {progetto.tags.map((tag) => (
+              {project.tags.map((tag) => (
                 <li key={tag} className={styles.tag}>{tag}</li>
               ))}
             </ul>
             <div className={styles.links}>
-              {progetto.liveUrl && (
-                <Button href={progetto.liveUrl} target="_blank" variant="primary" size="sm">
+              {project.liveUrl && (
+                <Button href={project.liveUrl} target="_blank" variant="primary" size="sm">
                   <ExternalLink size={16} aria-hidden="true" />
                   View live site
                 </Button>
               )}
-              {progetto.githubUrl && (
-                <Button href={progetto.githubUrl} target="_blank" variant="secondary" size="sm">
+              {project.githubUrl && (
+                <Button href={project.githubUrl} target="_blank" variant="secondary" size="sm">
                   <GitBranch size={16} aria-hidden="true" />
                   View on GitHub
                 </Button>
@@ -72,16 +77,16 @@ export default async function ProjectPage({ params }) {
 
       <section className="section section--pt-sm">
         <div className="container container--narrow">
-          <div className={styles.corpo}>
-            <div className={styles.blocco}>
+          <div className={styles.body}>
+            <div className={styles.block}>
               <h2 className={styles.label}>About the project</h2>
-              <p className={styles.descrizione}>{progetto.longDescription}</p>
+              <p className={styles.description}>{project.longDescription}</p>
             </div>
 
-            <div className={styles.blocco}>
+            <div className={styles.block}>
               <h2 className={styles.label}>Highlights</h2>
               <ul className={styles.highlights}>
-                {progetto.highlights.map((h) => (
+                {project.highlights.map((h) => (
                   <li key={h} className={styles.highlight}>{h}</li>
                 ))}
               </ul>

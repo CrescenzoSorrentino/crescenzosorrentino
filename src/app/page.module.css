@@ -29,12 +29,12 @@
   opacity: 0;
 
   /* Transizione fluida sull'opacity */
-  animation: sfumatura 6s ease-in-out infinite alternate;
+  animation: gradient 6s ease-in-out infinite alternate;
   /* "alternate" fa sì che vada avanti e indietro automaticamente —
      non serve il keyframe al 100% uguale allo 0% */
 }
 
-@keyframes sfumatura {
+@keyframes gradient {
   0% {
     opacity: 0;
   } /* mostra il gradiente base del .hero    */
@@ -45,7 +45,7 @@
 
 /* Il contenuto deve stare SOPRA il ::after animato.
    Senza z-index il testo finirebbe sotto il layer colorato. */
-.contenuto {
+.content {
   position: relative;
   z-index: 1;
   text-align: center;
@@ -57,7 +57,7 @@
   gap: var(--space-4);
 }
 
-.sottotitolo {
+.subtitle {
   font-size: var(--text-md);
   color: rgba(255, 255, 255, 0.75); /* bianco con trasparenza */
   max-width: 50ch;
@@ -68,7 +68,7 @@
    SEZIONE CHI SONO
    ============================================================ */
 
-.chiSonoInner {
+.aboutInner {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -76,14 +76,14 @@
 }
 
 @media (min-width: 768px) {
-  .chiSonoInner {
+  .aboutInner {
     flex-direction: row;
     align-items: center;
     gap: var(--space-16);
   }
 }
 
-.chiSonoTesto {
+.aboutText {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -96,13 +96,13 @@
    ============================================================ */
 
 /* Intestazione centrata: titolo + sottotitolo */
-.progettiHead {
+.projectsHead {
   text-align: center;
   text-wrap: balance;
   margin-bottom: var(--space-12);
 }
 
-.progettiHead p {
+.projectsHead p {
   margin-inline: auto;
   color: var(--text-secondary);
   font-size: var(--text-md);
@@ -113,31 +113,31 @@
    SEZIONE SERVIZI
    ============================================================ */
 
-.serviziHead {
+.servicesHead {
   text-align: center;
   text-wrap: balance;
   margin-bottom: var(--space-12);
 }
 
-.serviziHead p {
+.servicesHead p {
   margin-inline: auto;
   color: var(--text-secondary);
   font-size: var(--text-md);
 }
 
-.serviziGrid {
+.servicesGrid {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-6);
 }
 
 @media (min-width: 640px) {
-  .serviziGrid {
+  .servicesGrid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-.servizioCard {
+.serviceCard {
   background: var(--bg-page);
   border: 1px solid var(--border);
   border-radius: 12px;
@@ -147,16 +147,16 @@
   gap: var(--space-4);
 }
 
-.servizioCard h3 {
+.serviceCard h3 {
   font-size: var(--text-lg);
 }
 
-.servizioCard p {
+.serviceCard p {
   color: var(--text-secondary);
   font-size: var(--text-base);
 }
 
-.servizioIcona {
+.serviceIcon {
   width: 48px;
   height: 48px;
   border-radius: 10px;
@@ -238,26 +238,26 @@
   max-width: 65ch;
 }
 
-.progettiGrid {
+.projectsGrid {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-8);
 }
 
 @media (min-width: 640px) {
-  .progettiGrid {
+  .projectsGrid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (min-width: 1024px) {
-  .progettiGrid {
+  .projectsGrid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
 /* CTA centrata sotto la griglia */
-.progettiCta {
+.projectsCta {
   display: flex;
   justify-content: center;
   margin-top: var(--space-12);

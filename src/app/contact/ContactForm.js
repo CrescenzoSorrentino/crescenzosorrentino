@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Button from "../components/ui/Button/Button";
 import styles from "./page.module.css";
+import { EMAIL } from "../data.js";
 
 const emptyForm = { name: "", email: "", message: "" };
 
@@ -22,7 +23,7 @@ export default function ContactForm() {
     const body = encodeURIComponent(
       `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`
     );
-    window.location.href = `mailto:crescenzo.sorrentino@icloud.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
   }
 
   return (
