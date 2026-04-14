@@ -18,6 +18,9 @@ export async function generateMetadata({ params }) {
   return {
     title: progetto.title,
     description: progetto.description,
+    alternates: {
+      canonical: `https://crescenzosorrentino.com/projects/${progetto.slug}`,
+    },
   };
 }
 

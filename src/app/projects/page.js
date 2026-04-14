@@ -8,7 +8,10 @@ import styles from "./page.module.css";
 export const metadata = {
   title: "Projects",
   description:
-    "Next.js projects by Crescenzo Sorrentino — landing pages, dashboards, and web applications.",
+    "Next.js projects by Crescenzo Sorrentino — landing pages and web applications.",
+  alternates: {
+    canonical: "https://crescenzosorrentino.com/projects",
+  },
 };
 
 const categorie = ["Websites", "Web Apps"];

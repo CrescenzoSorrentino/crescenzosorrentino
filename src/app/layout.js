@@ -1,4 +1,5 @@
 import { Cormorant_Garamond, DM_Sans, JetBrains_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 // Next.js scarica i font da Google e li serve in locale automaticamente.
@@ -30,10 +31,16 @@ const description =
   "I build Next.js interfaces that turn visitors into customers. Freelance frontend developer available for landing pages, web apps, and UI implementation.";
 
 export const metadata = {
-  title: "Crescenzo Sorrentino — Frontend Developer",
+  title: {
+    template: "%s | Crescenzo Sorrentino",
+    default: "Crescenzo Sorrentino — Next.js Freelance Developer",
+  },
   description,
+  alternates: {
+    canonical: "https://crescenzosorrentino.com",
+  },
   openGraph: {
-    title: "Crescenzo Sorrentino — Frontend Developer",
+    title: "Crescenzo Sorrentino — Next.js Freelance Developer",
     description,
     url: "https://crescenzosorrentino.com",
     siteName: "Crescenzo Sorrentino",
@@ -42,7 +49,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Crescenzo Sorrentino — Frontend Developer",
+    title: "Crescenzo Sorrentino — Next.js Freelance Developer",
     description,
   },
 };
@@ -101,7 +108,26 @@ e poi scatta al tema scuro dopo un istante. */}
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Script
+          id="cookieyes"
+          src="https://cdn-cookieyes.com/client_data/2d9d064aaa0864d4576af5f4c8d2a4e2/script.js"
+          strategy="beforeInteractive"
+        />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-9RSLWYMT3F"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-9RSLWYMT3F');
+          `}
+        </Script>
+      </body>
     </html>
   );
 }

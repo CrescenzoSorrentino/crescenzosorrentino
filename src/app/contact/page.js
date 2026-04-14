@@ -7,6 +7,9 @@ export const metadata = {
   title: "Contact",
   description:
     "Get in touch to discuss your Next.js project. I reply within 24 hours.",
+  alternates: {
+    canonical: "https://crescenzosorrentino.com/contact",
+  },
 };
 
 export default function ContactPage() {
