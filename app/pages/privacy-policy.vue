@@ -1,0 +1,156 @@
+<script setup lang="ts">
+import { EMAIL } from "~/data/contact"
+
+useHead({ link: [{ rel: "canonical", href: "https://crescenzosorrentino.com/privacy-policy" }] })
+
+useSeoMeta({
+  title: "Privacy Policy",
+  description: "Privacy policy for crescenzosorrentino.com: how we collect, use and protect your personal information.",
+  ogTitle: "Privacy Policy — Crescenzo Sorrentino",
+  ogDescription: "Privacy policy for crescenzosorrentino.com: how we collect, use and protect your personal information.",
+  ogUrl: "https://crescenzosorrentino.com/privacy-policy",
+  twitterTitle: "Privacy Policy — Crescenzo Sorrentino",
+  twitterDescription: "Privacy policy for crescenzosorrentino.com: how we collect, use and protect your personal information.",
+})
+
+// v-html renderizza HTML grezzo — sicuro perché il contenuto è statico e scritto da noi.
+// EMAIL viene interpolata qui in script, non nel template, per mantenere il contenuto leggibile.
+const content = `
+<h1 class="pp-h1">Privacy Policy
+  <br><span>Last Updated On 14-Apr-2026</span>
+  <br><span>Effective Date 14-Apr-2026</span>
+</h1>
+
+<p class="pp-p">
+  This Privacy Policy describes the policies of Crescenzo Sorrentino, Via Antonio Luise, 35, Napoli 80059, Italy, email: ${EMAIL}, phone: +393241301276 on the collection, use and disclosure of your information that we collect when you use our website ( https://crescenzosorrentino.com ). (the "Service"). By accessing or using the Service, you are consenting to the collection, use and disclosure of your information in accordance with this Privacy Policy. If you do not consent to the same, please do not access or use the Service.
+</p>
+
+<p class="pp-p">
+  We may modify this Privacy Policy at any time without any prior notice to you and will post the revised Privacy Policy on the Service. The revised Policy will be effective 180 days from when the revised Policy is posted in the Service and your continued access or use of the Service after such time will constitute your acceptance of the revised Privacy Policy. We therefore recommend that you periodically review this page.
+</p>
+
+<ol class="pp-ol">
+  <li>
+    <h2 class="pp-h2">Information We Collect:</h2>
+    <p class="pp-p">We will collect and process the following personal information about you:</p>
+    <ol class="pp-ol">
+      <li>Name</li>
+      <li>Email</li>
+      <li>Mobile</li>
+    </ol>
+  </li>
+
+  <li>
+    <h2 class="pp-h2">How We Use Your Information:</h2>
+    <p class="pp-p">We will use the information that we collect about you for the following purposes:</p>
+    <ol class="pp-ol">
+      <li>Enforce T&amp;C</li>
+      <li>Support</li>
+      <li>Site protection</li>
+    </ol>
+    <p class="pp-p">If we want to use your information for any other purpose, we will ask you for consent and will use your information only on receiving your consent and then, only for the purpose(s) for which grant consent unless we are required to do otherwise by law.</p>
+  </li>
+
+  <li>
+    <h2 class="pp-h2">How We Share Your Information:</h2>
+    <p class="pp-p">We will not transfer your personal information to any third party without seeking your consent, except in limited circumstances as described below:</p>
+    <ol class="pp-ol">
+      <li>Analytics</li>
+    </ol>
+    <p class="pp-p">We require such third party's to use the personal information we transfer to them only for the purpose for which it was transferred and not to retain it for longer than is required for fulfilling the said purpose.</p>
+    <p class="pp-p">We may also disclose your personal information for the following: (1) to comply with applicable law, regulation, court order or other legal process; (2) to enforce your agreements with us, including this Privacy Policy; or (3) to respond to claims that your use of the Service violates any third-party rights. If the Service or our company is merged or acquired with another company, your information will be one of the assets that is transferred to the new owner.</p>
+  </li>
+
+  <li>
+    <h2 class="pp-h2">Retention Of Your Information:</h2>
+    <p class="pp-p">We will retain your personal information with us for 12 months or for as long as we need it to fulfill the purposes for which it was collected as detailed in this Privacy Policy. We may need to retain certain information for longer periods such as record-keeping / reporting in accordance with applicable law or for other legitimate reasons like enforcement of legal rights, fraud prevention, etc. Residual anonymous information and aggregate information, neither of which identifies you (directly or indirectly), may be stored indefinitely.</p>
+  </li>
+
+  <li>
+    <h2 class="pp-h2">Your Rights:</h2>
+    <p class="pp-p">Depending on the law that applies, you may have a right to access and rectify or erase your personal data or receive a copy of your personal data, restrict or object to the active processing of your data, ask us to share (port) your personal information to another entity, withdraw any consent you provided to us to process your data, a right to lodge a complaint with a statutory authority and such other rights as may be relevant under applicable laws. To exercise these rights, you can write to us at ${EMAIL}. We will respond to your request in accordance with applicable law.</p>
+    <p class="pp-p">Do note that if you do not allow us to collect or process the required personal information or withdraw the consent to process the same for the required purposes, you may not be able to access or use the services for which your information was sought.</p>
+  </li>
+
+  <li>
+    <h2 class="pp-h2">Cookies Etc.</h2>
+    <p class="pp-p">To learn more about how we use these and your choices in relation to these tracking technologies, please refer to our <a href="/cookie-policy">Cookie Policy.</a></p>
+  </li>
+
+  <li>
+    <h2 class="pp-h2">Security:</h2>
+    <p class="pp-p">The security of your information is important to us and we will use reasonable security measures to prevent the loss, misuse or unauthorized alteration of your information under our control. However, given the inherent risks, we cannot guarantee absolute security and consequently, we cannot ensure or warrant the security of any information you transmit to us and you do so at your own risk.</p>
+  </li>
+
+  <li>
+    <h2 class="pp-h2">Third Party Links &amp; Use Of Your Information:</h2>
+    <p class="pp-p">Our Service may contain links to other websites that are not operated by us. This Privacy Policy does not address the privacy policy and other practices of any third parties, including any third party operating any website or service that may be accessible via a link on the Service. We strongly advise you to review the privacy policy of every site you visit. We have no control over and assume no responsibility for the content, privacy policies or practices of any third party sites or services.</p>
+  </li>
+
+  <li>
+    <h2 class="pp-h2">Grievance / Data Protection Officer:</h2>
+    <p class="pp-p">If you have any queries or concerns about the processing of your information that is available with us, you may email our Grievance Officer at Crescenzo Sorrentino, Via Antonio Luise, 35, email: ${EMAIL}. We will address your concerns in accordance with applicable law.</p>
+  </li>
+</ol>
+
+<p class="pp-p">Privacy Policy generated with <a target="_blank" rel="noopener noreferrer" href="https://www.cookieyes.com/?utm_source=PP&utm_medium=footer&utm_campaign=UW">CookieYes</a>.</p>
+`
+</script>
+
+<template>
+  <main>
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="content" v-html="content" />
+      </div>
+    </section>
+  </main>
+</template>
+
+<style scoped>
+.content :deep(.pp-h1) {
+  font-family: var(--font-headings);
+  font-size: var(--text-3xl);
+  font-weight: 300;
+  color: var(--color-primary);
+  margin-bottom: var(--space-8);
+  line-height: 1.3;
+}
+
+.content :deep(.pp-h1 span) {
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+
+.content :deep(.pp-h2) {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-block: var(--space-6) var(--space-3);
+}
+
+.content :deep(.pp-p) {
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+  line-height: 1.7;
+  margin-bottom: var(--space-4);
+}
+
+.content :deep(.pp-ol) {
+  padding-left: var(--space-6);
+  margin-bottom: var(--space-4);
+}
+
+.content :deep(.pp-ol li) {
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+  line-height: 1.7;
+  margin-bottom: var(--space-2);
+}
+
+.content :deep(a) {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+</style>

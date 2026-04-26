@@ -1,0 +1,274 @@
+/* ============================================================
+   MAIN.CSS
+   Caricato una volta in nuxt.config.ts e vale per tutta
+   l'applicazione. Contiene solo le fondamenta: variabili,
+   reset, tipografia e griglia della pagina.
+   Gli stili dei componenti vanno nei rispettivi .vue (scoped).
+   ============================================================ */
+
+
+/* ----------------------------------------------------------
+   1. VARIABILI CSS
+
+   :root = elemento <html>. Variabili dichiarate qui sono
+   disponibili ovunque nel progetto, inclusi gli stili
+   scoped dei componenti .vue.
+
+   Sintassi:  --nome: valore;
+   Utilizzo:  color: var(--nome);
+   ---------------------------------------------------------- */
+
+:root {
+
+  /* FOOTER */
+  --footer-bg: #0A2342;
+
+  /* COLORI BRAND */
+  --color-primary:       #0A2342;
+  --color-primary-hover: #1a3a6e;
+  --color-accent:        #E8622A;
+  --color-accent-text:   #B8421A; /* testo arancio su sfondo chiaro, WCAG AA */
+
+  /* COLORI NEUTRI */
+  --bg-page:        #FAF9F7;
+  --bg-section-alt: #F2F0EC;
+  --text-primary:   #2E2A27;
+  --text-secondary: #5E5750;
+  --border:         #E5E1DA;
+
+  /* FONT
+     I nomi delle font-family devono corrispondere a come
+     vengono caricate in nuxt.config.ts (Google Fonts o @font-face). */
+  --font-headings: 'Cormorant Garamond', Georgia, serif;
+  --font-body:     'DM Sans', Arial, sans-serif;
+
+  /* SCALA TIPOGRAFICA — mobile first, incrementi ~1.25x */
+  --text-xs:   0.75rem;  /* 12px */
+  --text-sm:   0.875rem; /* 14px */
+  --text-base: 1rem;     /* 16px */
+  --text-md:   1.125rem; /* 18px */
+  --text-lg:   1.25rem;  /* 20px */
+  --text-xl:   1.5rem;   /* 24px */
+  --text-2xl:  2rem;     /* 32px */
+  --text-3xl:  2.5rem;   /* 40px */
+  --text-4xl:  3.5rem;   /* 56px */
+  --text-hero: 5rem;     /* 80px */
+
+  /* SPAZIATURA — base 4px, ogni gradino è un multiplo di 4 */
+  --space-1:  0.25rem; /*  4px */
+  --space-2:  0.5rem;  /*  8px */
+  --space-3:  0.75rem; /* 12px */
+  --space-4:  1rem;    /* 16px */
+  --space-6:  1.5rem;  /* 24px */
+  --space-8:  2rem;    /* 32px */
+  --space-12: 3rem;    /* 48px */
+  --space-16: 4rem;    /* 64px */
+  --space-24: 6rem;    /* 96px */
+
+  /* LAYOUT */
+  --max-width: 1280px;
+}
+
+
+/* ----------------------------------------------------------
+   2. DARK MODE
+
+   Quando lo script inline imposta data-theme="dark" su <html>,
+   queste variabili sovrascrivono quelle di :root.
+   I componenti non cambiano nulla — cambiano solo i valori.
+   ---------------------------------------------------------- */
+
+[data-theme="dark"] {
+  --footer-bg:           #080E1C;
+  --bg-page:             #0E1117;
+  --bg-section-alt:      #161B27;
+  --text-primary:        #E8EAF0;
+  --text-secondary:      #8892A4;
+  --border:              #2A3347;
+  --color-primary:       #7aaee8;
+  --color-primary-hover: #5a90d4;
+  --color-accent:        #F07A4A;
+}
+
+
+/* ----------------------------------------------------------
+   3. RESET
+   ---------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+
+/* ----------------------------------------------------------
+   4. BODY
+   ---------------------------------------------------------- */
+
+body {
+  font-family:             var(--font-body);
+  font-size:               var(--text-base);
+  line-height:             1.6;
+  color:                   var(--text-primary);
+  background-color:        var(--bg-page);
+  -webkit-font-smoothing:  antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+/* ----------------------------------------------------------
+   5. LAYOUT WRAPPER
+
+   In Nuxt il layout aggiunge un div intermedio tra body e
+   i componenti, quindi il grid sticky-footer va qui invece
+   che su body. Applicare la classe .layout al wrapper
+   di layouts/default.vue.
+
+   Tre righe: navbar (auto) | contenuto (1fr) | footer (auto).
+   Il main si allunga sempre fino a spingere il footer in fondo.
+   ---------------------------------------------------------- */
+
+.layout {
+  display:              grid;
+  grid-template-rows:   auto 1fr auto;
+  min-height:           100dvh;
+}
+
+
+/* ----------------------------------------------------------
+   6. ELEMENTI BASE
+   ---------------------------------------------------------- */
+
+img, video, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+
+/* ----------------------------------------------------------
+   7. TIPOGRAFIA
+
+   h1, h2 → serif elegante (Cormorant Garamond)
+   h3-h6  → sans-serif funzionale (DM Sans)
+   ---------------------------------------------------------- */
+
+h1, h2 {
+  font-family: var(--font-headings);
+  font-weight: 300;
+  line-height: 1.15;
+  color:       var(--color-primary);
+  text-wrap:   balance;
+}
+
+h3, h4, h5, h6 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  line-height: 1.3;
+  color:       var(--text-primary);
+  text-wrap:   balance;
+}
+
+h1 { font-size: var(--text-3xl); }
+h2 { font-size: var(--text-2xl); }
+h3 { font-size: var(--text-xl);  }
+h4 { font-size: var(--text-lg);  }
+h5 { font-size: var(--text-base); }
+
+@media (min-width: 768px) {
+  h1 { font-size: var(--text-4xl); }
+  h2 { font-size: var(--text-3xl); }
+}
+
+p {
+  max-width:   65ch; /* ~65 caratteri per riga = leggibilità ottimale */
+  line-height: 1.7;
+  text-wrap:   pretty;
+}
+
+::selection {
+  background-color: var(--color-accent);
+  color: #ffffff;
+}
+
+
+/* ----------------------------------------------------------
+   8. CONTAINER
+
+   Centra il contenuto e lo limita a --max-width.
+   La sezione può avere un colore di sfondo bordo-a-bordo,
+   il .container al suo interno limita e centra i contenuti.
+
+   Esempio:
+   <section class="section section--alt">
+     <div class="container">...</div>
+   </section>
+   ---------------------------------------------------------- */
+
+.container {
+  width:          100%;
+  max-width:      var(--max-width);
+  margin-inline:  auto;
+  padding-inline: var(--space-4);
+}
+
+@media (min-width: 640px) {
+  .container { padding-inline: var(--space-6); }
+}
+
+@media (min-width: 1024px) {
+  .container { padding-inline: var(--space-12); }
+}
+
+.container--narrow {
+  max-width: 720px;
+}
+
+
+/* ----------------------------------------------------------
+   9. SEZIONI
+   ---------------------------------------------------------- */
+
+.section {
+  padding-block: var(--space-16);
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-block: var(--space-24);
+  }
+}
+
+.section--alt {
+  background-color: var(--bg-section-alt);
+}
+
+.section--pb-sm {
+  padding-bottom: var(--space-8);
+}
+
+.section--pt-sm {
+  padding-top: var(--space-8);
+}
