@@ -8,7 +8,7 @@ const personSchema = {
     "https://linkedin.com/in/crescenzo-sorrentino",
     "https://github.com/CrescenzoSorrentino",
   ],
-}
+};
 
 const websiteSchema = {
   "@context": "https://schema.org",
@@ -19,17 +19,25 @@ const websiteSchema = {
     "@type": "Person",
     name: "Crescenzo Sorrentino",
   },
-}
+};
 
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
-  modules: ["@nuxt/image"],
+  modules: ["@nuxt/image", "@nuxtjs/sitemap"],
+
+  sitemap: {
+    urls: [
+      { loc: "/projects/grocerylist", priority: 0.7 },
+      { loc: "/projects/crescenzosorrentino", priority: 0.7 },
+    ],
+  },
   devtools: { enabled: true },
   css: ["~/assets/css/main.css"],
   app: {
     // Il template si applica automaticamente a tutte le pagine che impostano useSeoMeta({ title }).
     // La homepage sovrascrive titleTemplate a null per usare un titolo completo senza suffisso.
     head: {
+      htmlAttrs: { lang: "en" },
       titleTemplate: "%s | Crescenzo Sorrentino",
       script: [
         // Anti-flash tema: gira prima di tutto il resto per evitare il lampeggio bianco
@@ -45,9 +53,10 @@ export default defineNuxtConfig({
           type: "application/ld+json",
           innerHTML: JSON.stringify(websiteSchema),
         },
-        // CookieYes: caricato in modo sincrono nel <head> prima del render per compliance GDPR
+        // CookieYes: defer per non bloccare il rendering, il consent manager gira prima dei cookie analytics
         {
           id: "cookieyes",
+          defer: true,
           src: "https://cdn-cookieyes.com/client_data/2d9d064aaa0864d4576af5f4c8d2a4e2/script.js",
         },
         // Google Analytics: caricato in defer per non bloccare il rendering
@@ -63,6 +72,7 @@ export default defineNuxtConfig({
       ],
       link: [
         { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+        { rel: "preconnect", href: "https://cdn-cookieyes.com" },
         { rel: "preconnect", href: "https://fonts.googleapis.com" },
         {
           rel: "preconnect",
@@ -70,10 +80,12 @@ export default defineNuxtConfig({
           crossorigin: "",
         },
         {
-          rel: "stylesheet",
+          rel: "preload",
+          as: "style",
           href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap",
+          onload: "this.onload=null;this.rel='stylesheet'",
         },
       ],
     },
   },
-})
+});
