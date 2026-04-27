@@ -39,6 +39,9 @@ export default defineNuxtConfig({
     head: {
       htmlAttrs: { lang: "en" },
       titleTemplate: "%s | Crescenzo Sorrentino",
+      meta: [
+        { name: "google-site-verification", content: "FAyWQtqOkK8VUoEwBgtneptZkQwnYYZ7StbM05mB7rg" },
+      ],
       script: [
         // Anti-flash tema: gira prima di tutto il resto per evitare il lampeggio bianco
         {
