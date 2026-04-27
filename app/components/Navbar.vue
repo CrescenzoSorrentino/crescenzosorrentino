@@ -33,15 +33,15 @@ function toggleTheme() {
         >
           <path
             d="M16 2L28 8.9282V22.7846L16 29.7128L4 22.7846V8.9282L16 2Z"
-            fill="var(--color-primary)"
-            fill-opacity="0.15"
-            stroke="var(--color-primary)"
+            :fill="isDark ? 'rgba(255,255,255,0.15)' : 'var(--color-primary)'"
+            :fill-opacity="isDark ? '1' : '0.15'"
+            :stroke="isDark ? 'rgba(255,255,255,0.75)' : 'var(--color-primary)'"
             stroke-width="2"
             stroke-linejoin="round"
           />
           <path
             d="M16 29.7128V15.8564M16 15.8564L28 8.92822M16 15.8564L4 8.92822"
-            stroke="var(--color-primary)"
+            :stroke="isDark ? 'rgba(255,255,255,0.75)' : 'var(--color-primary)'"
             stroke-width="2"
             stroke-linejoin="round"
           />
