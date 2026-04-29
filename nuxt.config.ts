@@ -56,22 +56,6 @@ export default defineNuxtConfig({
           type: "application/ld+json",
           innerHTML: JSON.stringify(websiteSchema),
         },
-        // CookieYes: defer per non bloccare il rendering, il consent manager gira prima dei cookie analytics
-        {
-          id: "cookieyes",
-          defer: true,
-          src: "https://cdn-cookieyes.com/client_data/2d9d064aaa0864d4576af5f4c8d2a4e2/script.js",
-        },
-        // Google Analytics: caricato in defer per non bloccare il rendering
-        {
-          src: "https://www.googletagmanager.com/gtag/js?id=G-9RSLWYMT3F",
-          defer: true,
-        },
-        {
-          id: "google-analytics",
-          defer: true,
-          innerHTML: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9RSLWYMT3F');`,
-        },
       ],
       link: [
         { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
