@@ -14,11 +14,14 @@ defineProps({
   <article class="card">
     <div class="preview">
       <!-- Mostra l'immagine solo se la prop è valorizzata -->
-      <img
+      <NuxtImg
         v-if="image"
         :src="image"
         :alt="title"
         class="preview__img"
+        sizes="100vw sm:50vw lg:33vw"
+        format="webp"
+        loading="lazy"
       />
       <div v-else class="placeholder" aria-hidden="true" />
     </div>
