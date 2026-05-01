@@ -17,6 +17,26 @@ export interface Project {
 // Aggiungi un nuovo oggetto qui per aggiungere una card alla homepage e alla pagina progetti.
 export const projects: Project[] = [
   {
+    image: "/projects/template-gym.png",
+    tags: ["Nuxt.js"],
+    title: "Gym Template",
+    description:
+      "Clean and modern website template for a fitness gym. Includes schedule, classes, FAQ, and a contact section, designed to convert visitors into members.",
+    to: "/projects/template-gym",
+    category: "Websites",
+    slug: "template-gym",
+    year: 2026,
+    longDescription:
+      "A ready-to-use website template built for fitness gyms. It covers everything a gym's web presence needs: weekly schedule, class offerings with instructors and times, an FAQ that handles the most common objections, and a contact section with phone, WhatsApp, and address. The layout is clean, fast, and focused on converting visitors into trial members.",
+    highlights: [
+      "Weekly schedule and class timetable with instructor details",
+      "FAQ section covering sign-up, payments, and facilities",
+      "Contact section with phone, WhatsApp link, and address",
+    ],
+    liveUrl: "https://template-gym-one.vercel.app",
+    githubUrl: "https://github.com/CrescenzoSorrentino/template-gym",
+  },
+  {
     image: "/projects/grocerylist.png",
     tags: ["Nuxt.js"],
     title: "Grocery List",
