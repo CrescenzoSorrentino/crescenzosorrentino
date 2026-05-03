@@ -23,7 +23,7 @@ const websiteSchema = {
 
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
-  modules: ["@nuxt/image", "@nuxtjs/sitemap"],
+  modules: ["@nuxt/image", "@nuxtjs/sitemap", "@vueuse/motion/nuxt"],
 
   sitemap: {
     urls: [

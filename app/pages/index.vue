@@ -25,12 +25,28 @@ useSeoMeta({
     <!-- ── Hero ── -->
     <header class="hero">
       <div class="hero__content">
-        <h1 class="hero__title">Crescenzo Sorrentino</h1>
-        <p class="hero__subtitle">
+        <h1
+          class="hero__title"
+          v-motion
+          :initial="{ opacity: 0, y: 24 }"
+          :enter="{ opacity: 1, y: 0, transition: { duration: 600 } }"
+        >Crescenzo Sorrentino</h1>
+        <p
+          class="hero__subtitle"
+          v-motion
+          :initial="{ opacity: 0, y: 24 }"
+          :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 120 } }"
+        >
           I build Nuxt.js interfaces with one goal: turning your visitors into
           customers.
         </p>
-        <Button to="/projects" variant="primary" size="lg">View my work</Button>
+        <div
+          v-motion
+          :initial="{ opacity: 0, y: 24 }"
+          :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 240 } }"
+        >
+          <Button to="/projects" variant="primary" size="lg">View my work</Button>
+        </div>
       </div>
       <a href="#about" class="hero__scroll" aria-label="Scroll to next section">
         <div class="hero__mouse">
@@ -43,8 +59,20 @@ useSeoMeta({
     <section id="about" class="section section--alt">
       <div class="container">
         <div class="about">
-          <Avatar src="/crescenzo-sorrentino.png" alt="Crescenzo Sorrentino" :size="280" />
-          <div class="about__text">
+          <Avatar
+            src="/crescenzo-sorrentino.png"
+            alt="Crescenzo Sorrentino"
+            :size="280"
+            v-motion
+            :initial="{ opacity: 0, x: -32 }"
+            :visible-once="{ opacity: 1, x: 0, transition: { duration: 600 } }"
+          />
+          <div
+            class="about__text"
+            v-motion
+            :initial="{ opacity: 0, x: 32 }"
+            :visible-once="{ opacity: 1, x: 0, transition: { duration: 600 } }"
+          >
             <h2>I build the frontend your product deserves</h2>
             <p>
               I'm a frontend developer specializing in Nuxt.js. I work with
@@ -73,9 +101,12 @@ useSeoMeta({
         </div>
         <div class="projects__grid">
           <Card
-            v-for="project in projects"
+            v-for="(project, i) in projects"
             :key="project.to"
             v-bind="project"
+            v-motion
+            :initial="{ opacity: 0, y: 24 }"
+            :visible-once="{ opacity: 1, y: 0, transition: { duration: 500, delay: i * 150 } }"
           />
         </div>
         <div class="projects__cta">
@@ -94,7 +125,12 @@ useSeoMeta({
           <p>From concept to deployment: I cover the full frontend stack.</p>
         </div>
         <div class="services__grid">
-          <div class="service">
+          <div
+            class="service"
+            v-motion
+            :initial="{ opacity: 0, y: 24 }"
+            :visible-once="{ opacity: 1, y: 0, transition: { duration: 500, delay: 0 } }"
+          >
             <div class="service__icon">
               <svg
                 width="28"
@@ -118,7 +154,12 @@ useSeoMeta({
             </p>
           </div>
 
-          <div class="service">
+          <div
+            class="service"
+            v-motion
+            :initial="{ opacity: 0, y: 24 }"
+            :visible-once="{ opacity: 1, y: 0, transition: { duration: 500, delay: 150 } }"
+          >
             <div class="service__icon">
               <svg
                 width="28"
@@ -143,7 +184,12 @@ useSeoMeta({
             </p>
           </div>
 
-          <div class="service">
+          <div
+            class="service"
+            v-motion
+            :initial="{ opacity: 0, y: 24 }"
+            :visible-once="{ opacity: 1, y: 0, transition: { duration: 500, delay: 300 } }"
+          >
             <div class="service__icon">
               <svg
                 width="28"
@@ -168,7 +214,12 @@ useSeoMeta({
             </p>
           </div>
 
-          <div class="service">
+          <div
+            class="service"
+            v-motion
+            :initial="{ opacity: 0, y: 24 }"
+            :visible-once="{ opacity: 1, y: 0, transition: { duration: 500, delay: 450 } }"
+          >
             <div class="service__icon">
               <svg
                 width="28"
