@@ -36,6 +36,7 @@ const tag = computed(() =>
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: var(--space-2);
   padding: var(--space-3) var(--space-6);
   font-size: var(--text-sm);

@@ -122,11 +122,6 @@ useSeoMeta({
 
   &:hover {
     color: var(--color-accent);
-
-    .description {
-      color: var(--color-accent);
-      opacity: 0.7;
-    }
   }
 }
 

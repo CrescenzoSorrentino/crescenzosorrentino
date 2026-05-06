@@ -44,8 +44,9 @@ useSeoMeta({
               >
                 <NuxtLink :to="project.to" class="row">
                   <div class="row__main">
-                    <span class="title">{{ project.title }}</span>
                     <span class="tags">{{ project.tags.join(" · ") }}</span>
+                    <span class="title">{{ project.title }}</span>
+                    <p class="description">{{ project.description }}</p>
                   </div>
                   <Icon name="lucide:arrow-right" class="arrow" :size="20" aria-hidden="true" />
                 </NuxtLink>
@@ -134,6 +135,14 @@ useSeoMeta({
 }
 
 .tags {
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.description {
   font-size: var(--text-sm);
   color: var(--text-secondary);
 }

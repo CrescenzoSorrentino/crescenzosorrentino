@@ -19,9 +19,12 @@ defineProps({
         :src="image"
         :alt="title"
         class="preview__img"
-        sizes="100vw sm:50vw lg:33vw"
+        sizes="sm:100vw md:50vw lg:33vw"
         format="webp"
+        quality="80"
         loading="lazy"
+        width="600"
+        height="338"
       />
       <div v-else class="placeholder" aria-hidden="true" />
     </div>
