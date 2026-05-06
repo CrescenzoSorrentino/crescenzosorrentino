@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ArrowLeft, ExternalLink, GitBranch } from "lucide-vue-next"
 import { projects } from "~/data/projects"
 
 const route   = useRoute()
@@ -30,7 +29,7 @@ useSeoMeta({
       <div class="container container--narrow">
 
         <NuxtLink to="/projects" class="back">
-          <ArrowLeft :size="16" aria-hidden="true" />
+          <Icon name="lucide:arrow-left" :size="16" aria-hidden="true" />
           All projects
         </NuxtLink>
 
@@ -51,7 +50,7 @@ useSeoMeta({
               variant="primary"
               size="sm"
             >
-              <ExternalLink :size="16" aria-hidden="true" />
+              <Icon name="lucide:external-link" :size="16" aria-hidden="true" />
               View live site
             </Button>
             <Button
@@ -61,7 +60,7 @@ useSeoMeta({
               variant="secondary"
               size="sm"
             >
-              <GitBranch :size="16" aria-hidden="true" />
+              <Icon name="lucide:git-branch" :size="16" aria-hidden="true" />
               View on GitHub
             </Button>
           </div>
