@@ -1,0 +1,187 @@
+<script setup lang="ts">
+const route = useRoute()
+
+const { data: article } = await useAsyncData(route.path, () =>
+  queryCollection("blog").path(route.path).first()
+)
+
+if (!article.value) {
+  throw createError({ statusCode: 404, statusMessage: "Article not found" })
+}
+
+const url = `https://crescenzosorrentino.com${route.path}`
+
+const blogPostingSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: article.value.title,
+  description: article.value.description,
+  datePublished: article.value.date,
+  url,
+  author: {
+    "@type": "Person",
+    name: "Crescenzo Sorrentino",
+    url: "https://crescenzosorrentino.com",
+  },
+}
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://crescenzosorrentino.com" },
+    { "@type": "ListItem", position: 2, name: "Blog", item: "https://crescenzosorrentino.com/blog" },
+    { "@type": "ListItem", position: 3, name: article.value.title, item: url },
+  ],
+}
+
+useHead({
+  link: [{ rel: "canonical", href: url }],
+  script: [
+    { type: "application/ld+json", innerHTML: JSON.stringify(blogPostingSchema) },
+    { type: "application/ld+json", innerHTML: JSON.stringify(breadcrumbSchema) },
+  ],
+})
+
+useSeoMeta({
+  title: article.value.title,
+  description: article.value.description,
+  ogTitle: `${article.value.title} — Crescenzo Sorrentino`,
+  ogDescription: article.value.description,
+  ogUrl: url,
+  twitterTitle: `${article.value.title} — Crescenzo Sorrentino`,
+  twitterDescription: article.value.description,
+})
+</script>
+
+<template>
+  <main>
+    <!-- INTRO -->
+    <section class="section section--alt section--pb-sm section-top">
+      <div class="container container--narrow">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <NuxtLink to="/" class="breadcrumb__item">Home</NuxtLink>
+          <span class="breadcrumb__sep" aria-hidden="true">/</span>
+          <NuxtLink to="/blog" class="breadcrumb__item">Blog</NuxtLink>
+          <span class="breadcrumb__sep" aria-hidden="true">/</span>
+          <span class="breadcrumb__item breadcrumb__item--current" aria-current="page">{{ article!.title }}</span>
+        </nav>
+
+        <div class="intro">
+          <time :datetime="article!.date" class="date">
+            {{ new Date(article!.date).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" }) }}
+          </time>
+          <h1>{{ article!.title }}</h1>
+          <p>{{ article!.description }}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTENUTO -->
+    <section class="section section--pt-sm">
+      <div class="container container--narrow">
+        <ContentRenderer :value="article!" class="prose" />
+      </div>
+    </section>
+  </main>
+</template>
+
+<style scoped>
+.section-top {
+  padding-top: var(--space-24);
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-8);
+}
+
+.breadcrumb__item {
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  transition: color 0.2s;
+
+  &:is(a):hover {
+    color: var(--color-accent);
+  }
+}
+
+.breadcrumb__item--current {
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 30ch;
+}
+
+.breadcrumb__sep {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  opacity: 0.5;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-16);
+}
+
+.date {
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.intro p {
+  font-size: var(--text-md);
+  color: var(--text-secondary);
+}
+
+.prose {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.prose :deep(h2) {
+  margin-top: var(--space-8);
+}
+
+
+.prose :deep(p) {
+  color: var(--text-secondary);
+  font-size: var(--text-base);
+  line-height: 1.8;
+}
+
+.prose :deep(ul),
+.prose :deep(ol) {
+  padding-left: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  color: var(--text-secondary);
+  font-size: var(--text-base);
+  line-height: 1.8;
+}
+
+.prose :deep(strong) {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.prose :deep(a) {
+  color: var(--color-accent-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+</style>

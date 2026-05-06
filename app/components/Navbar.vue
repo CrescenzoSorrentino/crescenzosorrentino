@@ -1,5 +1,9 @@
 <script setup>
-import { Menu, X, FolderOpen, Mail, Moon, Sun } from "lucide-vue-next";
+const links = [
+  { to: "/projects", label: "Projects", icon: "lucide:folder-open" },
+  { to: "/blog",     label: "Blog",     icon: "lucide:book-open" },
+  { to: "/contact",  label: "Contact",  icon: "lucide:mail" },
+]
 
 const isOpen = ref(false);
 const isDark = ref(false);
@@ -51,13 +55,9 @@ function toggleTheme() {
 
       <div class="right">
         <div class="links">
-          <NuxtLink to="/projects" class="link">
-            <FolderOpen :size="16" aria-hidden="true" />
-            Projects
-          </NuxtLink>
-          <NuxtLink to="/contact" class="link">
-            <Mail :size="16" aria-hidden="true" />
-            Contact
+          <NuxtLink v-for="link in links" :key="link.to" :to="link.to" class="link">
+            <Icon :name="link.icon" :size="16" aria-hidden="true" />
+            {{ link.label }}
           </NuxtLink>
         </div>
 
@@ -69,8 +69,8 @@ function toggleTheme() {
           @click="toggleTheme"
         >
           <Transition name="theme-icon" mode="out-in">
-            <Moon v-if="!isDark" key="moon" :size="18" aria-hidden="true" />
-            <Sun v-else key="sun" :size="18" aria-hidden="true" />
+            <Icon v-if="!isDark" key="moon" name="lucide:moon" :size="18" aria-hidden="true" />
+            <Icon v-else key="sun" name="lucide:sun" :size="18" aria-hidden="true" />
           </Transition>
         </button>
 
@@ -80,8 +80,8 @@ function toggleTheme() {
           @click="toggleMenu"
         >
           <Transition name="burger-icon" mode="out-in">
-            <Menu v-if="!isOpen" key="menu" :size="20" aria-hidden="true" />
-            <X v-else key="x" :size="20" aria-hidden="true" />
+            <Icon v-if="!isOpen" key="menu" name="lucide:menu" :size="20" aria-hidden="true" />
+            <Icon v-else key="x" name="lucide:x" :size="20" aria-hidden="true" />
           </Transition>
         </button>
       </div>
@@ -89,13 +89,9 @@ function toggleTheme() {
 
     <Transition name="menu">
       <div v-if="isOpen" class="mobile-menu">
-        <NuxtLink to="/projects" class="mobile-link" @click="isOpen = false">
-          <FolderOpen :size="16" aria-hidden="true" />
-          Projects
-        </NuxtLink>
-        <NuxtLink to="/contact" class="mobile-link" @click="isOpen = false">
-          <Mail :size="16" aria-hidden="true" />
-          Contact
+        <NuxtLink v-for="link in links" :key="link.to" :to="link.to" class="mobile-link" @click="isOpen = false">
+          <Icon :name="link.icon" :size="16" aria-hidden="true" />
+          {{ link.label }}
         </NuxtLink>
       </div>
     </Transition>
@@ -169,6 +165,11 @@ function toggleTheme() {
     background-color: var(--bg-section-alt);
     color: var(--color-accent);
   }
+
+  &.router-link-active {
+    color: var(--color-accent);
+    background-color: var(--bg-section-alt);
+  }
 }
 
 .icon-btn {
@@ -220,6 +221,10 @@ function toggleTheme() {
 
   &:hover {
     background-color: var(--bg-section-alt);
+  }
+
+  &.router-link-active {
+    color: var(--color-accent);
   }
 }
 

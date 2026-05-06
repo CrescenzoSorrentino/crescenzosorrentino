@@ -1,5 +1,14 @@
 <script setup>
-import { FolderOpen, Mail, Shield, Cookie } from "lucide-vue-next";
+const navLinks = [
+  { to: "/projects", label: "Projects", icon: "lucide:folder-open" },
+  { to: "/blog",     label: "Blog",     icon: "lucide:book-open" },
+  { to: "/contact",  label: "Contact",  icon: "lucide:mail" },
+]
+
+const legalLinks = [
+  { to: "/privacy-policy", label: "Privacy Policy", icon: "lucide:shield" },
+  { to: "/cookie-policy",  label: "Cookie Policy",  icon: "lucide:cookie" },
+]
 </script>
 
 <template>
@@ -53,13 +62,9 @@ import { FolderOpen, Mail, Shield, Cookie } from "lucide-vue-next";
         <div class="col">
           <span class="col-title">Navigation</span>
           <nav>
-            <NuxtLink to="/projects" class="link">
-              <FolderOpen :size="14" aria-hidden="true" />
-              Projects
-            </NuxtLink>
-            <NuxtLink to="/contact" class="link">
-              <Mail :size="14" aria-hidden="true" />
-              Contact
+            <NuxtLink v-for="link in navLinks" :key="link.to" :to="link.to" class="link">
+              <Icon :name="link.icon" :size="14" aria-hidden="true" />
+              {{ link.label }}
             </NuxtLink>
           </nav>
         </div>
@@ -113,13 +118,9 @@ import { FolderOpen, Mail, Shield, Cookie } from "lucide-vue-next";
         <div class="col">
           <span class="col-title">Legal</span>
           <nav>
-            <NuxtLink to="/privacy-policy" class="link">
-              <Shield :size="14" aria-hidden="true" />
-              Privacy Policy
-            </NuxtLink>
-            <NuxtLink to="/cookie-policy" class="link">
-              <Cookie :size="14" aria-hidden="true" />
-              Cookie Policy
+            <NuxtLink v-for="link in legalLinks" :key="link.to" :to="link.to" class="link">
+              <Icon :name="link.icon" :size="14" aria-hidden="true" />
+              {{ link.label }}
             </NuxtLink>
           </nav>
         </div>

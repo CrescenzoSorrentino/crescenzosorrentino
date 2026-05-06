@@ -23,12 +23,13 @@ const websiteSchema = {
 
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
-  modules: ["@nuxt/image", "@nuxtjs/sitemap", "@vueuse/motion/nuxt"],
+  modules: ["@nuxt/image", "@nuxtjs/sitemap", "@vueuse/motion/nuxt", "@nuxt/content", "@nuxt/icon"],
 
   sitemap: {
     urls: [
       { loc: "/projects/grocerylist", priority: 0.7 },
       { loc: "/projects/crescenzosorrentino", priority: 0.7 },
+      { loc: "/blog/nuxtjs-vs-wordpress", priority: 0.6 },
     ],
   },
   devtools: { enabled: true },
