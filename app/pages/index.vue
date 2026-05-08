@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { projects } from "~/data/projects"
 
+const featuredProjects = computed(() => projects.filter(p => p.featured))
+
 const description = "I build Nuxt.js interfaces that turn visitors into customers. Freelance frontend developer available for landing pages, web apps, and UI implementation."
 
 // La homepage bypassa il titleTemplate globale per usare un titolo completo senza suffisso
@@ -45,7 +47,7 @@ useSeoMeta({
           :initial="{ opacity: 0, y: 24 }"
           :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 240 } }"
         >
-          <Button to="/projects" variant="primary" size="lg">View my work</Button>
+          <BaseButton to="/projects" variant="primary" size="lg">View my work</BaseButton>
         </div>
       </div>
       <a href="#about" class="hero__scroll" aria-label="Scroll to next section">
@@ -59,7 +61,7 @@ useSeoMeta({
     <section id="about" class="section section--alt">
       <div class="container">
         <div class="about">
-          <Avatar
+          <BaseAvatar
             src="/crescenzo-sorrentino.png"
             alt="Crescenzo Sorrentino"
             :size="280"
@@ -85,7 +87,7 @@ useSeoMeta({
               or leaves.
             </p>
             <div class="about__cta">
-              <Button to="/contact" variant="primary" size="md">Let's talk about your project</Button>
+              <BaseButton to="/contact" variant="primary" size="md">Let's talk about your project</BaseButton>
             </div>
           </div>
         </div>
@@ -100,8 +102,8 @@ useSeoMeta({
           <p>A few projects that show what I can do for your business.</p>
         </div>
         <div class="projects__grid">
-          <Card
-            v-for="(project, i) in projects"
+          <BaseCard
+            v-for="(project, i) in featuredProjects"
             :key="project.to"
             v-bind="project"
             v-motion
@@ -110,8 +112,8 @@ useSeoMeta({
           />
         </div>
         <div class="projects__cta">
-          <Button to="/projects" variant="secondary" size="md"
-            >View all projects</Button
+          <BaseButton to="/projects" variant="secondary" size="md"
+            >View all projects</BaseButton
           >
         </div>
       </div>

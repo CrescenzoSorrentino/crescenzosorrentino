@@ -21,7 +21,7 @@ const legalLinks = [
           Have a project in mind? I'm available for freelance work and open to
           new opportunities.
         </p>
-        <Button to="/contact" size="lg">Get in touch</Button>
+        <BaseButton to="/contact" size="lg">Get in touch</BaseButton>
       </div>
 
       <!-- Sitemap -->

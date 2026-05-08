@@ -43,7 +43,7 @@ useSeoMeta({
             <li v-for="tag in project.tags" :key="tag" class="tag">{{ tag }}</li>
           </ul>
           <div class="links">
-            <Button
+            <BaseButton
               v-if="project.liveUrl"
               :href="project.liveUrl"
               target="_blank"
@@ -52,8 +52,8 @@ useSeoMeta({
             >
               <Icon name="lucide:external-link" :size="16" aria-hidden="true" />
               View live site
-            </Button>
-            <Button
+            </BaseButton>
+            <BaseButton
               v-if="project.githubUrl"
               :href="project.githubUrl"
               target="_blank"
@@ -62,7 +62,7 @@ useSeoMeta({
             >
               <Icon name="lucide:git-branch" :size="16" aria-hidden="true" />
               View on GitHub
-            </Button>
+            </BaseButton>
           </div>
         </header>
 

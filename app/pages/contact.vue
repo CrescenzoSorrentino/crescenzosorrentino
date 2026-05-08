@@ -51,7 +51,7 @@ useSeoMeta({
           </li>
         </ul>
 
-        <ContactForm />
+        <AppContactForm />
       </div>
     </section>
   </main>

@@ -10,12 +10,33 @@ export interface Project {
   year: number
   longDescription: string
   highlights: string[]
+  featured: boolean
   liveUrl?: string
   githubUrl?: string
 }
 
 // Aggiungi un nuovo oggetto qui per aggiungere una card alla homepage e alla pagina progetti.
 export const projects: Project[] = [
+  {
+    image: "/projects/template-photograph.png",
+    tags: ["Nuxt.js"],
+    title: "Photography Template",
+    description:
+      "Elegant website template for professional photographers. Showcases portfolios, services, and bookings with a minimal, image-first design.",
+    to: "/projects/template-photograph",
+    category: "Websites",
+    slug: "template-photograph",
+    year: 2026,
+    longDescription:
+      "A clean, image-first website template built for professional photographers. The design keeps the focus on the work: large gallery grids, minimal chrome, and a layout that lets the photography speak. Includes sections for services, about, and a contact form for booking inquiries.",
+    highlights: [
+      "Full-bleed gallery grid optimized for visual impact",
+      "Services and pricing section tailored for photography packages",
+      "Contact and booking section with inquiry form",
+    ],
+    featured: true,
+    liveUrl: "https://template-photograph.vercel.app",
+  },
   {
     image: "/projects/template-gym.png",
     tags: ["Nuxt.js"],
@@ -33,28 +54,9 @@ export const projects: Project[] = [
       "FAQ section covering sign-up, payments, and facilities",
       "Contact section with phone, WhatsApp link, and address",
     ],
+    featured: true,
     liveUrl: "https://template-gym-one.vercel.app",
     githubUrl: "https://github.com/CrescenzoSorrentino/template-gym",
-  },
-  {
-    image: "/projects/grocerylist.png",
-    tags: ["Nuxt.js"],
-    title: "Grocery List",
-    description:
-      "Simple and fast grocery list app. Add, check off, and remove items on the fly, with data persisted in the browser's local storage.",
-    to: "/projects/grocerylist",
-    category: "Web Apps",
-    slug: "grocerylist",
-    year: 2026,
-    longDescription:
-      "A lightweight grocery list app built with Nuxt.js. The goal was to create a frictionless tool that anyone can open on their phone and use immediately: no account, no loading screen, no friction.",
-    highlights: [
-      "Instant add, check off, and delete with no page reloads",
-      "Data persisted in localStorage, survives page refresh",
-      "Fully responsive, optimized for one-handed mobile use",
-    ],
-    liveUrl: "https://grocerylist-ten.vercel.app",
-    githubUrl: "https://github.com/CrescenzoSorrentino/grocerylist",
   },
   {
     image: "/projects/crescenzosorrentino.png",
@@ -73,8 +75,30 @@ export const projects: Project[] = [
       "Zero dependencies for UI, every component built from scratch",
       "Fully responsive with a mobile-first approach",
     ],
+    featured: true,
     liveUrl: "https://crescenzosorrentino.com",
     githubUrl: "https://github.com/CrescenzoSorrentino/crescenzosorrentino.com",
+  },
+  {
+    image: "/projects/grocerylist.png",
+    tags: ["Nuxt.js"],
+    title: "Grocery List",
+    description:
+      "Simple and fast grocery list app. Add, check off, and remove items on the fly, with data persisted in the browser's local storage.",
+    to: "/projects/grocerylist",
+    category: "Web Apps",
+    slug: "grocerylist",
+    year: 2026,
+    longDescription:
+      "A lightweight grocery list app built with Nuxt.js. The goal was to create a frictionless tool that anyone can open on their phone and use immediately: no account, no loading screen, no friction.",
+    highlights: [
+      "Instant add, check off, and delete with no page reloads",
+      "Data persisted in localStorage, survives page refresh",
+      "Fully responsive, optimized for one-handed mobile use",
+    ],
+    featured: false,
+    liveUrl: "https://grocerylist-ten.vercel.app",
+    githubUrl: "https://github.com/CrescenzoSorrentino/grocerylist",
   },
 ]
 

@@ -80,8 +80,8 @@ function handleSubmit() {
     </fieldset>
 
     <div class="form-actions">
-      <Button type="submit" variant="primary" size="sm">Send message</Button>
-      <Button type="reset" variant="secondary" size="sm">Reset</Button>
+      <BaseButton type="submit" variant="primary" size="sm">Send message</BaseButton>
+      <BaseButton type="reset" variant="secondary" size="sm">Reset</BaseButton>
     </div>
   </form>
 </template>
