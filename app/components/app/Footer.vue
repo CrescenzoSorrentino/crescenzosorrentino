@@ -128,10 +128,10 @@ const legalLinks = [
 
       <!-- Copyright -->
       <div class="copyright">
-        <p>&copy; 2026 Crescenzo Sorrentino</p>
+        <p>&copy; {{ new Date().getFullYear() }} Crescenzo Sorrentino</p>
       </div>
     </div>
-  </footer>
+  </footer> 
 </template>
 
 <style scoped>

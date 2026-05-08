@@ -41,12 +41,9 @@ useSeoMeta({
             <span class="category-label">{{ category }}</span>
             <ul class="list">
               <li
-                v-for="(article, i) in byCategory(category)"
+                v-for="article in byCategory(category)"
                 :key="article.path"
                 class="item"
-                v-motion
-                :initial="{ opacity: 0, y: 16 }"
-                :visible-once="{ opacity: 1, y: 0, transition: { duration: 400, delay: i * 80 } }"
               >
                 <NuxtLink :to="article.path" class="row">
                   <div class="row__main">

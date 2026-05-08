@@ -36,6 +36,7 @@ export const projects: Project[] = [
     ],
     featured: true,
     liveUrl: "https://template-photograph.vercel.app",
+    githubUrl: "https://github.com/CrescenzoSorrentino/template-photograph.git"
   },
   {
     image: "/projects/template-gym.png",
