@@ -48,6 +48,10 @@ export default defineNuxtConfig({
         {
           innerHTML: `(function(){try{var s=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme:dark)').matches;document.documentElement.setAttribute('data-theme',s||(d?'dark':'light'));}catch(e){}})();`,
         },
+        // Google Consent Mode v2 defaults — must run synchronously before CookieYes loads
+        {
+          innerHTML: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{'analytics_storage':'denied','ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','wait_for_update':500});`,
+        },
         // Dati strutturati Schema.org — aiutano Google a capire chi sei e cosa fa il sito
         {
           type: "application/ld+json",

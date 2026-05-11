@@ -10,7 +10,7 @@ export default defineNuxtPlugin(() => {
     window.dataLayer = window.dataLayer || []
     window.gtag = (...args: unknown[]) => window.dataLayer.push(args)
 
-    // CookieYes must load first so it can manage consent before GA fires
+    // CookieYes must load first so it can update consent before GA fires
     const cookieYes = document.createElement('script')
     cookieYes.id = 'cookieyes'
     cookieYes.src =
