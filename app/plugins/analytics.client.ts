@@ -7,9 +7,6 @@ declare global {
 
 export default defineNuxtPlugin(() => {
   onNuxtReady(() => {
-    window.dataLayer = window.dataLayer || []
-    window.gtag = (...args: unknown[]) => window.dataLayer.push(args)
-
     // GA — config is queued in dataLayer and processed once the script loads
     const gaScript = document.createElement('script')
     gaScript.async = true
