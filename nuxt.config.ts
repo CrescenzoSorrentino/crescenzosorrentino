@@ -23,13 +23,24 @@ const websiteSchema = {
 
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
-  modules: ["@nuxt/image", "@nuxtjs/sitemap", "@vueuse/motion/nuxt", "@nuxt/content", "@nuxt/icon"],
+  modules: [
+    "@nuxt/image",
+    "@nuxtjs/sitemap",
+    "@vueuse/motion/nuxt",
+    "@nuxt/content",
+    "@nuxt/icon",
+  ],
 
   sitemap: {
     urls: [
-      { loc: "/projects/grocerylist", priority: 0.7 },
+      { loc: "/projects", priority: 0.8 },
+      { loc: "/projects/template-photograph", priority: 0.7 },
+      { loc: "/projects/template-gym", priority: 0.7 },
       { loc: "/projects/crescenzosorrentino", priority: 0.7 },
+      { loc: "/projects/grocerylist", priority: 0.7 },
+      { loc: "/blog", priority: 0.8 },
       { loc: "/blog/nuxtjs-vs-wordpress", priority: 0.6 },
+      { loc: "/contact", priority: 0.6 },
     ],
   },
   devtools: { enabled: true },
@@ -41,7 +52,10 @@ export default defineNuxtConfig({
       htmlAttrs: { lang: "en" },
       titleTemplate: "%s | Crescenzo Sorrentino",
       meta: [
-        { name: "google-site-verification", content: "FAyWQtqOkK8VUoEwBgtneptZkQwnYYZ7StbM05mB7rg" },
+        {
+          name: "google-site-verification",
+          content: "FAyWQtqOkK8VUoEwBgtneptZkQwnYYZ7StbM05mB7rg",
+        },
       ],
       script: [
         // Anti-flash tema: gira prima di tutto il resto per evitare il lampeggio bianco
@@ -54,8 +68,8 @@ export default defineNuxtConfig({
         },
         // CookieYes — loads immediately after consent defaults so GCM checker detects correct order
         {
-          src: 'https://cdn-cookieyes.com/client_data/2d9d064aaa0864d4576af5f4c8d2a4e2/script.js',
-          id: 'cookieyes',
+          src: "https://cdn-cookieyes.com/client_data/2d9d064aaa0864d4576af5f4c8d2a4e2/script.js",
+          id: "cookieyes",
         },
         // Dati strutturati Schema.org — aiutano Google a capire chi sei e cosa fa il sito
         {
