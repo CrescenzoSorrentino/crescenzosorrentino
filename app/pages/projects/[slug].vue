@@ -14,9 +14,11 @@ useHead({ link: [{ rel: "canonical", href: `https://crescenzosorrentino.com/proj
 useSeoMeta({
   title: project.title,
   description: project.description,
+  ogType: "website",
   ogTitle: `${project.title} — Crescenzo Sorrentino`,
   ogDescription: project.description,
   ogUrl: `https://crescenzosorrentino.com/projects/${project.slug}`,
+  twitterCard: "summary",
   twitterTitle: `${project.title} — Crescenzo Sorrentino`,
   twitterDescription: project.description,
 })

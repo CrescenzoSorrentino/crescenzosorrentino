@@ -6,9 +6,11 @@ useHead({ link: [{ rel: "canonical", href: "https://crescenzosorrentino.com/proj
 useSeoMeta({
   title: "Projects",
   description: "Nuxt.js projects by Crescenzo Sorrentino: landing pages and web applications.",
+  ogType: "website",
   ogTitle: "Projects — Crescenzo Sorrentino",
   ogDescription: "Nuxt.js projects by Crescenzo Sorrentino: landing pages and web applications.",
   ogUrl: "https://crescenzosorrentino.com/projects",
+  twitterCard: "summary",
   twitterTitle: "Projects — Crescenzo Sorrentino",
   twitterDescription: "Nuxt.js projects by Crescenzo Sorrentino: landing pages and web applications.",
 })

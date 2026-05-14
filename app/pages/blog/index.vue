@@ -13,9 +13,11 @@ useHead({ link: [{ rel: "canonical", href: "https://crescenzosorrentino.com/blog
 useSeoMeta({
   title: "Blog",
   description: "Thoughts on Nuxt.js, performance, Core Web Vitals and building interfaces that convert.",
+  ogType: "website",
   ogTitle: "Blog — Crescenzo Sorrentino",
   ogDescription: "Thoughts on Nuxt.js, performance, Core Web Vitals and building interfaces that convert.",
   ogUrl: "https://crescenzosorrentino.com/blog",
+  twitterCard: "summary",
   twitterTitle: "Blog — Crescenzo Sorrentino",
   twitterDescription: "Thoughts on Nuxt.js, performance, Core Web Vitals and building interfaces that convert.",
 })

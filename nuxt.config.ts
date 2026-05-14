@@ -40,6 +40,7 @@ export default defineNuxtConfig({
       { loc: "/projects/grocerylist", priority: 0.7 },
       { loc: "/blog", priority: 0.8 },
       { loc: "/blog/nuxtjs-vs-wordpress", priority: 0.6 },
+      { loc: "/blog/what-does-it-cost-to-hire-a-freelance-web-developer", priority: 0.6 },
       { loc: "/contact", priority: 0.6 },
     ],
   },

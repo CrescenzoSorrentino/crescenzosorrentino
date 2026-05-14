@@ -38,3 +38,7 @@ But if your business depends on conversion rates, on brand differentiation, on l
 ## The question worth asking
 
 Before choosing a platform, ask yourself: what does success look like for this site in two years? If the answer involves growth, performance, and a UI that evolves with your product, build it right from the start.
+
+---
+
+Not sure which direction makes sense for your project? [Get in touch](/contact) and let's figure it out together.

@@ -46,9 +46,11 @@ useHead({
 useSeoMeta({
   title: article.value.title,
   description: article.value.description,
+  ogType: "article",
   ogTitle: `${article.value.title} — Crescenzo Sorrentino`,
   ogDescription: article.value.description,
   ogUrl: url,
+  twitterCard: "summary",
   twitterTitle: `${article.value.title} — Crescenzo Sorrentino`,
   twitterDescription: article.value.description,
 })
@@ -183,5 +185,11 @@ useSeoMeta({
   color: var(--color-accent-text);
   text-decoration: underline;
   text-underline-offset: 3px;
+}
+
+.prose :deep(hr) {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin-block: var(--space-8);
 }
 </style>

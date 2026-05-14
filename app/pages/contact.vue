@@ -6,9 +6,11 @@ useHead({ link: [{ rel: "canonical", href: "https://crescenzosorrentino.com/cont
 useSeoMeta({
   title: "Contact",
   description: "Get in touch to discuss your Nuxt.js project. I reply within 24 hours.",
+  ogType: "website",
   ogTitle: "Contact — Crescenzo Sorrentino",
   ogDescription: "Get in touch to discuss your Nuxt.js project. I reply within 24 hours.",
   ogUrl: "https://crescenzosorrentino.com/contact",
+  twitterCard: "summary",
   twitterTitle: "Contact — Crescenzo Sorrentino",
   twitterDescription: "Get in touch to discuss your Nuxt.js project. I reply within 24 hours.",
 })

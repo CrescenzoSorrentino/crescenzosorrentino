@@ -14,9 +14,11 @@ useHead({
 useSeoMeta({
   title: "Crescenzo Sorrentino — Nuxt.js Freelance Developer",
   description,
+  ogType: "website",
   ogTitle: "Crescenzo Sorrentino — Nuxt.js Freelance Developer",
   ogDescription: description,
   ogUrl: "https://crescenzosorrentino.com",
+  twitterCard: "summary",
   twitterTitle: "Crescenzo Sorrentino — Nuxt.js Freelance Developer",
   twitterDescription: description,
 })
