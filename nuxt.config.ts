@@ -23,6 +23,10 @@ const websiteSchema = {
 
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
+  routeRules: {
+    "/blog/**": { prerender: true },
+    "/projects/**": { prerender: true },
+  },
   modules: [
     "@nuxt/image",
     "@nuxtjs/sitemap",
