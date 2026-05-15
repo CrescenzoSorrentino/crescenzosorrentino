@@ -27,7 +27,7 @@ Nuxt.js ships only what you build. There's no plugin overhead, no theme bloat, n
 
 Every custom feature on WordPress is a negotiation with the CMS. You're working around its assumptions about how content should be structured, how pages should render, and how data should flow. Custom post types, ACF fields, REST API hacks: it works, but the complexity accumulates.
 
-Nuxt.js has no opinion about your content structure. You build exactly what your product needs. Animations, dynamic data, complex state, third-party APIs: all first-class citizens, not afterthoughts bolted onto a blogging platform.
+Nuxt.js has no opinion about your content structure. You build exactly what your product needs. Animations, dynamic data, complex state, third-party APIs: all first-class citizens, not afterthoughts bolted onto a blogging platform. If you want to see what this looks like in practice, [browse some of the projects I've built with Nuxt.js](/projects).
 
 ## When WordPress is still the right answer
 

@@ -9,7 +9,24 @@ if (!project) {
   throw createError({ statusCode: 404, statusMessage: "Project not found" })
 }
 
-useHead({ link: [{ rel: "canonical", href: `https://crescenzosorrentino.com/projects/${project.slug}` }] })
+const projectSchema = {
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  name: project.title,
+  description: project.longDescription,
+  url: project.liveUrl ?? `https://crescenzosorrentino.com/projects/${project.slug}`,
+  keywords: project.tags.join(", "),
+  author: {
+    "@type": "Person",
+    name: "Crescenzo Sorrentino",
+    url: "https://crescenzosorrentino.com",
+  },
+}
+
+useHead({
+  link: [{ rel: "canonical", href: `https://crescenzosorrentino.com/projects/${project.slug}` }],
+  script: [{ type: "application/ld+json", innerHTML: JSON.stringify(projectSchema) }],
+})
 
 useSeoMeta({
   title: project.title,

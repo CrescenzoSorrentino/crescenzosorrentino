@@ -15,7 +15,7 @@ Most of what I build falls into one of two categories.
 
 **Landing pages and brochure sites** are focused, conversion-driven websites. A single page or a small set of pages designed to present what you do and get visitors to take action. These typically range from €800 to €2,500. The variation comes from design complexity, the number of sections, animations, and whether copywriting or content strategy is included.
 
-**Web applications** are more involved: custom interfaces, interactive dashboards, tools with real logic on the client side, and frontends that connect to external APIs or services. These start from €4,000 and scale up depending on scope and the number of integrations involved.
+**Web applications** are more involved: custom interfaces, interactive dashboards, tools with real logic on the client side, and frontends that connect to external APIs or services. These start from €4,000 and scale up depending on scope and the number of integrations involved. You can see examples of both in [my portfolio](/projects).
 
 ## What actually drives the price up
 

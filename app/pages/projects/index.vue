@@ -58,6 +58,16 @@ useSeoMeta({
         </template>
       </div>
     </section>
+    <!-- BLOG CTA -->
+    <section class="section section--alt">
+      <div class="container container--narrow">
+        <div class="blog-cta">
+          <span class="blog-cta__label">From the blog</span>
+          <p class="blog-cta__text">Curious about the process? I write about frontend development and how decisions get made.</p>
+          <NuxtLink to="/blog" class="blog-cta__link">Read the blog</NuxtLink>
+        </div>
+      </div>
+    </section>
   </main>
 </template>
 
@@ -152,5 +162,37 @@ useSeoMeta({
 .arrow {
   flex-shrink: 0;
   color: var(--color-accent);
+}
+
+.blog-cta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding-block: var(--space-10);
+}
+
+.blog-cta__label {
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.blog-cta__text {
+  font-size: var(--text-md);
+  color: var(--text-secondary);
+  max-width: 48ch;
+}
+
+.blog-cta__link {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-accent-text);
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.75;
+  }
 }
 </style>
