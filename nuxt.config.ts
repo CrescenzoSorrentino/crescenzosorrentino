@@ -27,6 +27,18 @@ export default defineNuxtConfig({
     "/blog/**": { prerender: true },
     "/projects/**": { prerender: true },
   },
+  nitro: {
+    prerender: {
+      routes: [
+        "/blog/nuxtjs-vs-wordpress",
+        "/blog/what-does-it-cost-to-hire-a-freelance-web-developer",
+        "/projects/template-photograph",
+        "/projects/template-gym",
+        "/projects/crescenzosorrentino",
+        "/projects/grocerylist",
+      ],
+    },
+  },
   modules: [
     "@nuxt/image",
     "@nuxtjs/sitemap",
