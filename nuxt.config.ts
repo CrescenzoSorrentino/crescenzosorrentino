@@ -45,6 +45,7 @@ export default defineNuxtConfig({
     "@vueuse/motion/nuxt",
     "@nuxt/content",
     "@nuxt/icon",
+    "@vercel/analytics",
   ],
 
   sitemap: {
@@ -78,15 +79,6 @@ export default defineNuxtConfig({
         // Anti-flash tema: gira prima di tutto il resto per evitare il lampeggio bianco
         {
           innerHTML: `(function(){try{var s=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme:dark)').matches;document.documentElement.setAttribute('data-theme',s||(d?'dark':'light'));}catch(e){}})();`,
-        },
-        // Google Consent Mode v2 defaults — must run synchronously before CookieYes loads
-        {
-          innerHTML: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{'analytics_storage':'denied','ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','functionality_storage':'denied','personalization_storage':'denied','security_storage':'denied','wait_for_update':500});`,
-        },
-        // CookieYes — loads immediately after consent defaults so GCM checker detects correct order
-        {
-          src: "https://cdn-cookieyes.com/client_data/2d9d064aaa0864d4576af5f4c8d2a4e2/script.js",
-          id: "cookieyes",
         },
         // Dati strutturati Schema.org — aiutano Google a capire chi sei e cosa fa il sito
         {

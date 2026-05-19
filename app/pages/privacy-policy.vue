@@ -54,10 +54,7 @@ const content = `
   <li>
     <h2 class="pp-h2">How We Share Your Information:</h2>
     <p class="pp-p">We will not transfer your personal information to any third party without seeking your consent, except in limited circumstances as described below:</p>
-    <ol class="pp-ol">
-      <li>Analytics</li>
-    </ol>
-    <p class="pp-p">We require such third party's to use the personal information we transfer to them only for the purpose for which it was transferred and not to retain it for longer than is required for fulfilling the said purpose.</p>
+    <p class="pp-p">We use Vercel Analytics for website performance monitoring. This service collects only aggregated, anonymised data and does not receive any personally identifiable information.</p>
     <p class="pp-p">We may also disclose your personal information for the following: (1) to comply with applicable law, regulation, court order or other legal process; (2) to enforce your agreements with us, including this Privacy Policy; or (3) to respond to claims that your use of the Service violates any third-party rights. If the Service or our company is merged or acquired with another company, your information will be one of the assets that is transferred to the new owner.</p>
   </li>
 
@@ -73,8 +70,8 @@ const content = `
   </li>
 
   <li>
-    <h2 class="pp-h2">Cookies Etc.</h2>
-    <p class="pp-p">To learn more about how we use these and your choices in relation to these tracking technologies, please refer to our <a href="/cookie-policy">Cookie Policy.</a></p>
+    <h2 class="pp-h2">Cookies</h2>
+    <p class="pp-p">This website does not use cookies. For more information, please refer to our <a href="/cookie-policy">Cookie Policy.</a></p>
   </li>
 
   <li>
@@ -93,7 +90,6 @@ const content = `
   </li>
 </ol>
 
-<p class="pp-p">Privacy Policy generated with <a target="_blank" rel="noopener noreferrer" href="https://www.cookieyes.com/?utm_source=PP&utm_medium=footer&utm_campaign=UW">CookieYes</a>.</p>
 `
 </script>
 

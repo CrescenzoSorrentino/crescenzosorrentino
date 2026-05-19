@@ -11,6 +11,7 @@ Personal portfolio and blog of Crescenzo Sorrentino, freelance frontend develope
 - **Images:** @nuxt/image
 - **Animations:** @vueuse/motion
 - **Sitemap:** @nuxtjs/sitemap
+- **Analytics:** @vercel/analytics (cookieless, privacy-first)
 - **Deployment:** Vercel (SSR + prerender for dynamic routes)
 
 ## Project structure
@@ -24,7 +25,7 @@ app/
   data/          # Static data (projects, contact info)
   layouts/       # Default layout
   pages/         # File-based routing
-  plugins/       # analytics.client.ts (GA4 via gtag)
+  plugins/       # client-side plugins
 content/
   blog/          # Markdown blog posts
 public/
@@ -62,11 +63,11 @@ npm run preview
 - `robots.txt` allows all, points to sitemap
 - Google Search Console verified via meta tag
 
-## Cookie consent and analytics
+## Analytics
 
-- **CookieYes** for consent banner (loaded synchronously after GCM defaults)
-- **Google Consent Mode v2** defaults set before CookieYes loads (all storage denied until consent)
-- **GA4** via `gtag` in `plugins/analytics.client.ts`, fires only after consent
+- **Vercel Analytics** via the `@vercel/analytics` Nuxt module
+- Cookieless and privacy-first — no consent banner required
+- No personally identifiable data collected; aggregated metrics only
 
 ## Theme
 
