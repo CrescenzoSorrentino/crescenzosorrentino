@@ -10,7 +10,7 @@ useSeoMeta({
   ogTitle: "Projects — Crescenzo Sorrentino",
   ogDescription: "Nuxt.js projects by Crescenzo Sorrentino: landing pages and web applications.",
   ogUrl: "https://crescenzosorrentino.com/projects",
-  twitterCard: "summary",
+  twitterCard: "summary_large_image",
   twitterTitle: "Projects — Crescenzo Sorrentino",
   twitterDescription: "Nuxt.js projects by Crescenzo Sorrentino: landing pages and web applications.",
 })
@@ -122,7 +122,7 @@ useSeoMeta({
 
 .row {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: var(--space-6);
   padding-block: var(--space-6);
   color: var(--text-primary);
@@ -168,7 +168,7 @@ useSeoMeta({
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
-  padding-block: var(--space-10);
+  padding-block: var(--space-12);
 }
 
 .blog-cta__label {

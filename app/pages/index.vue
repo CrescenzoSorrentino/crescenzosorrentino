@@ -52,8 +52,8 @@ useSeoMeta({
           :initial="{ opacity: 0, y: 24 }"
           :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 240 } }"
         >
-          <BaseButton to="/contact" variant="primary" size="lg">Let's work together</BaseButton>
-          <BaseButton to="/projects" variant="secondary" size="lg">View my work</BaseButton>
+          <BaseButton to="/contact" variant="primary" size="md">Let's work together</BaseButton>
+          <BaseButton to="/projects" variant="secondary" size="md">View my work</BaseButton>
         </div>
       </div>
       <a href="#about" class="hero__scroll" aria-label="Scroll to next section">
@@ -475,29 +475,9 @@ useSeoMeta({
 
 .hero__actions {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: var(--space-3);
-  width: 100%;
-  max-width: 320px;
-}
-
-.hero__actions .btn {
-  width: 100%;
   justify-content: center;
-}
-
-@media (min-width: 480px) {
-  .hero__actions {
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: auto;
-    max-width: none;
-    justify-content: center;
-  }
-
-  .hero__actions .btn {
-    width: auto;
-  }
 }
 
 .hero__actions .btn--secondary {

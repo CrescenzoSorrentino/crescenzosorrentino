@@ -17,7 +17,7 @@ useSeoMeta({
   ogTitle: "Blog — Crescenzo Sorrentino",
   ogDescription: "Thoughts on Nuxt.js, performance, Core Web Vitals and building interfaces that convert.",
   ogUrl: "https://crescenzosorrentino.com/blog",
-  twitterCard: "summary",
+  twitterCard: "summary_large_image",
   twitterTitle: "Blog — Crescenzo Sorrentino",
   twitterDescription: "Thoughts on Nuxt.js, performance, Core Web Vitals and building interfaces that convert.",
 })
@@ -113,7 +113,7 @@ useSeoMeta({
 
 .row {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: var(--space-6);
   padding-block: var(--space-6);
   color: var(--text-primary);

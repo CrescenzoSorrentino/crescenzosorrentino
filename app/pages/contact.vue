@@ -10,7 +10,7 @@ useSeoMeta({
   ogTitle: "Contact — Crescenzo Sorrentino",
   ogDescription: "Get in touch to discuss your Nuxt.js project. I reply within 24 hours.",
   ogUrl: "https://crescenzosorrentino.com/contact",
-  twitterCard: "summary",
+  twitterCard: "summary_large_image",
   twitterTitle: "Contact — Crescenzo Sorrentino",
   twitterDescription: "Get in touch to discuss your Nuxt.js project. I reply within 24 hours.",
 })
@@ -67,7 +67,7 @@ useSeoMeta({
 }
 
 .intro {
-  margin-bottom: var(--space-12);
+  margin-bottom: var(--space-16);
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
