@@ -74,6 +74,11 @@ export default defineNuxtConfig({
           name: "google-site-verification",
           content: "FAyWQtqOkK8VUoEwBgtneptZkQwnYYZ7StbM05mB7rg",
         },
+        { property: "og:image", content: "https://crescenzosorrentino.com/og-image.png" },
+        { property: "og:image:width", content: "1424" },
+        { property: "og:image:height", content: "752" },
+        { name: "twitter:image", content: "https://crescenzosorrentino.com/og-image.png" },
+        { name: "twitter:card", content: "summary_large_image" },
       ],
       script: [
         // Anti-flash tema: gira prima di tutto il resto per evitare il lampeggio bianco

@@ -18,9 +18,11 @@ useSeoMeta({
   ogTitle: "Crescenzo Sorrentino — Nuxt.js Freelance Developer",
   ogDescription: description,
   ogUrl: "https://crescenzosorrentino.com",
-  twitterCard: "summary",
+  ogImage: "https://crescenzosorrentino.com/og-image.png",
+  twitterCard: "summary_large_image",
   twitterTitle: "Crescenzo Sorrentino — Nuxt.js Freelance Developer",
   twitterDescription: description,
+  twitterImage: "https://crescenzosorrentino.com/og-image.png",
 })
 </script>
 
@@ -45,11 +47,13 @@ useSeoMeta({
           customers.
         </p>
         <div
+          class="hero__actions"
           v-motion
           :initial="{ opacity: 0, y: 24 }"
           :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 240 } }"
         >
-          <BaseButton to="/projects" variant="primary" size="lg">View my work</BaseButton>
+          <BaseButton to="/contact" variant="primary" size="lg">Let's work together</BaseButton>
+          <BaseButton to="/projects" variant="secondary" size="lg">View my work</BaseButton>
         </div>
       </div>
       <a href="#about" class="hero__scroll" aria-label="Scroll to next section">
@@ -466,6 +470,43 @@ useSeoMeta({
 @media (min-width: 768px) {
   .hero__subtitle {
     font-size: var(--text-lg);
+  }
+}
+
+.hero__actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  width: 100%;
+  max-width: 320px;
+}
+
+.hero__actions .btn {
+  width: 100%;
+  justify-content: center;
+}
+
+@media (min-width: 480px) {
+  .hero__actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: auto;
+    max-width: none;
+    justify-content: center;
+  }
+
+  .hero__actions .btn {
+    width: auto;
+  }
+}
+
+.hero__actions .btn--secondary {
+  color: rgba(255, 255, 255, 0.85);
+  border-color: rgba(255, 255, 255, 0.35);
+
+  &:hover {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.75);
   }
 }
 
