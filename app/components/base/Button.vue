@@ -70,7 +70,7 @@ const tag = computed(() =>
 /* VARIANTI */
 
 .btn--primary {
-  background-color: var(--color-accent);
+  background-color: var(--color-accent-btn);
   color: #fff;
 
   &:hover {

@@ -27,7 +27,8 @@
   --color-primary:       #0A2342;
   --color-primary-hover: #1a3a6e;
   --color-accent:        #E8622A;
-  --color-accent-text:   #B8421A; /* testo arancio su sfondo chiaro, WCAG AA */
+  --color-accent-text:   #B8421A;
+  --color-accent-btn:    #BE4816;
 
   /* COLORI NEUTRI */
   --bg-page:        #FAF9F7;
@@ -88,6 +89,7 @@
   --color-primary:       #7aaee8;
   --color-primary-hover: #5a90d4;
   --color-accent:        #F07A4A;
+  --color-accent-btn:    #BE4816;
 }
 
 

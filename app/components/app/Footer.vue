@@ -245,7 +245,7 @@ const legalLinks = [
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .col nav,
@@ -276,7 +276,7 @@ const legalLinks = [
 
   p {
     font-size: var(--text-sm);
-    opacity: 0.45;
+    color: rgba(255, 255, 255, 0.5);
   }
 }
 </style>
