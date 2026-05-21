@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { projects } from "~/data/projects"
 
+// Solo i progetti con featured: true appaiono in homepage
 const featuredProjects = computed(() => projects.filter(p => p.featured))
 
 const description = "I build Nuxt.js interfaces that turn visitors into customers. Freelance frontend developer available for landing pages, web apps, and UI implementation."
@@ -28,7 +29,7 @@ useSeoMeta({
 
 <template>
   <main>
-    <!-- ── Hero ── -->
+    <!-- HERO -->
     <header class="hero">
       <div class="hero__content">
         <h1
@@ -63,7 +64,7 @@ useSeoMeta({
       </a>
     </header>
 
-    <!-- ── About ── -->
+    <!-- ABOUT -->
     <section id="about" class="section section--alt">
       <div class="container">
         <div class="about">
@@ -100,7 +101,7 @@ useSeoMeta({
       </div>
     </section>
 
-    <!-- ── Projects ── -->
+    <!-- PROJECTS -->
     <section class="section">
       <div class="container">
         <div class="projects__head">
@@ -125,7 +126,7 @@ useSeoMeta({
       </div>
     </section>
 
-    <!-- ── Services ── -->
+    <!-- SERVICES -->
     <section class="section section--alt">
       <div class="container">
         <div class="services__head">
@@ -253,7 +254,7 @@ useSeoMeta({
       </div>
     </section>
 
-    <!-- ── FAQ ── -->
+    <!-- FAQ -->
     <section class="section">
       <div class="container container--narrow">
         <div class="faq__head">
@@ -346,7 +347,8 @@ useSeoMeta({
 </template>
 
 <style scoped>
-/* ── Hero ── */
+
+/* HERO */
 
 .hero {
   position: relative;
@@ -490,7 +492,7 @@ useSeoMeta({
   }
 }
 
-/* ── About ── */
+/* ABOUT */
 
 .about {
   display: flex;
@@ -527,7 +529,7 @@ useSeoMeta({
   }
 }
 
-/* ── Projects ── */
+/* PROJECTS */
 
 .projects__head {
   display: flex;
@@ -562,7 +564,7 @@ useSeoMeta({
   margin-top: var(--space-8);
 }
 
-/* ── Services ── */
+/* SERVICES */
 
 .services__head {
   display: flex;
@@ -613,7 +615,7 @@ useSeoMeta({
   flex-shrink: 0;
 }
 
-/* ── FAQ ── */
+/* FAQ */
 
 .faq__head {
   display: flex;

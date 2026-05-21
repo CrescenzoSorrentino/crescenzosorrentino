@@ -1,10 +1,16 @@
 <script setup lang="ts">
+// Ordine delle categorie: determina la sequenza di visualizzazione nella pagina
 const categories = ["Guides", "Opinion", "Case Studies"] as const
 
+// Carica tutti gli articoli ordinati dal più recente al più vecchio.
+// La chiave "blog" è la cache key: Nuxt riutilizza il risultato se il componente
+// viene rimontato senza una nuova navigazione.
 const { data: articles } = await useAsyncData("blog", () =>
   queryCollection("blog").order("date", "DESC").all()
 )
 
+// Filtra gli articoli per categoria.
+// Il ?? [] garantisce un array vuoto se articles non è ancora disponibile (SSR).
 const byCategory = (category: string) =>
   articles.value?.filter(a => a.category === category) ?? []
 
@@ -63,13 +69,23 @@ useSeoMeta({
         </template>
       </div>
     </section>
+
+    <!-- PROJECTS CTA -->
+    <section class="section section--alt">
+      <div class="container container--narrow">
+        <div class="projects-cta">
+          <span class="projects-cta__label">See the work</span>
+          <p class="projects-cta__text">The principles I write about here are the same ones behind every project I build.</p>
+          <NuxtLink to="/projects" class="projects-cta__link">Browse the projects</NuxtLink>
+        </div>
+      </div>
+    </section>
   </main>
 </template>
 
 <style scoped>
-.section-top {
-  padding-top: var(--space-24);
-}
+
+/* INTRO */
 
 .intro {
   display: flex;
@@ -82,6 +98,9 @@ useSeoMeta({
   font-size: var(--text-md);
   color: var(--text-secondary);
 }
+
+
+/* LISTA */
 
 .group {
   display: flex;
@@ -111,6 +130,9 @@ useSeoMeta({
   border-bottom: 1px solid var(--border);
 }
 
+
+/* RIGA */
+
 .row {
   display: flex;
   align-items: flex-start;
@@ -131,6 +153,14 @@ useSeoMeta({
   flex: 1;
 }
 
+.date {
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
 .title {
   font-family: var(--font-headings);
   font-size: var(--text-xl);
@@ -143,16 +173,44 @@ useSeoMeta({
   transition: color 200ms ease, opacity 200ms ease;
 }
 
-.date {
-  font-size: var(--text-xs);
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--text-secondary);
-}
-
 .arrow {
   flex-shrink: 0;
   color: var(--color-accent);
 }
+
+
+/* PROJECTS CTA */
+
+.projects-cta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding-block: var(--space-12);
+}
+
+.projects-cta__label {
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.projects-cta__text {
+  font-size: var(--text-md);
+  color: var(--text-secondary);
+  max-width: 48ch;
+}
+
+.projects-cta__link {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-accent-text);
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.75;
+  }
+}
+
 </style>

@@ -5,22 +5,26 @@ const links = [
   { to: "/contact",  label: "Contact",  icon: "lucide:mail" },
 ]
 
-const isOpen = ref(false);
-const isDark = ref(false);
+const isOpen = ref(false) // stato del menu mobile
+const isDark = ref(false) // stato del tema, sincronizzato con data-theme
 
+// onMounted perché document non è accessibile durante il rendering SSR:
+// leggiamo il valore già scritto dall'inline script in <head>
 onMounted(() => {
-  isDark.value = document.documentElement.getAttribute("data-theme") === "dark";
-});
+  isDark.value = document.documentElement.getAttribute("data-theme") === "dark"
+})
 
 function toggleMenu() {
-  isOpen.value = !isOpen.value;
+  isOpen.value = !isOpen.value
 }
 
+// Doppio aggiornamento: setAttribute cambia il tema subito (effetto visivo immediato),
+// localStorage lo persiste così l'inline script lo rileva al prossimo caricamento
 function toggleTheme() {
-  isDark.value = !isDark.value;
-  const theme = isDark.value ? "dark" : "light";
-  document.documentElement.setAttribute("data-theme", theme);
-  localStorage.setItem("theme", theme);
+  isDark.value = !isDark.value
+  const theme = isDark.value ? "dark" : "light"
+  document.documentElement.setAttribute("data-theme", theme)
+  localStorage.setItem("theme", theme)
 }
 </script>
 
@@ -99,6 +103,9 @@ function toggleTheme() {
 </template>
 
 <style scoped>
+
+/* NAVBAR */
+
 .navbar {
   position: sticky;
   top: 0;
@@ -190,7 +197,8 @@ function toggleTheme() {
   }
 }
 
-/* Mobile menu */
+/* MENU MOBILE */
+
 .mobile-menu {
   position: absolute;
   top: 100%;
@@ -228,7 +236,8 @@ function toggleTheme() {
   }
 }
 
-/* Burger icon transition */
+/* TRANSIZIONI */
+
 .burger-icon-enter-active,
 .burger-icon-leave-active {
   transition: opacity 0.15s ease, transform 0.15s ease;
@@ -244,7 +253,6 @@ function toggleTheme() {
   transform: rotate(90deg);
 }
 
-/* Theme icon transition */
 .theme-icon-enter-active,
 .theme-icon-leave-active {
   transition: opacity 0.2s ease, transform 0.2s ease;
@@ -260,7 +268,6 @@ function toggleTheme() {
   transform: rotate(180deg) scale(0.5);
 }
 
-/* Menu transition */
 .menu-enter-active,
 .menu-leave-active {
   transition:
@@ -274,7 +281,9 @@ function toggleTheme() {
   transform: translateY(-6px);
 }
 
-/* Desktop */
+
+/* DESKTOP */
+
 @media (min-width: 768px) {
   .links {
     display: flex;

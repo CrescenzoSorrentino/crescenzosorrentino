@@ -274,3 +274,7 @@ p {
 .section--pt-sm {
   padding-top: var(--space-8);
 }
+
+.section-top {
+  padding-top: var(--space-24);
+}

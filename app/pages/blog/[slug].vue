@@ -1,16 +1,21 @@
 <script setup lang="ts">
 const route = useRoute()
 
+// Carica l'articolo corrispondente al percorso URL corrente
 const { data: article } = await useAsyncData(route.path, () =>
   queryCollection("blog").path(route.path).first()
 )
 
+// Restituisce 404 se lo slug non corrisponde ad alcun articolo pubblicato
 if (!article.value) {
   throw createError({ statusCode: 404, statusMessage: "Article not found" })
 }
 
+// URL assoluto riutilizzato nei meta tag e negli schema sottostanti
 const url = `https://crescenzosorrentino.com${route.path}`
 
+// Dati strutturati per Google: rappresenta l'articolo come BlogPosting
+// Migliora la visibilità nei risultati di ricerca con i rich results
 const blogPostingSchema = {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
@@ -25,6 +30,7 @@ const blogPostingSchema = {
   },
 }
 
+// Dati strutturati per la breadcrumb visibile nei risultati di ricerca
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -35,6 +41,7 @@ const breadcrumbSchema = {
   ],
 }
 
+// Inietta canonical e i due schema come tag <script type="application/ld+json"> nel <head>
 useHead({
   link: [{ rel: "canonical", href: url }],
   script: [
@@ -89,9 +96,8 @@ useSeoMeta({
 </template>
 
 <style scoped>
-.section-top {
-  padding-top: var(--space-24);
-}
+
+/* BREADCRUMB */
 
 .breadcrumb {
   display: flex;
@@ -128,6 +134,9 @@ useSeoMeta({
   opacity: 0.5;
 }
 
+
+/* INTRO */
+
 .intro {
   display: flex;
   flex-direction: column;
@@ -136,17 +145,31 @@ useSeoMeta({
 }
 
 .date {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
   font-size: var(--text-xs);
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-secondary);
+
+  &::after {
+    content: "";
+    display: block;
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
 }
 
 .intro p {
   font-size: var(--text-md);
   color: var(--text-secondary);
 }
+
+
+/* PROSE */
 
 .prose {
   display: flex;
@@ -157,7 +180,6 @@ useSeoMeta({
 .prose :deep(h2) {
   margin-top: var(--space-8);
 }
-
 
 .prose :deep(p) {
   color: var(--text-secondary);
@@ -192,4 +214,5 @@ useSeoMeta({
   border-top: 1px solid var(--border);
   margin-block: var(--space-8);
 }
+
 </style>

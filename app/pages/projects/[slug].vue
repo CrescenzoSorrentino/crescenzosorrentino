@@ -1,14 +1,18 @@
 <script setup lang="ts">
 import { projects } from "~/data/projects"
 
-const route   = useRoute()
+const route = useRoute()
+
+// Ricerca sincrona nei dati statici: nessuna chiamata asincrona necessaria
 const project = projects.find(p => p.slug === route.params.slug)
 
-// Slug non trovato → pagina 404
+// Restituisce 404 se lo slug non corrisponde ad alcun progetto
 if (!project) {
   throw createError({ statusCode: 404, statusMessage: "Project not found" })
 }
 
+// Dati strutturati per Google: rappresenta il progetto come CreativeWork.
+// Se esiste liveUrl lo usa come URL canonico, altrimenti cade sull'URL interno.
 const projectSchema = {
   "@context": "https://schema.org",
   "@type": "CreativeWork",
@@ -23,6 +27,7 @@ const projectSchema = {
   },
 }
 
+// Inietta canonical e lo schema come tag <script type="application/ld+json"> nel <head>
 useHead({
   link: [{ rel: "canonical", href: `https://crescenzosorrentino.com/projects/${project.slug}` }],
   script: [{ type: "application/ld+json", innerHTML: JSON.stringify(projectSchema) }],
@@ -47,15 +52,18 @@ useSeoMeta({
     <section class="section section--alt section--pb-sm section-top">
       <div class="container container--narrow">
 
-        <NuxtLink to="/projects" class="back">
-          <Icon name="lucide:arrow-left" :size="16" aria-hidden="true" />
-          All projects
-        </NuxtLink>
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <NuxtLink to="/" class="breadcrumb__item">Home</NuxtLink>
+          <span class="breadcrumb__sep" aria-hidden="true">/</span>
+          <NuxtLink to="/projects" class="breadcrumb__item">Projects</NuxtLink>
+          <span class="breadcrumb__sep" aria-hidden="true">/</span>
+          <span class="breadcrumb__item breadcrumb__item--current" aria-current="page">{{ project!.title }}</span>
+        </nav>
 
         <header class="header">
           <div class="meta">
             <span>{{ project.year }}</span>
-            <span>{{ project.category }}</span>
+            <span>{{ project.tags.join(", ") }}</span>
           </div>
           <h1 class="title">{{ project.title }}</h1>
           <ul class="tags" aria-label="Technologies">
@@ -112,25 +120,42 @@ useSeoMeta({
 </template>
 
 <style scoped>
+
 /* HEADER */
 
-.section-top {
-  padding-top: var(--space-24);
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-8);
 }
 
-.back {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  font-size: var(--text-sm);
+.breadcrumb__item {
+  font-size: var(--text-xs);
   font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   color: var(--text-secondary);
-  margin-bottom: var(--space-12);
-  transition: color 150ms ease;
+  transition: color 0.2s;
 
-  &:hover {
+  &:is(a):hover {
     color: var(--color-accent);
   }
+}
+
+.breadcrumb__item--current {
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 30ch;
+}
+
+.breadcrumb__sep {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  opacity: 0.5;
 }
 
 .header {
@@ -163,7 +188,6 @@ useSeoMeta({
   font-family: var(--font-headings);
   font-size: var(--text-3xl);
   font-weight: 300;
-  color: var(--color-primary);
   line-height: 1.1;
 }
 

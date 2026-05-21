@@ -1,11 +1,14 @@
+// Indirizzo email centralizzato: usato sia nei dati sottostanti che nel ContactForm.
 export const EMAIL = "crescenzo.sorrentino@icloud.com"
 
+
 export interface ContactItem {
-  label: string
-  value: string
-  href?: string
+  label:     string
+  value:     string
+  href?:     string
   external?: boolean
 }
+
 
 // L'ordine rispecchia la disposizione visiva su mobile.
 // Su desktop il CSS grid riposiziona gli elementi via grid-column/grid-row.

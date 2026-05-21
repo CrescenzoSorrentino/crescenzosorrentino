@@ -60,11 +60,8 @@ useSeoMeta({
 </template>
 
 <style scoped>
-/* INTRO */
 
-.section-top {
-  padding-top: var(--space-24);
-}
+/* INTRO */
 
 .intro {
   margin-bottom: var(--space-16);

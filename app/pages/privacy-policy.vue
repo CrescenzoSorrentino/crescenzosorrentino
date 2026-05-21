@@ -1,18 +1,6 @@
 <script setup lang="ts">
 import { EMAIL } from "~/data/contact"
 
-useHead({ link: [{ rel: "canonical", href: "https://crescenzosorrentino.com/privacy-policy" }] })
-
-useSeoMeta({
-  title: "Privacy Policy",
-  description: "Privacy policy for crescenzosorrentino.com: how we collect, use and protect your personal information.",
-  ogTitle: "Privacy Policy — Crescenzo Sorrentino",
-  ogDescription: "Privacy policy for crescenzosorrentino.com: how we collect, use and protect your personal information.",
-  ogUrl: "https://crescenzosorrentino.com/privacy-policy",
-  twitterTitle: "Privacy Policy — Crescenzo Sorrentino",
-  twitterDescription: "Privacy policy for crescenzosorrentino.com: how we collect, use and protect your personal information.",
-})
-
 // v-html renderizza HTML grezzo — sicuro perché il contenuto è statico e scritto da noi.
 // EMAIL viene interpolata qui in script, non nel template, per mantenere il contenuto leggibile.
 const content = `
@@ -91,6 +79,18 @@ const content = `
 </ol>
 
 `
+
+useHead({ link: [{ rel: "canonical", href: "https://crescenzosorrentino.com/privacy-policy" }] })
+
+useSeoMeta({
+  title: "Privacy Policy",
+  description: "Privacy policy for crescenzosorrentino.com: how we collect, use and protect your personal information.",
+  ogTitle: "Privacy Policy — Crescenzo Sorrentino",
+  ogDescription: "Privacy policy for crescenzosorrentino.com: how we collect, use and protect your personal information.",
+  ogUrl: "https://crescenzosorrentino.com/privacy-policy",
+  twitterTitle: "Privacy Policy — Crescenzo Sorrentino",
+  twitterDescription: "Privacy policy for crescenzosorrentino.com: how we collect, use and protect your personal information.",
+})
 </script>
 
 <template>
@@ -104,6 +104,9 @@ const content = `
 </template>
 
 <style scoped>
+
+/* CONTENUTO */
+
 .content :deep(.pp-h1) {
   font-family: var(--font-headings);
   font-size: var(--text-3xl);

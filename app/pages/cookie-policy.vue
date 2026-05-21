@@ -1,16 +1,4 @@
 <script setup lang="ts">
-useHead({ link: [{ rel: "canonical", href: "https://crescenzosorrentino.com/cookie-policy" }] })
-
-useSeoMeta({
-  title: "Cookie Policy",
-  description: "Cookie policy for crescenzosorrentino.com: how we use cookies and how to manage your preferences.",
-  ogTitle: "Cookie Policy — Crescenzo Sorrentino",
-  ogDescription: "Cookie policy for crescenzosorrentino.com: how we use cookies and how to manage your preferences.",
-  ogUrl: "https://crescenzosorrentino.com/cookie-policy",
-  twitterTitle: "Cookie Policy — Crescenzo Sorrentino",
-  twitterDescription: "Cookie policy for crescenzosorrentino.com: how we use cookies and how to manage your preferences.",
-})
-
 // v-html è l'equivalente di dangerouslySetInnerHTML di React.
 // Sicuro in questo caso perché il contenuto è statico e scritto da noi.
 const content = `
@@ -38,6 +26,18 @@ const content = `
   <p>The only data stored locally on your device is a <strong>theme preference</strong> (light or dark mode) saved in <code>localStorage</code>. This is a browser feature, not a cookie, and contains no personally identifiable information.</p>
 </div>
 `
+
+useHead({ link: [{ rel: "canonical", href: "https://crescenzosorrentino.com/cookie-policy" }] })
+
+useSeoMeta({
+  title: "Cookie Policy",
+  description: "Cookie policy for crescenzosorrentino.com: how we use cookies and how to manage your preferences.",
+  ogTitle: "Cookie Policy — Crescenzo Sorrentino",
+  ogDescription: "Cookie policy for crescenzosorrentino.com: how we use cookies and how to manage your preferences.",
+  ogUrl: "https://crescenzosorrentino.com/cookie-policy",
+  twitterTitle: "Cookie Policy — Crescenzo Sorrentino",
+  twitterDescription: "Cookie policy for crescenzosorrentino.com: how we use cookies and how to manage your preferences.",
+})
 </script>
 
 <template>

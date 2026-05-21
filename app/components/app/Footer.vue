@@ -14,7 +14,7 @@ const legalLinks = [
 <template>
   <footer class="footer">
     <div class="inner">
-      <!-- Pitch -->
+      <!-- PITCH -->
       <div class="pitch">
         <h2 class="pitch-title">Let's work together</h2>
         <p class="pitch-text">
@@ -24,9 +24,9 @@ const legalLinks = [
         <BaseButton to="/contact" size="lg">Get in touch</BaseButton>
       </div>
 
-      <!-- Sitemap -->
+      <!-- SITEMAP -->
       <div class="sitemap">
-        <!-- Brand -->
+        <!-- BRAND -->
         <div class="brand">
           <NuxtLink to="/" aria-label="Home" class="logo">
             <svg
@@ -58,7 +58,7 @@ const legalLinks = [
           </p>
         </div>
 
-        <!-- Navigation -->
+        <!-- NAVIGATION -->
         <div class="col">
           <span class="col-title">Navigation</span>
           <nav>
@@ -69,7 +69,7 @@ const legalLinks = [
           </nav>
         </div>
 
-        <!-- Social -->
+        <!-- SOCIAL -->
         <div class="col">
           <span class="col-title">Social</span>
           <div class="social-links">
@@ -114,7 +114,7 @@ const legalLinks = [
           </div>
         </div>
 
-        <!-- Legal -->
+        <!-- LEGAL -->
         <div class="col">
           <span class="col-title">Legal</span>
           <nav>
@@ -126,7 +126,7 @@ const legalLinks = [
         </div>
       </div>
 
-      <!-- Copyright -->
+      <!-- COPYRIGHT -->
       <div class="copyright">
         <p>&copy; {{ new Date().getFullYear() }} Crescenzo Sorrentino</p>
       </div>
@@ -135,6 +135,9 @@ const legalLinks = [
 </template>
 
 <style scoped>
+
+/* BASE */
+
 .footer {
   background-color: var(--footer-bg);
   color: rgba(255, 255, 255, 0.75);
@@ -158,7 +161,7 @@ const legalLinks = [
   }
 }
 
-/* ── Pitch ── */
+/* PITCH */
 
 .pitch {
   display: flex;
@@ -190,7 +193,7 @@ const legalLinks = [
   opacity: 0.75;
 }
 
-/* ── Sitemap ── */
+/* SITEMAP */
 
 .sitemap {
   display: grid;
@@ -206,7 +209,7 @@ const legalLinks = [
   }
 }
 
-/* Brand */
+/* BRAND */
 
 .brand {
   grid-column: 1 / -1;
@@ -232,7 +235,7 @@ const legalLinks = [
   max-width: 28ch;
 }
 
-/* Columns */
+/* COLONNE */
 
 .col {
   display: flex;
@@ -268,7 +271,7 @@ const legalLinks = [
   }
 }
 
-/* ── Copyright ── */
+/* COPYRIGHT */
 
 .copyright {
   border-top: 1px solid rgba(255, 255, 255, 0.1);

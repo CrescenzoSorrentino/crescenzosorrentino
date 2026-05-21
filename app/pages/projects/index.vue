@@ -58,6 +58,7 @@ useSeoMeta({
         </template>
       </div>
     </section>
+
     <!-- BLOG CTA -->
     <section class="section section--alt">
       <div class="container container--narrow">
@@ -72,11 +73,8 @@ useSeoMeta({
 </template>
 
 <style scoped>
-/* INTRO */
 
-.section-top {
-  padding-top: var(--space-24);
-}
+/* INTRO */
 
 .intro {
   display: flex;
@@ -136,7 +134,7 @@ useSeoMeta({
 .row__main {
   display: flex;
   flex-direction: column;
-  gap: var(--space-1);
+  gap: var(--space-2);
   flex: 1;
 }
 
@@ -163,6 +161,9 @@ useSeoMeta({
   flex-shrink: 0;
   color: var(--color-accent);
 }
+
+
+/* BLOG CTA */
 
 .blog-cta {
   display: flex;
