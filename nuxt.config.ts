@@ -47,6 +47,7 @@ export default defineNuxtConfig({
     "@nuxt/content",
     "@nuxt/icon",
     "@vercel/analytics",
+    "@vercel/speed-insights"
   ],
 
   sitemap: {
