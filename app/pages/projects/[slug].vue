@@ -40,9 +40,11 @@ useSeoMeta({
   ogTitle: `${project.title} — Crescenzo Sorrentino`,
   ogDescription: project.description,
   ogUrl: `https://crescenzosorrentino.com/projects/${project.slug}`,
-  twitterCard: "summary",
+  ogImage: "https://crescenzosorrentino.com/og-image.png",
+  twitterCard: "summary_large_image",
   twitterTitle: `${project.title} — Crescenzo Sorrentino`,
   twitterDescription: project.description,
+  twitterImage: "https://crescenzosorrentino.com/og-image.png",
 })
 </script>
 

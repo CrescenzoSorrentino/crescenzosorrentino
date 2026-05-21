@@ -32,6 +32,7 @@ export default defineNuxtConfig({
       routes: [
         "/blog/nuxtjs-vs-wordpress",
         "/blog/what-does-it-cost-to-hire-a-freelance-web-developer",
+        "/blog/why-your-website-is-losing-customers",
         "/projects/template-photograph",
         "/projects/template-gym",
         "/projects/crescenzosorrentino",
@@ -58,6 +59,7 @@ export default defineNuxtConfig({
       { loc: "/blog", priority: 0.8 },
       { loc: "/blog/nuxtjs-vs-wordpress", priority: 0.6 },
       { loc: "/blog/what-does-it-cost-to-hire-a-freelance-web-developer", priority: 0.6 },
+      { loc: "/blog/why-your-website-is-losing-customers", priority: 0.6 },
       { loc: "/contact", priority: 0.6 },
     ],
   },

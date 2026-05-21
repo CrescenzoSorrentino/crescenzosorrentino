@@ -57,9 +57,11 @@ useSeoMeta({
   ogTitle: `${article.value.title} — Crescenzo Sorrentino`,
   ogDescription: article.value.description,
   ogUrl: url,
-  twitterCard: "summary",
+  ogImage: "https://crescenzosorrentino.com/og-image.png",
+  twitterCard: "summary_large_image",
   twitterTitle: `${article.value.title} — Crescenzo Sorrentino`,
   twitterDescription: article.value.description,
+  twitterImage: "https://crescenzosorrentino.com/og-image.png",
 })
 </script>
 
