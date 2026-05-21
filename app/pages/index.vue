@@ -499,6 +499,7 @@ useSeoMeta({
   flex-direction: column;
   align-items: center;
   gap: var(--space-12);
+  overflow-x: clip;
 }
 
 @media (min-width: 768px) {
