@@ -11,7 +11,7 @@ defineProps({
 <template>
   <!-- `--size` viene iniettato come proprietà CSS custom così tutti i calc()
        dentro .avatar si aggiornano automaticamente al cambio della prop. -->
-  <div class="avatar" :style="{ '--avatar-prop-size': `${size}px` }">
+  <div class="avatar" :style="{ '--size': `${size}px` }">
     <NuxtImg :src="src" :alt="alt" :width="size" :height="size" class="image" />
   </div>
 </template>
@@ -37,8 +37,6 @@ defineProps({
 */
 
 .avatar {
-  --size:               var(--avatar-prop-size, 200px);
-
   --noggin:             calc(var(--size) * 0.15);
   --height-with-noggin: calc(var(--size) + var(--noggin));
   --border-width:       calc(var(--size) * 0.015);
@@ -68,12 +66,6 @@ defineProps({
   position:         relative;
   flex-shrink:      0;
   filter:           drop-shadow(0 8px 24px rgba(10, 35, 66, 0.35));
-}
-
-@media (max-width: 767px) {
-  .avatar {
-    --size: max(var(--avatar-prop-size, 200px), 80vw);
-  }
 }
 
 .image {
