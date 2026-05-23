@@ -71,7 +71,7 @@ useSeoMeta({
           <BaseAvatar
             src="/crescenzosorrentino.png"
             alt="Crescenzo Sorrentino"
-            :size="280"
+            :size="320"
             v-motion
             :initial="{ opacity: 0, x: -32 }"
             :visible-once="{ opacity: 1, x: 0, transition: { duration: 600 } }"
