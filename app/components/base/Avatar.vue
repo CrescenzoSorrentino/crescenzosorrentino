@@ -69,12 +69,16 @@ defineProps({
 }
 
 .image {
-  width:         100%;
-  height:        var(--height-with-noggin);
-  object-fit:    cover;
-  mask-image:    var(--mask-image);
-  mask-repeat:   var(--mask-repeat);
-  mask-position: var(--mask-position);
-  mask-mode:     alpha;
+  width:                  100%;
+  height:                 var(--height-with-noggin);
+  object-fit:             cover;
+  -webkit-mask-image:     var(--mask-image);
+  mask-image:             var(--mask-image);
+  -webkit-mask-repeat:    var(--mask-repeat);
+  mask-repeat:            var(--mask-repeat);
+  -webkit-mask-position:  var(--mask-position);
+  mask-position:          var(--mask-position);
+  -webkit-mask-mode:      alpha;
+  mask-mode:              alpha;
 }
 </style>
