@@ -69,7 +69,7 @@ useSeoMeta({
       <div class="container">
         <div class="about">
           <BaseAvatar
-            src="/crescenzo-sorrentino.png"
+            src="/crescenzosorrentino.png"
             alt="Crescenzo Sorrentino"
             :size="280"
             v-motion
@@ -499,6 +499,9 @@ useSeoMeta({
   flex-direction: column;
   align-items: center;
   gap: var(--space-12);
+}
+
+#about {
   overflow-x: clip;
 }
 
