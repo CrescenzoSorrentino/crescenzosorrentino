@@ -50,7 +50,6 @@ defineProps({
   background-color: var(--bg-page);
   border: 1px solid var(--border);
   border-radius: 8px;
-  overflow: hidden;
   position: relative;
 
   display: flex;

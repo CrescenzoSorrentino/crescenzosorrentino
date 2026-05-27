@@ -22,28 +22,31 @@ export interface Project {
 // Imposta featured: true per far apparire un progetto anche in homepage.
 export const projects: Project[] = [
 
-  // Photography Template
+  // Photographer Starter
   {
-    image: "/projects/template-photograph.png",
+    image: "/projects/photographer-starter.png",
     tags: ["Nuxt.js"],
-    title: "Photography Template",
+    title: "Photographer Starter",
     description:
-      "Elegant website template for professional photographers. Showcases portfolios, services, and bookings with a minimal, image-first design.",
-    to: "/projects/template-photograph",
+      "Reusable portfolio template for professional photographers built on Nuxt 4. Dark, minimal design, fully customizable per client via Vercel environment variables: zero code changes to update colors, fonts, copy, video, and galleries.",
+    to: "/projects/photographer-starter",
     category: "Websites",
-    slug: "template-photograph",
+    slug: "photographer-starter",
     year: 2026,
     longDescription:
-      "A complete single-page template for professional photographers built on Nuxt 4. Dark theme, minimal chrome, and a layout built to let the photography speak: from a full-bleed hero down to a WhatsApp-driven contact section. The whole template is config-driven: copy, colors, and images are overridable via Vercel environment variables, so deploying a customized version requires zero code changes.",
+      "The project was born from the need for a reusable template for professional photographers, with a design that showcases the client's visual work without getting in the way.\n\nThe architecture is built on Nuxt 4 with a dynamic configuration system: every aspect of the site, from colors and fonts to copy and event listings, is controlled by Vercel environment variables. This makes it possible to deploy the same template for different clients in minutes, without touching the code.\n\nThe site consists of two pages: a home with a full-screen video hero and an adaptive event grid (portrait/landscape), and an event detail page with a photo gallery. On mobile, the video is replaced by a static image to ensure compatibility across all devices. Every section animates on scroll via a custom Vue directive with progressive stagger.",
     highlights: [
-      "Fully config-driven via Vercel environment variables: copy, colors, and images without touching the codebase",
-      "Dynamic gallery pages per category (weddings, portraits, events, families) with a responsive 2/3/4-column grid",
-      "Wedding grid with a featured layout: first photo spans full width for maximum visual impact",
-      "Carousel and FAQ accordion built without external libraries, native HTML with CSS animation",
+      "Nuxt 4 + Vue 3 + TypeScript",
+      "Configurazione 100% via Vercel env vars (colori, font, brand, eventi, gallerie)",
+      "Hero video con fallback poster su mobile",
+      "Griglia adattiva portrait/landscape con rilevamento automatico orientamento",
+      "Animazioni scroll-based con IntersectionObserver e stagger",
+      "Design system completo via CSS custom properties",
+      "Mobile-first, ottimizzato per performance",
     ],
     featured: true,
-    liveUrl:   "https://template-photograph.vercel.app",
-    githubUrl: "https://github.com/CrescenzoSorrentino/template-photograph.git",
+    liveUrl:   "https://photographer-starter.vercel.app",
+    githubUrl: "https://github.com/CrescenzoSorrentino/photographer-starter",
   },
 
   // Gym Template

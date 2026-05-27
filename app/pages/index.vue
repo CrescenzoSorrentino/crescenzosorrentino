@@ -109,14 +109,15 @@ useSeoMeta({
           <p>A few projects that show what I can do for your business.</p>
         </div>
         <div class="projects__grid">
-          <BaseCard
+          <div
             v-for="(project, i) in featuredProjects"
             :key="project.to"
-            v-bind="project"
             v-motion
             :initial="{ opacity: 0, y: 24 }"
             :visible-once="{ opacity: 1, y: 0, transition: { duration: 500, delay: i * 150 } }"
-          />
+          >
+            <BaseCard v-bind="project" />
+          </div>
         </div>
         <div class="projects__cta">
           <BaseButton to="/projects" variant="secondary" size="md"
