@@ -23,6 +23,11 @@ const websiteSchema = {
 
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
+  vite: {
+    build: {
+      cssCodeSplit: false,
+    },
+  },
   routeRules: {
     "/blog/**": { prerender: true },
     "/projects/**": { prerender: true },

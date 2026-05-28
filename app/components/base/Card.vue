@@ -19,7 +19,7 @@ defineProps({
         :src="image"
         :alt="title"
         class="preview__img"
-        sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
+        sizes="sm:100vw md:50vw lg:33vw"
         format="webp"
         quality="80"
         loading="lazy"
