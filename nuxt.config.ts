@@ -40,7 +40,7 @@ export default defineNuxtConfig({
         "/blog/why-your-website-is-losing-customers",
         "/blog/what-to-look-for-when-you-hire-a-nuxtjs-developer",
         "/projects/photographer-starter",
-        "/projects/template-gym",
+        "/projects/gym-starter",
         "/projects/crescenzosorrentino",
         "/projects/grocerylist",
       ],
@@ -60,7 +60,7 @@ export default defineNuxtConfig({
     urls: [
       { loc: "/projects", priority: 0.8 },
       { loc: "/projects/photographer-starter", priority: 0.7 },
-      { loc: "/projects/template-gym", priority: 0.7 },
+      { loc: "/projects/gym-starter", priority: 0.7 },
       { loc: "/projects/crescenzosorrentino", priority: 0.7 },
       { loc: "/projects/grocerylist", priority: 0.7 },
       { loc: "/blog", priority: 0.8 },
