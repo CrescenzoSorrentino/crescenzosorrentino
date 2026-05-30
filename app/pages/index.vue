@@ -355,7 +355,7 @@ useSeoMeta({
   position: relative;
   overflow: hidden;
   background-color: var(--color-primary);
-  min-height: 90svh;
+  min-height: 60svh;
   display: flex;
   align-items: center;
   padding-block: var(--space-24);
