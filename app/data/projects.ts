@@ -72,7 +72,7 @@ export const projects: Project[] = [
       "Modular and scalable component structure: mobile navbar, footer, reusable hero, base button",
     ],
     featured: true,
-    liveUrl:   "https://gym-starter.vercel.app",
+    liveUrl:   "https://gym-starter-psi.vercel.app",
     githubUrl: "https://github.com/CrescenzoSorrentino/gym-starter",
   },
 
