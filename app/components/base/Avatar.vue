@@ -12,7 +12,7 @@ defineProps({
   <!-- `--size` viene iniettato come proprietà CSS custom così tutti i calc()
        dentro .avatar si aggiornano automaticamente al cambio della prop. -->
   <div class="avatar" :style="{ '--size': `${size}px` }">
-    <NuxtImg :src="src" :alt="alt" :width="size" :height="size" :sizes="`${size}px`" class="image" />
+    <NuxtImg :src="src" :alt="alt" :width="size" :height="size" :sizes="`${size}px`" quality="80" class="image" />
   </div>
 </template>
 
