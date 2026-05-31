@@ -57,11 +57,6 @@ useSeoMeta({
           <BaseButton to="/projects" variant="secondary" size="md">View my work</BaseButton>
         </div>
       </div>
-      <a href="#about" class="hero__scroll" aria-label="Scroll to next section">
-        <div class="hero__mouse">
-          <div class="hero__wheel"></div>
-        </div>
-      </a>
     </header>
 
     <!-- ABOUT -->
@@ -392,38 +387,6 @@ useSeoMeta({
 @keyframes glow-b {
   from { transform: translate(0, 0) scale(1); }
   to   { transform: translate(-18%, 25%) scale(1.5); }
-}
-
-.hero__scroll {
-  position: absolute;
-  bottom: var(--space-8);
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1;
-}
-
-.hero__mouse {
-  width: 26px;
-  height: 42px;
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  border-radius: 13px;
-  display: flex;
-  justify-content: center;
-  padding-top: 6px;
-}
-
-.hero__wheel {
-  width: 4px;
-  height: 8px;
-  background-color: rgba(255, 255, 255, 0.75);
-  border-radius: 2px;
-  animation: wheel 1.8s ease-in-out infinite;
-}
-
-@keyframes wheel {
-  0%   { transform: translateY(0);   opacity: 1; }
-  80%  { transform: translateY(10px); opacity: 0; }
-  100% { transform: translateY(0);   opacity: 0; }
 }
 
 .hero__content {
