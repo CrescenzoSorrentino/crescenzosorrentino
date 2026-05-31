@@ -23,8 +23,8 @@ defineProps({
         format="webp"
         quality="80"
         loading="lazy"
-        width="400"
-        height="225"
+        width="370"
+        height="208"
       />
       <div v-else class="placeholder" aria-hidden="true" />
     </div>
