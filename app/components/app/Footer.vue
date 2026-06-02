@@ -1,8 +1,9 @@
 <script setup>
 const navLinks = [
-  { to: "/projects", label: "Projects", icon: "lucide:folder-open" },
-  { to: "/blog",     label: "Blog",     icon: "lucide:book-open" },
-  { to: "/contact",  label: "Contact",  icon: "lucide:mail" },
+  { to: "/projects",                  label: "Projects",             icon: "lucide:folder-open" },
+  { to: "/blog",                      label: "Blog",                 icon: "lucide:book-open" },
+  { to: "/contact",                   label: "Contact",              icon: "lucide:mail" },
+  { to: "/sviluppatore-web-napoli",   label: "Services in Naples",    icon: "lucide:map-pin" },
 ]
 
 const legalLinks = [

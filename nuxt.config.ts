@@ -69,6 +69,7 @@ export default defineNuxtConfig({
 
   sitemap: {
     urls: [
+      { loc: "/sviluppatore-web-napoli", priority: 0.9 },
       { loc: "/projects", priority: 0.8 },
       { loc: "/projects/photographer-starter", priority: 0.7 },
       { loc: "/projects/gym-starter", priority: 0.7 },
