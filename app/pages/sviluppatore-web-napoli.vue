@@ -590,6 +590,13 @@ useSeoMeta({
   flex-direction: column;
   gap: var(--space-4);
   margin-top: var(--space-6);
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .why__body {
+    text-align: left;
+  }
 }
 
 /* METRICS */
