@@ -294,7 +294,7 @@ const legalLinks = [
   padding-block: var(--space-6);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: var(--space-3);
 
   p {
