@@ -1,4 +1,22 @@
 <script setup lang="ts">
+const description = "Thoughts on Nuxt.js, performance, Core Web Vitals and building interfaces that convert."
+
+useHead({
+  link: [{ rel: "canonical", href: "https://crescenzosorrentino.com/blog" }],
+})
+
+useSeoMeta({
+  title: "Blog",
+  description,
+  ogType: "website",
+  ogTitle: "Blog — Crescenzo Sorrentino",
+  ogDescription: description,
+  ogUrl: "https://crescenzosorrentino.com/blog",
+  twitterCard: "summary_large_image",
+  twitterTitle: "Blog — Crescenzo Sorrentino",
+  twitterDescription: description,
+})
+
 // Ordine delle categorie: determina la sequenza di visualizzazione nella pagina
 const categories = ["Guides", "Opinion", "Case Studies"] as const
 
@@ -13,20 +31,6 @@ const { data: articles } = await useAsyncData("blog", () =>
 // Il ?? [] garantisce un array vuoto se articles non è ancora disponibile (SSR).
 const byCategory = (category: string) =>
   articles.value?.filter(a => a.category === category) ?? []
-
-useHead({ link: [{ rel: "canonical", href: "https://crescenzosorrentino.com/blog" }] })
-
-useSeoMeta({
-  title: "Blog",
-  description: "Thoughts on Nuxt.js, performance, Core Web Vitals and building interfaces that convert.",
-  ogType: "website",
-  ogTitle: "Blog — Crescenzo Sorrentino",
-  ogDescription: "Thoughts on Nuxt.js, performance, Core Web Vitals and building interfaces that convert.",
-  ogUrl: "https://crescenzosorrentino.com/blog",
-  twitterCard: "summary_large_image",
-  twitterTitle: "Blog — Crescenzo Sorrentino",
-  twitterDescription: "Thoughts on Nuxt.js, performance, Core Web Vitals and building interfaces that convert.",
-})
 </script>
 
 <template>

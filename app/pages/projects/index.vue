@@ -1,18 +1,22 @@
 <script setup lang="ts">
 import { projects, categories } from "~/data/projects"
 
-useHead({ link: [{ rel: "canonical", href: "https://crescenzosorrentino.com/projects" }] })
+const description = "Nuxt.js projects by Crescenzo Sorrentino: landing pages and web applications."
+
+useHead({
+  link: [{ rel: "canonical", href: "https://crescenzosorrentino.com/projects" }],
+})
 
 useSeoMeta({
   title: "Projects",
-  description: "Nuxt.js projects by Crescenzo Sorrentino: landing pages and web applications.",
+  description,
   ogType: "website",
   ogTitle: "Projects — Crescenzo Sorrentino",
-  ogDescription: "Nuxt.js projects by Crescenzo Sorrentino: landing pages and web applications.",
+  ogDescription: description,
   ogUrl: "https://crescenzosorrentino.com/projects",
   twitterCard: "summary_large_image",
   twitterTitle: "Projects — Crescenzo Sorrentino",
-  twitterDescription: "Nuxt.js projects by Crescenzo Sorrentino: landing pages and web applications.",
+  twitterDescription: description,
 })
 </script>
 

@@ -1,9 +1,12 @@
 <script setup>
 const navLinks = [
-  { to: "/projects",                  label: "Projects",             icon: "lucide:folder-open" },
-  { to: "/blog",                      label: "Blog",                 icon: "lucide:book-open" },
-  { to: "/contact",                   label: "Contact",              icon: "lucide:mail" },
-  { to: "/sviluppatore-web-napoli",   label: "Services in Naples",    icon: "lucide:map-pin" },
+  { to: "/projects", label: "Projects", icon: "lucide:folder-open" },
+  { to: "/blog",     label: "Blog",     icon: "lucide:book-open" },
+  { to: "/contact",  label: "Contact",  icon: "lucide:mail" },
+]
+
+const localLinks = [
+  { to: "/sviluppatore-web-napoli", label: "Services in Naples", icon: "lucide:map-pin" },
 ]
 
 const legalLinks = [
@@ -70,6 +73,17 @@ const legalLinks = [
           </nav>
         </div>
 
+        <!-- LOCAL -->
+        <div class="col">
+          <span class="col-title">Local</span>
+          <nav>
+            <NuxtLink v-for="link in localLinks" :key="link.to" :to="link.to" class="link">
+              <Icon :name="link.icon" :size="14" aria-hidden="true" />
+              {{ link.label }}
+            </NuxtLink>
+          </nav>
+        </div>
+
         <!-- SOCIAL -->
         <div class="col">
           <span class="col-title">Social</span>
@@ -115,21 +129,16 @@ const legalLinks = [
           </div>
         </div>
 
-        <!-- LEGAL -->
-        <div class="col">
-          <span class="col-title">Legal</span>
-          <nav>
-            <NuxtLink v-for="link in legalLinks" :key="link.to" :to="link.to" class="link">
-              <Icon :name="link.icon" :size="14" aria-hidden="true" />
-              {{ link.label }}
-            </NuxtLink>
-          </nav>
-        </div>
       </div>
 
       <!-- COPYRIGHT -->
       <div class="copyright">
         <p>&copy; {{ new Date().getFullYear() }} Crescenzo Sorrentino</p>
+        <nav class="copyright__legal">
+          <NuxtLink v-for="link in legalLinks" :key="link.to" :to="link.to" class="link">
+            {{ link.label }}
+          </NuxtLink>
+        </nav>
       </div>
     </div>
   </footer> 
@@ -210,6 +219,12 @@ const legalLinks = [
   }
 }
 
+@media (min-width: 1024px) {
+  .sitemap {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+  }
+}
+
 /* BRAND */
 
 .brand {
@@ -277,10 +292,35 @@ const legalLinks = [
 .copyright {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-block: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
 
   p {
     font-size: var(--text-sm);
     color: rgba(255, 255, 255, 0.5);
+  }
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.copyright__legal {
+  display: flex;
+  gap: 0;
+
+  .link {
+    gap: 0;
+  }
+
+  .link:not(:first-child)::before {
+    content: "|";
+    padding-inline: var(--space-3);
+    color: rgba(255, 255, 255, 0.2);
+    pointer-events: none;
   }
 }
 </style>

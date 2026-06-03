@@ -1,4 +1,20 @@
 <script setup lang="ts">
+const description = "Cookie policy for crescenzosorrentino.com: how we use cookies and how to manage your preferences."
+
+useHead({
+  link: [{ rel: "canonical", href: "https://crescenzosorrentino.com/cookie-policy" }],
+})
+
+useSeoMeta({
+  title: "Cookie Policy",
+  description,
+  ogTitle: "Cookie Policy — Crescenzo Sorrentino",
+  ogDescription: description,
+  ogUrl: "https://crescenzosorrentino.com/cookie-policy",
+  twitterTitle: "Cookie Policy — Crescenzo Sorrentino",
+  twitterDescription: description,
+})
+
 // v-html è l'equivalente di dangerouslySetInnerHTML di React.
 // Sicuro in questo caso perché il contenuto è statico e scritto da noi.
 const content = `
@@ -27,17 +43,6 @@ const content = `
 </div>
 `
 
-useHead({ link: [{ rel: "canonical", href: "https://crescenzosorrentino.com/cookie-policy" }] })
-
-useSeoMeta({
-  title: "Cookie Policy",
-  description: "Cookie policy for crescenzosorrentino.com: how we use cookies and how to manage your preferences.",
-  ogTitle: "Cookie Policy — Crescenzo Sorrentino",
-  ogDescription: "Cookie policy for crescenzosorrentino.com: how we use cookies and how to manage your preferences.",
-  ogUrl: "https://crescenzosorrentino.com/cookie-policy",
-  twitterTitle: "Cookie Policy — Crescenzo Sorrentino",
-  twitterDescription: "Cookie policy for crescenzosorrentino.com: how we use cookies and how to manage your preferences.",
-})
 </script>
 
 <template>
