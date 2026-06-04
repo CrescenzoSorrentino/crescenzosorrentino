@@ -1,4 +1,6 @@
-<script setup>
+<script setup lang="ts">
+const cta = useFooterCta()
+
 const navLinks = [
   { to: "/projects", label: "Projects", icon: "lucide:folder-open" },
   { to: "/blog",     label: "Blog",     icon: "lucide:book-open" },
@@ -20,12 +22,9 @@ const legalLinks = [
     <div class="inner">
       <!-- PITCH -->
       <div class="pitch">
-        <h2 class="pitch-title">Let's work together</h2>
-        <p class="pitch-text">
-          Have a project in mind? I'm available for freelance work and open to
-          new opportunities.
-        </p>
-        <BaseButton to="/contact" size="lg">Get in touch</BaseButton>
+        <h2 class="pitch-title">{{ cta.title }}</h2>
+        <p class="pitch-text">{{ cta.text }}</p>
+        <BaseButton to="/contact" size="lg">{{ cta.label }}</BaseButton>
       </div>
 
       <!-- SITEMAP -->
@@ -57,8 +56,8 @@ const legalLinks = [
             </svg>
           </NuxtLink>
           <p class="description">
-            Building fast, polished Nuxt.js interfaces that turn visitors into
-            customers.
+            Fast, modern websites and web apps, built with Nuxt.js to turn
+            visitors into customers.
           </p>
         </div>
 

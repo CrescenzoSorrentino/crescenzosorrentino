@@ -1,4 +1,10 @@
 <script setup lang="ts">
+import { footerCtaIt, footerCtaEn } from "~/data/footer"
+
+const footerCta = useFooterCta()
+footerCta.value = footerCtaIt
+onUnmounted(() => { footerCta.value = footerCtaEn })
+
 const siteUrl = "https://crescenzosorrentino.com";
 const pageUrl = `${siteUrl}/sviluppatore-web-napoli`;
 
@@ -9,7 +15,7 @@ const description =
 const faqs = [
   {
     q: "Quanto costa un sito web?",
-    a: "Il costo dipende dalla complessità del progetto. Un sito vetrina semplice parte da cifre accessibili; progetti più articolati vengono valutati su misura. Il preventivo è sempre gratuito e senza impegno.",
+    a: "Dipende da cosa ti serve. Un sito vetrina o una landing page va in genere dagli €800 ai €2.500. Una web app o uno strumento su misura parte da €4.000. Ogni progetto inizia con una chiamata gratuita per capire i tuoi obiettivi e darti un preventivo chiaro, fisso e senza sorprese.",
   },
   {
     q: "Lavori solo a Napoli e in Campania?",
@@ -21,11 +27,11 @@ const faqs = [
   },
   {
     q: "Quanto tempo ci vuole per un sito?",
-    a: "Un sito vetrina richiede da 2 a 4 settimane. I tempi variano in base alla complessità e alla velocità nel fornire materiali come testi, foto e loghi.",
+    a: "Una landing page richiede 1-2 settimane, un sito vetrina completo dalle 2 alle 4 settimane, una web app dalle 4 alle 8 settimane in base alle funzionalità. I tempi dipendono anche dalla velocità con cui mi fornisci testi, foto e loghi, e li concordiamo sempre prima di iniziare.",
   },
   {
     q: "Ho bisogno di un designer prima di iniziare?",
-    a: "Non necessariamente. Se hai un file Figma o una brand identity, la traduco direttamente in codice. Se parti da zero, posso occuparmi anche della direzione visiva partendo da riferimenti o mood board.",
+    a: "Non necessariamente. Se hai già un design o una brand identity, lo trasformo in un sito reale e funzionante. Se parti da zero, mi occupo io sia dell'aspetto grafico sia della realizzazione.",
   },
 ];
 
@@ -95,23 +101,23 @@ useSeoMeta({
 const services = [
   {
     iconPaths: '<rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18"></path><path d="M9 21V9"></path>',
-    title: "Siti vetrina per professionisti e PMI",
-    description: "Avvocati, medici, architetti, consulenti: un sito che comunica autorevolezza, ottimizzato per le ricerche locali su Google.",
+    title: "Siti per aziende e professionisti",
+    description: "Avvocati, medici, architetti, consulenti, PMI: siti veloci e moderni che trasmettono autorevolezza e trasformano i visitatori in clienti. Anche restyling di siti vecchi o lenti.",
   },
   {
     iconPaths: '<path d="M18 20V4"></path><path d="M12 20V10"></path><path d="M6 20v-4"></path>',
-    title: "Landing page per campagne",
-    description: "Pagine costruite per convertire. Ogni scelta di layout e ogni CTA è pensata per trasformare i visitatori in clienti.",
-  },
-  {
-    iconPaths: '<path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>',
-    title: "Siti veloci e ottimizzati per Google",
-    description: "Con Nuxt.js ottengo punteggi altissimi su Google PageSpeed: meno rimbalzi, più posizionamento, più clienti.",
+    title: "Landing page che convertono",
+    description: "Pagine costruite per un solo obiettivo: trasformare i visitatori in clienti. Ogni sezione e ogni pulsante è pensato per spingere all'azione.",
   },
   {
     iconPaths: '<polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline>',
-    title: "Restyling di siti esistenti",
-    description: "Il tuo sito attuale è lento, vecchio, o non converte? Analizzo il problema e propongo un intervento mirato.",
+    title: "Web app e strumenti su misura",
+    description: "Gestionali, dashboard e strumenti interattivi che fanno esattamente ciò che serve alla tua attività, senza i limiti dei template.",
+  },
+  {
+    iconPaths: '<path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>',
+    title: "Velocità e posizionamento su Google",
+    description: "Con Nuxt.js ottengo punteggi altissimi su Google PageSpeed: meno rimbalzi, più posizionamento, più clienti.",
   },
 ]
 </script>

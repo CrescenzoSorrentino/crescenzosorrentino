@@ -1,6 +1,7 @@
 const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
+  "@id": "https://crescenzosorrentino.com#person",
   name: "Crescenzo Sorrentino",
   jobTitle: "Frontend Developer",
   url: "https://crescenzosorrentino.com",

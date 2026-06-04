@@ -1,12 +1,7 @@
 <script setup lang="ts">
 import { projects } from "~/data/projects"
 
-const description = "I build Nuxt.js interfaces that turn visitors into customers. Freelance frontend developer available for landing pages, web apps, and UI implementation."
-
-useHead({
-  titleTemplate: null,
-  link: [{ rel: "canonical", href: "https://crescenzosorrentino.com" }],
-})
+const description = "Freelance Nuxt.js developer building fast websites, landing pages, and web apps that turn visitors into customers. Clear pricing, free quote, available worldwide."
 
 useSeoMeta({
   title: "Crescenzo Sorrentino — Nuxt.js Freelance Developer",
@@ -26,69 +21,90 @@ const featuredProjects = computed(() => projects.filter(p => p.featured))
 
 const services = [
   {
-    iconPaths: '<polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline>',
-    title: "Nuxt.js Development",
-    description: "Scalable, maintainable Nuxt.js applications, from a single interactive widget to a full web application.",
+    iconPaths: '<rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18"></path><path d="M9 21V9"></path>',
+    title: "Websites for Businesses & Professionals",
+    description: "Fast, modern websites that make you look credible and turn visitors into clients. Built to load quickly and rank well on Google.",
   },
   {
     iconPaths: '<path d="M12 20V10"></path><path d="M18 20V4"></path><path d="M6 20v-4"></path>',
-    title: "Landing Pages & Conversion",
-    description: "Pages built to convert. Every layout decision, copy placement, and CTA is designed to move visitors to action.",
+    title: "Landing Pages That Convert",
+    description: "Pages built around one goal: turning visitors into customers. Every section and button is placed to move people to action.",
   },
   {
-    iconPaths: '<rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18"></path><path d="M9 21V9"></path>',
-    title: "UI/UX Implementation",
-    description: "Pixel-perfect translation of Figma designs into production code, with smooth animations and accessible markup.",
+    iconPaths: '<polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline>',
+    title: "Web Apps & Custom Tools",
+    description: "Interactive tools, dashboards, and web apps that do exactly what your business needs, with no template limits.",
   },
   {
     iconPaths: '<path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>',
-    title: "Performance & Core Web Vitals",
-    description: "Fast load times, optimized images, and clean scores on Lighthouse, because slow sites lose customers.",
+    title: "Speed & Google Ranking",
+    description: "Fast load times and clean technical setup, because slow sites lose customers and rank lower on Google.",
   },
 ]
 
 const faqs = [
   {
-    q: "How much does it cost to build a website in Nuxt.js?",
-    a: "Pricing depends on scope. A focused landing page typically ranges from €800 to €2,500, while a full web application starts from €4,000. Every project begins with a free consultation to define requirements and give you an accurate, no-surprise quote.",
+    q: "How much does a website cost?",
+    a: "It depends on what you need. A landing page or simple website usually costs between €800 and €2,500. A web app or custom tool starts from €4,000. Every project begins with a free call to understand your goals and give you a clear, fixed quote with no surprises.",
   },
   {
-    q: "What is the difference between a WordPress site and a Nuxt.js site?",
-    a: "WordPress is a PHP-based CMS: quick to set up but limited in performance and flexibility. Nuxt.js gives you full control over code, speed, and architecture. If your business depends on conversions, load time, and custom interactions, Nuxt.js consistently outperforms WordPress on every measurable metric.",
+    q: "How long does it take?",
+    a: "A focused landing page takes 1 to 2 weeks. A full business website takes 2 to 4 weeks. A web app takes 4 to 8 weeks, depending on how many features it needs. We agree on the timeline before any work starts.",
   },
   {
-    q: "How long does it take to build a landing page?",
-    a: "A focused landing page (one goal, one audience) takes 1 to 2 weeks from kickoff to delivery. A multi-page site or web application takes 3 to 8 weeks depending on complexity. Every timeline starts with a clear brief.",
+    q: "What happens after my website goes live?",
+    a: "I don't disappear after launch. You can keep your site on a simple monthly plan that covers updates, content changes, and support, so you never have to worry about the technical side.",
   },
   {
-    q: "What are Core Web Vitals and why do they matter for my business?",
-    a: "Core Web Vitals are Google's metrics for measuring real user experience: load speed (LCP), interactivity (INP), and visual stability (CLS). Sites that score well rank higher on Google and convert better. Users are 24% less likely to abandon a page that loads in under 2 seconds. Every project I deliver is optimized to pass Core Web Vitals.",
+    q: "Why does website speed matter for my business?",
+    a: "More than half of mobile visitors leave a site that takes longer than 3 seconds to load. A fast site keeps people on the page and ranks higher on Google. Every site I build is made to load fast and pass Google's speed checks (Core Web Vitals).",
   },
   {
-    q: "Do I need a designer before hiring a frontend developer?",
-    a: "Not necessarily. If you already have a Figma file or brand guidelines, I translate them directly into production code. If you're starting from scratch, I can work from a mood board or reference sites and handle both the visual direction and the implementation.",
+    q: "Why Nuxt.js instead of WordPress?",
+    a: "WordPress is quick to start, but it slows down and gets harder to control as you add plugins. Nuxt.js lets me build a site that is faster, safer, and made exactly for your business. If speed and conversions matter to you, it wins on every measure that counts.",
   },
   {
-    q: "When does it make sense to hire a freelance developer instead of an agency?",
-    a: "A freelance developer is the right choice when you need speed, direct communication, and lean costs: no account managers, no overhead. You work directly with the person writing your code. Agencies are better when you need a large coordinated team or a very wide scope all under one roof.",
+    q: "Do I need a designer before we start?",
+    a: "Not necessarily. If you already have a design, I turn it into a real, working website. If you're starting from scratch, I can handle both the look and the build together.",
+  },
+  {
+    q: "Why hire a freelancer instead of an agency?",
+    a: "With a freelancer you get speed, a direct line to the person actually building your site, and a leaner price: no account managers, no overhead. Agencies make more sense when you need a large team for a very big project.",
   },
 ]
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://crescenzosorrentino.com#faq",
+  mainEntity: faqs.map(({ q, a }) => ({
+    "@type": "Question",
+    name: q,
+    acceptedAnswer: { "@type": "Answer", text: a },
+  })),
+}
+
+useHead({
+  titleTemplate: null,
+  link: [{ rel: "canonical", href: "https://crescenzosorrentino.com" }],
+  script: [{ type: "application/ld+json", innerHTML: JSON.stringify(jsonLd) }],
+})
 </script>
 
 <template>
   <main>
     <AppHeroSection
       title="Crescenzo Sorrentino"
-      subtitle="I build Nuxt.js interfaces with one goal: turning your visitors into customers."
-      :primary-cta="{ label: 'Let\'s work together', to: '/contact' }"
+      subtitle="Freelance Nuxt.js developer. I build fast websites and web apps that turn your visitors into customers."
+      :primary-cta="{ label: 'Get a free quote', to: '/contact' }"
       :secondary-cta="{ label: 'View my work', to: '/projects' }"
     />
 
     <AppAboutSection
-      title="I build the frontend your product deserves"
+      title="A website that works as hard as you do"
       :paragraphs="[
-        'I\'m a frontend developer specializing in Nuxt.js. I work with startups and professionals who know that a great interface isn\'t a nice-to-have. It\'s what drives growth.',
-        'I care about every visual detail and performance metric, because I know that user experience is what decides whether a customer stays or leaves.',
+        'I\'m a freelance developer working with Nuxt.js, a modern tool for building fast, reliable websites. I help startups, small businesses, and professionals who know that a great website is not a nice-to-have. It is what brings in customers.',
+        'When you work with me, you talk directly to the person who designs, builds, and delivers your site. No middlemen, no surprises on the invoice, and support that continues after launch.',
       ]"
       :cta="{ label: 'Let\'s talk about your project', to: '/contact' }"
       alt
@@ -120,7 +136,7 @@ const faqs = [
 
     <AppServicesSection
       title="What I can do for you"
-      subtitle="From concept to deployment: I cover the full frontend stack."
+      subtitle="From the first idea to launch and beyond, I handle the whole website for you."
       :services="services"
       alt
     />
