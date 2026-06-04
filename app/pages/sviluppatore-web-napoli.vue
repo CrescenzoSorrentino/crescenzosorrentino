@@ -56,6 +56,14 @@ const faqs = [
     q: "Ho bisogno di un designer prima di iniziare?",
     a: "Non necessariamente. Se hai già un design o una brand identity, lo trasformo in un sito reale e funzionante. Se parti da zero, mi occupo io sia dell'aspetto grafico sia della realizzazione.",
   },
+  {
+    q: "Perché la velocità del sito è importante per il mio business?",
+    a: "Più della metà degli utenti da mobile abbandona un sito che impiega più di 3 secondi a caricarsi. Un sito veloce trattiene le persone sulla pagina e sale più in alto su Google. Ogni sito che realizzo è ottimizzato per caricarsi in meno di 2 secondi e superare i controlli di velocità di Google (Core Web Vitals).",
+  },
+  {
+    q: "Conviene di più un freelance o un'agenzia?",
+    a: "Con un freelance hai tempi più rapidi, un contatto diretto con chi scrive il tuo codice e un costo più contenuto: nessun account manager, nessun overhead. Le agenzie hanno senso quando il progetto richiede un team molto grande o una gamma di competenze molto ampia tutte sotto lo stesso tetto.",
+  },
 ];
 
 const jsonLd = {
