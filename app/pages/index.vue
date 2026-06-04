@@ -73,15 +73,30 @@ const faqs = [
   },
 ]
 
+const siteUrl = "https://crescenzosorrentino.com"
+
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "@id": "https://crescenzosorrentino.com#faq",
-  mainEntity: faqs.map(({ q, a }) => ({
-    "@type": "Question",
-    name: q,
-    acceptedAnswer: { "@type": "Answer", text: a },
-  })),
+  "@graph": [
+    {
+      "@type": "FAQPage",
+      "@id": `${siteUrl}#faq`,
+      mainEntity: faqs.map(({ q, a }) => ({
+        "@type": "Question",
+        name: q,
+        acceptedAnswer: { "@type": "Answer", text: a },
+      })),
+    },
+    ...services.map((s, i) => ({
+      "@type": "Service",
+      "@id": `${siteUrl}#service-${i}`,
+      name: s.title,
+      description: s.description,
+      serviceType: s.title,
+      provider: { "@id": `${siteUrl}#person` },
+      areaServed: { "@type": "Place", name: "Worldwide" },
+    })),
+  ],
 }
 
 useHead({

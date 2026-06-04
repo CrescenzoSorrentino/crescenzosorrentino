@@ -3,6 +3,13 @@ title: "Why your website is losing customers before they even read it"
 description: "Your site might look fine. But if it takes more than 3 seconds to load on mobile, more than half your visitors are already gone."
 date: 2026-05-21
 category: Guides
+faqs:
+  - q: "How fast should my website load?"
+    a: "Aim for the main content to appear in under 2.5 seconds on mobile. Past 3 seconds, more than half of mobile visitors leave before they see anything at all."
+  - q: "How do I check my website speed?"
+    a: "Use Google's free PageSpeed Insights. Enter your URL and you get a score from 0 to 100 plus a list of specific fixes. A score below 70 on mobile means you're losing visitors to load time."
+  - q: "Can a slow website be fixed without rebuilding it?"
+    a: "Sometimes. Optimising images, removing unused plugins, and moving to faster hosting can help. But if the platform was never built for speed, there's a ceiling, and at some point the architecture itself is the limit."
 ---
 
 Most business owners think about their website in terms of design. Does it look professional? Is the copy clear? Do the colours match the brand? These things matter. But there's a problem that costs more than a bad headline or an outdated logo, and most people never think to check it: speed.
@@ -21,7 +28,7 @@ WordPress powers 40% of the web, and for good reason. It's easy to set up and ea
 
 None of that code is doing anything useful for your customer. It's overhead: the cost of using a tool built to be flexible for everyone rather than fast for you. Add cheap shared hosting, unoptimised images, and a few third-party scripts, and you have a site that feels broken even when it technically works.
 
-## Google is watching too
+## How slow load times hurt your Google ranking
 
 Slow load times don't just cost you visitors directly. They cost you visibility.
 
@@ -29,7 +36,7 @@ Google uses Core Web Vitals as a ranking signal. A site that scores poorly on La
 
 If you're investing time in SEO and content, you may be building on a foundation that Google is quietly penalising.
 
-## What the numbers actually look like
+## What a good PageSpeed score looks like
 
 PageSpeed Insights is a free tool from Google that scores your site from 0 to 100 across performance, accessibility, best practices, and SEO.
 
@@ -41,9 +48,9 @@ That gap isn't cosmetic. It's the difference between a site that converts and on
 
 Sometimes performance issues can be addressed without starting over. Optimising images, removing unused plugins, switching to faster hosting, and cleaning up render-blocking scripts can move the needle significantly.
 
-But if your site is built on a foundation that was never designed to be fast, there's a ceiling to how far optimisation can take you. At some point, the architecture is the problem.
+But if your site is built on a foundation that was never designed to be fast, there's a ceiling to how far optimisation can take you. At some point, the architecture is the problem. If a rebuild turns out to be the answer, here's [what a custom build typically costs](/blog/what-does-it-cost-to-hire-a-freelance-web-developer).
 
-## Start here
+## How to test your website speed
 
 Go to [PageSpeed Insights](https://pagespeed.web.dev) and test your site right now. It's free, it takes 30 seconds, and the results are specific enough to act on.
 

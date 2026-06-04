@@ -12,6 +12,29 @@ const title = "Sviluppatore Front-End a Napoli | Crescenzo Sorrentino";
 const description =
   "Sviluppatore front-end freelance a Napoli: realizzo siti web veloci e ottimizzati per Google con Nuxt.js e Vue.js. Preventivo gratuito in tutta la Campania.";
 
+const services = [
+  {
+    iconPaths: '<rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18"></path><path d="M9 21V9"></path>',
+    title: "Siti per aziende e professionisti",
+    description: "Avvocati, medici, architetti, consulenti, PMI: siti veloci e moderni che trasmettono autorevolezza e trasformano i visitatori in clienti. Anche restyling di siti vecchi o lenti.",
+  },
+  {
+    iconPaths: '<path d="M18 20V4"></path><path d="M12 20V10"></path><path d="M6 20v-4"></path>',
+    title: "Landing page che convertono",
+    description: "Pagine costruite per un solo obiettivo: trasformare i visitatori in clienti. Ogni sezione e ogni pulsante è pensato per spingere all'azione.",
+  },
+  {
+    iconPaths: '<polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline>',
+    title: "Web app e strumenti su misura",
+    description: "Gestionali, dashboard e strumenti interattivi che fanno esattamente ciò che serve alla tua attività, senza i limiti dei template.",
+  },
+  {
+    iconPaths: '<path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>',
+    title: "Velocità e posizionamento su Google",
+    description: "Con Nuxt.js ottengo punteggi altissimi su Google PageSpeed: meno rimbalzi, più posizionamento, più clienti.",
+  },
+]
+
 const faqs = [
   {
     q: "Quanto costa un sito web?",
@@ -63,6 +86,14 @@ const jsonLd = {
         "Realizzazione siti web",
       ],
       provider: { "@id": `${siteUrl}#person`, "@type": "Person", name: "Crescenzo Sorrentino" },
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Servizi di sviluppo web",
+        itemListElement: services.map(({ title, description }) => ({
+          "@type": "Offer",
+          itemOffered: { "@type": "Service", name: title, description },
+        })),
+      },
     },
     {
       "@type": "FAQPage",
@@ -97,29 +128,6 @@ useSeoMeta({
   twitterDescription: description,
   twitterImage: `${siteUrl}/og-image.png`,
 });
-
-const services = [
-  {
-    iconPaths: '<rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18"></path><path d="M9 21V9"></path>',
-    title: "Siti per aziende e professionisti",
-    description: "Avvocati, medici, architetti, consulenti, PMI: siti veloci e moderni che trasmettono autorevolezza e trasformano i visitatori in clienti. Anche restyling di siti vecchi o lenti.",
-  },
-  {
-    iconPaths: '<path d="M18 20V4"></path><path d="M12 20V10"></path><path d="M6 20v-4"></path>',
-    title: "Landing page che convertono",
-    description: "Pagine costruite per un solo obiettivo: trasformare i visitatori in clienti. Ogni sezione e ogni pulsante è pensato per spingere all'azione.",
-  },
-  {
-    iconPaths: '<polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline>',
-    title: "Web app e strumenti su misura",
-    description: "Gestionali, dashboard e strumenti interattivi che fanno esattamente ciò che serve alla tua attività, senza i limiti dei template.",
-  },
-  {
-    iconPaths: '<path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>',
-    title: "Velocità e posizionamento su Google",
-    description: "Con Nuxt.js ottengo punteggi altissimi su Google PageSpeed: meno rimbalzi, più posizionamento, più clienti.",
-  },
-]
 </script>
 
 <template>

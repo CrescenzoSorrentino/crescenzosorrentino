@@ -41,12 +41,29 @@ const breadcrumbSchema = {
   ],
 }
 
-// Inietta canonical e i due schema come tag <script type="application/ld+json"> nel <head>
+// Schema FAQPage generato dalle FAQ in frontmatter (se presenti).
+// Le stesse FAQ vengono renderizzate in pagina: requisito di Google per i rich result.
+const faqs = article.value.faqs ?? []
+const faqSchema = faqs.length
+  ? {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "@id": `${url}#faq`,
+      mainEntity: faqs.map(({ q, a }) => ({
+        "@type": "Question",
+        name: q,
+        acceptedAnswer: { "@type": "Answer", text: a },
+      })),
+    }
+  : null
+
+// Inietta canonical e gli schema come tag <script type="application/ld+json"> nel <head>
 useHead({
   link: [{ rel: "canonical", href: url }],
   script: [
     { type: "application/ld+json", innerHTML: JSON.stringify(blogPostingSchema) },
     { type: "application/ld+json", innerHTML: JSON.stringify(breadcrumbSchema) },
+    ...(faqSchema ? [{ type: "application/ld+json", innerHTML: JSON.stringify(faqSchema) }] : []),
   ],
 })
 
@@ -94,6 +111,15 @@ useSeoMeta({
         <ContentRenderer :value="article!" class="prose" />
       </div>
     </section>
+
+    <!-- FAQ -->
+    <AppFaqSection
+      v-if="faqs.length"
+      title="Frequently Asked Questions"
+      subtitle="Quick answers to the questions this article raises most often."
+      :items="faqs"
+      alt
+    />
   </main>
 </template>
 
@@ -215,6 +241,29 @@ useSeoMeta({
   border: none;
   border-top: 1px solid var(--border);
   margin-block: var(--space-8);
+}
+
+/* IMMAGINI / FIGURE */
+
+.prose :deep(img) {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+
+.prose :deep(figure) {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin: 0;
+}
+
+.prose :deep(figcaption) {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  text-align: center;
 }
 
 </style>

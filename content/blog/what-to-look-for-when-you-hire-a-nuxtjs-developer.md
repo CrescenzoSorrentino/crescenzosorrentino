@@ -3,13 +3,20 @@ title: "What to look for when you hire a Nuxt.js developer"
 description: "Not every frontend developer who lists Nuxt.js on their profile delivers the same thing. Here's what actually separates good work from expensive mistakes."
 date: 2026-05-27
 category: Guides
+faqs:
+  - q: "How do I know if a developer is actually good at Nuxt.js?"
+    a: "Open their live projects and test them on PageSpeed Insights. Fast, stable scores mean the code is solid. Ask which Nuxt.js sites they've shipped, where they're deployed, and what the performance scores look like."
+  - q: "Should I hire a developer who only knows Vue?"
+    a: "Not for a Nuxt.js project. Nuxt adds server-side rendering, routing conventions, image optimisation, and SEO infrastructure on top of Vue. A Vue-only developer will end up learning those parts on your budget."
+  - q: "Is a fixed quote better than an hourly rate?"
+    a: "For most websites, yes. A fixed quote on an agreed scope means you can budget with confidence and the price only moves if the scope moves. Hourly rates sound transparent but make the final cost hard to predict."
 ---
 
 Most clients who come to me have already decided they want something custom. They've outgrown a template, they need performance their current site can't deliver, or they want an interface that's genuinely theirs. What they're less sure about is how to evaluate the person they hire to build it.
 
 Here's what I look for, and what you should too.
 
-## Portfolio over credentials
+## What a developer's portfolio really tells you
 
 A developer's LinkedIn certifications and GitHub activity tell you very little about what working with them actually looks like. A portfolio tells you a lot.
 
@@ -33,9 +40,9 @@ A good Nuxt.js developer thinks about performance and SEO as part of the archite
 
 Hourly rates sound transparent but rarely are. They create an incentive to work slowly and make it nearly impossible to budget accurately. A project quoted at €1,200 can quietly become €2,400 if the scope wasn't defined clearly upfront.
 
-Fixed-scope projects, where the deliverables are agreed before work starts, align the developer's interests with yours. If the scope changes, the price changes. If it doesn't, it doesn't. For most landing pages and web applications, a fixed quote is the only quote worth accepting.
+Fixed-scope projects, where the deliverables are agreed before work starts, align the developer's interests with yours. If the scope changes, the price changes. If it doesn't, it doesn't. For most landing pages and web applications, a fixed quote is the only quote worth accepting. If you're not sure what a fair quote looks like, I broke down [typical price ranges here](/blog/what-does-it-cost-to-hire-a-freelance-web-developer).
 
-## What a good process looks like
+## What a good development process looks like
 
 A developer worth hiring will ask you more questions than you expect before writing a single line of code. What's the goal of the site? Who is the audience? What does a successful outcome look like in six months?
 
