@@ -22,6 +22,7 @@ const blogPostingSchema = {
   headline: article.value.title,
   description: article.value.description,
   datePublished: article.value.date,
+  ...(article.value.dateModified ? { dateModified: article.value.dateModified } : {}),
   url,
   author: {
     "@type": "Person",

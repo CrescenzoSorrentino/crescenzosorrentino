@@ -2,6 +2,7 @@
 title: "Why your website is losing customers before they even read it"
 description: "Your site might look fine. But if it takes more than 3 seconds to load on mobile, more than half your visitors are already gone."
 date: 2026-05-21
+dateModified: 2026-06-04
 category: Guides
 faqs:
   - q: "How fast should my website load?"
@@ -41,6 +42,12 @@ If you're investing time in SEO and content, you may be building on a foundation
 PageSpeed Insights is a free tool from Google that scores your site from 0 to 100 across performance, accessibility, best practices, and SEO.
 
 Most business websites built on WordPress with a standard theme score between 40 and 65 on mobile. A site built from scratch with performance as a first principle scores consistently above 90. You can see what that looks like in practice in [my projects](/projects).
+
+<!-- IMAGE PLACEHOLDER — upload the file to /public/blog/ and update src below. Suggested: a PageSpeed Insights report of one of your sites showing a 90+ mobile score with green Core Web Vitals. -->
+<figure>
+  <img src="/blog/pagespeed-good-score.png" alt="Google PageSpeed Insights report showing a mobile performance score above 90 with green Core Web Vitals for a Nuxt.js site" loading="lazy" width="1600" height="900" />
+  <figcaption>A PageSpeed Insights score above 90 on mobile. This is what a site built for speed actually looks like.</figcaption>
+</figure>
 
 That gap isn't cosmetic. It's the difference between a site that converts and one that quietly loses customers every day.
 

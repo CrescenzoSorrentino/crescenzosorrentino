@@ -2,6 +2,7 @@
 title: "What does it actually cost to hire a freelance web developer?"
 description: "Landing page or full web app? Here's what freelance web development actually costs, what drives the price, and how to avoid paying for the wrong thing."
 date: 2026-05-14
+dateModified: 2026-06-04
 category: Guides
 faqs:
   - q: "How much does a freelance web developer cost?"
@@ -23,6 +24,12 @@ Most of what I build falls into one of two categories.
 **Landing pages and brochure sites** are focused, conversion-driven websites. A single page or a small set of pages designed to present what you do and get visitors to take action. These typically range from €800 to €2,500. The variation comes from design complexity, the number of sections, animations, and whether copywriting or content strategy is included.
 
 **Web applications** are more involved: custom interfaces, interactive dashboards, tools with real logic on the client side, and frontends that connect to external APIs or services. These start from €4,000 and scale up depending on scope and the number of integrations involved. You can see examples of both in [my portfolio](/projects).
+
+<!-- OPTIONAL IMAGE PLACEHOLDER — weakest fit of the four, delete if you don't have a good visual. Suggested: two real project screenshots side by side, a landing page and a web app dashboard. -->
+<figure>
+  <img src="/blog/landing-page-vs-web-app.png" alt="Two project examples side by side: a conversion-focused landing page on the left and a custom web app dashboard on the right" loading="lazy" width="1600" height="900" />
+  <figcaption>The two most common projects: a focused landing page (left) and a custom web app (right). Price tracks complexity, not page count.</figcaption>
+</figure>
 
 ## What drives the price of a website up
 

@@ -8,7 +8,7 @@ const navLinks = [
 ]
 
 const localLinks = [
-  { to: "/sviluppatore-web-napoli", label: "Services in Naples", icon: "lucide:map-pin" },
+  { to: "/realizzazione-siti-web-napoli", label: "Services in Naples", icon: "lucide:map-pin" },
 ]
 
 const legalLinks = [

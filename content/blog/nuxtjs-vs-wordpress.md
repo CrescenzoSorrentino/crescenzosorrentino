@@ -2,6 +2,7 @@
 title: "Nuxt.js vs WordPress: what I tell clients before they decide"
 description: "WordPress is quick to set up, Nuxt.js gives you full control. Here's how to decide which one your project actually needs."
 date: 2026-05-06
+dateModified: 2026-06-04
 category: Opinion
 faqs:
   - q: "Is Nuxt.js better than WordPress for SEO?"
@@ -29,6 +30,12 @@ A fresh WordPress install is manageable. Add a page builder, a few plugins, and 
 This matters more than people think. Google uses Core Web Vitals as a ranking signal. And beyond SEO, the data is clear: a one-second delay in load time reduces conversions by up to 7%. If your site exists to generate leads or sell something, performance is a business metric, not a technical one.
 
 Nuxt.js ships only what you build. There's no plugin overhead, no theme bloat, no hidden JavaScript running in the background. Every millisecond is accountable.
+
+<!-- IMAGE PLACEHOLDER — upload the file to /public/blog/ and update src below. Suggested: a side-by-side PageSpeed Insights comparison (WordPress score vs Nuxt.js score). -->
+<figure>
+  <img src="/blog/nuxtjs-vs-wordpress-pagespeed.png" alt="Side-by-side PageSpeed Insights comparison showing a WordPress site scoring in the 50s and a Nuxt.js site scoring above 90 on mobile" loading="lazy" width="1600" height="900" />
+  <figcaption>The same kind of site on WordPress and on Nuxt.js. That gap in mobile performance is the difference between ranking and being buried.</figcaption>
+</figure>
 
 ## Flexibility: where Nuxt.js pulls ahead
 

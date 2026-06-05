@@ -6,11 +6,11 @@ footerCta.value = footerCtaIt
 onUnmounted(() => { footerCta.value = footerCtaEn })
 
 const siteUrl = "https://crescenzosorrentino.com";
-const pageUrl = `${siteUrl}/sviluppatore-web-napoli`;
+const pageUrl = `${siteUrl}/realizzazione-siti-web-napoli`;
 
-const title = "Sviluppatore Front-End a Napoli | Crescenzo Sorrentino";
+const title = "Realizzazione Siti Web a Napoli | Crescenzo Sorrentino";
 const description =
-  "Sviluppatore front-end freelance a Napoli: realizzo siti web veloci e ottimizzati per Google con Nuxt.js e Vue.js. Preventivo gratuito in tutta la Campania.";
+  "Realizzazione siti web a Napoli: creo siti veloci, moderni e ottimizzati per Google per aziende e professionisti. Preventivo gratuito in tutta la Campania.";
 
 const services = [
   {
@@ -72,7 +72,7 @@ const jsonLd = {
     {
       "@type": "ProfessionalService",
       "@id": `${pageUrl}#business`,
-      name: "Crescenzo Sorrentino, Sviluppatore Front-End Freelance",
+      name: "Crescenzo Sorrentino, Realizzazione Siti Web a Napoli",
       description,
       url: pageUrl,
       image: `${siteUrl}/og-image.png`,
@@ -86,12 +86,14 @@ const jsonLd = {
         { "@type": "AdministrativeArea", name: "Campania" },
       ],
       knowsAbout: [
+        "Realizzazione siti web",
+        "Creazione siti web",
+        "Siti web per aziende",
+        "Web design",
+        "SEO",
         "Nuxt.js",
         "Vue.js",
-        "SEO",
         "Core Web Vitals",
-        "Sviluppo front-end",
-        "Realizzazione siti web",
       ],
       provider: { "@id": `${siteUrl}#person`, "@type": "Person", name: "Crescenzo Sorrentino" },
       hasOfferCatalog: {
@@ -141,8 +143,8 @@ useSeoMeta({
 <template>
   <main lang="it">
     <AppHeroSection
-      title="Sviluppatore Front-End<br>Freelance a Napoli"
-      subtitle="Realizzo siti web veloci, moderni e ottimizzati per Google con Nuxt.js, per aziende e professionisti a Napoli e in tutta la Campania."
+      title="Realizzazione Siti Web<br>a Napoli"
+      subtitle="Creo siti web veloci, moderni e ottimizzati per Google per aziende e professionisti a Napoli e in tutta la Campania."
       :primary-cta="{ label: 'Richiedi un preventivo gratuito', to: '/contact' }"
       :secondary-cta="{ label: 'Guarda i miei progetti', to: '/projects' }"
     />
@@ -150,11 +152,11 @@ useSeoMeta({
     <AppAboutSection
       title="Un freelance napoletano, non un'agenzia"
       :paragraphs="[
-        'Mi chiamo Crescenzo Sorrentino. Lavoro come sviluppatore front-end freelance da Napoli, specializzato nella realizzazione di siti web moderni con Nuxt.js e Vue.js. Quando mi contatti, parli direttamente con me: la persona che scriverà il tuo codice, curerà il design e consegnerà il progetto nei tempi concordati.',
+        'Mi chiamo Crescenzo Sorrentino e mi occupo di realizzazione di siti web per aziende e professionisti a Napoli. Quando mi contatti, parli direttamente con me: la stessa persona che cura il web design e lo sviluppo, e consegna il tuo sito nei tempi concordati.',
         'Nessun account manager, nessun intermediario, nessuna sorpresa in fattura. Se sei a Napoli, Salerno, Caserta, Avellino o Benevento, possiamo incontrarci di persona. Altrimenti si lavora tranquillamente da remoto.',
       ]"
       :cta="{ label: 'Parliamo del tuo progetto', to: '/contact' }"
-      avatar-alt="Crescenzo Sorrentino, sviluppatore front-end freelance a Napoli"
+      avatar-alt="Crescenzo Sorrentino, realizzazione siti web a Napoli"
       alt
     />
 
@@ -179,8 +181,8 @@ useSeoMeta({
     </section>
 
     <AppServicesSection
-      title="Servizi di sviluppo web su misura"
-      subtitle="Soluzioni pensate per aziende, PMI e professionisti a Napoli e in Campania."
+      title="Servizi di realizzazione siti web"
+      subtitle="Dalla creazione di un nuovo sito al restyling di uno esistente, soluzioni per aziende, PMI e professionisti a Napoli e in Campania."
       :services="services"
       alt
     />
@@ -194,7 +196,7 @@ useSeoMeta({
         </div>
         <div class="why__body">
           <p>
-            WordPress è rapido da impostare, ma limitato in performance e flessibilità. Nuxt.js è un framework moderno basato su Vue.js: grazie al rendering lato server (SSR) e alla generazione statica (SSG), i siti si caricano in frazioni di secondo, un fattore critico per la SEO e per chi naviga da mobile.
+            WordPress è rapido da impostare, ma limitato in performance e flessibilità. Nuxt.js è una tecnologia moderna basata su Vue.js che genera siti molto più veloci: si caricano in frazioni di secondo, un fattore critico per il posizionamento su Google e per chi naviga da telefono.
           </p>
           <p>
             Ogni elemento è costruito su misura, senza plugin di terze parti che si rompono ad ogni aggiornamento. Il codice che scrivo oggi è pensato per durare e scalare con la tua attività.

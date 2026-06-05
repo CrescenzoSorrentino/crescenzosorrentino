@@ -33,6 +33,8 @@ export default defineNuxtConfig({
   routeRules: {
     "/blog/**": { prerender: true },
     "/projects/**": { prerender: true },
+    // Vecchio slug della pagina locale: redirect permanente al nuovo URL ottimizzato
+    "/sviluppatore-web-napoli": { redirect: { to: "/realizzazione-siti-web-napoli", statusCode: 301 } },
   },
   nitro: {
     prerender: {
@@ -71,7 +73,7 @@ export default defineNuxtConfig({
 
   sitemap: {
     urls: [
-      { loc: "/sviluppatore-web-napoli", priority: 0.9 },
+      { loc: "/realizzazione-siti-web-napoli", priority: 0.9 },
       { loc: "/projects", priority: 0.8 },
       { loc: "/projects/photographer-starter", priority: 0.7 },
       { loc: "/projects/gym-starter", priority: 0.7 },

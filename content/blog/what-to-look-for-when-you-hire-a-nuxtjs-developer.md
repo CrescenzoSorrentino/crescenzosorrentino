@@ -2,6 +2,7 @@
 title: "What to look for when you hire a Nuxt.js developer"
 description: "Not every frontend developer who lists Nuxt.js on their profile delivers the same thing. Here's what actually separates good work from expensive mistakes."
 date: 2026-05-27
+dateModified: 2026-06-04
 category: Guides
 faqs:
   - q: "How do I know if a developer is actually good at Nuxt.js?"
@@ -23,6 +24,12 @@ A developer's LinkedIn certifications and GitHub activity tell you very little a
 When you look at someone's work, ask three questions: does the site load fast? Does it hold up on mobile? Does the UI feel considered, or does it look like a template with the colours changed?
 
 You can test load speed for free at [PageSpeed Insights](https://pagespeed.web.dev). Open their live projects and run them. If a developer is building fast, performant Nuxt.js sites, the scores reflect it. If the scores are poor, the code is poor.
+
+<!-- IMAGE PLACEHOLDER — upload the file to /public/blog/ and update src below. Suggested: the Core Web Vitals breakdown (LCP, INP, CLS) from a PageSpeed report of one of your live projects. -->
+<figure>
+  <img src="/blog/core-web-vitals-breakdown.png" alt="PageSpeed Insights Core Web Vitals breakdown for a live Nuxt.js project, with Largest Contentful Paint, Interaction to Next Paint and Cumulative Layout Shift all in the green" loading="lazy" width="1600" height="900" />
+  <figcaption>Running a developer's live project through PageSpeed Insights. Green Core Web Vitals are the proof that the code underneath is solid, not just the homepage.</figcaption>
+</figure>
 
 ## Nuxt.js is not just Vue with extras
 
