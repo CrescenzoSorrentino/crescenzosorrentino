@@ -264,7 +264,7 @@ useSeoMeta({
 .prose :deep(figcaption) {
   font-size: var(--text-sm);
   color: var(--text-secondary);
-  text-align: center;
+  text-align: left;
 }
 
 </style>
