@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { footerCtaIt, footerCtaEn } from "~/data/footer"
+
 const route = useRoute()
 
 // Carica l'articolo corrispondente al percorso URL corrente
@@ -44,6 +46,12 @@ const breadcrumbSchema = {
 
 // Lingua dell'articolo (default "en"): guida l'attributo lang, il formato data e i testi UI.
 const lang = article.value.lang ?? "en"
+const footerCta = useFooterCta()
+if (lang === "it") {
+  footerCta.value = footerCtaIt
+  onUnmounted(() => { footerCta.value = footerCtaEn })
+}
+
 const dateLocale = lang === "it" ? "it-IT" : "en-GB"
 const formatDate = (date: string) =>
   new Date(date).toLocaleDateString(dateLocale, { day: "numeric", month: "long", year: "numeric" })
