@@ -140,7 +140,7 @@ const formatDate = (date: string, lang?: string) =>
   margin-top: var(--space-8);
   padding: var(--space-1);
   border: 1px solid var(--border);
-  border-radius: 999px;
+  border-radius: 8px;
 }
 
 .lang-toggle__btn {
@@ -152,7 +152,7 @@ const formatDate = (date: string, lang?: string) =>
   color: var(--text-secondary);
   background: transparent;
   border: none;
-  border-radius: 999px;
+  border-radius: 6px;
   cursor: pointer;
   transition: color 200ms ease, background-color 200ms ease;
 
