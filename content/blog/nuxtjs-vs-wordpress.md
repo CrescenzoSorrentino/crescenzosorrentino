@@ -3,7 +3,6 @@ title: "Nuxt.js vs WordPress: what I tell clients before they decide"
 description: "WordPress is quick to set up, Nuxt.js gives you full control. Here's how to decide which one your project actually needs."
 date: 2026-05-06
 dateModified: 2026-06-04
-category: Opinion
 faqs:
   - q: "Is Nuxt.js better than WordPress for SEO?"
     a: "For technical SEO, yes. Nuxt.js gives you full control over page speed, structured data, and clean HTML, which are direct ranking factors. WordPress can rank well too, but you often have to fight plugins and theme bloat to get there. Content quality still matters more than the platform on both."

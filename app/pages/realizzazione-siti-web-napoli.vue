@@ -201,6 +201,9 @@ useSeoMeta({
           <p>
             Ogni elemento è costruito su misura, senza plugin di terze parti che si rompono ad ogni aggiornamento. Il codice che scrivo oggi è pensato per durare e scalare con la tua attività.
           </p>
+          <p>
+            E quanto costa tutto questo? Ho spiegato le fasce di prezzo reali, e cosa le fa variare, nella guida su <NuxtLink to="/blog/quanto-costa-sito-web-napoli">quanto costa un sito web a Napoli</NuxtLink>.
+          </p>
         </div>
       </div>
     </section>
@@ -271,5 +274,11 @@ useSeoMeta({
   @media (min-width: 768px) {
     text-align: left;
   }
+}
+
+.why__body :deep(a) {
+  color: var(--color-accent-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 </style>

@@ -10,7 +10,7 @@ export default defineContentConfig({
         description: z.string(),
         date: z.string(),
         dateModified: z.string().optional(),
-        category: z.enum(["Guides", "Opinion", "Case Studies"]),
+        lang: z.enum(["en", "it"]).default("en"),
         faqs: z
           .array(z.object({ q: z.string(), a: z.string() }))
           .optional(),

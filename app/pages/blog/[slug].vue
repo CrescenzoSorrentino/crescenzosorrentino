@@ -42,6 +42,17 @@ const breadcrumbSchema = {
   ],
 }
 
+// Lingua dell'articolo (default "en"): guida l'attributo lang, il formato data e i testi UI.
+const lang = article.value.lang ?? "en"
+const dateLocale = lang === "it" ? "it-IT" : "en-GB"
+const formatDate = (date: string) =>
+  new Date(date).toLocaleDateString(dateLocale, { day: "numeric", month: "long", year: "numeric" })
+
+const faqHeading =
+  lang === "it"
+    ? { title: "Domande frequenti", subtitle: "Risposte rapide alle domande più comuni su questo argomento." }
+    : { title: "Frequently Asked Questions", subtitle: "Quick answers to the questions this article raises most often." }
+
 // Schema FAQPage generato dalle FAQ in frontmatter (se presenti).
 // Le stesse FAQ vengono renderizzate in pagina: requisito di Google per i rich result.
 const faqs = article.value.faqs ?? []
@@ -60,6 +71,7 @@ const faqSchema = faqs.length
 
 // Inietta canonical e gli schema come tag <script type="application/ld+json"> nel <head>
 useHead({
+  htmlAttrs: { lang },
   link: [{ rel: "canonical", href: url }],
   script: [
     { type: "application/ld+json", innerHTML: JSON.stringify(blogPostingSchema) },
@@ -98,7 +110,7 @@ useSeoMeta({
 
         <div class="intro">
           <time :datetime="article!.date" class="date">
-            {{ new Date(article!.date).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" }) }}
+            {{ formatDate(article!.date) }}
           </time>
           <h1>{{ article!.title }}</h1>
           <p>{{ article!.description }}</p>
@@ -116,8 +128,8 @@ useSeoMeta({
     <!-- FAQ -->
     <AppFaqSection
       v-if="faqs.length"
-      title="Frequently Asked Questions"
-      subtitle="Quick answers to the questions this article raises most often."
+      :title="faqHeading.title"
+      :subtitle="faqHeading.subtitle"
       :items="faqs"
       alt
     />

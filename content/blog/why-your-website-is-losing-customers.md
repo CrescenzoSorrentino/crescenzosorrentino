@@ -3,7 +3,6 @@ title: "Why your website is losing customers before they even read it"
 description: "Your site might look fine. But if it takes more than 3 seconds to load on mobile, more than half your visitors are already gone."
 date: 2026-05-21
 dateModified: 2026-06-04
-category: Guides
 faqs:
   - q: "How fast should my website load?"
     a: "Aim for the main content to appear in under 2.5 seconds on mobile. Past 3 seconds, more than half of mobile visitors leave before they see anything at all."

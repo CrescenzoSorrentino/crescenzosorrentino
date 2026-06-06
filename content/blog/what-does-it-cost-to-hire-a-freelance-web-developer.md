@@ -3,7 +3,6 @@ title: "What does it actually cost to hire a freelance web developer?"
 description: "Landing page or full web app? Here's what freelance web development actually costs, what drives the price, and how to avoid paying for the wrong thing."
 date: 2026-05-14
 dateModified: 2026-06-04
-category: Guides
 faqs:
   - q: "How much does a freelance web developer cost?"
     a: "It depends on scope. A landing page or small website usually ranges from €800 to €2,500. A web app or custom tool starts from €4,000. The final number tracks the number of pages, custom design, integrations, and content involved."

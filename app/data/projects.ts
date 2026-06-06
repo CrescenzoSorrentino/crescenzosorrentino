@@ -6,7 +6,6 @@ export interface Project {
   title:           string
   description:     string
   to:              string
-  category:        "Websites" | "Web Apps"
   slug:            string
   year:            number
   longDescription: string
@@ -30,7 +29,6 @@ export const projects: Project[] = [
     description:
       "Reusable portfolio template for professional photographers built on Nuxt 4. Dark, minimal design, fully customizable per client via Vercel environment variables: zero code changes to update colors, fonts, copy, video, and galleries.",
     to: "/projects/photographer-starter",
-    category: "Websites",
     slug: "photographer-starter",
     year: 2026,
     longDescription:
@@ -57,7 +55,6 @@ export const projects: Project[] = [
     description:
       "Website template for gyms, dark-themed and fully configurable via Vercel environment variables: zero code changes needed to customize content, colors, and images.",
     to: "/projects/gym-starter",
-    category: "Websites",
     slug: "gym-starter",
     year: 2026,
     longDescription:
@@ -84,7 +81,6 @@ export const projects: Project[] = [
     description:
       "Personal portfolio built from scratch with Nuxt.js. Focused on performance, accessibility, and clean design, achieving top Lighthouse scores across all metrics.",
     to: "/projects/crescenzosorrentino",
-    category: "Websites",
     slug: "crescenzosorrentino",
     year: 2026,
     longDescription:
@@ -109,7 +105,6 @@ export const projects: Project[] = [
     description:
       "Simple and fast grocery list app. Add, check off, and remove items on the fly, with data persisted in the browser's local storage.",
     to: "/projects/grocerylist",
-    category: "Web Apps",
     slug: "grocerylist",
     year: 2026,
     longDescription:
@@ -125,7 +120,3 @@ export const projects: Project[] = [
   },
 
 ]
-
-
-// Categorie nell'ordine in cui appaiono nella pagina /projects.
-export const categories = ["Websites", "Web Apps"] as const

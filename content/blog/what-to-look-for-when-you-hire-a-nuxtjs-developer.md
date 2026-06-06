@@ -3,7 +3,6 @@ title: "What to look for when you hire a Nuxt.js developer"
 description: "Not every frontend developer who lists Nuxt.js on their profile delivers the same thing. Here's what actually separates good work from expensive mistakes."
 date: 2026-05-27
 dateModified: 2026-06-04
-category: Guides
 faqs:
   - q: "How do I know if a developer is actually good at Nuxt.js?"
     a: "Open their live projects and test them on PageSpeed Insights. Fast, stable scores mean the code is solid. Ask which Nuxt.js sites they've shipped, where they're deployed, and what the performance scores look like."
