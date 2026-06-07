@@ -39,6 +39,8 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       routes: [
+        "/siti-web-per-fotografi-napoli",
+        "/siti-web-per-palestre-napoli",
         "/blog/nuxtjs-vs-wordpress",
         "/blog/what-does-it-cost-to-hire-a-freelance-web-developer",
         "/blog/why-your-website-is-losing-customers",
@@ -75,6 +77,8 @@ export default defineNuxtConfig({
   sitemap: {
     urls: [
       { loc: "/realizzazione-siti-web-napoli", priority: 0.9 },
+      { loc: "/siti-web-per-fotografi-napoli", priority: 0.8 },
+      { loc: "/siti-web-per-palestre-napoli", priority: 0.8 },
       { loc: "/projects", priority: 0.8 },
       { loc: "/projects/photographer-starter", priority: 0.7 },
       { loc: "/projects/gym-starter", priority: 0.7 },

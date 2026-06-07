@@ -1,11 +1,16 @@
 <script setup lang="ts">
-import { footerCtaIt, footerCtaEn } from "~/data/footer"
+import { footerCtaIt } from "~/data/footer"
+import { verticals } from "~/data/verticals"
+
+// Hub dei settori: l'elenco si auto-popola da data/verticals.ts.
+// Aggiungere una nuova nicchia là la fa comparire qui senza toccare questa pagina.
+const sectors = Object.values(verticals)
 
 // Pagina SEO locale (Napoli/Campania), unica pagina interamente in italiano del sito.
-// Attiva la CTA italiana nel footer all'ingresso e ripristina quella inglese all'uscita.
+// Imposta la CTA italiana nel footer; il reset a inglese all'uscita è gestito dal
+// middleware globale footer-cta.global.ts.
 const footerCta = useFooterCta()
 footerCta.value = footerCtaIt
-onUnmounted(() => { footerCta.value = footerCtaEn })
 
 const siteUrl = "https://crescenzosorrentino.com";
 const pageUrl = `${siteUrl}/realizzazione-siti-web-napoli`;
@@ -193,6 +198,33 @@ useSeoMeta({
       alt
     />
 
+    <!-- SETTORI -->
+    <section class="section">
+      <div class="container">
+        <div class="section__head">
+          <h2>Settori in cui sono specializzato</h2>
+          <p>Per alcune categorie parto da un template già pronto e pensato per il loro mondo: una base solida da personalizzare, meno tempo e costi più bassi.</p>
+        </div>
+        <div class="sectors">
+          <NuxtLink
+            v-for="s in sectors"
+            :key="s.slug"
+            :to="`/${s.slug}`"
+            class="sector"
+          >
+            <div class="sector__icon">
+              <Icon :name="s.card.icon" :size="24" aria-hidden="true" />
+            </div>
+            <div class="sector__text">
+              <h3>{{ s.card.name }}</h3>
+              <p>{{ s.card.tagline }}</p>
+            </div>
+            <Icon name="lucide:arrow-right" class="sector__arrow" :size="20" aria-hidden="true" />
+          </NuxtLink>
+        </div>
+      </div>
+    </section>
+
     <!-- PERCHÉ NUXT -->
     <section class="section">
       <div class="container container--narrow">
@@ -257,6 +289,63 @@ useSeoMeta({
   font-size: var(--text-sm);
   color: var(--text-secondary);
   line-height: 1.5;
+}
+
+/* SETTORI */
+
+.sectors {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+
+@media (min-width: 640px) {
+  .sectors { grid-template-columns: repeat(2, 1fr); }
+}
+
+.sector {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  background-color: var(--bg-page);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  color: var(--text-primary);
+  transition: border-color 200ms ease, transform 200ms ease;
+
+  &:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+  }
+}
+
+.sector__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background-color: var(--bg-section-alt);
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.sector__text {
+  flex: 1;
+
+  p {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-top: var(--space-1);
+  }
+}
+
+.sector__arrow {
+  flex-shrink: 0;
+  color: var(--color-accent);
 }
 
 /* PERCHÉ NUXT */

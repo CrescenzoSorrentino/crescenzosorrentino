@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { footerCtaIt, footerCtaEn } from "~/data/footer"
+import { footerCtaIt } from "~/data/footer"
 
 const route = useRoute()
 
@@ -46,10 +46,10 @@ const breadcrumbSchema = {
 
 // Lingua dell'articolo (default "en"): guida l'attributo lang, il formato data e i testi UI.
 const lang = article.value.lang ?? "en"
-const footerCta = useFooterCta()
+// Per gli articoli in italiano imposta la CTA italiana del footer.
+// Il reset a inglese all'uscita è gestito dal middleware globale footer-cta.global.ts.
 if (lang === "it") {
-  footerCta.value = footerCtaIt
-  onUnmounted(() => { footerCta.value = footerCtaEn })
+  useFooterCta().value = footerCtaIt
 }
 
 const dateLocale = lang === "it" ? "it-IT" : "en-GB"
