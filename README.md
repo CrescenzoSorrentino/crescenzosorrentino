@@ -22,10 +22,10 @@ app/
   components/
     app/         # Layout-level components (header, footer, nav)
     base/        # Reusable UI components (button, card, avatar)
-  data/          # Static data (projects, contact info)
+  composables/   # Shared state (footer CTA language)
+  data/          # Static data (projects, contact, footer CTA)
   layouts/       # Default layout
   pages/         # File-based routing
-  plugins/       # client-side plugins
 content/
   blog/          # Markdown blog posts
 public/
@@ -58,15 +58,15 @@ npm run preview
 
 - `useSeoMeta` on every page (title, description, OG, Twitter Card)
 - Canonical link on every page
-- Schema.org: `Person` + `WebSite` globally, `BlogPosting` + `BreadcrumbList` on blog posts
-- Sitemap via `@nuxtjs/sitemap` — update `nuxt.config.ts` when adding new pages
+- Schema.org: `Person` + `WebSite` globally, `BlogPosting` + `BreadcrumbList` (+ `FAQPage` when present) on blog posts, `CreativeWork` on project pages, `FAQPage` + `Service` on the homepage, `ProfessionalService` + `FAQPage` on the Naples landing page
+- Sitemap via `@nuxtjs/sitemap`: update `nuxt.config.ts` when adding new pages
 - `robots.txt` allows all, points to sitemap
 - Google Search Console verified via meta tag
 
 ## Analytics
 
 - **Vercel Analytics** via the `@vercel/analytics` Nuxt module
-- Cookieless and privacy-first — no consent banner required
+- Cookieless and privacy-first: no consent banner required
 - No personally identifiable data collected; aggregated metrics only
 
 ## Theme
@@ -83,9 +83,13 @@ Dark/light mode via `data-theme` attribute on `<html>`. Preference stored in `lo
 title: "Your post title"
 description: "Short description for SEO and previews."
 date: YYYY-MM-DD
-category: Guides # Guides | Opinion | Case Studies
+dateModified: YYYY-MM-DD # optional, adds dateModified to the BlogPosting schema
+lang: en # optional, "en" (default) or "it"; drives the blog language filter
+faqs: # optional, rendered on the page and output as FAQPage structured data
+  - q: "A question?"
+    a: "The answer."
 ---
 ```
 
-3. Add the route to the sitemap in `nuxt.config.ts`
-4. Deploy — Vercel pre-renders the route automatically via `routeRules`
+3. Add the route to both `nitro.prerender.routes` and `sitemap.urls` in `nuxt.config.ts`
+4. Deploy. Vercel pre-renders the route automatically via `routeRules`

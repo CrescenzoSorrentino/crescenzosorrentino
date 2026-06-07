@@ -17,8 +17,11 @@ useSeoMeta({
   twitterImage: "https://crescenzosorrentino.com/og-image.png",
 })
 
+// Solo i progetti con featured: true compaiono in homepage; la lista completa vive in /projects.
 const featuredProjects = computed(() => projects.filter(p => p.featured))
 
+// services e faqs sono la fonte unica: vengono renderizzati nelle sezioni della pagina
+// e contemporaneamente trasformati nello schema JSON-LD più in basso.
 const services = [
   {
     iconPaths: '<rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18"></path><path d="M9 21V9"></path>',
@@ -75,6 +78,8 @@ const faqs = [
 
 const siteUrl = "https://crescenzosorrentino.com"
 
+// Dati strutturati per Google: FAQPage (rich result delle domande) + un nodo Service per ogni servizio.
+// Ogni Service punta al nodo #person globale definito in nuxt.config.ts (provider del servizio).
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [

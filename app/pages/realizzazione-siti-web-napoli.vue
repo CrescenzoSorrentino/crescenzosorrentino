@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { footerCtaIt, footerCtaEn } from "~/data/footer"
 
+// Pagina SEO locale (Napoli/Campania), unica pagina interamente in italiano del sito.
+// Attiva la CTA italiana nel footer all'ingresso e ripristina quella inglese all'uscita.
 const footerCta = useFooterCta()
 footerCta.value = footerCtaIt
 onUnmounted(() => { footerCta.value = footerCtaEn })
@@ -66,6 +68,10 @@ const faqs = [
   },
 ];
 
+// Dati strutturati per Google, raggruppati in un @graph:
+// - ProfessionalService: attività locale con aree servite (città campane) e catalogo servizi → SEO locale
+// - FAQPage: rende le FAQ idonee ai rich result
+// services e faqs alimentano sia questo schema sia le sezioni renderizzate in pagina (fonte unica).
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
