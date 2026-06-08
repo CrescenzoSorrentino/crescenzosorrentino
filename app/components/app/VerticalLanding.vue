@@ -202,14 +202,22 @@ useSeoMeta({
   align-items: center;
 }
 
+/* Su mobile l'anteprima (la prova visiva) viene prima del testo: l'utente vede
+   subito un sito reale, poi legge la spiegazione e arriva alla CTA. */
+.demo__preview { order: -1; }
+
 @media (min-width: 768px) {
   .demo {
     flex-direction: row;
     gap: var(--space-12);
   }
 
+  /* Affiancati: testo a sinistra, anteprima a destra (ordine naturale del DOM). */
   .demo__text,
-  .demo__preview { flex: 1; }
+  .demo__preview {
+    flex: 1;
+    order: 0;
+  }
 }
 
 .demo__text {
