@@ -1,3 +1,11 @@
+<template>
+  <!-- `--size` viene iniettato come proprietà CSS custom così tutti i calc()
+       dentro .avatar si aggiornano automaticamente al cambio della prop. -->
+  <div class="avatar" :style="{ '--size': `${size}px` }">
+    <NuxtImg :src="src" :alt="alt" :width="size" :height="size" :sizes="`${size}px`" quality="80" densities="1x 2x" class="avatar__image" />
+  </div>
+</template>
+
 <script setup>
 // Tutte le variabili CSS derivate (--noggin, --mask-size, ecc.)
 // sono calcolate da `size`, quindi una sola prop controlla l'intero layout.
@@ -7,14 +15,6 @@ defineProps({
   size: { type: Number, default: 200 },
 })
 </script>
-
-<template>
-  <!-- `--size` viene iniettato come proprietà CSS custom così tutti i calc()
-       dentro .avatar si aggiornano automaticamente al cambio della prop. -->
-  <div class="avatar" :style="{ '--size': `${size}px` }">
-    <NuxtImg :src="src" :alt="alt" :width="size" :height="size" :sizes="`${size}px`" quality="80" densities="1x 2x" class="image" />
-  </div>
-</template>
 
 <style scoped>
 /*
@@ -68,7 +68,7 @@ defineProps({
   filter:           drop-shadow(0 8px 24px rgba(10, 35, 66, 0.35));
 }
 
-.image {
+.avatar__image {
   width:                  100%;
   height:                 var(--height-with-noggin);
   object-fit:             cover;

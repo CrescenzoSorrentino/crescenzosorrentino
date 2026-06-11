@@ -1,53 +1,3 @@
-<script setup lang="ts">
-import { projects } from "~/data/projects"
-
-const route = useRoute()
-
-// Ricerca sincrona nei dati statici: nessuna chiamata asincrona necessaria
-const project = projects.find(p => p.slug === route.params.slug)
-
-// Restituisce 404 se lo slug non corrisponde ad alcun progetto
-if (!project) {
-  throw createError({ statusCode: 404, statusMessage: "Project not found" })
-}
-
-// Dati strutturati per Google: rappresenta il progetto come CreativeWork.
-// Se esiste liveUrl lo usa come URL canonico, altrimenti cade sull'URL interno.
-const projectSchema = {
-  "@context": "https://schema.org",
-  "@type": "CreativeWork",
-  name: project.title,
-  description: project.longDescription,
-  url: project.liveUrl ?? `https://crescenzosorrentino.com/projects/${project.slug}`,
-  keywords: project.tags.join(", "),
-  author: {
-    "@type": "Person",
-    name: "Crescenzo Sorrentino",
-    url: "https://crescenzosorrentino.com",
-  },
-}
-
-// Inietta canonical e lo schema come tag <script type="application/ld+json"> nel <head>
-useHead({
-  link: [{ rel: "canonical", href: `https://crescenzosorrentino.com/projects/${project.slug}` }],
-  script: [{ type: "application/ld+json", innerHTML: JSON.stringify(projectSchema) }],
-})
-
-useSeoMeta({
-  title: project.title,
-  description: project.description,
-  ogType: "website",
-  ogTitle: `${project.title} — Crescenzo Sorrentino`,
-  ogDescription: project.description,
-  ogUrl: `https://crescenzosorrentino.com/projects/${project.slug}`,
-  ogImage: "https://crescenzosorrentino.com/og-image.png",
-  twitterCard: "summary_large_image",
-  twitterTitle: `${project.title} — Crescenzo Sorrentino`,
-  twitterDescription: project.description,
-  twitterImage: "https://crescenzosorrentino.com/og-image.png",
-})
-</script>
-
 <template>
   <main>
     <!-- HEADER -->
@@ -120,6 +70,57 @@ useSeoMeta({
     </section>
   </main>
 </template>
+
+<script setup lang="ts">
+import { projects } from "~/data/projects"
+
+const route = useRoute()
+
+// Ricerca sincrona nei dati statici: nessuna chiamata asincrona necessaria
+const project = projects.find(p => p.slug === route.params.slug)
+
+// Restituisce 404 se lo slug non corrisponde ad alcun progetto
+if (!project) {
+  throw createError({ statusCode: 404, statusMessage: "Project not found" })
+}
+
+// Dati strutturati per Google: rappresenta il progetto come CreativeWork.
+// Se esiste liveUrl lo usa come URL canonico, altrimenti cade sull'URL interno.
+const projectSchema = {
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  name: project.title,
+  description: project.longDescription,
+  url: project.liveUrl ?? `https://crescenzosorrentino.com/projects/${project.slug}`,
+  keywords: project.tags.join(", "),
+  author: {
+    "@type": "Person",
+    name: "Crescenzo Sorrentino",
+    url: "https://crescenzosorrentino.com",
+  },
+}
+
+// Inietta canonical e lo schema come tag <script type="application/ld+json"> nel <head>
+useHead({
+  link: [{ rel: "canonical", href: `https://crescenzosorrentino.com/projects/${project.slug}` }],
+  script: [{ type: "application/ld+json", innerHTML: JSON.stringify(projectSchema) }],
+})
+
+useSeoMeta({
+  title: project.title,
+  description: project.description,
+  ogType: "website",
+  ogTitle: `${project.title} — Crescenzo Sorrentino`,
+  ogDescription: project.description,
+  ogUrl: `https://crescenzosorrentino.com/projects/${project.slug}`,
+  ogImage: "https://crescenzosorrentino.com/og-image.png",
+  twitterCard: "summary_large_image",
+  twitterTitle: `${project.title} — Crescenzo Sorrentino`,
+  twitterDescription: project.description,
+  twitterImage: "https://crescenzosorrentino.com/og-image.png",
+})
+</script>
+
 
 <style scoped>
 
@@ -271,13 +272,13 @@ useSeoMeta({
 
   &::before {
     content: "";
+    position: relative;
+    top: -1px;
     flex-shrink: 0;
     width: 6px;
     height: 6px;
     border-radius: 50%;
     background-color: var(--color-accent);
-    position: relative;
-    top: -1px;
   }
 }
 </style>

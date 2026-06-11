@@ -1,25 +1,3 @@
-<script setup lang="ts">
-import { CONTACT_INFO } from "~/data/contact"
-
-const description = "Get in touch to discuss your Nuxt.js project. I reply within 24 hours."
-
-useHead({
-  link: [{ rel: "canonical", href: "https://crescenzosorrentino.com/contact" }],
-})
-
-useSeoMeta({
-  title: "Contact",
-  description,
-  ogType: "website",
-  ogTitle: "Contact — Crescenzo Sorrentino",
-  ogDescription: description,
-  ogUrl: "https://crescenzosorrentino.com/contact",
-  twitterCard: "summary_large_image",
-  twitterTitle: "Contact — Crescenzo Sorrentino",
-  twitterDescription: description,
-})
-</script>
-
 <template>
   <main>
     <!-- INTRO -->
@@ -63,15 +41,38 @@ useSeoMeta({
   </main>
 </template>
 
+<script setup lang="ts">
+import { CONTACT_INFO } from "~/data/contact"
+
+const description = "Get in touch to discuss your Nuxt.js project. I reply within 24 hours."
+
+useHead({
+  link: [{ rel: "canonical", href: "https://crescenzosorrentino.com/contact" }],
+})
+
+useSeoMeta({
+  title: "Contact",
+  description,
+  ogType: "website",
+  ogTitle: "Contact — Crescenzo Sorrentino",
+  ogDescription: description,
+  ogUrl: "https://crescenzosorrentino.com/contact",
+  twitterCard: "summary_large_image",
+  twitterTitle: "Contact — Crescenzo Sorrentino",
+  twitterDescription: description,
+})
+</script>
+
+
 <style scoped>
 
 /* INTRO */
 
 .intro {
-  margin-bottom: var(--space-16);
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
+  margin-bottom: var(--space-16);
 }
 
 .intro p {

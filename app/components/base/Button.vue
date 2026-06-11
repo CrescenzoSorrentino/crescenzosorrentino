@@ -1,3 +1,18 @@
+<template>
+  <!--
+    Si comporta da NuxtLink se `to` è presente, da <a> se è presente `href`,
+    altrimenti ricade su <button>. Priorità: to > href > button.
+  -->
+  <component
+    :is="tag"
+    :to="to"
+    :href="href"
+    :class="['btn', `btn--${variant}`, `btn--${size}`]"
+  >
+    <slot />
+  </component>
+</template>
+
 <script setup>
 import { resolveComponent, computed } from "vue"
 
@@ -15,21 +30,6 @@ const tag = computed(() =>
 )
 </script>
 
-<template>
-  <!--
-    Si comporta da NuxtLink se `to` è presente, da <a> se è presente `href`,
-    altrimenti ricade su <button>. Priorità: to > href > button.
-  -->
-  <component
-    :is="tag"
-    :to="to"
-    :href="href"
-    :class="['btn', `btn--${variant}`, `btn--${size}`]"
-  >
-    <slot />
-  </component>
-</template>
-
 <style scoped>
 /* BASE */
 
@@ -39,11 +39,11 @@ const tag = computed(() =>
   justify-content: center;
   gap: var(--space-2);
   padding: var(--space-3) var(--space-6);
+  border-radius: 8px;
   font-size: var(--text-sm);
   font-weight: 600;
-  border-radius: 8px;
-  transition: background-color 0.2s, color 0.2s, transform 0.1s;
   cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, transform 0.1s;
 
   &:active {
     transform: translateY(2px);

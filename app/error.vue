@@ -1,23 +1,15 @@
-<script setup lang="ts">
-const props = defineProps<{ error: { statusCode: number; statusMessage: string } }>()
-
-const is404 = props.error.statusCode === 404
-
-useHead({ title: is404 ? "Page not found" : "Something went wrong" })
-</script>
-
 <template>
   <NuxtLayout>
     <main class="error-page">
       <div class="container container--narrow">
-        <div class="content">
+        <div class="error-page__content">
 
           <svg
             v-if="is404"
             viewBox="0 0 320 180"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            class="illustration"
+            class="error-page__illustration"
             aria-hidden="true"
           >
             <!-- Cable left -->
@@ -31,8 +23,8 @@ useHead({ title: is404 ? "Page not found" : "Something went wrong" })
             <rect x="106" y="98" width="36" height="12" rx="4" stroke="currentColor" stroke-width="2"/>
 
             <!-- Sparks -->
-            <path d="M 152 66 L 160 84 L 155 84 L 163 102" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="spark spark--1"/>
-            <path d="M 164 72 L 170 84 L 166 84 L 172 96" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="spark spark--2"/>
+            <path d="M 152 66 L 160 84 L 155 84 L 163 102" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="error-page__spark error-page__spark--1"/>
+            <path d="M 164 72 L 170 84 L 166 84 L 172 96" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="error-page__spark error-page__spark--2"/>
 
             <!-- Socket body -->
             <rect x="183" y="58" width="76" height="64" rx="8" stroke="currentColor" stroke-width="2.5"/>
@@ -45,16 +37,16 @@ useHead({ title: is404 ? "Page not found" : "Something went wrong" })
             <line x1="259" y1="42" x2="259" y2="138" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
           </svg>
 
-          <div class="text">
-            <span class="label">{{ error.statusCode }}</span>
+          <div class="error-page__text">
+            <span class="error-page__label">{{ error.statusCode }}</span>
             <h1>{{ is404 ? "Nothing here." : "Something broke." }}</h1>
-            <p class="message">
+            <p class="error-page__message">
               {{ is404
                 ? "This page doesn't exist or has been moved."
                 : "An unexpected error occurred. Try refreshing the page." }}
             </p>
 
-            <NuxtLink to="/" class="home-link">Back to homepage</NuxtLink>
+            <NuxtLink to="/" class="error-page__home-link">Back to homepage</NuxtLink>
           </div>
 
         </div>
@@ -62,6 +54,14 @@ useHead({ title: is404 ? "Page not found" : "Something went wrong" })
     </main>
   </NuxtLayout>
 </template>
+
+<script setup lang="ts">
+const props = defineProps<{ error: { statusCode: number; statusMessage: string } }>()
+
+const is404 = props.error.statusCode === 404
+
+useHead({ title: is404 ? "Page not found" : "Something went wrong" })
+</script>
 
 <style scoped>
 .error-page {
@@ -71,29 +71,29 @@ useHead({ title: is404 ? "Page not found" : "Something went wrong" })
   padding-block: var(--space-24);
 }
 
-.content {
+.error-page__content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
   gap: var(--space-10);
+  text-align: center;
 }
 
-.illustration {
+.error-page__illustration {
   width: 100%;
   max-width: 280px;
   color: var(--text-primary);
 }
 
-.spark {
+.error-page__spark {
   stroke: var(--color-accent);
 }
 
-.spark--1 {
+.error-page__spark--1 {
   animation: flicker 1.8s ease-in-out infinite;
 }
 
-.spark--2 {
+.error-page__spark--2 {
   animation: flicker 1.8s ease-in-out infinite 0.3s;
 }
 
@@ -105,13 +105,13 @@ useHead({ title: is404 ? "Page not found" : "Something went wrong" })
   60% { opacity: 1; }
 }
 
-.text {
+.error-page__text {
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
 }
 
-.label {
+.error-page__label {
   font-size: var(--text-xs);
   font-weight: 500;
   letter-spacing: 0.08em;
@@ -126,13 +126,12 @@ h1 {
   line-height: 1.1;
 }
 
-.message {
+.error-page__message {
   font-size: var(--text-md);
   color: var(--text-secondary);
 }
 
-
-.home-link {
+.error-page__home-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;

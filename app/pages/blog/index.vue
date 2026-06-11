@@ -1,49 +1,3 @@
-<script setup lang="ts">
-const description = "Thoughts on Nuxt.js, performance, Core Web Vitals and building interfaces that convert."
-
-useHead({
-  link: [{ rel: "canonical", href: "https://crescenzosorrentino.com/blog" }],
-})
-
-useSeoMeta({
-  title: "Blog",
-  description,
-  ogType: "website",
-  ogTitle: "Blog — Crescenzo Sorrentino",
-  ogDescription: description,
-  ogUrl: "https://crescenzosorrentino.com/blog",
-  twitterCard: "summary_large_image",
-  twitterTitle: "Blog — Crescenzo Sorrentino",
-  twitterDescription: description,
-})
-
-// Carica tutti gli articoli ordinati dal più recente al più vecchio.
-// La chiave "blog" è la cache key: Nuxt riutilizza il risultato se il componente
-// viene rimontato senza una nuova navigazione.
-const { data: articles } = await useAsyncData("blog", () =>
-  queryCollection("blog").order("date", "DESC").all()
-)
-
-// Lingua attiva del filtro: parte da "en" (lingua principale del sito).
-const activeLang = ref<"en" | "it">("en")
-
-// Mostra il toggle solo se esistono articoli italiani da filtrare.
-const hasItalian = computed(() => articles.value?.some(a => a.lang === "it") ?? false)
-
-// Articoli della lingua attiva (gli articoli senza campo lang sono trattati come "en").
-const langArticles = computed(() =>
-  articles.value?.filter(a => (a.lang ?? "en") === activeLang.value) ?? []
-)
-
-// Data formattata secondo la lingua dell'articolo.
-const formatDate = (date: string, lang?: string) =>
-  new Date(date).toLocaleDateString(lang === "it" ? "it-IT" : "en-GB", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  })
-</script>
-
 <template>
   <main>
     <!-- INTRO -->
@@ -114,6 +68,53 @@ const formatDate = (date: string, lang?: string) =>
     </section>
   </main>
 </template>
+
+<script setup lang="ts">
+const description = "Thoughts on Nuxt.js, performance, Core Web Vitals and building interfaces that convert."
+
+useHead({
+  link: [{ rel: "canonical", href: "https://crescenzosorrentino.com/blog" }],
+})
+
+useSeoMeta({
+  title: "Blog",
+  description,
+  ogType: "website",
+  ogTitle: "Blog — Crescenzo Sorrentino",
+  ogDescription: description,
+  ogUrl: "https://crescenzosorrentino.com/blog",
+  twitterCard: "summary_large_image",
+  twitterTitle: "Blog — Crescenzo Sorrentino",
+  twitterDescription: description,
+})
+
+// Carica tutti gli articoli ordinati dal più recente al più vecchio.
+// La chiave "blog" è la cache key: Nuxt riutilizza il risultato se il componente
+// viene rimontato senza una nuova navigazione.
+const { data: articles } = await useAsyncData("blog", () =>
+  queryCollection("blog").order("date", "DESC").all()
+)
+
+// Lingua attiva del filtro: parte da "en" (lingua principale del sito).
+const activeLang = ref<"en" | "it">("en")
+
+// Mostra il toggle solo se esistono articoli italiani da filtrare.
+const hasItalian = computed(() => articles.value?.some(a => a.lang === "it") ?? false)
+
+// Articoli della lingua attiva (gli articoli senza campo lang sono trattati come "en").
+const langArticles = computed(() =>
+  articles.value?.filter(a => (a.lang ?? "en") === activeLang.value) ?? []
+)
+
+// Data formattata secondo la lingua dell'articolo.
+const formatDate = (date: string, lang?: string) =>
+  new Date(date).toLocaleDateString(lang === "it" ? "it-IT" : "en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  })
+</script>
+
 
 <style scoped>
 

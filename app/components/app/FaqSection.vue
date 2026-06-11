@@ -1,12 +1,3 @@
-<script setup lang="ts">
-defineProps<{
-  title: string
-  subtitle: string
-  items: { q: string; a: string }[]
-  alt?: boolean
-}>()
-</script>
-
 <template>
   <section class="section" :class="{ 'section--alt': alt }">
     <div class="container container--narrow">
@@ -24,14 +15,23 @@ defineProps<{
   </section>
 </template>
 
+<script setup lang="ts">
+defineProps<{
+  title: string
+  subtitle: string
+  items: { q: string; a: string }[]
+  alt?: boolean
+}>()
+</script>
+
 <style scoped>
 .section__head {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
   gap: var(--space-2);
   margin-bottom: var(--space-8);
+  text-align: center;
 }
 
 .faq__list {

@@ -1,13 +1,3 @@
-<script setup lang="ts">
-defineProps<{
-  title: string
-  paragraphs: string[]
-  cta: { label: string; to: string }
-  alt?: boolean
-  avatarAlt?: string
-}>()
-</script>
-
 <template>
   <section
     class="section about-section"
@@ -39,6 +29,16 @@ defineProps<{
     </div>
   </section>
 </template>
+
+<script setup lang="ts">
+defineProps<{
+  title: string
+  paragraphs: string[]
+  cta: { label: string; to: string }
+  alt?: boolean
+  avatarAlt?: string
+}>()
+</script>
 
 <style scoped>
 .about-section {

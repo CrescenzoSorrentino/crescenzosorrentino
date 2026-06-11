@@ -1,3 +1,107 @@
+<template>
+  <main lang="it">
+    <AppHeroSection
+      title="Realizzazione Siti Web<br>a Napoli"
+      subtitle="Creo siti web veloci, moderni e ottimizzati per Google per aziende e professionisti a Napoli e in tutta la Campania."
+      :primary-cta="{ label: 'Richiedi un preventivo gratuito', to: '/contact' }"
+      :secondary-cta="{ label: 'Guarda i miei progetti', to: '/projects' }"
+    />
+
+    <AppAboutSection
+      title="Un freelance napoletano, non un'agenzia"
+      :paragraphs="[
+        'Mi chiamo Crescenzo Sorrentino e mi occupo di realizzazione di siti web per aziende e professionisti a Napoli. Quando mi contatti, parli direttamente con me: la stessa persona che cura il web design e lo sviluppo, e consegna il tuo sito nei tempi concordati.',
+        'Nessun account manager, nessun intermediario, nessuna sorpresa in fattura. Se sei a Napoli, Salerno, Caserta, Avellino o Benevento, possiamo incontrarci di persona. Altrimenti si lavora tranquillamente da remoto.',
+      ]"
+      :cta="{ label: 'Parliamo del tuo progetto', to: '/contact' }"
+      avatar-alt="Crescenzo Sorrentino, realizzazione siti web a Napoli"
+      alt
+    />
+
+    <!-- NUMERI -->
+    <section class="section">
+      <div class="container">
+        <div class="metrics">
+          <div class="metric">
+            <span class="metric__value">95+</span>
+            <span class="metric__label">Score medio su Google PageSpeed</span>
+          </div>
+          <div class="metric">
+            <span class="metric__value">2–4</span>
+            <span class="metric__label">Settimane per un sito vetrina completo</span>
+          </div>
+          <div class="metric">
+            <span class="metric__value">48h</span>
+            <span class="metric__label">Per ricevere un preventivo dettagliato</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <AppServicesSection
+      title="Servizi di realizzazione siti web"
+      subtitle="Dalla creazione di un nuovo sito al restyling di uno esistente, soluzioni per aziende, PMI e professionisti a Napoli e in Campania."
+      :services="services"
+      alt
+    />
+
+    <!-- SETTORI -->
+    <section class="section">
+      <div class="container">
+        <div class="section__head">
+          <h2>Settori in cui sono specializzato</h2>
+          <p>Per alcune categorie parto da un template già pronto e pensato per il loro mondo: una base solida da personalizzare, meno tempo e costi più bassi.</p>
+        </div>
+        <div class="sectors">
+          <NuxtLink
+            v-for="s in sectors"
+            :key="s.slug"
+            :to="`/${s.slug}`"
+            class="sector"
+          >
+            <div class="sector__icon">
+              <Icon :name="s.card.icon" :size="24" aria-hidden="true" />
+            </div>
+            <div class="sector__text">
+              <h3>{{ s.card.name }}</h3>
+              <p>{{ s.card.tagline }}</p>
+            </div>
+            <Icon name="lucide:arrow-right" class="sector__arrow" :size="20" aria-hidden="true" />
+          </NuxtLink>
+        </div>
+      </div>
+    </section>
+
+    <!-- PERCHÉ NUXT -->
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="section__head">
+          <h2>Perché Nuxt.js e non WordPress?</h2>
+          <p>Performance reale, flessibilità totale, nessun plugin che si rompe.</p>
+        </div>
+        <div class="why__body">
+          <p>
+            WordPress è rapido da impostare, ma limitato in performance e flessibilità. Nuxt.js è una tecnologia moderna basata su Vue.js che genera siti molto più veloci: si caricano in frazioni di secondo, un fattore critico per il posizionamento su Google e per chi naviga da telefono.
+          </p>
+          <p>
+            Ogni elemento è costruito su misura, senza plugin di terze parti che si rompono ad ogni aggiornamento. Il codice che scrivo oggi è pensato per durare e scalare con la tua attività.
+          </p>
+          <p>
+            E quanto costa tutto questo? Ho spiegato le fasce di prezzo reali, e cosa le fa variare, nella guida su <NuxtLink to="/blog/quanto-costa-sito-web-napoli">quanto costa un sito web a Napoli</NuxtLink>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <AppFaqSection
+      title="Domande frequenti"
+      subtitle="Tutto quello che ti serve sapere prima di contattarmi."
+      :items="faqs"
+      alt
+    />
+  </main>
+</template>
+
 <script setup lang="ts">
 import { footerCtaIt } from "~/data/footer"
 import { verticals } from "~/data/verticals"
@@ -151,109 +255,6 @@ useSeoMeta({
 });
 </script>
 
-<template>
-  <main lang="it">
-    <AppHeroSection
-      title="Realizzazione Siti Web<br>a Napoli"
-      subtitle="Creo siti web veloci, moderni e ottimizzati per Google per aziende e professionisti a Napoli e in tutta la Campania."
-      :primary-cta="{ label: 'Richiedi un preventivo gratuito', to: '/contact' }"
-      :secondary-cta="{ label: 'Guarda i miei progetti', to: '/projects' }"
-    />
-
-    <AppAboutSection
-      title="Un freelance napoletano, non un'agenzia"
-      :paragraphs="[
-        'Mi chiamo Crescenzo Sorrentino e mi occupo di realizzazione di siti web per aziende e professionisti a Napoli. Quando mi contatti, parli direttamente con me: la stessa persona che cura il web design e lo sviluppo, e consegna il tuo sito nei tempi concordati.',
-        'Nessun account manager, nessun intermediario, nessuna sorpresa in fattura. Se sei a Napoli, Salerno, Caserta, Avellino o Benevento, possiamo incontrarci di persona. Altrimenti si lavora tranquillamente da remoto.',
-      ]"
-      :cta="{ label: 'Parliamo del tuo progetto', to: '/contact' }"
-      avatar-alt="Crescenzo Sorrentino, realizzazione siti web a Napoli"
-      alt
-    />
-
-    <!-- NUMERI -->
-    <section class="section">
-      <div class="container">
-        <div class="metrics">
-          <div class="metric">
-            <span class="metric__value">95+</span>
-            <span class="metric__label">Score medio su Google PageSpeed</span>
-          </div>
-          <div class="metric">
-            <span class="metric__value">2–4</span>
-            <span class="metric__label">Settimane per un sito vetrina completo</span>
-          </div>
-          <div class="metric">
-            <span class="metric__value">48h</span>
-            <span class="metric__label">Per ricevere un preventivo dettagliato</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <AppServicesSection
-      title="Servizi di realizzazione siti web"
-      subtitle="Dalla creazione di un nuovo sito al restyling di uno esistente, soluzioni per aziende, PMI e professionisti a Napoli e in Campania."
-      :services="services"
-      alt
-    />
-
-    <!-- SETTORI -->
-    <section class="section">
-      <div class="container">
-        <div class="section__head">
-          <h2>Settori in cui sono specializzato</h2>
-          <p>Per alcune categorie parto da un template già pronto e pensato per il loro mondo: una base solida da personalizzare, meno tempo e costi più bassi.</p>
-        </div>
-        <div class="sectors">
-          <NuxtLink
-            v-for="s in sectors"
-            :key="s.slug"
-            :to="`/${s.slug}`"
-            class="sector"
-          >
-            <div class="sector__icon">
-              <Icon :name="s.card.icon" :size="24" aria-hidden="true" />
-            </div>
-            <div class="sector__text">
-              <h3>{{ s.card.name }}</h3>
-              <p>{{ s.card.tagline }}</p>
-            </div>
-            <Icon name="lucide:arrow-right" class="sector__arrow" :size="20" aria-hidden="true" />
-          </NuxtLink>
-        </div>
-      </div>
-    </section>
-
-    <!-- PERCHÉ NUXT -->
-    <section class="section">
-      <div class="container container--narrow">
-        <div class="section__head">
-          <h2>Perché Nuxt.js e non WordPress?</h2>
-          <p>Performance reale, flessibilità totale, nessun plugin che si rompe.</p>
-        </div>
-        <div class="why__body">
-          <p>
-            WordPress è rapido da impostare, ma limitato in performance e flessibilità. Nuxt.js è una tecnologia moderna basata su Vue.js che genera siti molto più veloci: si caricano in frazioni di secondo, un fattore critico per il posizionamento su Google e per chi naviga da telefono.
-          </p>
-          <p>
-            Ogni elemento è costruito su misura, senza plugin di terze parti che si rompono ad ogni aggiornamento. Il codice che scrivo oggi è pensato per durare e scalare con la tua attività.
-          </p>
-          <p>
-            E quanto costa tutto questo? Ho spiegato le fasce di prezzo reali, e cosa le fa variare, nella guida su <NuxtLink to="/blog/quanto-costa-sito-web-napoli">quanto costa un sito web a Napoli</NuxtLink>.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <AppFaqSection
-      title="Domande frequenti"
-      subtitle="Tutto quello che ti serve sapere prima di contattarmi."
-      :items="faqs"
-      alt
-    />
-  </main>
-</template>
 
 <style scoped>
 /* NUMERI */
@@ -354,9 +355,9 @@ useSeoMeta({
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
   gap: var(--space-2);
   margin-bottom: var(--space-8);
+  text-align: center;
 }
 
 .why__body {

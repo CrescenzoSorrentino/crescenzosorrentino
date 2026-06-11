@@ -1,3 +1,14 @@
+<template>
+  <main>
+    <section class="section">
+      <div class="container container--narrow">
+        <!-- v-html renderizza HTML grezzo — usare solo con contenuto fidato -->
+        <div class="content" v-html="content" />
+      </div>
+    </section>
+  </main>
+</template>
+
 <script setup lang="ts">
 const description = "Cookie policy for crescenzosorrentino.com: how we use cookies and how to manage your preferences."
 
@@ -45,16 +56,6 @@ const content = `
 
 </script>
 
-<template>
-  <main>
-    <section class="section">
-      <div class="container container--narrow">
-        <!-- v-html renderizza HTML grezzo — usare solo con contenuto fidato -->
-        <div class="content" v-html="content" />
-      </div>
-    </section>
-  </main>
-</template>
 
 <style scoped>
 /* :deep() è l'equivalente di :global() dei CSS Modules di React:

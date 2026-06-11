@@ -1,3 +1,13 @@
+<template>
+  <main>
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="content" v-html="content" />
+      </div>
+    </section>
+  </main>
+</template>
+
 <script setup lang="ts">
 import { EMAIL } from "~/data/contact"
 
@@ -98,15 +108,6 @@ const content = `
 
 </script>
 
-<template>
-  <main>
-    <section class="section">
-      <div class="container container--narrow">
-        <div class="content" v-html="content" />
-      </div>
-    </section>
-  </main>
-</template>
 
 <style scoped>
 

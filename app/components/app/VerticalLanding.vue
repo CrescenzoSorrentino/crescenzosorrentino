@@ -1,81 +1,3 @@
-<script setup lang="ts">
-import { footerCtaIt } from "~/data/footer"
-import { siteUrl, areaServed, personProvider, type Vertical } from "~/data/verticals"
-
-// Rende l'intera landing verticale da un oggetto Vertical (vedi data/verticals.ts).
-// Le pagine in pages/ sono wrapper sottili che passano qui i dati della nicchia.
-const props = defineProps<{ data: Vertical }>()
-const v = props.data
-
-const pageUrl = `${siteUrl}/${v.slug}`
-
-// Pagina in italiano: imposta la CTA italiana del footer.
-// Il reset a inglese all'uscita è gestito dal middleware globale footer-cta.global.ts.
-const footerCta = useFooterCta()
-footerCta.value = footerCtaIt
-
-// Dati strutturati per Google, raggruppati in un @graph:
-// - ProfessionalService: attività locale specializzata, con aree servite e catalogo dei servizi → SEO locale
-// - FAQPage: rende le FAQ idonee ai rich result
-// services e faqs alimentano sia questo schema sia le sezioni renderizzate (fonte unica).
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "ProfessionalService",
-      "@id": `${pageUrl}#business`,
-      name: v.schema.businessName,
-      description: v.seoDescription,
-      url: pageUrl,
-      image: `${siteUrl}/og-image.png`,
-      priceRange: "€€",
-      areaServed,
-      knowsAbout: v.schema.knowsAbout,
-      provider: personProvider,
-      hasOfferCatalog: {
-        "@type": "OfferCatalog",
-        name: "Servizi di sviluppo web",
-        itemListElement: v.services.map(({ title, description }) => ({
-          "@type": "Offer",
-          itemOffered: { "@type": "Service", name: title, description },
-        })),
-      },
-    },
-    {
-      "@type": "FAQPage",
-      "@id": `${pageUrl}#faq`,
-      mainEntity: v.faqs.map(({ q, a }) => ({
-        "@type": "Question",
-        name: q,
-        acceptedAnswer: { "@type": "Answer", text: a },
-      })),
-    },
-  ],
-}
-
-useHead({
-  titleTemplate: null,
-  htmlAttrs: { lang: "it" },
-  link: [{ rel: "canonical", href: pageUrl }],
-  script: [{ type: "application/ld+json", innerHTML: JSON.stringify(jsonLd) }],
-})
-
-useSeoMeta({
-  title: v.seoTitle,
-  description: v.seoDescription,
-  ogType: "website",
-  ogTitle: v.seoTitle,
-  ogDescription: v.seoDescription,
-  ogUrl: pageUrl,
-  ogImage: `${siteUrl}/og-image.png`,
-  ogLocale: "it_IT",
-  twitterCard: "summary_large_image",
-  twitterTitle: v.seoTitle,
-  twitterDescription: v.seoDescription,
-  twitterImage: `${siteUrl}/og-image.png`,
-})
-</script>
-
 <template>
   <main lang="it">
     <AppHeroSection
@@ -157,6 +79,85 @@ useSeoMeta({
   </main>
 </template>
 
+<script setup lang="ts">
+import { footerCtaIt } from "~/data/footer"
+import { siteUrl, areaServed, personProvider, type Vertical } from "~/data/verticals"
+
+// Rende l'intera landing verticale da un oggetto Vertical (vedi data/verticals.ts).
+// Le pagine in pages/ sono wrapper sottili che passano qui i dati della nicchia.
+const props = defineProps<{ data: Vertical }>()
+const v = props.data
+
+const pageUrl = `${siteUrl}/${v.slug}`
+
+// Pagina in italiano: imposta la CTA italiana del footer.
+// Il reset a inglese all'uscita è gestito dal middleware globale footer-cta.global.ts.
+const footerCta = useFooterCta()
+footerCta.value = footerCtaIt
+
+// Dati strutturati per Google, raggruppati in un @graph:
+// - ProfessionalService: attività locale specializzata, con aree servite e catalogo dei servizi → SEO locale
+// - FAQPage: rende le FAQ idonee ai rich result
+// services e faqs alimentano sia questo schema sia le sezioni renderizzate (fonte unica).
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": `${pageUrl}#business`,
+      name: v.schema.businessName,
+      description: v.seoDescription,
+      url: pageUrl,
+      image: `${siteUrl}/og-image.png`,
+      priceRange: "€€",
+      areaServed,
+      knowsAbout: v.schema.knowsAbout,
+      provider: personProvider,
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Servizi di sviluppo web",
+        itemListElement: v.services.map(({ title, description }) => ({
+          "@type": "Offer",
+          itemOffered: { "@type": "Service", name: title, description },
+        })),
+      },
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${pageUrl}#faq`,
+      mainEntity: v.faqs.map(({ q, a }) => ({
+        "@type": "Question",
+        name: q,
+        acceptedAnswer: { "@type": "Answer", text: a },
+      })),
+    },
+  ],
+}
+
+useHead({
+  titleTemplate: null,
+  htmlAttrs: { lang: "it" },
+  link: [{ rel: "canonical", href: pageUrl }],
+  script: [{ type: "application/ld+json", innerHTML: JSON.stringify(jsonLd) }],
+})
+
+useSeoMeta({
+  title: v.seoTitle,
+  description: v.seoDescription,
+  ogType: "website",
+  ogTitle: v.seoTitle,
+  ogDescription: v.seoDescription,
+  ogUrl: pageUrl,
+  ogImage: `${siteUrl}/og-image.png`,
+  ogLocale: "it_IT",
+  twitterCard: "summary_large_image",
+  twitterTitle: v.seoTitle,
+  twitterDescription: v.seoDescription,
+  twitterImage: `${siteUrl}/og-image.png`,
+})
+</script>
+
+
 <style scoped>
 /* NUMERI */
 
@@ -198,8 +199,8 @@ useSeoMeta({
 .demo {
   display: flex;
   flex-direction: column;
-  gap: var(--space-8);
   align-items: center;
+  gap: var(--space-8);
 }
 
 /* Su mobile l'anteprima (la prova visiva) viene prima del testo: l'utente vede

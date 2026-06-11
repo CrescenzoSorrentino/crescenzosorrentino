@@ -30,8 +30,8 @@ function toggleTheme() {
 
 <template>
   <nav class="navbar">
-    <div class="inner">
-      <NuxtLink to="/" aria-label="Home" class="logo">
+    <div class="navbar__inner">
+      <NuxtLink to="/" aria-label="Home" class="navbar__logo">
         <svg
           width="32"
           height="32"
@@ -57,18 +57,18 @@ function toggleTheme() {
         </svg>
       </NuxtLink>
 
-      <div class="right">
-        <div class="links">
-          <NuxtLink v-for="link in links" :key="link.to" :to="link.to" class="link">
+      <div class="navbar__right">
+        <div class="navbar__links">
+          <NuxtLink v-for="link in links" :key="link.to" :to="link.to" class="navbar__link">
             <Icon :name="link.icon" :size="16" aria-hidden="true" />
             {{ link.label }}
           </NuxtLink>
         </div>
 
-        <span class="divider" aria-hidden="true"></span>
+        <span class="navbar__divider" aria-hidden="true"></span>
 
         <button
-          class="icon-btn"
+          class="navbar__icon-btn"
           :aria-label="isDark ? 'Switch to light mode' : 'Switch to dark mode'"
           @click="toggleTheme"
         >
@@ -79,7 +79,7 @@ function toggleTheme() {
         </button>
 
         <button
-          class="icon-btn hamburger"
+          class="navbar__icon-btn navbar__icon-btn--hamburger"
           :aria-label="isOpen ? 'Close menu' : 'Open menu'"
           @click="toggleMenu"
         >
@@ -92,8 +92,8 @@ function toggleTheme() {
     </div>
 
     <Transition name="menu">
-      <div v-if="isOpen" class="mobile-menu">
-        <NuxtLink v-for="link in links" :key="link.to" :to="link.to" class="mobile-link" @click="isOpen = false">
+      <div v-if="isOpen" class="navbar__mobile-menu">
+        <NuxtLink v-for="link in links" :key="link.to" :to="link.to" class="navbar__mobile-link" @click="isOpen = false">
           <Icon :name="link.icon" :size="16" aria-hidden="true" />
           {{ link.label }}
         </NuxtLink>
@@ -114,7 +114,7 @@ function toggleTheme() {
   border-bottom: 1px solid var(--border);
 }
 
-.inner {
+.navbar__inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -125,39 +125,39 @@ function toggleTheme() {
 }
 
 @media (min-width: 640px) {
-  .inner {
+  .navbar__inner {
     padding-inline: var(--space-6);
   }
 }
 
 @media (min-width: 1024px) {
-  .inner {
+  .navbar__inner {
     padding-inline: var(--space-12);
   }
 }
 
-.logo svg {
+.navbar__logo svg {
   display: block;
 }
 
-.right {
+.navbar__right {
   display: flex;
   align-items: center;
   gap: var(--space-2);
 }
 
-.links {
+.navbar__links {
   display: none;
 }
 
-.divider {
+.navbar__divider {
   display: none;
   width: 1px;
   height: 20px;
   background-color: var(--border);
 }
 
-.link {
+.navbar__link {
   display: flex;
   align-items: center;
   gap: var(--space-2);
@@ -179,7 +179,7 @@ function toggleTheme() {
   }
 }
 
-.icon-btn {
+.navbar__icon-btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -199,7 +199,7 @@ function toggleTheme() {
 
 /* MENU MOBILE */
 
-.mobile-menu {
+.navbar__mobile-menu {
   position: absolute;
   top: 100%;
   left: 0;
@@ -212,7 +212,7 @@ function toggleTheme() {
   border-bottom: 1px solid var(--border);
 }
 
-.mobile-link {
+.navbar__mobile-link {
   display: flex;
   align-items: center;
   gap: var(--space-3);
@@ -285,18 +285,18 @@ function toggleTheme() {
 /* DESKTOP */
 
 @media (min-width: 768px) {
-  .links {
+  .navbar__links {
     display: flex;
     align-items: center;
     gap: var(--space-1);
   }
 
-  .divider {
+  .navbar__divider {
     display: block;
     margin-inline: var(--space-2);
   }
 
-  .hamburger {
+  .navbar__icon-btn--hamburger {
     display: none;
   }
 }

@@ -1,37 +1,18 @@
-<script setup lang="ts">
-const cta = useFooterCta()
-
-const navLinks = [
-  { to: "/projects", label: "Projects", icon: "lucide:folder-open" },
-  { to: "/blog",     label: "Blog",     icon: "lucide:book-open" },
-  { to: "/contact",  label: "Contact",  icon: "lucide:mail" },
-]
-
-const localLinks = [
-  { to: "/realizzazione-siti-web-napoli", label: "Services in Naples", icon: "lucide:map-pin" },
-]
-
-const legalLinks = [
-  { to: "/privacy-policy", label: "Privacy Policy", icon: "lucide:shield" },
-  { to: "/cookie-policy",  label: "Cookie Policy",  icon: "lucide:cookie" },
-]
-</script>
-
 <template>
   <footer class="footer">
-    <div class="inner">
+    <div class="footer__inner">
       <!-- PITCH -->
-      <div class="pitch">
-        <h2 class="pitch-title">{{ cta.title }}</h2>
-        <p class="pitch-text">{{ cta.text }}</p>
+      <div class="footer__pitch">
+        <h2 class="footer__pitch-title">{{ cta.title }}</h2>
+        <p class="footer__pitch-text">{{ cta.text }}</p>
         <BaseButton to="/contact" size="lg">{{ cta.label }}</BaseButton>
       </div>
 
       <!-- SITEMAP -->
-      <div class="sitemap">
+      <div class="footer__sitemap">
         <!-- BRAND -->
-        <div class="brand">
-          <NuxtLink to="/" aria-label="Home" class="logo">
+        <div class="footer__brand">
+          <NuxtLink to="/" aria-label="Home" class="footer__logo">
             <svg
               width="32"
               height="32"
@@ -55,17 +36,17 @@ const legalLinks = [
               <circle cx="16" cy="16" r="3" fill="var(--color-accent)" />
             </svg>
           </NuxtLink>
-          <p class="description">
+          <p class="footer__description">
             Fast, modern websites and web apps, built with Nuxt.js to turn
             visitors into customers.
           </p>
         </div>
 
         <!-- NAVIGATION -->
-        <div class="col">
-          <span class="col-title">Navigation</span>
+        <div class="footer__col">
+          <span class="footer__col-title">Navigation</span>
           <nav>
-            <NuxtLink v-for="link in navLinks" :key="link.to" :to="link.to" class="link">
+            <NuxtLink v-for="link in navLinks" :key="link.to" :to="link.to" class="footer__link">
               <Icon :name="link.icon" :size="14" aria-hidden="true" />
               {{ link.label }}
             </NuxtLink>
@@ -73,10 +54,10 @@ const legalLinks = [
         </div>
 
         <!-- LOCAL -->
-        <div class="col">
-          <span class="col-title">Local</span>
+        <div class="footer__col">
+          <span class="footer__col-title">Local</span>
           <nav>
-            <NuxtLink v-for="link in localLinks" :key="link.to" :to="link.to" class="link">
+            <NuxtLink v-for="link in localLinks" :key="link.to" :to="link.to" class="footer__link">
               <Icon :name="link.icon" :size="14" aria-hidden="true" />
               {{ link.label }}
             </NuxtLink>
@@ -84,14 +65,14 @@ const legalLinks = [
         </div>
 
         <!-- SOCIAL -->
-        <div class="col">
-          <span class="col-title">Social</span>
-          <div class="social-links">
+        <div class="footer__col">
+          <span class="footer__col-title">Social</span>
+          <div class="footer__social-links">
             <a
               href="https://github.com/CrescenzoSorrentino"
               target="_blank"
               rel="noopener noreferrer"
-              class="link"
+              class="footer__link"
             >
               <svg
                 width="16"
@@ -110,7 +91,7 @@ const legalLinks = [
               href="https://linkedin.com/in/crescenzo-sorrentino"
               target="_blank"
               rel="noopener noreferrer"
-              class="link"
+              class="footer__link"
             >
               <svg
                 width="16"
@@ -131,17 +112,36 @@ const legalLinks = [
       </div>
 
       <!-- COPYRIGHT -->
-      <div class="copyright">
+      <div class="footer__copyright">
         <p>&copy; {{ new Date().getFullYear() }} Crescenzo Sorrentino</p>
-        <nav class="copyright__legal">
-          <NuxtLink v-for="link in legalLinks" :key="link.to" :to="link.to" class="link">
+        <nav class="footer__copyright-legal">
+          <NuxtLink v-for="link in legalLinks" :key="link.to" :to="link.to" class="footer__link">
             {{ link.label }}
           </NuxtLink>
         </nav>
       </div>
     </div>
-  </footer> 
+  </footer>
 </template>
+
+<script setup lang="ts">
+const cta = useFooterCta()
+
+const navLinks = [
+  { to: "/projects", label: "Projects", icon: "lucide:folder-open" },
+  { to: "/blog",     label: "Blog",     icon: "lucide:book-open" },
+  { to: "/contact",  label: "Contact",  icon: "lucide:mail" },
+]
+
+const localLinks = [
+  { to: "/realizzazione-siti-web-napoli", label: "Services in Naples", icon: "lucide:map-pin" },
+]
+
+const legalLinks = [
+  { to: "/privacy-policy", label: "Privacy Policy", icon: "lucide:shield" },
+  { to: "/cookie-policy",  label: "Cookie Policy",  icon: "lucide:cookie" },
+]
+</script>
 
 <style scoped>
 
@@ -152,59 +152,59 @@ const legalLinks = [
   color: rgba(255, 255, 255, 0.75);
 }
 
-.inner {
+.footer__inner {
   max-width: var(--max-width);
   margin-inline: auto;
   padding-inline: var(--space-4);
 }
 
 @media (min-width: 640px) {
-  .inner {
+  .footer__inner {
     padding-inline: var(--space-6);
   }
 }
 
 @media (min-width: 1024px) {
-  .inner {
+  .footer__inner {
     padding-inline: var(--space-12);
   }
 }
 
 /* PITCH */
 
-.pitch {
+.footer__pitch {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
   gap: var(--space-4);
   padding-block: var(--space-16);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
 }
 
-.pitch-title {
+.footer__pitch-title {
   font-family: var(--font-headings);
   font-size: var(--text-3xl);
   font-weight: 600;
-  color: #fff;
   line-height: 1.15;
+  color: #fff;
 }
 
 @media (min-width: 768px) {
-  .pitch-title {
+  .footer__pitch-title {
     font-size: var(--text-4xl);
   }
 }
 
-.pitch-text {
-  font-size: var(--text-md);
+.footer__pitch-text {
   max-width: 48ch;
+  font-size: var(--text-md);
   opacity: 0.75;
 }
 
 /* SITEMAP */
 
-.sitemap {
+.footer__sitemap {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-8) var(--space-6);
@@ -212,68 +212,68 @@ const legalLinks = [
 }
 
 @media (min-width: 768px) {
-  .sitemap {
+  .footer__sitemap {
     grid-template-columns: 2fr 1fr 1fr 1fr;
     gap: var(--space-8);
   }
 }
 
 @media (min-width: 1024px) {
-  .sitemap {
+  .footer__sitemap {
     grid-template-columns: 2fr 1fr 1fr 1fr;
   }
 }
 
 /* BRAND */
 
-.brand {
-  grid-column: 1 / -1;
+.footer__brand {
   display: flex;
   flex-direction: column;
+  grid-column: 1 / -1;
   gap: var(--space-4);
 }
 
 @media (min-width: 768px) {
-  .brand {
+  .footer__brand {
     grid-column: auto;
   }
 }
 
-.logo svg {
+.footer__logo svg {
   display: block;
 }
 
-.description {
+.footer__description {
+  max-width: 28ch;
   font-size: var(--text-sm);
   line-height: 1.6;
   opacity: 0.65;
-  max-width: 28ch;
 }
 
 /* COLONNE */
 
-.col {
+.footer__col {
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
 }
 
-.col-title {
+.footer__col-title {
   font-size: var(--text-xs);
   font-weight: 600;
-  text-transform: uppercase;
   letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: rgba(255, 255, 255, 0.6);
 }
 
-.col nav,
-.social-links {
+.footer__col nav,
+.footer__social-links {
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
 }
 
-.link {
+.footer__link {
   display: flex;
   align-items: center;
   gap: var(--space-2);
@@ -288,13 +288,13 @@ const legalLinks = [
 
 /* COPYRIGHT */
 
-.copyright {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-block: var(--space-6);
+.footer__copyright {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: var(--space-3);
+  padding-block: var(--space-6);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 
   p {
     font-size: var(--text-sm);
@@ -307,15 +307,15 @@ const legalLinks = [
   }
 }
 
-.copyright__legal {
+.footer__copyright-legal {
   display: flex;
   gap: 0;
 
-  .link {
+  .footer__link {
     gap: 0;
   }
 
-  .link:not(:first-child)::before {
+  .footer__link:not(:first-child)::before {
     content: "|";
     padding-inline: var(--space-3);
     color: rgba(255, 255, 255, 0.2);

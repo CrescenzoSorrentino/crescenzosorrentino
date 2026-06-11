@@ -1,12 +1,3 @@
-<script setup lang="ts">
-defineProps<{
-  title: string
-  subtitle: string
-  primaryCta: { label: string; to: string }
-  secondaryCta: { label: string; to: string }
-}>()
-</script>
-
 <template>
   <header class="hero">
     <div class="hero__content">
@@ -37,6 +28,15 @@ defineProps<{
     </div>
   </header>
 </template>
+
+<script setup lang="ts">
+defineProps<{
+  title: string
+  subtitle: string
+  primaryCta: { label: string; to: string }
+  secondaryCta: { label: string; to: string }
+}>()
+</script>
 
 <style scoped>
 .hero {

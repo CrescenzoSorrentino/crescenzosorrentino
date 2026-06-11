@@ -1,3 +1,44 @@
+<template>
+  <main>
+    <!-- INTRO -->
+    <section class="section section--alt section--pb-sm section-top">
+      <div class="container container--narrow">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <NuxtLink to="/" class="breadcrumb__item">Home</NuxtLink>
+          <span class="breadcrumb__sep" aria-hidden="true">/</span>
+          <NuxtLink to="/blog" class="breadcrumb__item">Blog</NuxtLink>
+          <span class="breadcrumb__sep" aria-hidden="true">/</span>
+          <span class="breadcrumb__item breadcrumb__item--current" aria-current="page">{{ article!.title }}</span>
+        </nav>
+
+        <div class="intro">
+          <time :datetime="article!.date" class="date">
+            {{ formatDate(article!.date) }}
+          </time>
+          <h1>{{ article!.title }}</h1>
+          <p>{{ article!.description }}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTENUTO -->
+    <section class="section section--pt-sm">
+      <div class="container container--narrow">
+        <ContentRenderer :value="article!" class="prose" />
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <AppFaqSection
+      v-if="faqs.length"
+      :title="faqHeading.title"
+      :subtitle="faqHeading.subtitle"
+      :items="faqs"
+      alt
+    />
+  </main>
+</template>
+
 <script setup lang="ts">
 import { footerCtaIt } from "~/data/footer"
 
@@ -103,46 +144,6 @@ useSeoMeta({
 })
 </script>
 
-<template>
-  <main>
-    <!-- INTRO -->
-    <section class="section section--alt section--pb-sm section-top">
-      <div class="container container--narrow">
-        <nav class="breadcrumb" aria-label="Breadcrumb">
-          <NuxtLink to="/" class="breadcrumb__item">Home</NuxtLink>
-          <span class="breadcrumb__sep" aria-hidden="true">/</span>
-          <NuxtLink to="/blog" class="breadcrumb__item">Blog</NuxtLink>
-          <span class="breadcrumb__sep" aria-hidden="true">/</span>
-          <span class="breadcrumb__item breadcrumb__item--current" aria-current="page">{{ article!.title }}</span>
-        </nav>
-
-        <div class="intro">
-          <time :datetime="article!.date" class="date">
-            {{ formatDate(article!.date) }}
-          </time>
-          <h1>{{ article!.title }}</h1>
-          <p>{{ article!.description }}</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTENUTO -->
-    <section class="section section--pt-sm">
-      <div class="container container--narrow">
-        <ContentRenderer :value="article!" class="prose" />
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <AppFaqSection
-      v-if="faqs.length"
-      :title="faqHeading.title"
-      :subtitle="faqHeading.subtitle"
-      :items="faqs"
-      alt
-    />
-  </main>
-</template>
 
 <style scoped>
 
@@ -238,10 +239,10 @@ useSeoMeta({
 
 .prose :deep(ul),
 .prose :deep(ol) {
-  padding-left: var(--space-6);
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
+  padding-left: var(--space-6);
   color: var(--text-secondary);
   font-size: var(--text-base);
   line-height: 1.8;

@@ -1,3 +1,61 @@
+<template>
+  <main>
+    <AppHeroSection
+      title="Crescenzo Sorrentino"
+      subtitle="Freelance Nuxt.js developer. I build fast websites and web apps that turn your visitors into customers."
+      :primary-cta="{ label: 'Get a free quote', to: '/contact' }"
+      :secondary-cta="{ label: 'View my work', to: '/projects' }"
+    />
+
+    <AppAboutSection
+      title="A website that works as hard as you do"
+      :paragraphs="[
+        'I\'m a freelance developer working with Nuxt.js, a modern tool for building fast, reliable websites. I help startups, small businesses, and professionals who know that a great website is not a nice-to-have. It is what brings in customers.',
+        'When you work with me, you talk directly to the person who designs, builds, and delivers your site. No middlemen, no surprises on the invoice, and support that continues after launch.',
+      ]"
+      :cta="{ label: 'Let\'s talk about your project', to: '/contact' }"
+      alt
+    />
+
+    <!-- PROJECTS -->
+    <section class="section">
+      <div class="container">
+        <div class="projects__head">
+          <h2>Selected Work</h2>
+          <p>A few projects that show what I can do for your business.</p>
+        </div>
+        <div class="projects__grid">
+          <div
+            v-for="(project, i) in featuredProjects"
+            :key="project.to"
+            v-motion
+            :initial="{ opacity: 0, y: 24 }"
+            :visible-once="{ opacity: 1, y: 0, transition: { duration: 500, delay: i * 150 } }"
+          >
+            <BaseCard v-bind="project" />
+          </div>
+        </div>
+        <div class="projects__cta">
+          <BaseButton to="/projects" variant="secondary" size="md">View all projects</BaseButton>
+        </div>
+      </div>
+    </section>
+
+    <AppServicesSection
+      title="What I can do for you"
+      subtitle="From the first idea to launch and beyond, I handle the whole website for you."
+      :services="services"
+      alt
+    />
+
+    <AppFaqSection
+      title="Frequently Asked Questions"
+      subtitle="Everything you need to know before we start working together."
+      :items="faqs"
+    />
+  </main>
+</template>
+
 <script setup lang="ts">
 import { projects } from "~/data/projects"
 
@@ -111,72 +169,15 @@ useHead({
 })
 </script>
 
-<template>
-  <main>
-    <AppHeroSection
-      title="Crescenzo Sorrentino"
-      subtitle="Freelance Nuxt.js developer. I build fast websites and web apps that turn your visitors into customers."
-      :primary-cta="{ label: 'Get a free quote', to: '/contact' }"
-      :secondary-cta="{ label: 'View my work', to: '/projects' }"
-    />
-
-    <AppAboutSection
-      title="A website that works as hard as you do"
-      :paragraphs="[
-        'I\'m a freelance developer working with Nuxt.js, a modern tool for building fast, reliable websites. I help startups, small businesses, and professionals who know that a great website is not a nice-to-have. It is what brings in customers.',
-        'When you work with me, you talk directly to the person who designs, builds, and delivers your site. No middlemen, no surprises on the invoice, and support that continues after launch.',
-      ]"
-      :cta="{ label: 'Let\'s talk about your project', to: '/contact' }"
-      alt
-    />
-
-    <!-- PROJECTS -->
-    <section class="section">
-      <div class="container">
-        <div class="projects__head">
-          <h2>Selected Work</h2>
-          <p>A few projects that show what I can do for your business.</p>
-        </div>
-        <div class="projects__grid">
-          <div
-            v-for="(project, i) in featuredProjects"
-            :key="project.to"
-            v-motion
-            :initial="{ opacity: 0, y: 24 }"
-            :visible-once="{ opacity: 1, y: 0, transition: { duration: 500, delay: i * 150 } }"
-          >
-            <BaseCard v-bind="project" />
-          </div>
-        </div>
-        <div class="projects__cta">
-          <BaseButton to="/projects" variant="secondary" size="md">View all projects</BaseButton>
-        </div>
-      </div>
-    </section>
-
-    <AppServicesSection
-      title="What I can do for you"
-      subtitle="From the first idea to launch and beyond, I handle the whole website for you."
-      :services="services"
-      alt
-    />
-
-    <AppFaqSection
-      title="Frequently Asked Questions"
-      subtitle="Everything you need to know before we start working together."
-      :items="faqs"
-    />
-  </main>
-</template>
 
 <style scoped>
 .projects__head {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
   gap: var(--space-2);
   margin-bottom: var(--space-8);
+  text-align: center;
 }
 
 .projects__grid {

@@ -1,25 +1,3 @@
-<script setup lang="ts">
-import { projects } from "~/data/projects"
-
-const description = "Nuxt.js projects by Crescenzo Sorrentino: landing pages and web applications."
-
-useHead({
-  link: [{ rel: "canonical", href: "https://crescenzosorrentino.com/projects" }],
-})
-
-useSeoMeta({
-  title: "Projects",
-  description,
-  ogType: "website",
-  ogTitle: "Projects — Crescenzo Sorrentino",
-  ogDescription: description,
-  ogUrl: "https://crescenzosorrentino.com/projects",
-  twitterCard: "summary_large_image",
-  twitterTitle: "Projects — Crescenzo Sorrentino",
-  twitterDescription: description,
-})
-</script>
-
 <template>
   <main>
     <!-- INTRO -->
@@ -66,6 +44,29 @@ useSeoMeta({
     </section>
   </main>
 </template>
+
+<script setup lang="ts">
+import { projects } from "~/data/projects"
+
+const description = "Nuxt.js projects by Crescenzo Sorrentino: landing pages and web applications."
+
+useHead({
+  link: [{ rel: "canonical", href: "https://crescenzosorrentino.com/projects" }],
+})
+
+useSeoMeta({
+  title: "Projects",
+  description,
+  ogType: "website",
+  ogTitle: "Projects — Crescenzo Sorrentino",
+  ogDescription: description,
+  ogUrl: "https://crescenzosorrentino.com/projects",
+  twitterCard: "summary_large_image",
+  twitterTitle: "Projects — Crescenzo Sorrentino",
+  twitterDescription: description,
+})
+</script>
+
 
 <style scoped>
 

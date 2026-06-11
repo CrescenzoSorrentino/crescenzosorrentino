@@ -1,3 +1,57 @@
+<template>
+  <form class="form" @submit.prevent="handleSubmit" @reset.prevent="handleReset" novalidate>
+    <fieldset class="form__fieldset">
+      <legend class="form__legend">Your details</legend>
+
+      <div class="form__field">
+        <label for="name">Name</label>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          v-model="form.name"
+          @input="clearError('name')"
+          placeholder="Your name"
+          :class="{ 'form__field--error': errors.name }"
+        />
+        <span v-if="errors.name" class="form__error">{{ errors.name }}</span>
+      </div>
+
+      <div class="form__field">
+        <label for="email">Email</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          v-model="form.email"
+          @input="clearError('email')"
+          placeholder="your@email.com"
+          :class="{ 'form__field--error': errors.email }"
+        />
+        <span v-if="errors.email" class="form__error">{{ errors.email }}</span>
+      </div>
+
+      <div class="form__field">
+        <label for="message">Message</label>
+        <textarea
+          id="message"
+          name="message"
+          v-model="form.message"
+          @input="clearError('message')"
+          placeholder="Tell me about your project..."
+          :class="{ 'form__field--error': errors.message }"
+        />
+        <span v-if="errors.message" class="form__error">{{ errors.message }}</span>
+      </div>
+    </fieldset>
+
+    <div class="form__actions">
+      <BaseButton type="submit" variant="primary" size="sm">Send message</BaseButton>
+      <BaseButton type="reset" variant="secondary" size="sm">Reset</BaseButton>
+    </div>
+  </form>
+</template>
+
 <script setup lang="ts">
 import { reactive } from "vue"
 import { EMAIL } from "~/data/contact"
@@ -32,60 +86,6 @@ function handleSubmit() {
 }
 </script>
 
-<template>
-  <form class="form" @submit.prevent="handleSubmit" @reset.prevent="handleReset" novalidate>
-    <fieldset class="fieldset">
-      <legend class="legend">Your details</legend>
-
-      <div class="field">
-        <label for="name">Name</label>
-        <input
-          id="name"
-          name="name"
-          type="text"
-          v-model="form.name"
-          @input="clearError('name')"
-          placeholder="Your name"
-          :class="{ 'input--error': errors.name }"
-        />
-        <span v-if="errors.name" class="error">{{ errors.name }}</span>
-      </div>
-
-      <div class="field">
-        <label for="email">Email</label>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          v-model="form.email"
-          @input="clearError('email')"
-          placeholder="your@email.com"
-          :class="{ 'input--error': errors.email }"
-        />
-        <span v-if="errors.email" class="error">{{ errors.email }}</span>
-      </div>
-
-      <div class="field">
-        <label for="message">Message</label>
-        <textarea
-          id="message"
-          name="message"
-          v-model="form.message"
-          @input="clearError('message')"
-          placeholder="Tell me about your project..."
-          :class="{ 'input--error': errors.message }"
-        />
-        <span v-if="errors.message" class="error">{{ errors.message }}</span>
-      </div>
-    </fieldset>
-
-    <div class="form-actions">
-      <BaseButton type="submit" variant="primary" size="sm">Send message</BaseButton>
-      <BaseButton type="reset" variant="secondary" size="sm">Reset</BaseButton>
-    </div>
-  </form>
-</template>
-
 <style scoped>
 /* FORM */
 
@@ -95,53 +95,53 @@ function handleSubmit() {
   gap: var(--space-6);
 }
 
-.fieldset {
-  border: none;
-  padding: 0;
-  margin: 0;
+.form__fieldset {
   display: flex;
   flex-direction: column;
   gap: var(--space-6);
+  margin: 0;
+  padding: 0;
+  border: none;
 }
 
-.legend {
+.form__legend {
+  margin-bottom: var(--space-6);
   font-size: var(--text-xs);
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-secondary);
-  margin-bottom: var(--space-6);
 }
 
 /* ACTIONS */
 
-.form-actions {
+.form__actions {
   display: flex;
   gap: var(--space-4);
 }
 
 @media (max-width: 639px) {
-  .form-actions > * {
+  .form__actions > * {
     flex: 1;
   }
 }
 
 /* FIELD */
 
-.field {
+.form__field {
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
 }
 
-.field label {
+.form__field label {
   font-size: var(--text-sm);
   font-weight: 500;
   color: var(--text-primary);
 }
 
-.field input,
-.field textarea {
+.form__field input,
+.form__field textarea {
   width: 100%;
   padding: var(--space-3) var(--space-4);
   background: var(--bg-page);
@@ -164,17 +164,17 @@ function handleSubmit() {
   }
 }
 
-.field input {
+.form__field input {
   min-height: unset;
 }
 
 /* ERRORI */
 
-.input--error {
+.form__field--error {
   border-color: var(--color-error, #e53e3e) !important;
 }
 
-.error {
+.form__error {
   font-size: var(--text-xs);
   color: var(--color-error, #e53e3e);
 }
