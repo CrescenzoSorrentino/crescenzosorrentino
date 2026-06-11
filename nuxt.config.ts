@@ -1,12 +1,14 @@
 const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
+  "@id": "https://crescenzosorrentino.com#person",
   name: "Crescenzo Sorrentino",
   jobTitle: "Frontend Developer",
   url: "https://crescenzosorrentino.com",
   sameAs: [
     "https://linkedin.com/in/crescenzo-sorrentino",
     "https://github.com/CrescenzoSorrentino",
+    "https://share.google/vRN5AQIj3Paiurwgn",
   ],
 };
 
@@ -23,22 +25,44 @@ const websiteSchema = {
 
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
+  vite: {
+    build: {
+      cssCodeSplit: false,
+    },
+  },
   routeRules: {
     "/blog/**": { prerender: true },
     "/projects/**": { prerender: true },
+    // Vecchio slug della pagina locale: redirect permanente al nuovo URL ottimizzato
+    "/sviluppatore-web-napoli": { redirect: { to: "/realizzazione-siti-web-napoli", statusCode: 301 } },
   },
   nitro: {
     prerender: {
       routes: [
+        "/siti-web-per-fotografi-napoli",
+        "/siti-web-per-palestre-napoli",
         "/blog/nuxtjs-vs-wordpress",
         "/blog/what-does-it-cost-to-hire-a-freelance-web-developer",
         "/blog/why-your-website-is-losing-customers",
-        "/projects/template-photograph",
-        "/projects/template-gym",
+        "/blog/what-to-look-for-when-you-hire-a-nuxtjs-developer",
+        "/blog/quanto-costa-sito-web-napoli",
+        "/projects/photographer-starter",
+        "/projects/gym-starter",
         "/projects/crescenzosorrentino",
         "/projects/grocerylist",
       ],
     },
+  },
+  image: {
+    screens: {
+      xs: 320,
+      sm: 640,
+      md: 768,
+      lg: 1024,
+      xl: 1280,
+      xxl: 1536,
+    },
+    quality: 80,
   },
   modules: [
     "@nuxt/image",
@@ -52,15 +76,20 @@ export default defineNuxtConfig({
 
   sitemap: {
     urls: [
+      { loc: "/realizzazione-siti-web-napoli", priority: 0.9 },
+      { loc: "/siti-web-per-fotografi-napoli", priority: 0.8 },
+      { loc: "/siti-web-per-palestre-napoli", priority: 0.8 },
       { loc: "/projects", priority: 0.8 },
-      { loc: "/projects/template-photograph", priority: 0.7 },
-      { loc: "/projects/template-gym", priority: 0.7 },
+      { loc: "/projects/photographer-starter", priority: 0.7 },
+      { loc: "/projects/gym-starter", priority: 0.7 },
       { loc: "/projects/crescenzosorrentino", priority: 0.7 },
       { loc: "/projects/grocerylist", priority: 0.7 },
       { loc: "/blog", priority: 0.8 },
       { loc: "/blog/nuxtjs-vs-wordpress", priority: 0.6 },
       { loc: "/blog/what-does-it-cost-to-hire-a-freelance-web-developer", priority: 0.6 },
       { loc: "/blog/why-your-website-is-losing-customers", priority: 0.6 },
+      { loc: "/blog/what-to-look-for-when-you-hire-a-nuxtjs-developer", priority: 0.6 },
+      { loc: "/blog/quanto-costa-sito-web-napoli", priority: 0.7 },
       { loc: "/contact", priority: 0.6 },
     ],
   },

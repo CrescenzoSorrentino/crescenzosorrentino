@@ -1,18 +1,22 @@
 <script setup lang="ts">
 import { CONTACT_INFO } from "~/data/contact"
 
-useHead({ link: [{ rel: "canonical", href: "https://crescenzosorrentino.com/contact" }] })
+const description = "Get in touch to discuss your Nuxt.js project. I reply within 24 hours."
+
+useHead({
+  link: [{ rel: "canonical", href: "https://crescenzosorrentino.com/contact" }],
+})
 
 useSeoMeta({
   title: "Contact",
-  description: "Get in touch to discuss your Nuxt.js project. I reply within 24 hours.",
+  description,
   ogType: "website",
   ogTitle: "Contact — Crescenzo Sorrentino",
-  ogDescription: "Get in touch to discuss your Nuxt.js project. I reply within 24 hours.",
+  ogDescription: description,
   ogUrl: "https://crescenzosorrentino.com/contact",
   twitterCard: "summary_large_image",
   twitterTitle: "Contact — Crescenzo Sorrentino",
-  twitterDescription: "Get in touch to discuss your Nuxt.js project. I reply within 24 hours.",
+  twitterDescription: description,
 })
 </script>
 

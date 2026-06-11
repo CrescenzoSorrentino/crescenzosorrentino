@@ -1,8 +1,14 @@
-<script setup>
+<script setup lang="ts">
+const cta = useFooterCta()
+
 const navLinks = [
   { to: "/projects", label: "Projects", icon: "lucide:folder-open" },
   { to: "/blog",     label: "Blog",     icon: "lucide:book-open" },
   { to: "/contact",  label: "Contact",  icon: "lucide:mail" },
+]
+
+const localLinks = [
+  { to: "/realizzazione-siti-web-napoli", label: "Services in Naples", icon: "lucide:map-pin" },
 ]
 
 const legalLinks = [
@@ -16,12 +22,9 @@ const legalLinks = [
     <div class="inner">
       <!-- PITCH -->
       <div class="pitch">
-        <h2 class="pitch-title">Let's work together</h2>
-        <p class="pitch-text">
-          Have a project in mind? I'm available for freelance work and open to
-          new opportunities.
-        </p>
-        <BaseButton to="/contact" size="lg">Get in touch</BaseButton>
+        <h2 class="pitch-title">{{ cta.title }}</h2>
+        <p class="pitch-text">{{ cta.text }}</p>
+        <BaseButton to="/contact" size="lg">{{ cta.label }}</BaseButton>
       </div>
 
       <!-- SITEMAP -->
@@ -53,8 +56,8 @@ const legalLinks = [
             </svg>
           </NuxtLink>
           <p class="description">
-            Building fast, polished Nuxt.js interfaces that turn visitors into
-            customers.
+            Fast, modern websites and web apps, built with Nuxt.js to turn
+            visitors into customers.
           </p>
         </div>
 
@@ -63,6 +66,17 @@ const legalLinks = [
           <span class="col-title">Navigation</span>
           <nav>
             <NuxtLink v-for="link in navLinks" :key="link.to" :to="link.to" class="link">
+              <Icon :name="link.icon" :size="14" aria-hidden="true" />
+              {{ link.label }}
+            </NuxtLink>
+          </nav>
+        </div>
+
+        <!-- LOCAL -->
+        <div class="col">
+          <span class="col-title">Local</span>
+          <nav>
+            <NuxtLink v-for="link in localLinks" :key="link.to" :to="link.to" class="link">
               <Icon :name="link.icon" :size="14" aria-hidden="true" />
               {{ link.label }}
             </NuxtLink>
@@ -114,21 +128,16 @@ const legalLinks = [
           </div>
         </div>
 
-        <!-- LEGAL -->
-        <div class="col">
-          <span class="col-title">Legal</span>
-          <nav>
-            <NuxtLink v-for="link in legalLinks" :key="link.to" :to="link.to" class="link">
-              <Icon :name="link.icon" :size="14" aria-hidden="true" />
-              {{ link.label }}
-            </NuxtLink>
-          </nav>
-        </div>
       </div>
 
       <!-- COPYRIGHT -->
       <div class="copyright">
         <p>&copy; {{ new Date().getFullYear() }} Crescenzo Sorrentino</p>
+        <nav class="copyright__legal">
+          <NuxtLink v-for="link in legalLinks" :key="link.to" :to="link.to" class="link">
+            {{ link.label }}
+          </NuxtLink>
+        </nav>
       </div>
     </div>
   </footer> 
@@ -209,6 +218,12 @@ const legalLinks = [
   }
 }
 
+@media (min-width: 1024px) {
+  .sitemap {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+  }
+}
+
 /* BRAND */
 
 .brand {
@@ -276,10 +291,35 @@ const legalLinks = [
 .copyright {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-block: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
 
   p {
     font-size: var(--text-sm);
     color: rgba(255, 255, 255, 0.5);
+  }
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.copyright__legal {
+  display: flex;
+  gap: 0;
+
+  .link {
+    gap: 0;
+  }
+
+  .link:not(:first-child)::before {
+    content: "|";
+    padding-inline: var(--space-3);
+    color: rgba(255, 255, 255, 0.2);
+    pointer-events: none;
   }
 }
 </style>

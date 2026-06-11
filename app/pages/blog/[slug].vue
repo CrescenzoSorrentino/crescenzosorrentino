@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { footerCtaIt } from "~/data/footer"
+
 const route = useRoute()
 
 // Carica l'articolo corrispondente al percorso URL corrente
@@ -22,6 +24,7 @@ const blogPostingSchema = {
   headline: article.value.title,
   description: article.value.description,
   datePublished: article.value.date,
+  ...(article.value.dateModified ? { dateModified: article.value.dateModified } : {}),
   url,
   author: {
     "@type": "Person",
@@ -41,12 +44,47 @@ const breadcrumbSchema = {
   ],
 }
 
-// Inietta canonical e i due schema come tag <script type="application/ld+json"> nel <head>
+// Lingua dell'articolo (default "en"): guida l'attributo lang, il formato data e i testi UI.
+const lang = article.value.lang ?? "en"
+// Per gli articoli in italiano imposta la CTA italiana del footer.
+// Il reset a inglese all'uscita è gestito dal middleware globale footer-cta.global.ts.
+if (lang === "it") {
+  useFooterCta().value = footerCtaIt
+}
+
+const dateLocale = lang === "it" ? "it-IT" : "en-GB"
+const formatDate = (date: string) =>
+  new Date(date).toLocaleDateString(dateLocale, { day: "numeric", month: "long", year: "numeric" })
+
+const faqHeading =
+  lang === "it"
+    ? { title: "Domande frequenti", subtitle: "Risposte rapide alle domande più comuni su questo argomento." }
+    : { title: "Frequently Asked Questions", subtitle: "Quick answers to the questions this article raises most often." }
+
+// Schema FAQPage generato dalle FAQ in frontmatter (se presenti).
+// Le stesse FAQ vengono renderizzate in pagina: requisito di Google per i rich result.
+const faqs = article.value.faqs ?? []
+const faqSchema = faqs.length
+  ? {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "@id": `${url}#faq`,
+      mainEntity: faqs.map(({ q, a }) => ({
+        "@type": "Question",
+        name: q,
+        acceptedAnswer: { "@type": "Answer", text: a },
+      })),
+    }
+  : null
+
+// Inietta canonical e gli schema come tag <script type="application/ld+json"> nel <head>
 useHead({
+  htmlAttrs: { lang },
   link: [{ rel: "canonical", href: url }],
   script: [
     { type: "application/ld+json", innerHTML: JSON.stringify(blogPostingSchema) },
     { type: "application/ld+json", innerHTML: JSON.stringify(breadcrumbSchema) },
+    ...(faqSchema ? [{ type: "application/ld+json", innerHTML: JSON.stringify(faqSchema) }] : []),
   ],
 })
 
@@ -80,7 +118,7 @@ useSeoMeta({
 
         <div class="intro">
           <time :datetime="article!.date" class="date">
-            {{ new Date(article!.date).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" }) }}
+            {{ formatDate(article!.date) }}
           </time>
           <h1>{{ article!.title }}</h1>
           <p>{{ article!.description }}</p>
@@ -94,6 +132,15 @@ useSeoMeta({
         <ContentRenderer :value="article!" class="prose" />
       </div>
     </section>
+
+    <!-- FAQ -->
+    <AppFaqSection
+      v-if="faqs.length"
+      :title="faqHeading.title"
+      :subtitle="faqHeading.subtitle"
+      :items="faqs"
+      alt
+    />
   </main>
 </template>
 
@@ -215,6 +262,29 @@ useSeoMeta({
   border: none;
   border-top: 1px solid var(--border);
   margin-block: var(--space-8);
+}
+
+/* IMMAGINI / FIGURE */
+
+.prose :deep(img) {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+
+.prose :deep(figure) {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin: 0;
+}
+
+.prose :deep(figcaption) {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  text-align: left;
 }
 
 </style>

@@ -6,7 +6,6 @@ export interface Project {
   title:           string
   description:     string
   to:              string
-  category:        "Websites" | "Web Apps"
   slug:            string
   year:            number
   longDescription: string
@@ -22,51 +21,56 @@ export interface Project {
 // Imposta featured: true per far apparire un progetto anche in homepage.
 export const projects: Project[] = [
 
-  // Photography Template
+  // Photographer Starter
   {
-    image: "/projects/template-photograph.png",
+    image: "/projects/photographer-starter.png",
     tags: ["Nuxt.js"],
-    title: "Photography Template",
+    title: "Photographer Starter",
     description:
-      "Elegant website template for professional photographers. Showcases portfolios, services, and bookings with a minimal, image-first design.",
-    to: "/projects/template-photograph",
-    category: "Websites",
-    slug: "template-photograph",
+      "Reusable portfolio template for professional photographers built on Nuxt 4. Dark, minimal design, fully customizable per client via Vercel environment variables: zero code changes to update colors, fonts, copy, video, and galleries.",
+    to: "/projects/photographer-starter",
+    slug: "photographer-starter",
     year: 2026,
     longDescription:
-      "A complete single-page template for professional photographers built on Nuxt 4. Dark theme, minimal chrome, and a layout built to let the photography speak: from a full-bleed hero down to a WhatsApp-driven contact section. The whole template is config-driven: copy, colors, and images are overridable via Vercel environment variables, so deploying a customized version requires zero code changes.",
+      "Photographer Starter is a reusable website template for professional photographers, designed to showcase visual work without getting in the way. The goal was a dark, minimal layout that puts the client's imagery first, while being completely redeployable for different clients without touching the source code.\n\nAll site content, including colors, fonts, copy, video, event listings, and galleries, is configurable via NUXT_PUBLIC_* environment variables. On Vercel, setting variables in the project panel is enough to fully rebrand the site on the next deploy. Colors are applied as CSS custom properties, making the theme switchable without any rebuild.\n\nThe project is built on Nuxt 4 with file-based routing, shared layouts, and auto-import. It includes two pages: a homepage with a full-screen video hero and an adaptive event grid (portrait/landscape), and an event detail page with a photo gallery. On mobile, the video is replaced by a static image for compatibility. Every section animates on scroll via a custom Vue directive with progressive stagger.\n\nIt's designed as a commercial starting point: a photographer or studio can purchase the template and configure it entirely from the Vercel dashboard, without needing a developer for content or branding updates.",
     highlights: [
-      "Fully config-driven via Vercel environment variables: copy, colors, and images without touching the codebase",
-      "Dynamic gallery pages per category (weddings, portraits, events, families) with a responsive 2/3/4-column grid",
-      "Wedding grid with a featured layout: first photo spans full width for maximum visual impact",
-      "Carousel and FAQ accordion built without external libraries, native HTML with CSS animation",
+      "Multi-page template (Home, Event Detail) with shared Nuxt layout",
+      "100% configurable content via NUXT_PUBLIC_* environment variables: no code changes needed",
+      "Full-screen video hero with static image fallback on mobile",
+      "Adaptive event grid with automatic portrait/landscape detection",
+      "Scroll animations via IntersectionObserver with progressive stagger",
+      "CSS custom properties design system: fully rebrandable per client",
+      "One-click deploy on Vercel with Nuxt auto-detection",
     ],
     featured: true,
-    liveUrl:   "https://template-photograph.vercel.app",
-    githubUrl: "https://github.com/CrescenzoSorrentino/template-photograph.git",
+    liveUrl:   "https://photographer-starter.vercel.app",
+    githubUrl: "https://github.com/CrescenzoSorrentino/photographer-starter",
   },
 
-  // Gym Template
+  // Gym Starter
   {
-    image: "/projects/template-gym.png",
+    image: "/projects/gym-starter.png",
     tags: ["Nuxt.js"],
-    title: "Gym Template",
+    title: "Gym Starter",
     description:
-      "Clean and modern website template for a fitness gym. Includes schedule, classes, FAQ, and a contact section, designed to convert visitors into members.",
-    to: "/projects/template-gym",
-    category: "Websites",
-    slug: "template-gym",
+      "Website template for gyms, dark-themed and fully configurable via Vercel environment variables: zero code changes needed to customize content, colors, and images.",
+    to: "/projects/gym-starter",
+    slug: "gym-starter",
     year: 2026,
     longDescription:
-      "A ready-to-use website template built for fitness gyms. It covers everything a gym's web presence needs: weekly schedule, class offerings with instructors and times, an FAQ that handles the most common objections, and a contact section with phone, WhatsApp, and address. The layout is clean, fast, and focused on converting visitors into trial members.",
+      "GymStarter is a modern website template for gyms, designed for a young urban audience. The goal was to build something visually strong, dark layout, impactful typography, yellow and red accent palette, while being completely reusable by anyone without touching the source code.\n\nAll site content, including text, images, colors, contacts, hours, statistics, and team, is configurable via NUXT_PUBLIC_* environment variables. On Vercel, just set the variables in the project panel and the site updates on the next deploy. Colors are injected as CSS custom properties at runtime by a client-side plugin, making the theme dynamic without any rebuild.\n\nThe project is built on Nuxt 4 with file-based routing, shared layouts, and auto-import. Pages cover Home, About, and Contact. Styling is entirely Vanilla CSS with design tokens, no UI framework: mobile-first and responsive. Icons come from @nuxt/icon with Heroicons and MDI sets.\n\nIt's designed as a commercial starting point: a client can purchase the template and customize it directly from Vercel, without needing a developer for content updates.",
     highlights: [
-      "Weekly schedule and class timetable with instructor details",
-      "FAQ section covering sign-up, payments, and facilities",
-      "Contact section with phone, WhatsApp link, and address",
+      "Multi-page template (Home, About, Contact) with shared Nuxt layout",
+      "100% configurable content via NUXT_PUBLIC_* environment variables: no code changes needed",
+      "Dynamic theming: colors injected at runtime as CSS custom properties via client-side plugin",
+      "Dark theme design with Impact + Inter typography and customizable accent palette",
+      "Vanilla CSS with design tokens: zero dependencies on UI frameworks like Tailwind or Bootstrap",
+      "One-click deploy on Vercel with Nuxt auto-detection",
+      "Modular and scalable component structure: mobile navbar, footer, reusable hero, base button",
     ],
     featured: true,
-    liveUrl:   "https://template-gym-one.vercel.app",
-    githubUrl: "https://github.com/CrescenzoSorrentino/template-gym",
+    liveUrl:   "https://gym-starter-psi.vercel.app",
+    githubUrl: "https://github.com/CrescenzoSorrentino/gym-starter",
   },
 
   // Portfolio personale
@@ -77,7 +81,6 @@ export const projects: Project[] = [
     description:
       "Personal portfolio built from scratch with Nuxt.js. Focused on performance, accessibility, and clean design, achieving top Lighthouse scores across all metrics.",
     to: "/projects/crescenzosorrentino",
-    category: "Websites",
     slug: "crescenzosorrentino",
     year: 2026,
     longDescription:
@@ -102,7 +105,6 @@ export const projects: Project[] = [
     description:
       "Simple and fast grocery list app. Add, check off, and remove items on the fly, with data persisted in the browser's local storage.",
     to: "/projects/grocerylist",
-    category: "Web Apps",
     slug: "grocerylist",
     year: 2026,
     longDescription:
@@ -118,7 +120,3 @@ export const projects: Project[] = [
   },
 
 ]
-
-
-// Categorie nell'ordine in cui appaiono nella pagina /projects.
-export const categories = ["Websites", "Web Apps"] as const

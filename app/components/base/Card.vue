@@ -19,12 +19,12 @@ defineProps({
         :src="image"
         :alt="title"
         class="preview__img"
-        sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
+        sizes="xs:100vw sm:100vw md:50vw lg:33vw xl:33vw"
         format="webp"
         quality="80"
         loading="lazy"
-        width="600"
-        height="338"
+        width="370"
+        height="208"
       />
       <div v-else class="placeholder" aria-hidden="true" />
     </div>
@@ -50,7 +50,6 @@ defineProps({
   background-color: var(--bg-page);
   border: 1px solid var(--border);
   border-radius: 8px;
-  overflow: hidden;
   position: relative;
 
   display: flex;

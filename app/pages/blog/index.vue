@@ -1,6 +1,21 @@
 <script setup lang="ts">
-// Ordine delle categorie: determina la sequenza di visualizzazione nella pagina
-const categories = ["Guides", "Opinion", "Case Studies"] as const
+const description = "Thoughts on Nuxt.js, performance, Core Web Vitals and building interfaces that convert."
+
+useHead({
+  link: [{ rel: "canonical", href: "https://crescenzosorrentino.com/blog" }],
+})
+
+useSeoMeta({
+  title: "Blog",
+  description,
+  ogType: "website",
+  ogTitle: "Blog — Crescenzo Sorrentino",
+  ogDescription: description,
+  ogUrl: "https://crescenzosorrentino.com/blog",
+  twitterCard: "summary_large_image",
+  twitterTitle: "Blog — Crescenzo Sorrentino",
+  twitterDescription: description,
+})
 
 // Carica tutti gli articoli ordinati dal più recente al più vecchio.
 // La chiave "blog" è la cache key: Nuxt riutilizza il risultato se il componente
@@ -9,24 +24,24 @@ const { data: articles } = await useAsyncData("blog", () =>
   queryCollection("blog").order("date", "DESC").all()
 )
 
-// Filtra gli articoli per categoria.
-// Il ?? [] garantisce un array vuoto se articles non è ancora disponibile (SSR).
-const byCategory = (category: string) =>
-  articles.value?.filter(a => a.category === category) ?? []
+// Lingua attiva del filtro: parte da "en" (lingua principale del sito).
+const activeLang = ref<"en" | "it">("en")
 
-useHead({ link: [{ rel: "canonical", href: "https://crescenzosorrentino.com/blog" }] })
+// Mostra il toggle solo se esistono articoli italiani da filtrare.
+const hasItalian = computed(() => articles.value?.some(a => a.lang === "it") ?? false)
 
-useSeoMeta({
-  title: "Blog",
-  description: "Thoughts on Nuxt.js, performance, Core Web Vitals and building interfaces that convert.",
-  ogType: "website",
-  ogTitle: "Blog — Crescenzo Sorrentino",
-  ogDescription: "Thoughts on Nuxt.js, performance, Core Web Vitals and building interfaces that convert.",
-  ogUrl: "https://crescenzosorrentino.com/blog",
-  twitterCard: "summary_large_image",
-  twitterTitle: "Blog — Crescenzo Sorrentino",
-  twitterDescription: "Thoughts on Nuxt.js, performance, Core Web Vitals and building interfaces that convert.",
-})
+// Articoli della lingua attiva (gli articoli senza campo lang sono trattati come "en").
+const langArticles = computed(() =>
+  articles.value?.filter(a => (a.lang ?? "en") === activeLang.value) ?? []
+)
+
+// Data formattata secondo la lingua dell'articolo.
+const formatDate = (date: string, lang?: string) =>
+  new Date(date).toLocaleDateString(lang === "it" ? "it-IT" : "en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  })
 </script>
 
 <template>
@@ -38,35 +53,52 @@ useSeoMeta({
           <h1>Blog</h1>
           <p>Thoughts on Nuxt.js, performance, and building interfaces that convert.</p>
         </div>
+
+        <!-- TOGGLE LINGUA: appare solo se ci sono articoli in italiano -->
+        <div v-if="hasItalian" class="lang-toggle" role="group" aria-label="Filter articles by language">
+          <button
+            type="button"
+            class="lang-toggle__btn"
+            :class="{ 'lang-toggle__btn--active': activeLang === 'en' }"
+            :aria-pressed="activeLang === 'en'"
+            @click="activeLang = 'en'"
+          >
+            English
+          </button>
+          <button
+            type="button"
+            class="lang-toggle__btn"
+            :class="{ 'lang-toggle__btn--active': activeLang === 'it' }"
+            :aria-pressed="activeLang === 'it'"
+            @click="activeLang = 'it'"
+          >
+            Italiano
+          </button>
+        </div>
       </div>
     </section>
 
     <!-- ARTICOLI -->
     <section class="section section--pt-sm">
       <div class="container container--narrow">
-        <template v-for="category in categories" :key="category">
-          <div v-if="byCategory(category).length" class="group">
-            <span class="category-label">{{ category }}</span>
-            <ul class="list">
-              <li
-                v-for="article in byCategory(category)"
-                :key="article.path"
-                class="item"
-              >
-                <NuxtLink :to="article.path" class="row">
-                  <div class="row__main">
-                    <time :datetime="article.date" class="date">
-                      {{ new Date(article.date).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" }) }}
-                    </time>
-                    <span class="title">{{ article.title }}</span>
-                    <p class="description">{{ article.description }}</p>
-                  </div>
-                  <Icon name="lucide:arrow-right" class="arrow" :size="20" aria-hidden="true" />
-                </NuxtLink>
-              </li>
-            </ul>
-          </div>
-        </template>
+        <ul class="list">
+          <li
+            v-for="article in langArticles"
+            :key="article.path"
+            class="item"
+          >
+            <NuxtLink :to="article.path" class="row">
+              <div class="row__main">
+                <time :datetime="article.date" class="date">
+                  {{ formatDate(article.date, article.lang) }}
+                </time>
+                <span class="title">{{ article.title }}</span>
+                <p class="description">{{ article.description }}</p>
+              </div>
+              <Icon name="lucide:arrow-right" class="arrow" :size="20" aria-hidden="true" />
+            </NuxtLink>
+          </li>
+        </ul>
       </div>
     </section>
 
@@ -100,26 +132,46 @@ useSeoMeta({
 }
 
 
-/* LISTA */
+/* TOGGLE LINGUA */
 
-.group {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-  margin-bottom: var(--space-24);
+.lang-toggle {
+  display: inline-flex;
+  gap: var(--space-1);
+  margin-top: var(--space-8);
+  padding: var(--space-1);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
 
-  &:last-child {
-    margin-bottom: 0;
+.lang-toggle__btn {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: color 200ms ease, background-color 200ms ease;
+
+  &:hover {
+    color: var(--text-primary);
   }
 }
 
-.category-label {
-  font-size: var(--text-xs);
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-secondary);
+.lang-toggle__btn--active {
+  color: #fff;
+  background-color: var(--color-accent);
+
+  &:hover {
+    color: #fff;
+  }
 }
+
+
+/* LISTA */
 
 .list {
   list-style: none;

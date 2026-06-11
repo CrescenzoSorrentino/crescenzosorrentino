@@ -12,7 +12,7 @@ defineProps({
   <!-- `--size` viene iniettato come proprietà CSS custom così tutti i calc()
        dentro .avatar si aggiornano automaticamente al cambio della prop. -->
   <div class="avatar" :style="{ '--size': `${size}px` }">
-    <NuxtImg :src="src" :alt="alt" :width="size" :height="size" densities="1x 2x" class="image" />
+    <NuxtImg :src="src" :alt="alt" :width="size" :height="size" :sizes="`${size}px`" quality="80" densities="1x 2x" class="image" />
   </div>
 </template>
 
@@ -69,12 +69,16 @@ defineProps({
 }
 
 .image {
-  width:         100%;
-  height:        var(--height-with-noggin);
-  object-fit:    cover;
-  mask-image:    var(--mask-image);
-  mask-repeat:   var(--mask-repeat);
-  mask-position: var(--mask-position);
-  mask-mode:     alpha;
+  width:                  100%;
+  height:                 var(--height-with-noggin);
+  object-fit:             cover;
+  -webkit-mask-image:     var(--mask-image);
+  mask-image:             var(--mask-image);
+  -webkit-mask-repeat:    var(--mask-repeat);
+  mask-repeat:            var(--mask-repeat);
+  -webkit-mask-position:  var(--mask-position);
+  mask-position:          var(--mask-position);
+  -webkit-mask-mode:      alpha;
+  mask-mode:              alpha;
 }
 </style>
