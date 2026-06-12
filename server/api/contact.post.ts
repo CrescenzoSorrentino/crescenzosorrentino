@@ -16,9 +16,23 @@ interface ContactBody {
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 export default defineEventHandler(async (event) => {
-  const { resendApiKey, contactToEmail } = useRuntimeConfig(event)
+  const config = useRuntimeConfig(event)
+
+  // Recupero robusto della chiave: prima da runtimeConfig (popolata via NUXT_RESEND_API_KEY),
+  // poi fallback diretto a process.env accettando sia il nome con prefisso NUXT_ sia quello
+  // senza. Cosi' funziona a prescindere da come e' nominata la variabile su Vercel.
+  const resendApiKey =
+    config.resendApiKey || process.env.NUXT_RESEND_API_KEY || process.env.RESEND_API_KEY
+  const contactToEmail =
+    config.contactToEmail || process.env.NUXT_CONTACT_TO_EMAIL || "crescenzo.sorrentino@icloud.com"
 
   if (!resendApiKey) {
+    // Log diagnostico: elenca i nomi delle env disponibili che contengono RESEND,
+    // senza mai stampare il valore della chiave. Aiuta a capire se/come e' configurata.
+    console.error(
+      "RESEND key missing. Env keys seen:",
+      Object.keys(process.env).filter((k) => k.toUpperCase().includes("RESEND")),
+    )
     throw createError({ statusCode: 500, statusMessage: "Email service not configured" })
   }
 
