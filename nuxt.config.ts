@@ -37,10 +37,12 @@ export default defineNuxtConfig({
     "/sviluppatore-web-napoli": { redirect: { to: "/realizzazione-siti-web-napoli", statusCode: 301 } },
   },
   // Variabili solo lato server (non esposte al client): chiave Resend e destinatario
-  // del form di contatto. In locale arrivano da .env, in produzione dalle env di Vercel.
+  // del form di contatto. I valori reali arrivano a runtime da NUXT_RESEND_API_KEY e
+  // NUXT_CONTACT_TO_EMAIL (convenzione Nuxt: i default qui sotto vengono sovrascritti
+  // automaticamente da quelle env var, sia in locale via .env sia su Vercel).
   runtimeConfig: {
-    resendApiKey: process.env.RESEND_API_KEY,
-    contactToEmail: process.env.CONTACT_TO_EMAIL || "crescenzo.sorrentino@icloud.com",
+    resendApiKey: "",
+    contactToEmail: "crescenzo.sorrentino@icloud.com",
   },
   nitro: {
     prerender: {
