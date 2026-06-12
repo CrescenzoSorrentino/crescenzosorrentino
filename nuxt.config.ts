@@ -36,6 +36,12 @@ export default defineNuxtConfig({
     // Vecchio slug della pagina locale: redirect permanente al nuovo URL ottimizzato
     "/sviluppatore-web-napoli": { redirect: { to: "/realizzazione-siti-web-napoli", statusCode: 301 } },
   },
+  // Variabili solo lato server (non esposte al client): chiave Resend e destinatario
+  // del form di contatto. In locale arrivano da .env, in produzione dalle env di Vercel.
+  runtimeConfig: {
+    resendApiKey: process.env.RESEND_API_KEY,
+    contactToEmail: process.env.CONTACT_TO_EMAIL || "crescenzo.sorrentino@icloud.com",
+  },
   nitro: {
     prerender: {
       routes: [

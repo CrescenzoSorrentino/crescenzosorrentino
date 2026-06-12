@@ -89,6 +89,9 @@
           <p>
             E quanto costa tutto questo? Ho spiegato le fasce di prezzo reali, e cosa le fa variare, nella guida su <NuxtLink to="/blog/quanto-costa-sito-web-napoli">quanto costa un sito web a Napoli</NuxtLink>.
           </p>
+          <p>
+            Ma un sito veloce serve a poco se chi cerca i tuoi servizi non lo trova: ho raccolto i passaggi concreti in una guida su <NuxtLink to="/blog/farsi-trovare-su-google-napoli">come farsi trovare su Google a Napoli</NuxtLink>.
+          </p>
         </div>
       </div>
     </section>

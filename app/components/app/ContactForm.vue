@@ -43,21 +43,42 @@
         />
         <span v-if="errors.message" class="form__error">{{ errors.message }}</span>
       </div>
+
+      <!-- Honeypot anti-bot: nascosto agli utenti, ignorato dagli screen reader.
+           Se valorizzato, il server scarta la richiesta. -->
+      <div class="form__honeypot" aria-hidden="true">
+        <label for="company">Company</label>
+        <input id="company" name="company" type="text" v-model="form.company" tabindex="-1" autocomplete="off" />
+      </div>
     </fieldset>
 
     <div class="form__actions">
-      <BaseButton type="submit" variant="primary" size="sm">Send message</BaseButton>
-      <BaseButton type="reset" variant="secondary" size="sm">Reset</BaseButton>
+      <BaseButton type="submit" variant="primary" size="sm" :disabled="status === 'sending'">
+        {{ status === 'sending' ? 'Sending…' : 'Send message' }}
+      </BaseButton>
+      <BaseButton type="reset" variant="secondary" size="sm" :disabled="status === 'sending'">Reset</BaseButton>
     </div>
+
+    <p v-if="status === 'success'" class="form__status form__status--ok" role="status">
+      Thanks, your message is on its way. I'll get back to you within 48 hours.
+    </p>
+    <p v-else-if="status === 'error'" class="form__status form__status--error" role="alert">
+      Something went wrong. Please email me directly at
+      <a :href="`mailto:${EMAIL}`">{{ EMAIL }}</a>.
+    </p>
   </form>
 </template>
 
 <script setup lang="ts">
-import { reactive } from "vue"
+import { reactive, ref } from "vue"
 import { EMAIL } from "~/data/contact"
 
-const form   = reactive({ name: "", email: "", message: "" })
+// "company" e' il campo honeypot: resta sempre vuoto per gli utenti reali.
+const form   = reactive({ name: "", email: "", message: "", company: "" })
 const errors = reactive({ name: "", email: "", message: "" })
+
+type Status = "idle" | "sending" | "success" | "error"
+const status = ref<Status>("idle")
 
 // Valida tutti i campi e popola errors. Restituisce true se il form è valido.
 function validate(): boolean {
@@ -73,16 +94,25 @@ function clearError(field: keyof typeof errors) {
 }
 
 function handleReset() {
-  Object.assign(form,   { name: "", email: "", message: "" })
+  Object.assign(form,   { name: "", email: "", message: "", company: "" })
   Object.assign(errors, { name: "", email: "", message: "" })
+  status.value = "idle"
 }
 
-function handleSubmit() {
-  if (!validate()) return
+async function handleSubmit() {
+  if (!validate() || status.value === "sending") return
 
-  const subject = encodeURIComponent(`Project inquiry from ${form.name}`)
-  const body    = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`)
-  window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`
+  status.value = "sending"
+  try {
+    await $fetch("/api/contact", {
+      method: "POST",
+      body: { name: form.name, email: form.email, message: form.message, company: form.company },
+    })
+    status.value = "success"
+    Object.assign(form, { name: "", email: "", message: "", company: "" })
+  } catch {
+    status.value = "error"
+  }
 }
 </script>
 
@@ -113,11 +143,42 @@ function handleSubmit() {
   color: var(--text-secondary);
 }
 
+/* HONEYPOT: tolto dal flusso e invisibile, ma non display:none (alcuni bot lo evitano) */
+
+.form__honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 /* ACTIONS */
 
 .form__actions {
   display: flex;
   gap: var(--space-4);
+}
+
+/* STATUS */
+
+.form__status {
+  font-size: var(--text-sm);
+  line-height: 1.5;
+}
+
+.form__status--ok {
+  color: var(--color-accent-text);
+}
+
+.form__status--error {
+  color: #c0392b;
+}
+
+.form__status--error a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 @media (max-width: 639px) {
