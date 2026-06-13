@@ -12,6 +12,7 @@
           v-model="form.name"
           @input="clearError('name')"
           placeholder="Your name"
+          :maxlength="FIELD_LIMITS.name"
           :class="{ 'form__field--error': errors.name }"
         />
         <span v-if="errors.name" class="form__error">{{ errors.name }}</span>
@@ -26,6 +27,7 @@
           v-model="form.email"
           @input="clearError('email')"
           placeholder="your@email.com"
+          :maxlength="FIELD_LIMITS.email"
           :class="{ 'form__field--error': errors.email }"
         />
         <span v-if="errors.email" class="form__error">{{ errors.email }}</span>
@@ -41,7 +43,13 @@
           placeholder="Tell me about your project..."
           :class="{ 'form__field--error': errors.message }"
         />
-        <span v-if="errors.message" class="form__error">{{ errors.message }}</span>
+        <div class="form__field-foot">
+          <span v-if="errors.message" class="form__error">{{ errors.message }}</span>
+          <span
+            class="form__counter"
+            :class="{ 'form__counter--over': form.message.length > FIELD_LIMITS.message }"
+          >{{ form.message.length }} / {{ FIELD_LIMITS.message }}</span>
+        </div>
       </div>
 
       <!-- Honeypot anti-bot: nascosto agli utenti, ignorato dagli screen reader.
@@ -71,7 +79,7 @@
 
 <script setup lang="ts">
 import { reactive, ref } from "vue"
-import { EMAIL } from "~/data/contact"
+import { EMAIL, EMAIL_RE, FIELD_LIMITS } from "~/data/contact"
 
 // "company" e' il campo honeypot: resta sempre vuoto per gli utenti reali.
 const form   = reactive({ name: "", email: "", message: "", company: "" })
@@ -82,9 +90,15 @@ const status = ref<Status>("idle")
 
 // Valida tutti i campi e popola errors. Restituisce true se il form è valido.
 function validate(): boolean {
-  errors.name    = form.name.trim()    ? "" : "Name is required."
-  errors.email   = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email) ? "" : "Enter a valid email address."
-  errors.message = form.message.trim() ? "" : "Message is required."
+  errors.name    = !form.name.trim()                  ? "Name is required."
+                 : form.name.trim().length > FIELD_LIMITS.name    ? `Name must be at most ${FIELD_LIMITS.name} characters.`
+                 : ""
+  errors.email   = !EMAIL_RE.test(form.email)         ? "Enter a valid email address."
+                 : form.email.trim().length > FIELD_LIMITS.email  ? `Email must be at most ${FIELD_LIMITS.email} characters.`
+                 : ""
+  errors.message = !form.message.trim()               ? "Message is required."
+                 : form.message.trim().length > FIELD_LIMITS.message ? `Message must be at most ${FIELD_LIMITS.message} characters.`
+                 : ""
   return !errors.name && !errors.email && !errors.message
 }
 
@@ -237,6 +251,25 @@ async function handleSubmit() {
 
 .form__error {
   font-size: var(--text-xs);
+  color: var(--color-error, #e53e3e);
+}
+
+/* Footer del campo: errore a sinistra, contatore a destra */
+
+.form__field-foot {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.form__counter {
+  margin-left: auto;
+  font-size: var(--text-xs);
+  font-variant-numeric: tabular-nums;
+  color: var(--text-secondary);
+}
+
+.form__counter--over {
   color: var(--color-error, #e53e3e);
 }
 </style>

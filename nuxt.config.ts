@@ -43,6 +43,10 @@ export default defineNuxtConfig({
   runtimeConfig: {
     resendApiKey: "",
     contactToEmail: "crescenzo.sorrentino@icloud.com",
+    // Credenziali Upstash Redis per il rate limiting del form di contatto.
+    // Sovrascritte a runtime da NUXT_UPSTASH_REDIS_REST_URL e NUXT_UPSTASH_REDIS_REST_TOKEN.
+    upstashRedisRestUrl: "",
+    upstashRedisRestToken: "",
   },
   nitro: {
     prerender: {
