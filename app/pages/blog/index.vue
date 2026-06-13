@@ -36,12 +36,16 @@
     <section class="section section--pt-sm">
       <div class="container container--narrow">
         <ul class="list">
+          <!-- Renderizziamo TUTTI gli articoli nel sorgente (così i crawler trovano
+               i link interni di entrambe le lingue) e nascondiamo via CSS quelli
+               della lingua non attiva. hreflang segnala la lingua di ogni articolo. -->
           <li
-            v-for="article in langArticles"
+            v-for="article in (articles ?? [])"
             :key="article.path"
             class="item"
+            :class="{ 'item--hidden': (article.lang ?? 'en') !== activeLang }"
           >
-            <NuxtLink :to="article.path" class="row">
+            <NuxtLink :to="article.path" :hreflang="article.lang ?? 'en'" class="row">
               <div class="row__main">
                 <time :datetime="article.date" class="date">
                   {{ formatDate(article.date, article.lang) }}
@@ -100,11 +104,6 @@ const activeLang = ref<"en" | "it">("en")
 
 // Mostra il toggle solo se esistono articoli italiani da filtrare.
 const hasItalian = computed(() => articles.value?.some(a => a.lang === "it") ?? false)
-
-// Articoli della lingua attiva (gli articoli senza campo lang sono trattati come "en").
-const langArticles = computed(() =>
-  articles.value?.filter(a => (a.lang ?? "en") === activeLang.value) ?? []
-)
 
 // Data formattata secondo la lingua dell'articolo.
 const formatDate = (date: string, lang?: string) =>
@@ -181,6 +180,12 @@ const formatDate = (date: string, lang?: string) =>
 
 .item {
   border-bottom: 1px solid var(--border);
+}
+
+/* Articoli della lingua non attiva: presenti nel sorgente (per i crawler),
+   ma nascosti a schermo finché non si seleziona quella lingua col toggle. */
+.item--hidden {
+  display: none;
 }
 
 
