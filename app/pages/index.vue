@@ -29,8 +29,8 @@
             v-for="(project, i) in featuredProjects"
             :key="project.to"
             v-motion
-            :initial="{ opacity: 0, y: 24 }"
-            :visible-once="{ opacity: 1, y: 0, transition: { duration: 500, delay: i * 150 } }"
+            :initial="initial"
+            :visible-once="visibleOnce(i * 150)"
           >
             <BaseCard v-bind="project" />
           </div>
@@ -77,6 +77,12 @@ useSeoMeta({
 
 // Solo i progetti con featured: true compaiono in homepage; la lista completa vive in /projects.
 const featuredProjects = computed(() => projects.filter(p => p.featured))
+
+// Animazione d'entrata a cascata, disattivata se l'utente preferisce meno movimento.
+const reduce = usePrefersReducedMotion()
+const initial = reduce ? {} : { opacity: 0, y: 24 }
+const visibleOnce = (delay: number) =>
+  reduce ? {} : { opacity: 1, y: 0, transition: { duration: 500, delay } }
 
 // services e faqs sono la fonte unica: vengono renderizzati nelle sezioni della pagina
 // e contemporaneamente trasformati nello schema JSON-LD più in basso.

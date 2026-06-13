@@ -112,6 +112,31 @@ html {
 
 
 /* ----------------------------------------------------------
+   3b. REDUCED MOTION
+
+   Rispetta la preferenza di sistema "riduci animazioni":
+   azzera transizioni, animazioni e scroll fluido per chi
+   le ha disattivate (animazioni d'entrata, scintille della
+   pagina 404, transizioni della navbar, ecc.).
+   ---------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+/* ----------------------------------------------------------
    4. BODY
    ---------------------------------------------------------- */
 

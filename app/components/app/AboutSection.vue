@@ -10,14 +10,14 @@
           :alt="avatarAlt ?? 'Crescenzo Sorrentino'"
           :size="280"
           v-motion
-          :initial="{ opacity: 0, x: -32 }"
-          :visible-once="{ opacity: 1, x: 0, transition: { duration: 600 } }"
+          :initial="initial(-32)"
+          :visible-once="visibleOnce"
         />
         <div
           class="about__text"
           v-motion
-          :initial="{ opacity: 0, x: 32 }"
-          :visible-once="{ opacity: 1, x: 0, transition: { duration: 600 } }"
+          :initial="initial(32)"
+          :visible-once="visibleOnce"
         >
           <h2>{{ title }}</h2>
           <p v-for="(p, i) in paragraphs" :key="i">{{ p }}</p>
@@ -38,6 +38,11 @@ defineProps<{
   alt?: boolean
   avatarAlt?: string
 }>()
+
+// Animazione d'entrata allo scroll, disattivata se l'utente preferisce meno movimento.
+const reduce = usePrefersReducedMotion()
+const initial = (x: number) => reduce ? {} : { opacity: 0, x }
+const visibleOnce = reduce ? {} : { opacity: 1, x: 0, transition: { duration: 600 } }
 </script>
 
 <style scoped>

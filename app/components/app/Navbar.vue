@@ -18,6 +18,25 @@ function toggleMenu() {
   isOpen.value = !isOpen.value
 }
 
+// Chiude il menu mobile con il tasto Esc, riportando il focus
+// sul bottone hamburger per non perdere il punto di navigazione.
+const hamburger = ref(null)
+
+function onKeydown(e) {
+  if (e.key === "Escape" && isOpen.value) {
+    isOpen.value = false
+    hamburger.value?.focus()
+  }
+}
+
+onMounted(() => {
+  document.addEventListener("keydown", onKeydown)
+})
+
+onUnmounted(() => {
+  document.removeEventListener("keydown", onKeydown)
+})
+
 // Doppio aggiornamento: setAttribute cambia il tema subito (effetto visivo immediato),
 // localStorage lo persiste così l'inline script lo rileva al prossimo caricamento
 function toggleTheme() {
@@ -79,8 +98,11 @@ function toggleTheme() {
         </button>
 
         <button
+          ref="hamburger"
           class="navbar__icon-btn navbar__icon-btn--hamburger"
           :aria-label="isOpen ? 'Close menu' : 'Open menu'"
+          :aria-expanded="isOpen"
+          aria-controls="navbar-mobile-menu"
           @click="toggleMenu"
         >
           <Transition name="burger-icon" mode="out-in">
@@ -92,7 +114,7 @@ function toggleTheme() {
     </div>
 
     <Transition name="menu">
-      <div v-if="isOpen" class="navbar__mobile-menu">
+      <div v-if="isOpen" id="navbar-mobile-menu" class="navbar__mobile-menu">
         <NuxtLink v-for="link in links" :key="link.to" :to="link.to" class="navbar__mobile-link" @click="isOpen = false">
           <Icon :name="link.icon" :size="16" aria-hidden="true" />
           {{ link.label }}

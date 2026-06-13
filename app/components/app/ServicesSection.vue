@@ -11,8 +11,8 @@
           :key="service.title"
           class="service"
           v-motion
-          :initial="{ opacity: 0, y: 24 }"
-          :visible-once="{ opacity: 1, y: 0, transition: { duration: 500, delay: i * 150 } }"
+          :initial="initial"
+          :visible-once="visibleOnce(i * 150)"
         >
           <div class="service__icon">
             <svg
@@ -43,6 +43,12 @@ defineProps<{
   services: { iconPaths: string; title: string; description: string }[]
   alt?: boolean
 }>()
+
+// Animazione d'entrata a cascata, disattivata se l'utente preferisce meno movimento.
+const reduce = usePrefersReducedMotion()
+const initial = reduce ? {} : { opacity: 0, y: 24 }
+const visibleOnce = (delay: number) =>
+  reduce ? {} : { opacity: 1, y: 0, transition: { duration: 500, delay } }
 </script>
 
 <style scoped>

@@ -4,23 +4,23 @@
       <h1
         class="hero__title"
         v-motion
-        :initial="{ opacity: 0, y: 24 }"
-        :enter="{ opacity: 1, y: 0, transition: { duration: 600 } }"
+        :initial="initial"
+        :enter="enter(0)"
         v-html="title"
       />
       <p
         class="hero__subtitle"
         v-motion
-        :initial="{ opacity: 0, y: 24 }"
-        :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 120 } }"
+        :initial="initial"
+        :enter="enter(120)"
       >
         {{ subtitle }}
       </p>
       <div
         class="hero__actions"
         v-motion
-        :initial="{ opacity: 0, y: 24 }"
-        :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 240 } }"
+        :initial="initial"
+        :enter="enter(240)"
       >
         <BaseButton :to="primaryCta.to" variant="primary" size="md">{{ primaryCta.label }}</BaseButton>
         <BaseButton :to="secondaryCta.to" variant="secondary" size="md">{{ secondaryCta.label }}</BaseButton>
@@ -36,6 +36,14 @@ defineProps<{
   primaryCta: { label: string; to: string }
   secondaryCta: { label: string; to: string }
 }>()
+
+// Se l'utente preferisce meno movimento, azzeriamo le variant: l'elemento
+// parte e resta nel suo stato finale (opacità piena, nessuno spostamento),
+// senza animazione d'entrata.
+const reduce = usePrefersReducedMotion()
+const initial = reduce ? {} : { opacity: 0, y: 24 }
+const enter = (delay: number) =>
+  reduce ? {} : { opacity: 1, y: 0, transition: { duration: 600, delay } }
 </script>
 
 <style scoped>
