@@ -1,9 +1,9 @@
 <template>
-  <AppLocalLanding :data="locals.napoli" />
+  <AppLocalLanding :data="locals['torre-del-greco']" />
 </template>
 
 <script setup lang="ts">
-// Landing locale: realizzazione siti web a Napoli (pillar regionale).
+// Landing locale: realizzazione siti web a Torre del Greco (area vesuviana).
 // Tutto il contenuto e il rendering vivono in data/locals.ts + AppLocalLanding.
 import { locals } from "~/data/locals"
 </script>

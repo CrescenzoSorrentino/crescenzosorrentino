@@ -8,6 +8,9 @@ export const siteUrl = "https://crescenzosorrentino.com"
 // Aree servite condivise da tutte le verticali, riusate nello schema ProfessionalService.
 export const areaServed = [
   { "@type": "City", name: "Napoli" },
+  { "@type": "City", name: "Torre del Greco" },
+  { "@type": "City", name: "Ercolano" },
+  { "@type": "City", name: "Portici" },
   { "@type": "City", name: "Salerno" },
   { "@type": "City", name: "Caserta" },
   { "@type": "City", name: "Avellino" },

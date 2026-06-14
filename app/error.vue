@@ -75,7 +75,7 @@ useHead({ title: is404 ? "Page not found" : "Something went wrong" })
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-10);
+  gap: var(--space-8);
   text-align: center;
 }
 

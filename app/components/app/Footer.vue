@@ -135,6 +135,9 @@ const navLinks = [
 
 const localLinks = [
   { to: "/realizzazione-siti-web-napoli", label: "Services in Naples", icon: "lucide:map-pin" },
+  { to: "/realizzazione-siti-web-torre-del-greco", label: "Services in Torre del Greco", icon: "lucide:map-pin" },
+  { to: "/realizzazione-siti-web-ercolano", label: "Services in Ercolano", icon: "lucide:map-pin" },
+  { to: "/realizzazione-siti-web-portici", label: "Services in Portici", icon: "lucide:map-pin" },
 ]
 
 const legalLinks = [

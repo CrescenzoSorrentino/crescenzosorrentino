@@ -51,6 +51,10 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       routes: [
+        "/realizzazione-siti-web-napoli",
+        "/realizzazione-siti-web-torre-del-greco",
+        "/realizzazione-siti-web-ercolano",
+        "/realizzazione-siti-web-portici",
         "/siti-web-per-fotografi-napoli",
         "/siti-web-per-palestre-napoli",
         "/blog/nuxtjs-vs-wordpress",
@@ -90,6 +94,9 @@ export default defineNuxtConfig({
   sitemap: {
     urls: [
       { loc: "/realizzazione-siti-web-napoli", priority: 0.9 },
+      { loc: "/realizzazione-siti-web-torre-del-greco", priority: 0.8 },
+      { loc: "/realizzazione-siti-web-ercolano", priority: 0.8 },
+      { loc: "/realizzazione-siti-web-portici", priority: 0.8 },
       { loc: "/siti-web-per-fotografi-napoli", priority: 0.8 },
       { loc: "/siti-web-per-palestre-napoli", priority: 0.8 },
       { loc: "/projects", priority: 0.8 },
