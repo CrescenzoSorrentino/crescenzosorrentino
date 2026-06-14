@@ -36,10 +36,7 @@
               <circle cx="16" cy="16" r="3" fill="var(--color-accent)" />
             </svg>
           </NuxtLink>
-          <p class="footer__description">
-            Fast, modern websites and web apps, built with Nuxt.js to turn
-            visitors into customers.
-          </p>
+          <p class="footer__description">{{ cta.description }}</p>
         </div>
 
         <!-- NAVIGATION -->
