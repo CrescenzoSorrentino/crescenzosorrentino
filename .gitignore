@@ -18,6 +18,9 @@ logs
 .fleet
 .idea
 
+# Finder/iCloud duplicate copies (e.g. "locals 2.ts")
+* [0-9].*
+
 # Local env files
 .env
 .env.*
