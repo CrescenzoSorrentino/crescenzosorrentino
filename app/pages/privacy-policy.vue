@@ -14,7 +14,12 @@ import { EMAIL } from "~/data/contact"
 const description = "Privacy policy for crescenzosorrentino.com: how we collect, use and protect your personal information."
 
 useHead({
-  link: [{ rel: "canonical", href: "https://crescenzosorrentino.com/privacy-policy" }],
+  link: [
+    { rel: "canonical", href: "https://crescenzosorrentino.com/privacy-policy" },
+    { rel: "alternate", hreflang: "en", href: "https://crescenzosorrentino.com/privacy-policy" },
+    { rel: "alternate", hreflang: "it", href: "https://crescenzosorrentino.com/informativa-privacy" },
+    { rel: "alternate", hreflang: "x-default", href: "https://crescenzosorrentino.com/privacy-policy" },
+  ],
 })
 
 useSeoMeta({

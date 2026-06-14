@@ -13,7 +13,12 @@
 const description = "Cookie policy for crescenzosorrentino.com: how we use cookies and how to manage your preferences."
 
 useHead({
-  link: [{ rel: "canonical", href: "https://crescenzosorrentino.com/cookie-policy" }],
+  link: [
+    { rel: "canonical", href: "https://crescenzosorrentino.com/cookie-policy" },
+    { rel: "alternate", hreflang: "en", href: "https://crescenzosorrentino.com/cookie-policy" },
+    { rel: "alternate", hreflang: "it", href: "https://crescenzosorrentino.com/informativa-cookie" },
+    { rel: "alternate", hreflang: "x-default", href: "https://crescenzosorrentino.com/cookie-policy" },
+  ],
 })
 
 useSeoMeta({

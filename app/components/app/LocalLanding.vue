@@ -99,7 +99,6 @@
 </template>
 
 <script setup lang="ts">
-import { footerCtaIt } from "~/data/footer"
 import { siteUrl, personProvider, verticals } from "~/data/verticals"
 import type { Local } from "~/data/locals"
 
@@ -113,10 +112,9 @@ const sectors = Object.values(verticals)
 
 const pageUrl = `${siteUrl}/${l.slug}`
 
-// Pagina in italiano: imposta la CTA italiana del footer.
-// Il reset a inglese all'uscita è gestito dal middleware globale footer-cta.global.ts.
-const footerCta = useFooterCta()
-footerCta.value = footerCtaIt
+// Pagina in italiano: il footer (e ogni altro testo locale-aware) segue questa lingua.
+// Il reset a inglese all'uscita è gestito dal middleware globale locale.global.ts.
+useLocale().value = "it"
 
 // Numeri identici per ogni zona (riguardano il servizio, non il luogo).
 const metrics = [

@@ -1,18 +1,8 @@
 <script setup>
-const links = [
-  { to: "/projects", label: "Projects", icon: "lucide:folder-open" },
-  { to: "/blog",     label: "Blog",     icon: "lucide:book-open" },
-  { to: "/contact",  label: "Contact",  icon: "lucide:mail" },
-]
+import { navLinks } from "~/data/nav"
 
 const isOpen = ref(false) // stato del menu mobile
 const isDark = ref(false) // stato del tema, sincronizzato con data-theme
-
-// onMounted perché document non è accessibile durante il rendering SSR:
-// leggiamo il valore già scritto dall'inline script in <head>
-onMounted(() => {
-  isDark.value = document.documentElement.getAttribute("data-theme") === "dark"
-})
 
 function toggleMenu() {
   isOpen.value = !isOpen.value
@@ -30,6 +20,9 @@ function onKeydown(e) {
 }
 
 onMounted(() => {
+  // document non è accessibile durante l'SSR: al mount leggiamo il tema già
+  // scritto dall'inline script in <head> e iniziamo ad ascoltare il tasto Esc.
+  isDark.value = document.documentElement.getAttribute("data-theme") === "dark"
   document.addEventListener("keydown", onKeydown)
 })
 
@@ -78,7 +71,7 @@ function toggleTheme() {
 
       <div class="navbar__right">
         <div class="navbar__links">
-          <NuxtLink v-for="link in links" :key="link.to" :to="link.to" class="navbar__link">
+          <NuxtLink v-for="link in navLinks" :key="link.to" :to="link.to" class="navbar__link">
             <Icon :name="link.icon" :size="16" aria-hidden="true" />
             {{ link.label }}
           </NuxtLink>
@@ -115,7 +108,7 @@ function toggleTheme() {
 
     <Transition name="menu">
       <div v-if="isOpen" id="navbar-mobile-menu" class="navbar__mobile-menu">
-        <NuxtLink v-for="link in links" :key="link.to" :to="link.to" class="navbar__mobile-link" @click="isOpen = false">
+        <NuxtLink v-for="link in navLinks" :key="link.to" :to="link.to" class="navbar__mobile-link" @click="isOpen = false">
           <Icon :name="link.icon" :size="16" aria-hidden="true" />
           {{ link.label }}
         </NuxtLink>

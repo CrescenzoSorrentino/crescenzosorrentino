@@ -122,13 +122,13 @@
 </template>
 
 <script setup lang="ts">
-const cta = useFooterCta()
+import { footerCtaEn, footerCtaIt } from "~/data/footer"
+import { navLinks } from "~/data/nav"
 
-const navLinks = [
-  { to: "/projects", label: "Projects", icon: "lucide:folder-open" },
-  { to: "/blog",     label: "Blog",     icon: "lucide:book-open" },
-  { to: "/contact",  label: "Contact",  icon: "lucide:mail" },
-]
+// I testi del footer seguono la lingua della pagina: useLocale() è impostato a "it"
+// dalle pagine italiane (vedi composables/useLocale.ts), altrimenti resta "en".
+const locale = useLocale()
+const cta = computed(() => (locale.value === "it" ? footerCtaIt : footerCtaEn))
 
 const localLinks = [
   { to: "/realizzazione-siti-web-napoli", label: "Services in Naples", icon: "lucide:map-pin" },
@@ -137,10 +137,19 @@ const localLinks = [
   { to: "/realizzazione-siti-web-portici", label: "Services in Portici", icon: "lucide:map-pin" },
 ]
 
-const legalLinks = [
-  { to: "/privacy-policy", label: "Privacy Policy", icon: "lucide:shield" },
-  { to: "/cookie-policy",  label: "Cookie Policy",  icon: "lucide:cookie" },
-]
+// Link legali nella lingua della pagina: sulle pagine IT puntano alle versioni
+// italiane (collegate via hreflang), altrimenti restano le inglesi.
+const legalLinks = computed(() =>
+  locale.value === "it"
+    ? [
+        { to: "/informativa-privacy", label: "Privacy Policy", icon: "lucide:shield" },
+        { to: "/informativa-cookie",  label: "Cookie Policy",  icon: "lucide:cookie" },
+      ]
+    : [
+        { to: "/privacy-policy", label: "Privacy Policy", icon: "lucide:shield" },
+        { to: "/cookie-policy",  label: "Cookie Policy",  icon: "lucide:cookie" },
+      ]
+)
 </script>
 
 <style scoped>

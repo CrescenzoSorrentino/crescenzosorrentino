@@ -40,8 +40,6 @@
 </template>
 
 <script setup lang="ts">
-import { footerCtaIt } from "~/data/footer"
-
 const route = useRoute()
 
 // Carica l'articolo corrispondente al percorso URL corrente
@@ -85,13 +83,10 @@ const breadcrumbSchema = {
   ],
 }
 
-// Lingua dell'articolo (default "en"): guida l'attributo lang, il formato data e i testi UI.
-const lang = article.value.lang ?? "en"
-// Per gli articoli in italiano imposta la CTA italiana del footer.
-// Il reset a inglese all'uscita è gestito dal middleware globale footer-cta.global.ts.
-if (lang === "it") {
-  useFooterCta().value = footerCtaIt
-}
+// Lingua dell'articolo (default "en"): guida l'attributo lang, il formato data, i testi UI
+// e il footer locale-aware. Il reset a "en" all'uscita lo fa il middleware locale.global.ts.
+const lang = article.value.lang === "it" ? "it" : "en"
+useLocale().value = lang
 
 const dateLocale = lang === "it" ? "it-IT" : "en-GB"
 const formatDate = (date: string) =>

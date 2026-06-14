@@ -80,7 +80,6 @@
 </template>
 
 <script setup lang="ts">
-import { footerCtaIt } from "~/data/footer"
 import { siteUrl, areaServed, personProvider, type Vertical } from "~/data/verticals"
 
 // Rende l'intera landing verticale da un oggetto Vertical (vedi data/verticals.ts).
@@ -90,10 +89,9 @@ const v = props.data
 
 const pageUrl = `${siteUrl}/${v.slug}`
 
-// Pagina in italiano: imposta la CTA italiana del footer.
-// Il reset a inglese all'uscita è gestito dal middleware globale footer-cta.global.ts.
-const footerCta = useFooterCta()
-footerCta.value = footerCtaIt
+// Pagina in italiano: il footer (e ogni altro testo locale-aware) segue questa lingua.
+// Il reset a inglese all'uscita è gestito dal middleware globale locale.global.ts.
+useLocale().value = "it"
 
 // Dati strutturati per Google, raggruppati in un @graph:
 // - ProfessionalService: attività locale specializzata, con aree servite e catalogo dei servizi → SEO locale
