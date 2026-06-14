@@ -116,6 +116,7 @@ const enter = (delay: number) =>
   font-weight: 300;
   color: #fff;
   line-height: 1.1;
+  text-wrap: balance;
 }
 
 @media (min-width: 768px) {
@@ -126,6 +127,7 @@ const enter = (delay: number) =>
   font-size: var(--text-md);
   color: rgba(255, 255, 255, 0.75);
   max-width: 52ch;
+  text-wrap: pretty;
 }
 
 @media (min-width: 768px) {

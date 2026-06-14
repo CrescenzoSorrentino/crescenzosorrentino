@@ -55,7 +55,7 @@ export interface Vertical {
   }
 
   hero: {
-    title:        string // può contenere <br> (renderizzato via v-html in HeroSection)
+    title:        string // testo semplice: la spezzatura su più righe la gestisce text-wrap: balance
     subtitle:     string
     primaryCta:   string // etichetta, punta sempre a /contact
     secondaryCta: string // etichetta, fa scroll alla sezione demo (#demo) della stessa pagina
@@ -120,7 +120,7 @@ const fotografi: Vertical = {
   },
 
   hero: {
-    title: "Siti Web per Fotografi<br>a Napoli",
+    title: "Siti Web per Fotografi a Napoli",
     subtitle:
       "Un portfolio online che valorizza il tuo lavoro, si carica in un istante anche da telefono e trasforma chi guarda le tue foto in clienti.",
     primaryCta: "Richiedi un preventivo gratuito",
@@ -244,7 +244,7 @@ const palestre: Vertical = {
   },
 
   hero: {
-    title: "Siti Web per Palestre<br>e Centri Fitness a Napoli",
+    title: "Siti Web per Palestre e Centri Fitness a Napoli",
     subtitle:
       "Orari, corsi e abbonamenti sempre aggiornati, dentro un sito veloce e d'impatto, costruito per trasformare i visitatori in nuovi iscritti.",
     primaryCta: "Richiedi un preventivo gratuito",

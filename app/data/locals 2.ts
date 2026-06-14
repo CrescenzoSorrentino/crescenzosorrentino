@@ -28,7 +28,7 @@ export interface Local {
   seoDescription: string
 
   hero: {
-    title:    string // testo semplice: la spezzatura su più righe la gestisce text-wrap: balance
+    title:    string // può contenere <br> (renderizzato via v-html in HeroSection)
     subtitle: string
   }
 
@@ -76,7 +76,7 @@ export const locals = {
     seoDescription:
       "Realizzazione siti web a Napoli: creo siti veloci, moderni e ottimizzati per Google per aziende e professionisti. Preventivo gratuito in tutta la Campania.",
     hero: {
-      title: "Realizzazione Siti Web a Napoli",
+      title: "Realizzazione Siti Web<br>a Napoli",
       subtitle:
         "Creo siti web veloci, moderni e ottimizzati per Google per aziende e professionisti a Napoli e in tutta la Campania.",
     },
@@ -140,7 +140,7 @@ export const locals = {
     seoDescription:
       "Sviluppatore web a Torre del Greco: creo siti veloci, moderni e ottimizzati per Google per le attività locali. Preventivo gratuito, incontri di persona in zona.",
     hero: {
-      title: "Realizzazione Siti Web a Torre del Greco",
+      title: "Realizzazione Siti Web<br>a Torre del Greco",
       subtitle:
         "Sono uno sviluppatore web di Torre del Greco. Creo siti veloci, moderni e ottimizzati per Google per le attività e i professionisti della città e dell'area vesuviana.",
     },
@@ -203,7 +203,7 @@ export const locals = {
     seoDescription:
       "Sviluppatore web a Ercolano: siti veloci, multilingua e ottimizzati per Google per attività turistiche, ristoranti e professionisti. Preventivo gratuito.",
     hero: {
-      title: "Realizzazione Siti Web a Ercolano",
+      title: "Realizzazione Siti Web<br>a Ercolano",
       subtitle:
         "Sviluppatore web per le attività di Ercolano e dell'area vesuviana. Siti veloci, moderni e ottimizzati per Google, pensati anche per il turismo internazionale.",
     },
@@ -266,7 +266,7 @@ export const locals = {
     seoDescription:
       "Sviluppatore web a Portici: siti veloci, moderni e ottimizzati per Google per negozi, ristoranti e professionisti. Preventivo gratuito, incontri in zona.",
     hero: {
-      title: "Realizzazione Siti Web a Portici",
+      title: "Realizzazione Siti Web<br>a Portici",
       subtitle:
         "Sviluppatore web per le attività di Portici e dell'area vesuviana. Siti veloci, moderni e ottimizzati per Google, pensati per farti scegliere prima dei concorrenti.",
     },
