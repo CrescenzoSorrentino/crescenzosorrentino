@@ -50,17 +50,6 @@
           </nav>
         </div>
 
-        <!-- LOCAL -->
-        <div class="footer__col">
-          <span class="footer__col-title">Local</span>
-          <nav>
-            <NuxtLink v-for="link in localLinks" :key="link.to" :to="link.to" class="footer__link">
-              <Icon :name="link.icon" :size="14" aria-hidden="true" />
-              {{ link.label }}
-            </NuxtLink>
-          </nav>
-        </div>
-
         <!-- SOCIAL -->
         <div class="footer__col">
           <span class="footer__col-title">Social</span>
@@ -106,6 +95,28 @@
           </div>
         </div>
 
+        <!-- CONTACT -->
+        <div class="footer__col footer__col--contact">
+          <span class="footer__col-title">Contact</span>
+          <nav>
+            <a v-for="link in contactLinks" :key="link.href" :href="link.href" class="footer__link">
+              <Icon :name="link.icon" :size="14" aria-hidden="true" />
+              {{ link.label }}
+            </a>
+          </nav>
+        </div>
+
+        <!-- LOCAL -->
+        <div class="footer__col footer__col--local">
+          <span class="footer__col-title">Local</span>
+          <nav>
+            <NuxtLink v-for="link in localLinks" :key="link.to" :to="link.to" class="footer__link">
+              <Icon :name="link.icon" :size="14" aria-hidden="true" />
+              {{ link.label }}
+            </NuxtLink>
+          </nav>
+        </div>
+
       </div>
 
       <!-- COPYRIGHT -->
@@ -123,12 +134,18 @@
 
 <script setup lang="ts">
 import { footerCtaEn, footerCtaIt } from "~/data/footer"
+import { EMAIL, PHONE, PHONE_TEL } from "~/data/contact"
 import { navLinks } from "~/data/nav"
 
 // I testi del footer seguono la lingua della pagina: useLocale() è impostato a "it"
 // dalle pagine italiane (vedi composables/useLocale.ts), altrimenti resta "en".
 const locale = useLocale()
 const cta = computed(() => (locale.value === "it" ? footerCtaIt : footerCtaEn))
+
+const contactLinks = [
+  { href: `mailto:${EMAIL}`, label: EMAIL, icon: "lucide:mail" },
+  { href: PHONE_TEL,         label: PHONE, icon: "lucide:phone" },
+]
 
 const localLinks = [
   { to: "/realizzazione-siti-web-napoli", label: "Services in Naples", icon: "lucide:map-pin" },
@@ -213,6 +230,8 @@ const legalLinks = computed(() =>
 
 /* SITEMAP */
 
+/* Mobile: Brand a tutta larghezza (riga 1), Navigation + Social affiancati (riga 2),
+   poi Contact e Local ciascuno a tutta larghezza (righe 3 e 4). */
 .footer__sitemap {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -220,16 +239,24 @@ const legalLinks = computed(() =>
   padding-block: var(--space-12);
 }
 
-@media (min-width: 768px) {
-  .footer__sitemap {
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: var(--space-8);
-  }
+.footer__brand,
+.footer__col--contact,
+.footer__col--local {
+  grid-column: 1 / -1;
 }
 
-@media (min-width: 1024px) {
+/* Desktop: prima riga con Brand + Navigation + Social + Contact in 4 colonne uguali,
+   poi Local su una riga propria. I link Local si agganciano alle stesse colonne
+   (subgrid), così le due righe restano allineate e simmetriche. */
+@media (min-width: 768px) {
   .footer__sitemap {
-    grid-template-columns: 2fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-8);
+  }
+
+  .footer__brand,
+  .footer__col--contact {
+    grid-column: auto;
   }
 }
 
@@ -238,14 +265,7 @@ const legalLinks = computed(() =>
 .footer__brand {
   display: flex;
   flex-direction: column;
-  grid-column: 1 / -1;
   gap: var(--space-4);
-}
-
-@media (min-width: 768px) {
-  .footer__brand {
-    grid-column: auto;
-  }
 }
 
 .footer__logo svg {
@@ -282,6 +302,19 @@ const legalLinks = computed(() =>
   gap: var(--space-2);
 }
 
+/* Su desktop Local sta su una riga propria a tutta larghezza: auto-fit distribuisce
+   i link su piu' colonne e scala da solo quando si aggiungono altre citta'.
+   Su mobile resta una colonna singola (eredita il flex di .footer__col nav). */
+@media (min-width: 768px) {
+  .footer__col--local nav {
+    display: grid;
+    /* Stesse 4 colonne (e stesso gap) della riga sopra: i link Local restano
+       incolonnati sotto Brand/Navigation/Social/Contact. Oltre i 4, vanno a capo. */
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-2) var(--space-8);
+  }
+}
+
 .footer__link {
   display: flex;
   align-items: center;
@@ -289,6 +322,9 @@ const legalLinks = computed(() =>
   font-size: var(--text-sm);
   color: rgba(255, 255, 255, 0.65);
   transition: color 0.2s;
+  /* Stringhe lunghe senza spazi (es. l'email) vanno a capo invece di sforare la colonna */
+  min-width: 0;
+  overflow-wrap: anywhere;
 
   &:hover {
     color: var(--color-accent);

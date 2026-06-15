@@ -62,15 +62,15 @@ import { projects } from "~/data/projects"
 const description = "Freelance Nuxt.js developer building fast websites, landing pages, and web apps that turn visitors into customers. Clear pricing, free quote, available worldwide."
 
 useSeoMeta({
-  title: "Crescenzo Sorrentino — Nuxt.js Freelance Developer",
+  title: "Crescenzo Sorrentino | Nuxt.js Freelance Developer",
   description,
   ogType: "website",
-  ogTitle: "Crescenzo Sorrentino — Nuxt.js Freelance Developer",
+  ogTitle: "Crescenzo Sorrentino | Nuxt.js Freelance Developer",
   ogDescription: description,
   ogUrl: "https://crescenzosorrentino.com",
   ogImage: "https://crescenzosorrentino.com/og-image.png",
   twitterCard: "summary_large_image",
-  twitterTitle: "Crescenzo Sorrentino — Nuxt.js Freelance Developer",
+  twitterTitle: "Crescenzo Sorrentino | Nuxt.js Freelance Developer",
   twitterDescription: description,
   twitterImage: "https://crescenzosorrentino.com/og-image.png",
 })

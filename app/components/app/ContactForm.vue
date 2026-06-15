@@ -1,10 +1,13 @@
 <template>
   <form class="form" @submit.prevent="handleSubmit" @reset.prevent="handleReset" novalidate>
     <fieldset class="form__fieldset">
-      <legend class="form__legend">Your details</legend>
+      <legend class="form__legend">
+        Your details
+        <span class="form__legend-note">All fields required</span>
+      </legend>
 
       <div class="form__field">
-        <label for="name">Name</label>
+        <label for="name">Name <span class="form__required" aria-hidden="true">*</span></label>
         <input
           id="name"
           name="name"
@@ -12,6 +15,8 @@
           v-model="form.name"
           @input="clearError('name')"
           placeholder="Your name"
+          required
+          aria-required="true"
           :maxlength="FIELD_LIMITS.name"
           :class="{ 'form__field--error': errors.name }"
         />
@@ -19,7 +24,7 @@
       </div>
 
       <div class="form__field">
-        <label for="email">Email</label>
+        <label for="email">Email <span class="form__required" aria-hidden="true">*</span></label>
         <input
           id="email"
           name="email"
@@ -27,6 +32,8 @@
           v-model="form.email"
           @input="clearError('email')"
           placeholder="your@email.com"
+          required
+          aria-required="true"
           :maxlength="FIELD_LIMITS.email"
           :class="{ 'form__field--error': errors.email }"
         />
@@ -34,13 +41,15 @@
       </div>
 
       <div class="form__field">
-        <label for="message">Message</label>
+        <label for="message">Message <span class="form__required" aria-hidden="true">*</span></label>
         <textarea
           id="message"
           name="message"
           v-model="form.message"
           @input="clearError('message')"
           placeholder="Tell me about your project..."
+          required
+          aria-required="true"
           :class="{ 'form__field--error': errors.message }"
         />
         <div class="form__field-foot">
@@ -149,12 +158,28 @@ async function handleSubmit() {
 }
 
 .form__legend {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
   margin-bottom: var(--space-6);
   font-size: var(--text-xs);
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-secondary);
+}
+
+.form__legend-note {
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  opacity: 0.8;
+}
+
+.form__legend-note::before {
+  content: "*";
+  margin-right: var(--space-1);
+  color: var(--color-error, #e53e3e);
 }
 
 /* HONEYPOT: tolto dal flusso e invisibile, ma non display:none (alcuni bot lo evitano) */
@@ -213,6 +238,10 @@ async function handleSubmit() {
   font-size: var(--text-sm);
   font-weight: 500;
   color: var(--text-primary);
+}
+
+.form__required {
+  color: var(--color-error, #e53e3e);
 }
 
 .form__field input,

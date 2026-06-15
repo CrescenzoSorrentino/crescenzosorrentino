@@ -1,6 +1,11 @@
 // Indirizzo email centralizzato: usato sia nei dati sottostanti che nel ContactForm.
 export const EMAIL = "crescenzo.sorrentino@icloud.com"
 
+// Telefono centralizzato: PHONE è la forma leggibile, PHONE_TEL quella per l'href tel:.
+// Usati sia in CONTACT_INFO che nel footer, così restano allineati.
+export const PHONE = "+39 324 130 1276"
+export const PHONE_TEL = "tel:+393241301276"
+
 // Regex email centralizzata: usata sia dal ContactForm (client) che dall'endpoint
 // /api/contact (server), così non si rischia di aggiornarne una copia e non l'altra.
 export const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -26,7 +31,7 @@ export interface ContactItem {
 // Su desktop il CSS grid riposiziona gli elementi via grid-column/grid-row.
 export const CONTACT_INFO: ContactItem[] = [
   { label: "Email",         value: EMAIL,                             href: `mailto:${EMAIL}` },
-  { label: "Phone",         value: "+39 324 130 1276",                href: "tel:+393241301276" },
+  { label: "Phone",         value: PHONE,                             href: PHONE_TEL },
   { label: "LinkedIn",      value: "crescenzo-sorrentino",            href: "https://linkedin.com/in/crescenzo-sorrentino", external: true },
   { label: "Location",      value: "Naples, Italy · Remote worldwide" },
   { label: "Working hours", value: "Mon–Fri, 9:00–18:00 CET" },
