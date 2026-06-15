@@ -293,6 +293,11 @@ const legalLinks = computed(() =>
   &:hover {
     color: var(--color-accent);
   }
+
+  /* Evita che il flex comprima l'icona quando l'etichetta va a capo */
+  & > :first-child {
+    flex-shrink: 0;
+  }
 }
 
 /* COPYRIGHT */
