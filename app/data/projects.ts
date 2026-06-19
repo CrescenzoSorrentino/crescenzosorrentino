@@ -73,6 +73,30 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/CrescenzoSorrentino/gym-starter",
   },
 
+  // Nuxt Contact Form
+  {
+    image: "/projects/nuxt-contact-form.svg",
+    tags: ["Nuxt.js"],
+    title: "Nuxt Contact Form",
+    description:
+      "Production-ready, drop-in contact form for Nuxt 3/4 with built-in validation, honeypot spam protection, IP rate limiting, and email delivery via Resend.",
+    to: "/projects/nuxt-contact-form",
+    slug: "nuxt-contact-form",
+    year: 2026,
+    longDescription:
+      "Nuxt Contact Form is a production-ready contact form solution for Nuxt 3 and Nuxt 4 applications. Rather than an npm package, it's a copy-paste implementation: you drop the files into your project, install the dependencies, set a few environment variables, and you have a fully working, secure contact form.\n\nValidation logic is shared between client and server, so the same rules run in the browser for instant real-time feedback and on the server as the source of truth. Spam is handled with a honeypot field, and abuse is contained with Upstash Redis rate limiting at 5 requests per hour per IP, failing gracefully when the limit is hit. Emails are delivered through Resend, with HTML-escaped bodies to prevent injection and reply-to support so you can answer directly.\n\nThe form is fully accessible, with ARIA labels, linked fields, and live status messages, and it's themeable through CSS custom properties without touching the markup. Field limits, the email regex, rate limits, and styling are all configurable.",
+    highlights: [
+      "Drop-in contact form for Nuxt 3/4: copy the files, set env vars, done",
+      "Validation logic shared between client and server, with real-time feedback",
+      "Honeypot anti-spam plus Upstash Redis rate limiting (5 req/hour per IP) with graceful failure",
+      "Email delivery via Resend, HTML-escaped bodies, and reply-to support",
+      "Fully accessible: ARIA labels, linked fields, and live status messages",
+      "CSS custom properties theming and configurable field limits, regex, and rate limits",
+    ],
+    featured: true,
+    githubUrl: "https://github.com/CrescenzoSorrentino/nuxt-contact-form",
+  },
+
   // Portfolio personale
   {
     image: "/projects/crescenzosorrentino.png",
@@ -92,7 +116,7 @@ export const projects: Project[] = [
       "Schema.org structured data on every page: Person, BlogPosting, BreadcrumbList, CreativeWork",
       "Blog powered by Nuxt Content v3 with MDC: articles are Markdown files, no CMS or database",
     ],
-    featured: true,
+    featured: false,
     liveUrl:   "https://crescenzosorrentino.com",
     githubUrl: "https://github.com/CrescenzoSorrentino/crescenzosorrentino.com",
   },

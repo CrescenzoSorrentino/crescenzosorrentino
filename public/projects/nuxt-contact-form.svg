@@ -1,0 +1,45 @@
+<svg width="1280" height="720" viewBox="0 0 1280 720" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Nuxt Contact Form">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1280" y2="720" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0A2342"/>
+      <stop offset="1" stop-color="#1A3A6E"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F07A4A"/>
+      <stop offset="1" stop-color="#E8622A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1280" height="720" fill="url(#bg)"/>
+
+  <!-- Soft accent glow -->
+  <circle cx="1040" cy="140" r="320" fill="#E8622A" opacity="0.08"/>
+  <circle cx="200" cy="640" r="260" fill="#7AAEE8" opacity="0.06"/>
+
+  <!-- Form mock card -->
+  <g transform="translate(770,170)">
+    <rect x="0" y="0" width="380" height="380" rx="20" fill="#FAF9F7" opacity="0.97"/>
+
+    <!-- Field 1 -->
+    <rect x="36" y="48"  width="120" height="12" rx="6" fill="#5E5750" opacity="0.5"/>
+    <rect x="36" y="72"  width="308" height="44" rx="10" fill="#F2F0EC" stroke="#E2DED7" stroke-width="2"/>
+
+    <!-- Field 2 -->
+    <rect x="36" y="140" width="90"  height="12" rx="6" fill="#5E5750" opacity="0.5"/>
+    <rect x="36" y="164" width="308" height="44" rx="10" fill="#F2F0EC" stroke="#E2DED7" stroke-width="2"/>
+
+    <!-- Textarea -->
+    <rect x="36" y="232" width="110" height="12" rx="6" fill="#5E5750" opacity="0.5"/>
+    <rect x="36" y="256" width="308" height="56" rx="10" fill="#F2F0EC" stroke="#E2DED7" stroke-width="2"/>
+
+    <!-- Submit button -->
+    <rect x="220" y="324" width="124" height="40" rx="10" fill="url(#accent)"/>
+    <rect x="244" y="341" width="76" height="7" rx="3.5" fill="#FAF9F7" opacity="0.95"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="120" y="300" font-family="'DM Sans', Arial, sans-serif" font-size="46" font-weight="500" letter-spacing="6" fill="#9CC4F0">NUXT CONTACT</text>
+  <text x="116" y="470" font-family="'Cormorant Garamond', Georgia, serif" font-size="220" font-weight="600" fill="#FAF9F7">form</text>
+  <rect x="124" y="500" width="200" height="6" rx="3" fill="url(#accent)"/>
+</svg>
