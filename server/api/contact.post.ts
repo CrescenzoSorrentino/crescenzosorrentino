@@ -1,7 +1,7 @@
 import { Resend } from "resend"
 import { Ratelimit } from "@upstash/ratelimit"
 import { Redis } from "@upstash/redis"
-import { EMAIL_RE, FIELD_LIMITS } from "../../app/data/contact"
+import { EMAIL_RE, FIELD_LIMITS } from "#shared/contact"
 
 // Endpoint del form di contatto: valida i dati lato server, scarta i bot via honeypot
 // e inoltra il messaggio via Resend. Il destinatario è sempre crescenzo.sorrentino@icloud.com,

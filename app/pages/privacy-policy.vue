@@ -9,7 +9,10 @@
 </template>
 
 <script setup lang="ts">
-import { EMAIL } from "~/data/contact"
+import { EMAIL, PHONE_TEL } from "~/data/contact"
+
+// Numero in forma compatta (senza prefisso tel:) per il testo legale.
+const phone = PHONE_TEL.replace("tel:", "")
 
 const description = "Privacy policy for crescenzosorrentino.com: how we collect, use and protect your personal information."
 
@@ -41,7 +44,7 @@ const content = `
 </h1>
 
 <p class="pp-p">
-  This Privacy Policy describes the policies of Crescenzo Sorrentino, Via Antonio Luise, 35, Napoli 80059, Italy, email: ${EMAIL}, phone: +393241301276 on the collection, use and disclosure of your information that we collect when you use our website ( https://crescenzosorrentino.com ). (the "Service"). By accessing or using the Service, you are consenting to the collection, use and disclosure of your information in accordance with this Privacy Policy. If you do not consent to the same, please do not access or use the Service.
+  This Privacy Policy describes the policies of Crescenzo Sorrentino, Via Antonio Luise, 35, Napoli 80059, Italy, email: ${EMAIL}, phone: ${phone} on the collection, use and disclosure of your information that we collect when you use our website ( https://crescenzosorrentino.com ). (the "Service"). By accessing or using the Service, you are consenting to the collection, use and disclosure of your information in accordance with this Privacy Policy. If you do not consent to the same, please do not access or use the Service.
 </p>
 
 <p class="pp-p">

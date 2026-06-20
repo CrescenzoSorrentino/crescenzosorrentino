@@ -88,7 +88,8 @@
 
 <script setup lang="ts">
 import { reactive, ref } from "vue"
-import { EMAIL, EMAIL_RE, FIELD_LIMITS } from "~/data/contact"
+import { EMAIL } from "~/data/contact"
+import { EMAIL_RE, FIELD_LIMITS } from "#shared/contact"
 
 // "company" e' il campo honeypot: resta sempre vuoto per gli utenti reali.
 const form   = reactive({ name: "", email: "", message: "", company: "" })

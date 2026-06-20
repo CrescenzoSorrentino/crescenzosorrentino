@@ -9,7 +9,10 @@
 </template>
 
 <script setup lang="ts">
-import { EMAIL } from "~/data/contact"
+import { EMAIL, PHONE_TEL } from "~/data/contact"
+
+// Numero in forma compatta (senza prefisso tel:) per il testo legale.
+const phone = PHONE_TEL.replace("tel:", "")
 
 // Versione italiana della Privacy Policy. La gemella inglese vive in privacy-policy.vue:
 // le due pagine si collegano tramite hreflang e ognuna è canonica di se stessa.
@@ -47,7 +50,7 @@ const content = `
 </h1>
 
 <p class="pp-p">
-  La presente Informativa sulla Privacy descrive le modalità con cui Crescenzo Sorrentino, Via Antonio Luise, 35, 80059 Napoli (Italia), email: ${EMAIL}, telefono: +393241301276, raccoglie, utilizza e comunica le informazioni che acquisisce quando utilizzi questo sito ( https://crescenzosorrentino.com ), di seguito il "Servizio". Accedendo o utilizzando il Servizio, acconsenti alla raccolta, all'uso e alla comunicazione delle tue informazioni secondo quanto previsto da questa informativa. Se non sei d'accordo, ti invitiamo a non accedere né utilizzare il Servizio.
+  La presente Informativa sulla Privacy descrive le modalità con cui Crescenzo Sorrentino, Via Antonio Luise, 35, 80059 Napoli (Italia), email: ${EMAIL}, telefono: ${phone}, raccoglie, utilizza e comunica le informazioni che acquisisce quando utilizzi questo sito ( https://crescenzosorrentino.com ), di seguito il "Servizio". Accedendo o utilizzando il Servizio, acconsenti alla raccolta, all'uso e alla comunicazione delle tue informazioni secondo quanto previsto da questa informativa. Se non sei d'accordo, ti invitiamo a non accedere né utilizzare il Servizio.
 </p>
 
 <p class="pp-p">
