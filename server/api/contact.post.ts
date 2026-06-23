@@ -4,9 +4,15 @@ import { Redis } from "@upstash/redis"
 import { EMAIL_RE, FIELD_LIMITS } from "#shared/contact"
 
 // Endpoint del form di contatto: valida i dati lato server, scarta i bot via honeypot
-// e inoltra il messaggio via Resend. Il destinatario è sempre crescenzo.sorrentino@icloud.com,
-// quindi non serve verificare un dominio: si usa il mittente di prova onboarding@resend.dev
-// e si imposta reply-to sull'email del visitatore per poter rispondere con un clic.
+// e inoltra il messaggio via Resend. Invia due email:
+//  1. la notifica a noi (reply-to = visitatore, così si risponde con un clic);
+//  2. una conferma al visitatore, sempre attiva.
+// Entrambe partono dal dominio verificato su Resend (crescenzosorrentino.com): serviva
+// per poter recapitare la conferma a un indirizzo arbitrario, cosa che il mittente di
+// prova onboarding@resend.dev non permette.
+
+// Mittente verificato su Resend. Local part libera: qualunque @crescenzosorrentino.com va bene.
+const FROM_EMAIL = "Crescenzo Sorrentino <hello@crescenzosorrentino.com>"
 
 interface ContactBody {
   name?: string
@@ -91,7 +97,7 @@ export default defineEventHandler(async (event) => {
   const resend = new Resend(resendApiKey)
 
   const { error } = await resend.emails.send({
-    from: "Contact form <onboarding@resend.dev>",
+    from: FROM_EMAIL,
     to: contactToEmail,
     replyTo: email,
     subject: `Project inquiry from ${name}`,
@@ -105,6 +111,27 @@ export default defineEventHandler(async (event) => {
 
   if (error) {
     throw createError({ statusCode: 502, statusMessage: "Failed to send message" })
+  }
+
+  // Email di conferma al visitatore: inviata sempre, dopo che la notifica a noi e' gia'
+  // partita. E' un "nice to have": se fallisce la logghiamo soltanto e NON facciamo fallire
+  // la richiesta, perche' l'email principale e' gia' stata consegnata. reply-to verso di noi,
+  // cosi' se il visitatore risponde alla conferma il messaggio ci arriva.
+  const { error: confirmationError } = await resend.emails.send({
+    from: FROM_EMAIL,
+    to: email,
+    replyTo: contactToEmail,
+    subject: "We received your message",
+    html: `
+      <h2>Thanks for reaching out!</h2>
+      <p>Hi ${escapeHtml(name)}, I received your message and will get back to you within 48 hours.</p>
+      <p><strong>Your message:</strong></p>
+      <p>${escapeHtml(message).replace(/\n/g, "<br>")}</p>
+    `,
+  })
+
+  if (confirmationError) {
+    console.error("Confirmation email failed:", confirmationError)
   }
 
   return { ok: true }
