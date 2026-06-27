@@ -1,0 +1,67 @@
+<svg width="1280" height="720" viewBox="0 0 1280 720" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Nuxt Contact Hub">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1280" y2="720" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0A2342"/>
+      <stop offset="1" stop-color="#1A3A6E"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F07A4A"/>
+      <stop offset="1" stop-color="#E8622A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1280" height="720" fill="url(#bg)"/>
+
+  <!-- Soft accent glow -->
+  <circle cx="1040" cy="140" r="320" fill="#E8622A" opacity="0.08"/>
+  <circle cx="200" cy="640" r="260" fill="#7AAEE8" opacity="0.06"/>
+
+  <!-- Admin dashboard mock card: leads table -->
+  <g transform="translate(720,150)">
+    <rect x="0" y="0" width="430" height="420" rx="20" fill="#FAF9F7" opacity="0.97"/>
+
+    <!-- Header bar with title + lock (protected admin) -->
+    <rect x="32" y="36" width="150" height="14" rx="7" fill="#0A2342" opacity="0.85"/>
+    <rect x="362" y="32" width="36" height="36" rx="9" fill="#F2F0EC" stroke="#E2DED7" stroke-width="2"/>
+    <rect x="374" y="44" width="12" height="14" rx="3" fill="url(#accent)"/>
+    <rect x="377" y="40" width="6" height="8" rx="3" fill="none" stroke="#E8622A" stroke-width="2.5"/>
+
+    <!-- Column header -->
+    <rect x="32" y="84" width="366" height="2" rx="1" fill="#E2DED7"/>
+
+    <!-- Lead rows -->
+    <g>
+      <circle cx="52" cy="124" r="14" fill="#9CC4F0" opacity="0.45"/>
+      <rect x="80" y="110" width="120" height="11" rx="5.5" fill="#5E5750" opacity="0.7"/>
+      <rect x="80" y="130" width="190" height="9"  rx="4.5" fill="#5E5750" opacity="0.35"/>
+      <rect x="350" y="116" width="48" height="16" rx="8" fill="url(#accent)" opacity="0.9"/>
+    </g>
+    <rect x="32" y="166" width="366" height="2" rx="1" fill="#EEE9E2"/>
+    <g>
+      <circle cx="52" cy="200" r="14" fill="#9CC4F0" opacity="0.45"/>
+      <rect x="80" y="186" width="96"  height="11" rx="5.5" fill="#5E5750" opacity="0.7"/>
+      <rect x="80" y="206" width="210" height="9"  rx="4.5" fill="#5E5750" opacity="0.35"/>
+      <rect x="350" y="192" width="48" height="16" rx="8" fill="url(#accent)" opacity="0.9"/>
+    </g>
+    <rect x="32" y="242" width="366" height="2" rx="1" fill="#EEE9E2"/>
+    <g>
+      <circle cx="52" cy="276" r="14" fill="#9CC4F0" opacity="0.45"/>
+      <rect x="80" y="262" width="140" height="11" rx="5.5" fill="#5E5750" opacity="0.7"/>
+      <rect x="80" y="282" width="168" height="9"  rx="4.5" fill="#5E5750" opacity="0.35"/>
+      <rect x="350" y="268" width="48" height="16" rx="8" fill="url(#accent)" opacity="0.9"/>
+    </g>
+    <rect x="32" y="318" width="366" height="2" rx="1" fill="#EEE9E2"/>
+    <g>
+      <circle cx="52" cy="352" r="14" fill="#9CC4F0" opacity="0.45"/>
+      <rect x="80" y="338" width="110" height="11" rx="5.5" fill="#5E5750" opacity="0.7"/>
+      <rect x="80" y="358" width="196" height="9"  rx="4.5" fill="#5E5750" opacity="0.35"/>
+      <rect x="350" y="344" width="48" height="16" rx="8" fill="url(#accent)" opacity="0.9"/>
+    </g>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="120" y="300" font-family="'DM Sans', Arial, sans-serif" font-size="46" font-weight="500" letter-spacing="6" fill="#9CC4F0">NUXT CONTACT</text>
+  <text x="116" y="470" font-family="'Cormorant Garamond', Georgia, serif" font-size="220" font-weight="600" fill="#FAF9F7">hub</text>
+  <rect x="124" y="500" width="200" height="6" rx="3" fill="url(#accent)"/>
+</svg>

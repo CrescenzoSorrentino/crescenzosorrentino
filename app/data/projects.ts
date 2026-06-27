@@ -73,6 +73,30 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/CrescenzoSorrentino/gym-starter",
   },
 
+  // Nuxt Contact Hub
+  {
+    image: "/projects/nuxt-contact-hub.svg",
+    tags: ["Nuxt.js"],
+    title: "Nuxt Contact Hub",
+    description:
+      "Full-stack lead-management app for Nuxt 4: every contact submission is saved to a Supabase database and surfaced in a password-protected admin area, with optional email delivery via Resend.",
+    to: "/projects/nuxt-contact-hub",
+    slug: "nuxt-contact-hub",
+    year: 2026,
+    longDescription:
+      "Nuxt Contact Hub is a complete example app that extends the Nuxt Contact Form component into a full lead-management workflow: form, persistence, and a protected admin area. Where the form is a reusable component you drop into any project, the hub shows one way to build on top of it.\n\nEvery submission flows through the same shared client/server validation, then gets persisted to a Supabase (Postgres) leads table with an auto-generated id and created_at timestamp. Row Level Security is enabled with no policies, so the table is reachable only with the server-side service_role key, never from the browser. If Resend is configured the endpoint also emails the message; if not, it simply saves the lead and skips email, so the app works with or without an email provider.\n\nThe admin area at /admin is protected by a single-password login built on nuxt-auth-utils, with a sealed session cookie. Once authenticated, it lists every lead most-recent-first with a one-click mailto: reply. Spam is handled with a honeypot field and abuse is contained with Upstash Redis rate limiting, both inherited from the contact form. All secrets live in environment variables: nothing sensitive is committed.",
+    highlights: [
+      "Full-stack lead workflow: contact form, database persistence, and protected admin",
+      "Submissions saved to Supabase (Postgres) with Row Level Security and server-only service_role key",
+      "Password-protected /admin area via nuxt-auth-utils with a sealed session cookie",
+      "Leads list, most-recent-first, with one-click mailto: reply",
+      "Optional email via Resend: saves the lead with or without an email provider configured",
+      "Reuses Nuxt Contact Form: shared validation, honeypot, and Upstash rate limiting",
+    ],
+    featured: true,
+    githubUrl: "https://github.com/CrescenzoSorrentino/nuxt-contact-hub",
+  },
+
   // Nuxt Contact Form
   {
     image: "/projects/nuxt-contact-form.svg",
@@ -93,7 +117,7 @@ export const projects: Project[] = [
       "Fully accessible: ARIA labels, linked fields, and live status messages",
       "CSS custom properties theming and configurable field limits, regex, and rate limits",
     ],
-    featured: true,
+    featured: false,
     githubUrl: "https://github.com/CrescenzoSorrentino/nuxt-contact-form",
   },
 
