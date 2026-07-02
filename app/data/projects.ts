@@ -68,7 +68,7 @@ export const projects: Project[] = [
       "One-click deploy on Vercel with Nuxt auto-detection",
       "Modular and scalable component structure: mobile navbar, footer, reusable hero, base button",
     ],
-    featured: true,
+    featured: false,
     liveUrl:   "https://gym-starter-psi.vercel.app",
     githubUrl: "https://github.com/CrescenzoSorrentino/gym-starter",
   },
@@ -143,6 +143,30 @@ export const projects: Project[] = [
     featured: false,
     liveUrl:   "https://crescenzosorrentino.com",
     githubUrl: "https://github.com/CrescenzoSorrentino/crescenzosorrentino.com",
+  },
+
+  // Wordle Arcade
+  {
+    image: "/projects/wordle-arcade.svg",
+    tags: ["Nuxt.js"],
+    title: "Wordle Arcade",
+    description:
+      "An arcade twist on Wordle: the classic five-letter word game turned into an endless, time-pressured run with a global Upstash Redis leaderboard.",
+    to: "/projects/wordle-arcade",
+    slug: "wordle-arcade",
+    year: 2026,
+    longDescription:
+      "Wordle Arcade reworks the familiar five-letter guessing game into an endless arcade run. You guess the hidden word in six tries, with each letter marked green, yellow, or grey; solving a word advances a level, banks points, and hands you a fresh word. The twist is time: every level runs on a countdown that starts at five minutes and decays exponentially toward a twenty-second floor, so the pressure keeps climbing. Each guess rewards time for the useful letters it reveals, plus ten seconds per new green and five per new yellow, but only the first time you discover each one, so you can't farm time by retyping. The run ends when you run out of guesses or time, and a top-ten score prompts you for a nickname.\n\nThe interesting part is the architecture. The pure game rules, evaluating a guess, validating a word, and the timer decay formula, live in a shared module imported via the #shared alias and reused on both sides: the client runs them for instant feedback, and the server re-runs them as the source of truth. The leaderboard is a single Redis sorted set on Upstash, using ZADD to record scores and ZRANGE to read the top ten, trimming the rest, with no accounts and no database. It's built on Nuxt 4 and Vue 3 with script setup and vanilla scoped CSS in BEM, no UI framework.",
+    highlights: [
+      "Endless arcade mode: levels, banked score, and an exponential-decay countdown timer",
+      "Time rewards for newly revealed letters, granted only on first discovery to prevent farming",
+      "Pure game rules in shared/ (via #shared): run on the client for instant feedback, re-validated on the server",
+      "Global leaderboard as a single Upstash Redis sorted set (ZADD / ZRANGE), no accounts, no database",
+      "Nuxt 4 and Vue 3 <script setup> with vanilla scoped CSS in BEM, zero UI frameworks",
+    ],
+    featured: true,
+    liveUrl:   "https://wordle-rho-wheat.vercel.app",
+    githubUrl: "https://github.com/CrescenzoSorrentino/wordle",
   },
 
   // Grocery List

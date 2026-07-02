@@ -1,0 +1,62 @@
+<svg width="1280" height="720" viewBox="0 0 1280 720" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Wordle Arcade">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1280" y2="720" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0A2342"/>
+      <stop offset="1" stop-color="#1A3A6E"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F07A4A"/>
+      <stop offset="1" stop-color="#E8622A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1280" height="720" fill="url(#bg)"/>
+
+  <!-- Soft accent glow -->
+  <circle cx="1040" cy="140" r="320" fill="#E8622A" opacity="0.08"/>
+  <circle cx="200" cy="640" r="260" fill="#7AAEE8" opacity="0.06"/>
+
+  <!-- Wordle board: 4 rows x 5 tiles, using the classic green/yellow/grey states -->
+  <g transform="translate(748,120)">
+    <!-- tile helpers: filled = solved states, outlined = empty -->
+    <!-- row 1: G G Y . . -->
+    <rect x="0"   y="0"   width="88" height="88" rx="10" fill="#6AAA64"/>
+    <rect x="100" y="0"   width="88" height="88" rx="10" fill="#6AAA64"/>
+    <rect x="200" y="0"   width="88" height="88" rx="10" fill="#C9B458"/>
+    <rect x="300" y="0"   width="88" height="88" rx="10" fill="none" stroke="#3A5478" stroke-width="3"/>
+    <rect x="400" y="0"   width="88" height="88" rx="10" fill="none" stroke="#3A5478" stroke-width="3"/>
+
+    <!-- row 2: grey Y grey G grey -->
+    <rect x="0"   y="100" width="88" height="88" rx="10" fill="#3C4A5E"/>
+    <rect x="100" y="100" width="88" height="88" rx="10" fill="#C9B458"/>
+    <rect x="200" y="100" width="88" height="88" rx="10" fill="#3C4A5E"/>
+    <rect x="300" y="100" width="88" height="88" rx="10" fill="#6AAA64"/>
+    <rect x="400" y="100" width="88" height="88" rx="10" fill="#3C4A5E"/>
+
+    <!-- row 3: G G G G G (solved) -->
+    <rect x="0"   y="200" width="88" height="88" rx="10" fill="#6AAA64"/>
+    <rect x="100" y="200" width="88" height="88" rx="10" fill="#6AAA64"/>
+    <rect x="200" y="200" width="88" height="88" rx="10" fill="#6AAA64"/>
+    <rect x="300" y="200" width="88" height="88" rx="10" fill="#6AAA64"/>
+    <rect x="400" y="200" width="88" height="88" rx="10" fill="#6AAA64"/>
+
+    <!-- row 4: empty -->
+    <rect x="0"   y="300" width="88" height="88" rx="10" fill="none" stroke="#3A5478" stroke-width="3"/>
+    <rect x="100" y="300" width="88" height="88" rx="10" fill="none" stroke="#3A5478" stroke-width="3"/>
+    <rect x="200" y="300" width="88" height="88" rx="10" fill="none" stroke="#3A5478" stroke-width="3"/>
+    <rect x="300" y="300" width="88" height="88" rx="10" fill="none" stroke="#3A5478" stroke-width="3"/>
+    <rect x="400" y="300" width="88" height="88" rx="10" fill="none" stroke="#3A5478" stroke-width="3"/>
+
+    <!-- countdown timer pill (the arcade twist) -->
+    <rect x="150" y="424" width="188" height="52" rx="26" fill="#0A2342" stroke="url(#accent)" stroke-width="3"/>
+    <circle cx="192" cy="450" r="13" fill="none" stroke="url(#accent)" stroke-width="4"/>
+    <rect x="190" y="440" width="4" height="12" rx="2" fill="#F07A4A"/>
+    <rect x="222" y="444" width="92" height="12" rx="6" fill="#FAF9F7" opacity="0.9"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="120" y="300" font-family="'DM Sans', Arial, sans-serif" font-size="46" font-weight="500" letter-spacing="6" fill="#9CC4F0">WORDLE</text>
+  <text x="116" y="470" font-family="'Cormorant Garamond', Georgia, serif" font-size="200" font-weight="600" fill="#FAF9F7">arcade</text>
+  <rect x="124" y="500" width="200" height="6" rx="3" fill="url(#accent)"/>
+</svg>
