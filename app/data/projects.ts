@@ -42,7 +42,7 @@ export const projects: Project[] = [
       "CSS custom properties design system: fully rebrandable per client",
       "One-click deploy on Vercel with Nuxt auto-detection",
     ],
-    featured: true,
+    featured: false,
     liveUrl:   "https://photographer-starter.vercel.app",
     githubUrl: "https://github.com/CrescenzoSorrentino/photographer-starter",
   },
@@ -167,6 +167,31 @@ export const projects: Project[] = [
     featured: true,
     liveUrl:   "https://wordle-rho-wheat.vercel.app",
     githubUrl: "https://github.com/CrescenzoSorrentino/wordle",
+  },
+
+  // Tamagotchi
+  {
+    image: "/projects/tamagotchi.svg",
+    tags: ["Nuxt.js"],
+    title: "Tamagotchi",
+    description:
+      "A browser virtual pet with a Game Boy aesthetic: an egg hatches, grows up, develops a character based on how you care for it, and crystallizes into one of seven different adults.",
+    to: "/projects/tamagotchi",
+    slug: "tamagotchi",
+    year: 2026,
+    longDescription:
+      "Tamagotchi is a browser-playable virtual pet built as a learning exercise, with each game system written by hand one at a time. A pet hatches from an egg, grows through a baby stage, and matures into an adult whose form is earned through how you raised it. You manage four stats that decay over time, hunger, cleanliness, mood, and sleep, and the decay keeps running even while the game is closed, computed from a stored timestamp when you return. The pet has a will of its own: it refuses food when full, and when overfed it grows fat, turns greedy and lazy, and starts declining play, as a probability rather than a certainty. Sleep is a real state that blocks every other action until the pet wakes. There's also a Simon-style memory minigame that grows the happiness bonus with each sequence you repeat and saves your best streak.\n\nThe design goal was a clean separation between rules, state, and rendering. The pure logic that decides which of the seven adults a pet becomes lives in shared/ as framework-free functions, testable in isolation and ready to move server-side later. Game state lives in singleton composables, one system per file: stats, growth, character and tantrums, health and neglect, lifecycle, movement, the minigame, and action cooldowns. Components only draw. The adult crystallizes once at maturity and is then frozen, so it's the reward of the whole upbringing rather than a snapshot of the last few minutes. It's built on Nuxt 4 and Vue 3 with script setup and TypeScript, persists to localStorage, and renders its pixel-art sprites as SVG in a monochrome Game Boy green palette.",
+    highlights: [
+      "Four stats with offline decay: hunger, cleanliness, mood, and sleep keep dropping while the game is closed, recomputed from a stored timestamp",
+      "A pet with agency: refuses food when full, and when fat turns greedy and lazy, declining play on a probability",
+      "Seven adult evolutions crystallized once at maturity from care, discipline, character, and neglect, then frozen",
+      "Pure evolution logic in shared/ (framework-free, testable, server-ready), state in singleton composables, components only render",
+      "Simon-style memory minigame with a saved best-streak record",
+      "Nuxt 4 and Vue 3 <script setup> with TypeScript, localStorage persistence, and pixel-art SVG sprites in a Game Boy palette",
+    ],
+    featured: true,
+    liveUrl:   "https://tamagotchi.vercel.app",
+    githubUrl: "https://github.com/CrescenzoSorrentino/tamagotchi",
   },
 
   // Grocery List
