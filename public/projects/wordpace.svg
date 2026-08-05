@@ -1,4 +1,4 @@
-<svg width="1280" height="720" viewBox="0 0 1280 720" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Wordle Arcade">
+<svg width="1280" height="720" viewBox="0 0 1280 720" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Wordpace">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1280" y2="720" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#0A2342"/>
@@ -56,7 +56,9 @@
   </g>
 
   <!-- Wordmark -->
-  <text x="120" y="300" font-family="'DM Sans', Arial, sans-serif" font-size="46" font-weight="500" letter-spacing="6" fill="#9CC4F0">WORDLE</text>
-  <text x="116" y="470" font-family="'Cormorant Garamond', Georgia, serif" font-size="200" font-weight="600" fill="#FAF9F7">arcade</text>
-  <rect x="124" y="500" width="200" height="6" rx="3" fill="url(#accent)"/>
+  <text x="120" y="300" font-family="'DM Sans', Arial, sans-serif" font-size="46" font-weight="500" letter-spacing="6" fill="#9CC4F0">WORD ARCADE</text>
+  <!-- textLength blocca la larghezza: l'SVG come <img> non carica web font e ricade su un
+       serif di sistema (più largo), quindi senza questo "wordpace" sforerebbe verso la board -->
+  <text x="116" y="460" textLength="560" lengthAdjust="spacingAndGlyphs" font-family="'Cormorant Garamond', Georgia, serif" font-size="150" font-weight="600" fill="#FAF9F7">wordpace</text>
+  <rect x="124" y="492" width="200" height="6" rx="3" fill="url(#accent)"/>
 </svg>

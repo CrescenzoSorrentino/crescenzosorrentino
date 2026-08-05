@@ -40,6 +40,6 @@
 
   <!-- Wordmark -->
   <text x="120" y="300" font-family="'DM Sans', Arial, sans-serif" font-size="46" font-weight="500" letter-spacing="6" fill="#9CC4F0">NUXT CONTACT</text>
-  <text x="116" y="470" font-family="'Cormorant Garamond', Georgia, serif" font-size="220" font-weight="600" fill="#FAF9F7">form</text>
-  <rect x="124" y="500" width="200" height="6" rx="3" fill="url(#accent)"/>
+  <text x="116" y="460" font-family="'Cormorant Garamond', Georgia, serif" font-size="150" font-weight="600" fill="#FAF9F7">form</text>
+  <rect x="124" y="492" width="200" height="6" rx="3" fill="url(#accent)"/>
 </svg>

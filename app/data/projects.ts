@@ -145,28 +145,29 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/CrescenzoSorrentino/crescenzosorrentino.com",
   },
 
-  // Wordle Arcade
+  // Wordpace
   {
-    image: "/projects/wordle-arcade.svg",
+    image: "/projects/wordpace.svg",
     tags: ["Nuxt.js"],
-    title: "Wordle Arcade",
+    title: "Wordpace",
     description:
-      "An arcade twist on Wordle: the classic five-letter word game turned into an endless, time-pressured run with a global Upstash Redis leaderboard.",
-    to: "/projects/wordle-arcade",
-    slug: "wordle-arcade",
+      "A five-letter word game turned into an endless, time-pressured run with a global Upstash Redis leaderboard, and a dictionary entry after every word so a run also teaches you vocabulary.",
+    to: "/projects/wordpace",
+    slug: "wordpace",
     year: 2026,
     longDescription:
-      "Wordle Arcade reworks the familiar five-letter guessing game into an endless arcade run. You guess the hidden word in six tries, with each letter marked green, yellow, or grey; solving a word advances a level, banks points, and hands you a fresh word. The twist is time: every level runs on a countdown that starts at five minutes and decays exponentially toward a twenty-second floor, so the pressure keeps climbing. Each guess rewards time for the useful letters it reveals, plus ten seconds per new green and five per new yellow, but only the first time you discover each one, so you can't farm time by retyping. The run ends when you run out of guesses or time, and a top-ten score prompts you for a nickname.\n\nThe interesting part is the architecture. The pure game rules, evaluating a guess, validating a word, and the timer decay formula, live in a shared module imported via the #shared alias and reused on both sides: the client runs them for instant feedback, and the server re-runs them as the source of truth. The leaderboard is a single Redis sorted set on Upstash, using ZADD to record scores and ZRANGE to read the top ten, trimming the rest, with no accounts and no database. It's built on Nuxt 4 and Vue 3 with script setup and vanilla scoped CSS in BEM, no UI framework.",
+      "Wordpace reworks the familiar five-letter guessing game into an endless run against the clock. You guess the hidden word in six tries, with each letter marked green, yellow, or grey; solving a word advances a level, banks points, and hands you a fresh word. Every level runs on a countdown that starts at five minutes and decays exponentially toward a thirty-second floor, so the pressure keeps climbing. Each guess rewards time for the useful letters it reveals, ten seconds per new green and five per new yellow, but only the first time you discover each one, so you can't farm time by retyping. When you get stuck you can spend points on hints that reveal part of the word, or burn one of three per-run skips at an escalating price; both are designed so that being stuck costs something. The run ends when you run out of guesses or time, and a top-ten score prompts you for a nickname.\n\nWhat sets it apart from a plain Wordle clone is that every word is explained after you play it: part of speech, IPA pronunciation with a button that speaks it aloud through the browser's own speech synthesis, a frequency label, a definition, and an example sentence, so a run doubles as vocabulary practice. That dictionary holds 2,315 entries, generated once by Claude against a JSON schema and then validated by a separate script, and it never reaches the browser: a ~440 KB file is imported only by a server route that hands back one entry at a time. The pure game rules, evaluating a guess, validating a word, and the timer decay formula, live in a shared module imported via the #shared alias and reused on both sides: the client runs them for instant feedback, the server re-runs them as the source of truth. The leaderboard is a single Redis sorted set on Upstash (ZADD to record, ZRANGE to read the top ten), with no accounts and no database. Built on Nuxt 4 and Vue 3 with script setup and vanilla scoped CSS in BEM, no UI framework.",
     highlights: [
-      "Endless arcade mode: levels, banked score, and an exponential-decay countdown timer",
-      "Time rewards for newly revealed letters, granted only on first discovery to prevent farming",
-      "Pure game rules in shared/ (via #shared): run on the client for instant feedback, re-validated on the server",
-      "Global leaderboard as a single Upstash Redis sorted set (ZADD / ZRANGE), no accounts, no database",
-      "Nuxt 4 and Vue 3 <script setup> with vanilla scoped CSS in BEM, zero UI frameworks",
+      "Endless arcade mode: levels, banked score, and an exponential-decay countdown timer with time rewarded only on a letter's first discovery",
+      "A dictionary entry after every word (part of speech, IPA, definition, example) turns each run into vocabulary practice",
+      "Spoken pronunciation via the browser's built-in speechSynthesis, with a voice picker that avoids the novelty macOS voices",
+      "2,315-entry dictionary generated against a JSON schema and validated separately, served one entry at a time so the 440 KB file never reaches the browser",
+      "Points-based hints and escalating per-run skips, so being stuck always costs something",
+      "Pure game rules in shared/ (via #shared) run on the client and re-validated on the server; global leaderboard as one Upstash Redis sorted set, no accounts",
     ],
     featured: true,
-    liveUrl:   "https://wordle-rho-wheat.vercel.app",
-    githubUrl: "https://github.com/CrescenzoSorrentino/wordle",
+    liveUrl:   "https://wordpace.vercel.app",
+    githubUrl: "https://github.com/CrescenzoSorrentino/wordpace",
   },
 
   // Tamagotchi
@@ -180,13 +181,14 @@ export const projects: Project[] = [
     slug: "tamagotchi",
     year: 2026,
     longDescription:
-      "Tamagotchi is a browser-playable virtual pet built as a learning exercise, with each game system written by hand one at a time. A pet hatches from an egg, grows through a baby stage, and matures into an adult whose form is earned through how you raised it. You manage four stats that decay over time, hunger, cleanliness, mood, and sleep, and the decay keeps running even while the game is closed, computed from a stored timestamp when you return. The pet has a will of its own: it refuses food when full, and when overfed it grows fat, turns greedy and lazy, and starts declining play, as a probability rather than a certainty. Sleep is a real state that blocks every other action until the pet wakes. There's also a Simon-style memory minigame that grows the happiness bonus with each sequence you repeat and saves your best streak.\n\nThe design goal was a clean separation between rules, state, and rendering. The pure logic that decides which of the seven adults a pet becomes lives in shared/ as framework-free functions, testable in isolation and ready to move server-side later. Game state lives in singleton composables, one system per file: stats, growth, character and tantrums, health and neglect, lifecycle, movement, the minigame, and action cooldowns. Components only draw. The adult crystallizes once at maturity and is then frozen, so it's the reward of the whole upbringing rather than a snapshot of the last few minutes. It's built on Nuxt 4 and Vue 3 with script setup and TypeScript, persists to localStorage, and renders its pixel-art sprites as SVG in a monochrome Game Boy green palette.",
+      "Tamagotchi is a browser-playable virtual pet built as a learning exercise, with each game system written by hand one at a time. A pet hatches from an egg, grows through a baby stage, and matures into an adult whose form is earned through how you raised it. You manage four stats that decay over time, hunger, cleanliness, mood, and sleep, and the decay keeps running even while the game is closed, computed from a stored timestamp when you return. The pet has a will of its own: it refuses food when full, and when overfed it grows fat, turns greedy and lazy, and starts declining play, as a probability rather than a certainty. Sleep is a real state that blocks every other action until the pet wakes. There's also a Simon-style memory minigame that grows the happiness bonus with each sequence you repeat and saves your best streak, and a small set of achievements that unlock for milestones like reaching adulthood or hitting memory-streak targets. A menu on the B button recolors the console shell across five Game Boy-inspired themes while the LCD stays authentically green, and the choice is remembered between visits.\n\nThe design goal was a clean separation between rules, state, and rendering. The pure logic that decides which of the seven adults a pet becomes lives in shared/ as framework-free functions, testable in isolation and ready to move server-side later. Game state lives in singleton composables, one system per file: stats, growth, character and tantrums, health and neglect, lifecycle, movement, the minigame, achievements, and the swappable color theme. Components only draw. The adult crystallizes once at maturity and is then frozen, so it's the reward of the whole upbringing rather than a snapshot of the last few minutes. It's built on Nuxt 4 and Vue 3 with script setup and TypeScript, persists to localStorage, and renders its pixel-art sprites as SVG in a monochrome Game Boy green palette.",
     highlights: [
       "Four stats with offline decay: hunger, cleanliness, mood, and sleep keep dropping while the game is closed, recomputed from a stored timestamp",
       "A pet with agency: refuses food when full, and when fat turns greedy and lazy, declining play on a probability",
       "Seven adult evolutions crystallized once at maturity from care, discipline, character, and neglect, then frozen",
       "Pure evolution logic in shared/ (framework-free, testable, server-ready), state in singleton composables, components only render",
-      "Simon-style memory minigame with a saved best-streak record",
+      "Simon-style memory minigame with a saved best-streak record, plus achievements that unlock for reaching adulthood and hitting streak targets",
+      "Five swappable Game Boy-inspired shell themes chosen from the B menu, LCD always green, remembered in localStorage",
       "Nuxt 4 and Vue 3 <script setup> with TypeScript, localStorage persistence, and pixel-art SVG sprites in a Game Boy palette",
     ],
     featured: true,

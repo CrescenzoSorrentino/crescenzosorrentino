@@ -49,8 +49,8 @@
     </g>
 
     <!-- A / B buttons -->
-    <circle cx="288" cy="360" r="26" fill="#8BAC0F"/>
-    <circle cx="240" cy="392" r="26" fill="#8BAC0F"/>
+    <circle cx="288" cy="360" r="26" fill="#D64545"/>
+    <circle cx="240" cy="392" r="26" fill="#D64545"/>
 
     <!-- speaker grille -->
     <g fill="#0A1C33" opacity="0.6">

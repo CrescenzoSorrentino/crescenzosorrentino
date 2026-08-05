@@ -35,6 +35,8 @@ export default defineNuxtConfig({
     "/projects/**": { prerender: true },
     // Vecchio slug della pagina locale: redirect permanente al nuovo URL ottimizzato
     "/sviluppatore-web-napoli": { redirect: { to: "/realizzazione-siti-web-napoli", statusCode: 301 } },
+    // Il progetto Wordle Arcade è stato rinominato Wordpace: redirect permanente al nuovo slug
+    "/projects/wordle-arcade": { redirect: { to: "/projects/wordpace", statusCode: 301 } },
   },
   // Variabili solo lato server (non esposte al client): chiave Resend e destinatario
   // del form di contatto. I valori reali arrivano a runtime da NUXT_RESEND_API_KEY e
@@ -70,7 +72,7 @@ export default defineNuxtConfig({
         "/projects/nuxt-contact-hub",
         "/projects/nuxt-contact-form",
         "/projects/crescenzosorrentino",
-        "/projects/wordle-arcade",
+        "/projects/wordpace",
         "/projects/tamagotchi",
         "/projects/grocerylist",
       ],
@@ -111,7 +113,7 @@ export default defineNuxtConfig({
       { loc: "/projects/nuxt-contact-hub", priority: 0.7 },
       { loc: "/projects/nuxt-contact-form", priority: 0.7 },
       { loc: "/projects/crescenzosorrentino", priority: 0.7 },
-      { loc: "/projects/wordle-arcade", priority: 0.7 },
+      { loc: "/projects/wordpace", priority: 0.7 },
       { loc: "/projects/tamagotchi", priority: 0.7 },
       { loc: "/projects/grocerylist", priority: 0.7 },
       { loc: "/blog", priority: 0.8 },
