@@ -42,7 +42,7 @@ export const projects: Project[] = [
       "CSS custom properties design system: fully rebrandable per client",
       "One-click deploy on Vercel with Nuxt auto-detection",
     ],
-    featured: false,
+    featured: true,
     liveUrl:   "https://photographer-starter.vercel.app",
     githubUrl: "https://github.com/CrescenzoSorrentino/photographer-starter",
   },
@@ -151,71 +151,24 @@ export const projects: Project[] = [
     tags: ["Nuxt.js"],
     title: "Wordpace",
     description:
-      "A five-letter word game turned into an endless, time-pressured run with a global Upstash Redis leaderboard, and a dictionary entry after every word so a run also teaches you vocabulary.",
+      "An endless, time-pressured five-letter word game that doubles as vocabulary practice: answers are graded by CEFR level from a pool that widens as you climb, every word is explained with spoken pronunciation, and the ones you get wrong come back on their own. A monthly global leaderboard runs on Upstash Redis.",
     to: "/projects/wordpace",
     slug: "wordpace",
     year: 2026,
     longDescription:
-      "Wordpace reworks the familiar five-letter guessing game into an endless run against the clock. You guess the hidden word in six tries, with each letter marked green, yellow, or grey; solving a word advances a level, banks points, and hands you a fresh word. Every level runs on a countdown that starts at five minutes and decays exponentially toward a thirty-second floor, so the pressure keeps climbing. Each guess rewards time for the useful letters it reveals, ten seconds per new green and five per new yellow, but only the first time you discover each one, so you can't farm time by retyping. When you get stuck you can spend points on hints that reveal part of the word, or burn one of three per-run skips at an escalating price; both are designed so that being stuck costs something. The run ends when you run out of guesses or time, and a top-ten score prompts you for a nickname.\n\nWhat sets it apart from a plain Wordle clone is that every word is explained after you play it: part of speech, IPA pronunciation with a button that speaks it aloud through the browser's own speech synthesis, a frequency label, a definition, and an example sentence, so a run doubles as vocabulary practice. That dictionary holds 2,315 entries, generated once by Claude against a JSON schema and then validated by a separate script, and it never reaches the browser: a ~440 KB file is imported only by a server route that hands back one entry at a time. The pure game rules, evaluating a guess, validating a word, and the timer decay formula, live in a shared module imported via the #shared alias and reused on both sides: the client runs them for instant feedback, the server re-runs them as the source of truth. The leaderboard is a single Redis sorted set on Upstash (ZADD to record, ZRANGE to read the top ten), with no accounts and no database. Built on Nuxt 4 and Vue 3 with script setup and vanilla scoped CSS in BEM, no UI framework.",
+      "Wordpace reworks the familiar five-letter guessing game into an endless run against the clock. You guess the hidden word in six tries; solving one advances a level, banks points, and hands you a fresh word. Every level runs on a countdown that starts at five minutes and hands out 8% less than the one before, and time left over carries into the next level, so solving fast is worth more than the points alone. Each guess refunds time for the useful letters it reveals, but only the first time you discover each one, and when you get stuck you can spend points on hints that reveal part of the word or burn one of three per-run skips at an escalating price. The run ends when you run out of guesses or time, and a top-ten score for the current month earns a spot on the leaderboard.\n\nWhat makes it more than a Wordle clone is that it teaches while you play. Every answer is graded by the CEFR level at which a learner is expected to know it, and the answers come from a pool that widens as you climb: A1 to A2 at the start, then B1, B2, and C1 to C2 unlocking at higher levels, so the level you reach is a rough read on your own English. After each word it's explained with part of speech, spoken IPA pronunciation, its CEFR level, a definition written in deliberately simpler words, and an example sentence. And because a word met once is a word lost, one answer in four is a spaced review drawn from the last twenty words you've seen, weighted so the ones you got wrong return more often than the ones you got right. Your best level, best score, and the number of distinct words you've met are kept in the browser and shown on the home page, and a finished run can be shared as four CEFR-band squares.\n\nA second board, the Vault, opens at any time: a ladder of four hidden words, one per CEFR band you've unlocked, cracked using words you've already solved in the run rather than typed cold, with the run clock still ticking. Under the hood, the pure game rules, evaluating a guess, validating a word, and the timer formula, live in a shared module reused on the client for instant feedback and re-run on the server as the source of truth. The 440 KB dictionary and the CEFR grades never reach the browser, served one entry at a time from a server route; the leaderboard is a per-month Upstash Redis sorted set that resets on its own; and every finished run logs a single line so the game can be tuned on real data instead of one player's impressions. Built on Nuxt 4 and Vue 3 with script setup and vanilla scoped CSS in BEM, no UI framework.",
     highlights: [
-      "Endless arcade mode: levels, banked score, and an exponential-decay countdown timer with time rewarded only on a letter's first discovery",
-      "A dictionary entry after every word (part of speech, IPA, definition, example) turns each run into vocabulary practice",
-      "Spoken pronunciation via the browser's built-in speechSynthesis, with a voice picker that avoids the novelty macOS voices",
-      "2,315-entry dictionary generated against a JSON schema and validated separately, served one entry at a time so the 440 KB file never reaches the browser",
-      "Points-based hints and escalating per-run skips, so being stuck always costs something",
-      "Pure game rules in shared/ (via #shared) run on the client and re-validated on the server; global leaderboard as one Upstash Redis sorted set, no accounts",
+      "Endless run against an exponential-decay countdown, with leftover time carrying into the next level and time refunded only on a letter's first discovery",
+      "Answers graded by CEFR level from a pool that widens as you climb (A1-A2, then B1, B2, C1-C2), so the level you reach reflects your own English",
+      "Spaced review: one answer in four returns from your last twenty words, weighted so the ones you got wrong come back more often than the ones you got right",
+      "Every word explained with part of speech, spoken IPA pronunciation, CEFR level, and a definition written in deliberately simpler words",
+      "The Vault: a second board of four hidden words, one per unlocked CEFR band, cracked with words you already solved in the run",
+      "Monthly global leaderboard on Upstash Redis, personal records in localStorage, and a run shareable as four CEFR-band squares",
+      "Pure game rules in shared/ run on the client and re-validated on the server; the 440 KB dictionary and CEFR grades served one entry at a time, never shipped to the browser",
     ],
     featured: true,
     liveUrl:   "https://wordpace.vercel.app",
     githubUrl: "https://github.com/CrescenzoSorrentino/wordpace",
-  },
-
-  // Tamagotchi
-  {
-    image: "/projects/tamagotchi.svg",
-    tags: ["Nuxt.js"],
-    title: "Tamagotchi",
-    description:
-      "A browser virtual pet with a Game Boy aesthetic: an egg hatches, grows up, develops a character based on how you care for it, and crystallizes into one of seven different adults.",
-    to: "/projects/tamagotchi",
-    slug: "tamagotchi",
-    year: 2026,
-    longDescription:
-      "Tamagotchi is a browser-playable virtual pet built as a learning exercise, with each game system written by hand one at a time. A pet hatches from an egg, grows through a baby stage, and matures into an adult whose form is earned through how you raised it. You manage four stats that decay over time, hunger, cleanliness, mood, and sleep, and the decay keeps running even while the game is closed, computed from a stored timestamp when you return. The pet has a will of its own: it refuses food when full, and when overfed it grows fat, turns greedy and lazy, and starts declining play, as a probability rather than a certainty. Sleep is a real state that blocks every other action until the pet wakes. There's also a Simon-style memory minigame that grows the happiness bonus with each sequence you repeat and saves your best streak, and a small set of achievements that unlock for milestones like reaching adulthood or hitting memory-streak targets. A menu on the B button recolors the console shell across five Game Boy-inspired themes while the LCD stays authentically green, and the choice is remembered between visits.\n\nThe design goal was a clean separation between rules, state, and rendering. The pure logic that decides which of the seven adults a pet becomes lives in shared/ as framework-free functions, testable in isolation and ready to move server-side later. Game state lives in singleton composables, one system per file: stats, growth, character and tantrums, health and neglect, lifecycle, movement, the minigame, achievements, and the swappable color theme. Components only draw. The adult crystallizes once at maturity and is then frozen, so it's the reward of the whole upbringing rather than a snapshot of the last few minutes. It's built on Nuxt 4 and Vue 3 with script setup and TypeScript, persists to localStorage, and renders its pixel-art sprites as SVG in a monochrome Game Boy green palette.",
-    highlights: [
-      "Four stats with offline decay: hunger, cleanliness, mood, and sleep keep dropping while the game is closed, recomputed from a stored timestamp",
-      "A pet with agency: refuses food when full, and when fat turns greedy and lazy, declining play on a probability",
-      "Seven adult evolutions crystallized once at maturity from care, discipline, character, and neglect, then frozen",
-      "Pure evolution logic in shared/ (framework-free, testable, server-ready), state in singleton composables, components only render",
-      "Simon-style memory minigame with a saved best-streak record, plus achievements that unlock for reaching adulthood and hitting streak targets",
-      "Five swappable Game Boy-inspired shell themes chosen from the B menu, LCD always green, remembered in localStorage",
-      "Nuxt 4 and Vue 3 <script setup> with TypeScript, localStorage persistence, and pixel-art SVG sprites in a Game Boy palette",
-    ],
-    featured: true,
-    liveUrl:   "https://tamagotchi.vercel.app",
-    githubUrl: "https://github.com/CrescenzoSorrentino/tamagotchi",
-  },
-
-  // Grocery List
-  {
-    image: "/projects/grocerylist.png",
-    tags: ["Nuxt.js"],
-    title: "Grocery List",
-    description:
-      "Simple and fast grocery list app. Add, check off, and remove items on the fly, with data persisted in the browser's local storage.",
-    to: "/projects/grocerylist",
-    slug: "grocerylist",
-    year: 2026,
-    longDescription:
-      "A lightweight grocery list app built with Nuxt.js. The goal was to create a frictionless tool that anyone can open on their phone and use immediately: no account, no loading screen, no friction.",
-    highlights: [
-      "Instant add, check off, and delete with no page reloads",
-      "Data persisted in localStorage, survives page refresh",
-      "Fully responsive, optimized for one-handed mobile use",
-    ],
-    featured: false,
-    liveUrl:   "https://grocerylist-ten.vercel.app",
-    githubUrl: "https://github.com/CrescenzoSorrentino/grocerylist",
   },
 
 ]

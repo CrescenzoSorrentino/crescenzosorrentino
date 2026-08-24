@@ -37,6 +37,9 @@ export default defineNuxtConfig({
     "/sviluppatore-web-napoli": { redirect: { to: "/realizzazione-siti-web-napoli", statusCode: 301 } },
     // Il progetto Wordle Arcade è stato rinominato Wordpace: redirect permanente al nuovo slug
     "/projects/wordle-arcade": { redirect: { to: "/projects/wordpace", statusCode: 301 } },
+    // Progetti rimossi dal portfolio: redirect all'elenco progetti invece di lasciare un 404
+    "/projects/tamagotchi": { redirect: { to: "/projects", statusCode: 301 } },
+    "/projects/grocerylist": { redirect: { to: "/projects", statusCode: 301 } },
   },
   // Variabili solo lato server (non esposte al client): chiave Resend e destinatario
   // del form di contatto. I valori reali arrivano a runtime da NUXT_RESEND_API_KEY e
@@ -73,8 +76,6 @@ export default defineNuxtConfig({
         "/projects/nuxt-contact-form",
         "/projects/crescenzosorrentino",
         "/projects/wordpace",
-        "/projects/tamagotchi",
-        "/projects/grocerylist",
       ],
     },
   },
@@ -114,8 +115,6 @@ export default defineNuxtConfig({
       { loc: "/projects/nuxt-contact-form", priority: 0.7 },
       { loc: "/projects/crescenzosorrentino", priority: 0.7 },
       { loc: "/projects/wordpace", priority: 0.7 },
-      { loc: "/projects/tamagotchi", priority: 0.7 },
-      { loc: "/projects/grocerylist", priority: 0.7 },
       { loc: "/blog", priority: 0.8 },
       { loc: "/blog/nuxtjs-vs-wordpress", priority: 0.6 },
       { loc: "/blog/what-does-it-cost-to-hire-a-freelance-web-developer", priority: 0.6 },
