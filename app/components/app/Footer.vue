@@ -50,51 +50,6 @@
           </nav>
         </div>
 
-        <!-- SOCIAL -->
-        <div class="footer__col">
-          <span class="footer__col-title">Social</span>
-          <div class="footer__social-links">
-            <a
-              href="https://github.com/CrescenzoSorrentino"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="footer__link"
-            >
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.341-3.369-1.341-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"
-                />
-              </svg>
-              GitHub
-            </a>
-            <a
-              href="https://linkedin.com/in/crescenzo-sorrentino"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="footer__link"
-            >
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
-                />
-              </svg>
-              LinkedIn
-            </a>
-          </div>
-        </div>
-
         <!-- CONTACT -->
         <div class="footer__col footer__col--contact">
           <span class="footer__col-title">Contact</span>
@@ -127,6 +82,20 @@
             {{ link.label }}
           </NuxtLink>
         </nav>
+        <nav class="footer__social" aria-label="Social">
+          <a
+            v-for="link in socialLinks"
+            :key="link.href"
+            :href="link.href"
+            target="_blank"
+            rel="noopener noreferrer"
+            :aria-label="link.label"
+            :title="link.label"
+            class="footer__social-icon"
+          >
+            <Icon :name="link.icon" :size="18" aria-hidden="true" />
+          </a>
+        </nav>
       </div>
     </div>
   </footer>
@@ -152,6 +121,17 @@ const localLinks = [
   { to: "/realizzazione-siti-web-torre-del-greco", label: "Services in Torre del Greco", icon: "lucide:map-pin" },
   { to: "/realizzazione-siti-web-ercolano", label: "Services in Ercolano", icon: "lucide:map-pin" },
   { to: "/realizzazione-siti-web-portici", label: "Services in Portici", icon: "lucide:map-pin" },
+]
+
+// Icone social nella barra in basso. I loghi di brand arrivano dal set `simple-icons`
+// (via @nuxt/icon), diverso da `lucide` usato per le icone UI.
+const socialLinks = [
+  { href: "https://github.com/CrescenzoSorrentino", label: "GitHub", icon: "simple-icons:github" },
+  { href: "https://linkedin.com/in/crescenzo-sorrentino", label: "LinkedIn", icon: "simple-icons:linkedin" },
+  { href: "https://www.facebook.com/people/Crescenzo-Sorrentino/61592824216477/", label: "Facebook", icon: "simple-icons:facebook" },
+  { href: "https://www.instagram.com/crescenzo.sorrentino", label: "Instagram", icon: "simple-icons:instagram" },
+  { href: "https://www.tiktok.com/@crescenzo.sorrentino", label: "TikTok", icon: "simple-icons:tiktok" },
+  { href: "https://www.youtube.com/@crescenzo.sorrentino", label: "YouTube", icon: "simple-icons:youtube" },
 ]
 
 // Link legali nella lingua della pagina: sulle pagine IT puntano alle versioni
@@ -230,8 +210,8 @@ const legalLinks = computed(() =>
 
 /* SITEMAP */
 
-/* Mobile: Brand a tutta larghezza (riga 1), Navigation + Social affiancati (riga 2),
-   poi Contact e Local ciascuno a tutta larghezza (righe 3 e 4). */
+/* Mobile: Brand a tutta larghezza (riga 1), Navigation + Contact affiancati (riga 2),
+   Local a tutta larghezza (riga 3). */
 .footer__sitemap {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -240,14 +220,11 @@ const legalLinks = computed(() =>
 }
 
 .footer__brand,
-.footer__col--contact,
 .footer__col--local {
   grid-column: 1 / -1;
 }
 
-/* Desktop: prima riga con Brand + Navigation + Social + Contact in 4 colonne uguali,
-   poi Local su una riga propria. I link Local si agganciano alle stesse colonne
-   (subgrid), così le due righe restano allineate e simmetriche. */
+/* Desktop: un'unica riga di quattro colonne uguali: Brand, Navigation, Contact, Local. */
 @media (min-width: 768px) {
   .footer__sitemap {
     grid-template-columns: repeat(4, 1fr);
@@ -255,7 +232,7 @@ const legalLinks = computed(() =>
   }
 
   .footer__brand,
-  .footer__col--contact {
+  .footer__col--local {
     grid-column: auto;
   }
 }
@@ -295,24 +272,10 @@ const legalLinks = computed(() =>
   color: rgba(255, 255, 255, 0.6);
 }
 
-.footer__col nav,
-.footer__social-links {
+.footer__col nav {
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
-}
-
-/* Su desktop Local sta su una riga propria a tutta larghezza: auto-fit distribuisce
-   i link su piu' colonne e scala da solo quando si aggiungono altre citta'.
-   Su mobile resta una colonna singola (eredita il flex di .footer__col nav). */
-@media (min-width: 768px) {
-  .footer__col--local nav {
-    display: grid;
-    /* Stesse 4 colonne (e stesso gap) della riga sopra: i link Local restano
-       incolonnati sotto Brand/Navigation/Social/Contact. Oltre i 4, vanno a capo. */
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--space-2) var(--space-8);
-  }
 }
 
 .footer__link {
@@ -338,11 +301,12 @@ const legalLinks = computed(() =>
 
 /* COPYRIGHT */
 
+/* Mobile: le tre parti (copyright, legale, social) impilate e centrate. */
 .footer__copyright {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: var(--space-3);
+  align-items: center;
+  gap: var(--space-4);
   padding-block: var(--space-6);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 
@@ -351,9 +315,25 @@ const legalLinks = computed(() =>
     color: rgba(255, 255, 255, 0.5);
   }
 
+  /* Desktop: copyright a sinistra, legale al centro, social a destra.
+     La griglia 1fr auto 1fr centra DAVVERO il blocco legale, a prescindere
+     dalla larghezza diversa di copyright e social (con space-between si sposterebbe). */
   @media (min-width: 768px) {
-    flex-direction: row;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+
+    & > p {
+      justify-self: start;
+    }
+
+    .footer__copyright-legal {
+      justify-self: center;
+    }
+
+    .footer__social {
+      justify-self: end;
+    }
   }
 }
 
@@ -370,6 +350,21 @@ const legalLinks = computed(() =>
     padding-inline: var(--space-3);
     color: rgba(255, 255, 255, 0.2);
     pointer-events: none;
+  }
+}
+
+.footer__social {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.footer__social-icon {
+  display: inline-flex;
+  color: rgba(255, 255, 255, 0.55);
+  transition: color 0.2s;
+
+  &:hover {
+    color: var(--color-accent);
   }
 }
 </style>
